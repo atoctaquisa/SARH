@@ -1,0 +1,11 @@
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\Logger\bin\Debug\Logger.dll
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\Logger\bin\Debug\Logger.pdb
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\Logger\obj\Debug\Logger.csprojResolveAssemblyReference.cache
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\Logger\obj\Debug\Logger.dll
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\Logger\obj\Debug\Logger.pdb
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\Logger\bin\Debug\Logger.dll
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\Logger\bin\Debug\Logger.pdb
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\Logger\obj\Debug\Logger.csprojAssemblyReference.cache
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\Logger\obj\Debug\Logger.csproj.CoreCompileInputs.cache
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\Logger\obj\Debug\Logger.dll
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\Logger\obj\Debug\Logger.pdb

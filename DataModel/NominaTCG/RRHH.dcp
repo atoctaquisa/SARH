@@ -1,0 +1,6 @@
+[ConnectionProfile]
+ConnectionType=Native
+Dbms=ORA Oracle
+LogId=DESARROLLO
+ServerName=192.168.1.12:1521/TCG
+TrimSpaces=0

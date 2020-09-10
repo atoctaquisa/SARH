@@ -1,0 +1,90 @@
+Source		: CrystalDecisions.ReportAppServer.DataSetConversion
+Method		: ThrowDotNetException
+Date		: 11:17:50
+Time		: 9/9/2020
+Computer	: ALTR
+Error		: Los tipos del campo de parámetro y los valores actuales del mismo no son compatibles.
+Stack Trace	: en CrystalDecisions.ReportAppServer.ConvertDotNetToErom.ThrowDotNetException(Exception e)
+   en CrystalDecisions.CrystalReports.Engine.ReportDocument.SetParameterValue(String name, Object val)
+   en NominaTCG.frmLiquidacionRep..ctor(String empId, String diaID) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmLiquidacionRep.cs:línea 37
+   en NominaTCG.frmMain.mnuPagoQuincena_Click(Object sender, EventArgs e) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmMain.cs:línea 344
+   en System.Windows.Forms.ToolStripItem.RaiseEvent(Object key, EventArgs e)
+   en System.Windows.Forms.ToolStripMenuItem.OnClick(EventArgs e)
+   en System.Windows.Forms.ToolStripItem.HandleClick(EventArgs e)
+   en System.Windows.Forms.ToolStripItem.HandleMouseUp(MouseEventArgs e)
+   en System.Windows.Forms.ToolStripItem.FireEventInteractive(EventArgs e, ToolStripItemEventType met)
+   en System.Windows.Forms.ToolStripItem.FireEvent(EventArgs e, ToolStripItemEventType met)
+   en System.Windows.Forms.ToolStrip.OnMouseUp(MouseEventArgs mea)
+   en System.Windows.Forms.ToolStripDropDown.OnMouseUp(MouseEventArgs mea)
+   en System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   en System.Windows.Forms.Control.WndProc(Message& m)
+   en System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   en System.Windows.Forms.ToolStrip.WndProc(Message& m)
+   en System.Windows.Forms.ToolStripDropDown.WndProc(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   en System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: CrystalDecisions.ReportAppServer.DataSetConversion
+Method		: ThrowDotNetException
+Date		: 11:34:07
+Time		: 9/9/2020
+Computer	: ALTR
+Error		: Los tipos del campo de parámetro y los valores actuales del mismo no son compatibles.
+Stack Trace	: en CrystalDecisions.ReportAppServer.ConvertDotNetToErom.ThrowDotNetException(Exception e)
+   en CrystalDecisions.CrystalReports.Engine.ReportDocument.SetParameterValue(String name, Object val)
+   en NominaTCG.frmLiquidacionRep..ctor(String empId, String diaID) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmLiquidacionRep.cs:línea 37
+   en NominaTCG.frmCalcularLiquidacion.btnImprimir_Click(Object sender, EventArgs e) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Administracion\Nomina\frmCalcularLiquidacion.cs:línea 280
+   en System.Windows.Forms.Control.OnClick(EventArgs e)
+   en System.Windows.Forms.Button.OnClick(EventArgs e)
+   en System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   en System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   en System.Windows.Forms.Control.WndProc(Message& m)
+   en System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   en System.Windows.Forms.Button.WndProc(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   en System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: System.Data
+Method		: GetNodeByIndex
+Date		: 11:37:53
+Time		: 9/9/2020
+Computer	: ALTR
+Error		: No hay ninguna fila en la posición 0.
+Stack Trace	: en System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   en System.Data.DataRowCollection.get_Item(Int32 index)
+   en NominaTCG.frmLiquidacionRep..ctor(String empId, String diaID) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmLiquidacionRep.cs:línea 31
+   en NominaTCG.frmAsiento.btnImprimir_Click(Object sender, EventArgs e) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmAsiento.cs:línea 151
+   en System.Windows.Forms.Control.OnClick(EventArgs e)
+   en System.Windows.Forms.Button.OnClick(EventArgs e)
+   en System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   en System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   en System.Windows.Forms.Control.WndProc(Message& m)
+   en System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   en System.Windows.Forms.Button.WndProc(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   en System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: mscorlib
+Method		: Parse
+Date		: 17:22:44
+Time		: 10/9/2020
+Computer	: ALTR
+Error		: No se puede reconocer la cadena como valor DateTime válido.
+Stack Trace	: en System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   en System.Convert.ToDateTime(String value)
+   en NominaTCG.frmEmpleado.RegisterData(String idEmp) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Administracion\Empleado\frmEmpleado.cs:línea 750
+   en NominaTCG.frmEmpleado.btnNewSave_Click(Object sender, EventArgs e) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Administracion\Empleado\frmEmpleado.cs:línea 1138
+   en System.Windows.Forms.Control.OnClick(EventArgs e)
+   en System.Windows.Forms.Button.OnClick(EventArgs e)
+   en System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   en System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   en System.Windows.Forms.Control.WndProc(Message& m)
+   en System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   en System.Windows.Forms.Button.WndProc(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   en System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^

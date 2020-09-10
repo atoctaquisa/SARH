@@ -1,0 +1,8 @@
+c:\users\alvaro\documents\visual studio 2013\Projects\NominaTCG\AccesoDato\bin\Debug\AccesoDato.dll
+c:\users\alvaro\documents\visual studio 2013\Projects\NominaTCG\AccesoDato\bin\Debug\AccesoDato.pdb
+c:\users\alvaro\documents\visual studio 2013\Projects\NominaTCG\AccesoDato\obj\Debug\AccessData.csprojResolveAssemblyReference.cache
+c:\users\alvaro\documents\visual studio 2013\Projects\NominaTCG\AccesoDato\obj\Debug\AccesoDato.dll
+c:\users\alvaro\documents\visual studio 2013\Projects\NominaTCG\AccesoDato\obj\Debug\AccesoDato.pdb
+c:\users\alvaro\documents\visual studio 2013\Projects\NominaTCG\AccesoDato\bin\Debug\Entidades.dll
+c:\users\alvaro\documents\visual studio 2013\Projects\NominaTCG\AccesoDato\bin\Debug\Entidades.pdb
+c:\users\alvaro\documents\visual studio 2013\Projects\NominaTCG\AccesoDato\bin\Debug\Oracle.DataAccess.dll

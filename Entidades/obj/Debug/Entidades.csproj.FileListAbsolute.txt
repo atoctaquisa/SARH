@@ -1,0 +1,5 @@
+c:\users\alvaro\documents\visual studio 2013\Projects\NominaTCG\Entidades\bin\Debug\Entidades.dll
+c:\users\alvaro\documents\visual studio 2013\Projects\NominaTCG\Entidades\bin\Debug\Entidades.pdb
+c:\users\alvaro\documents\visual studio 2013\Projects\NominaTCG\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+c:\users\alvaro\documents\visual studio 2013\Projects\NominaTCG\Entidades\obj\Debug\Entidades.dll
+c:\users\alvaro\documents\visual studio 2013\Projects\NominaTCG\Entidades\obj\Debug\Entidades.pdb

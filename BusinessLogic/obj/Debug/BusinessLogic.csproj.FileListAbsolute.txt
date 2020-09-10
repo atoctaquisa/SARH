@@ -1,0 +1,30 @@
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\obj\Debug\BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\bin\Debug\BusinessLogic.dll
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\bin\Debug\BusinessLogic.pdb
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\bin\Debug\AccesoDato.dll
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\bin\Debug\Entidades.dll
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\bin\Debug\Oracle.DataAccess.dll
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\bin\Debug\Logger.dll
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\bin\Debug\AccesoDato.pdb
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\bin\Debug\AccesoDato.dll.config
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\bin\Debug\Entidades.pdb
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\bin\Debug\Logger.pdb
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\obj\Debug\BusinessLogic.csprojAssemblyReference.cache
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\obj\Debug\BusinessLogic.csproj.CopyComplete
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\obj\Debug\BusinessLogic.dll
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\obj\Debug\BusinessLogic.pdb
+C:\Users\Alvaro\source\repos\NominaTCG\BusinessLogic\bin\Debug\BusinessLogic.dll
+C:\Users\Alvaro\source\repos\NominaTCG\BusinessLogic\bin\Debug\BusinessLogic.pdb
+C:\Users\Alvaro\source\repos\NominaTCG\BusinessLogic\bin\Debug\AccesoDato.dll
+C:\Users\Alvaro\source\repos\NominaTCG\BusinessLogic\bin\Debug\Entidades.dll
+C:\Users\Alvaro\source\repos\NominaTCG\BusinessLogic\bin\Debug\Oracle.DataAccess.dll
+C:\Users\Alvaro\source\repos\NominaTCG\BusinessLogic\bin\Debug\Logger.dll
+C:\Users\Alvaro\source\repos\NominaTCG\BusinessLogic\bin\Debug\AccesoDato.pdb
+C:\Users\Alvaro\source\repos\NominaTCG\BusinessLogic\bin\Debug\AccesoDato.dll.config
+C:\Users\Alvaro\source\repos\NominaTCG\BusinessLogic\bin\Debug\Entidades.pdb
+C:\Users\Alvaro\source\repos\NominaTCG\BusinessLogic\bin\Debug\Logger.pdb
+C:\Users\Alvaro\source\repos\NominaTCG\BusinessLogic\obj\Debug\BusinessLogic.csprojAssemblyReference.cache
+C:\Users\Alvaro\source\repos\NominaTCG\BusinessLogic\obj\Debug\BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\Alvaro\source\repos\NominaTCG\BusinessLogic\obj\Debug\BusinessLogic.csproj.CopyComplete
+C:\Users\Alvaro\source\repos\NominaTCG\BusinessLogic\obj\Debug\BusinessLogic.dll
+C:\Users\Alvaro\source\repos\NominaTCG\BusinessLogic\obj\Debug\BusinessLogic.pdb

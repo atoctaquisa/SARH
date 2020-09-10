@@ -1,0 +1,829 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD55EB39-4295-4BA8-8129-0291EC5D91C0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NominaTCG</RootNamespace>
+    <AssemblyName>NominaTCG</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Deploy\NominaTCG\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>54BF3762CF9DB78DDBAE7698073F2119D1F65AF7</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>NominaTCG_ClaveTemporal.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>SARH.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>NominaTCG.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Logger">
+      <HintPath>..\Logger\bin\Debug\Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\app\client\Alvaro\product\12.1.0\client_1\ODP.NET\managed\common\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmAsiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAsiento.Designer.cs">
+      <DependentUpon>frmAsiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetalleEgreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetalleEgreso.Designer.cs">
+      <DependentUpon>frmDetalleEgreso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo.cs" />
+    <Compile Include="Design.cs" />
+    <Compile Include="fmrPeriodoLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrPeriodoLista.Designer.cs">
+      <DependentUpon>fmrPeriodoLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmCalcularDC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmCalcularDC.Designer.cs">
+      <DependentUpon>frmCalcularDC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmCalcularDT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmCalcularDT.Designer.cs">
+      <DependentUpon>frmCalcularDT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmCalcularLiquidacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmCalcularLiquidacion.Designer.cs">
+      <DependentUpon>frmCalcularLiquidacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCargoLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargoLista.Designer.cs">
+      <DependentUpon>frmCargoLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCuentaLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCuentaLista.Designer.cs">
+      <DependentUpon>frmCuentaLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\IESS\frmDatosIESS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\IESS\frmDatosIESS.Designer.cs">
+      <DependentUpon>frmDatosIESS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmDeduccionGastos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmDeduccionGastos.Designer.cs">
+      <DependentUpon>frmDeduccionGastos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Reporte\frmDetalleContabilidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Reporte\frmDetalleContabilidad.Designer.cs">
+      <DependentUpon>frmDetalleContabilidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetalleDecimoTercero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetalleDecimoTercero.Designer.cs">
+      <DependentUpon>frmDetalleDecimoTercero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetalleIngreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetalleIngreso.Designer.cs">
+      <DependentUpon>frmDetalleIngreso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetalleVacacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetalleVacacion.Designer.cs">
+      <DependentUpon>frmDetalleVacacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGestionPermiso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestionPermiso.Designer.cs">
+      <DependentUpon>frmGestionPermiso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmIngresoValorGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmIngresoValorGrupo.Designer.cs">
+      <DependentUpon>frmIngresoValorGrupo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmListaPrestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmListaPrestamos.Designer.cs">
+      <DependentUpon>frmListaPrestamos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\IESS\frmIESS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\IESS\frmIESS.Designer.cs">
+      <DependentUpon>frmIESS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmListaReproceso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmListaReproceso.Designer.cs">
+      <DependentUpon>frmListaReproceso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\IESS\frmMaternidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\IESS\frmMaternidad.Designer.cs">
+      <DependentUpon>frmMaternidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\IESS\frmMaternidadLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\IESS\frmMaternidadLista.Designer.cs">
+      <DependentUpon>frmMaternidadLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Reporte\frmPagoQuincena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Reporte\frmPagoQuincena.Designer.cs">
+      <DependentUpon>frmPagoQuincena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLiquidacionRep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLiquidacionRep.Designer.cs">
+      <DependentUpon>frmLiquidacionRep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmListaCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaCuenta.Designer.cs">
+      <DependentUpon>frmListaCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPeridoRolLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPeridoRolLista.Designer.cs">
+      <DependentUpon>frmPeridoRolLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmPrestamoDescuento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmPrestamoDescuento.Designer.cs">
+      <DependentUpon>frmPrestamoDescuento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmRolIndividual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmRolIndividual.Designer.cs">
+      <DependentUpon>frmRolIndividual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmTransferenciaBanco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmTransferenciaBanco.Designer.cs">
+      <DependentUpon>frmTransferenciaBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Reporte\frmActuarial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Reporte\frmActuarial.Designer.cs">
+      <DependentUpon>frmActuarial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmView.Designer.cs">
+      <DependentUpon>frmView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmEmpresaLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmEmpresaLista.Designer.cs">
+      <DependentUpon>frmEmpresaLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmOperacionRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmOperacionRol.Designer.cs">
+      <DependentUpon>frmOperacionRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmPermisoTipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmPermisoTipo.Designer.cs">
+      <DependentUpon>frmPermisoTipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\frmAccesoClave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\frmAccesoClave.Designer.cs">
+      <DependentUpon>frmAccesoClave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Empleado\frmVacacionesAprobacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Empleado\frmVacacionesAprobacion.Designer.cs">
+      <DependentUpon>frmVacacionesAprobacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmConsumoLocal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmConsumoLocal.Designer.cs">
+      <DependentUpon>frmConsumoLocal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmContrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmContrato.Designer.cs">
+      <DependentUpon>frmContrato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmContratoFin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmContratoFin.Designer.cs">
+      <DependentUpon>frmContratoFin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros\Nomina\frmCuentaGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametros\Nomina\frmCuentaGrupo.Designer.cs">
+      <DependentUpon>frmCuentaGrupo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros\Nomina\frmCuentaIO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametros\Nomina\frmCuentaIO.Designer.cs">
+      <DependentUpon>frmCuentaIO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Empleado\frmDiscapacidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Empleado\frmDiscapacidad.Designer.cs">
+      <DependentUpon>frmDiscapacidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Empleado\frmEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Empleado\frmEmpleado.Designer.cs">
+      <DependentUpon>frmEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Empleado\frmEmpleadoLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Empleado\frmEmpleadoLista.Designer.cs">
+      <DependentUpon>frmEmpleadoLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmEmpresa.Designer.cs">
+      <DependentUpon>frmEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmEscalafon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmEscalafon.Designer.cs">
+      <DependentUpon>frmEscalafon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmHabilitaQuincena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmHabilitaQuincena.Designer.cs">
+      <DependentUpon>frmHabilitaQuincena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros\Nomina\frmImpuestoRenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametros\Nomina\frmImpuestoRenta.Designer.cs">
+      <DependentUpon>frmImpuestoRenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmJornada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmJornada.Designer.cs">
+      <DependentUpon>frmJornada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmListaEmergente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaEmergente.Designer.cs">
+      <DependentUpon>frmListaEmergente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmLocal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmLocal.Designer.cs">
+      <DependentUpon>frmLocal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmLocalLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametros\Administracion\frmLocalLista.Designer.cs">
+      <DependentUpon>frmLocalLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmPeriodo.Designer.cs">
+      <DependentUpon>frmPeriodo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Empleado\frmPermisoSolicitud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Empleado\frmPermisoSolicitud.Designer.cs">
+      <DependentUpon>frmPermisoSolicitud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmQuincena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmQuincena.Designer.cs">
+      <DependentUpon>frmQuincena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmResumenRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Nomina\frmResumenRol.Designer.cs">
+      <DependentUpon>frmResumenRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Empleado\frmVacaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Empleado\frmVacaciones.Designer.cs">
+      <DependentUpon>frmVacaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Empleado\frmVacacionesSolicitud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Empleado\frmVacacionesSolicitud.Designer.cs">
+      <DependentUpon>frmVacacionesSolicitud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros\Nomina\frmValorAdicional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametros\Nomina\frmValorAdicional.Designer.cs">
+      <DependentUpon>frmValorAdicional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IFrm.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Prueba.cs">
+      <DependentUpon>Prueba.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Prueba.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Prueba.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Reporte\frmViewReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Reporte\frmViewReport.Designer.cs">
+      <DependentUpon>frmViewReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\rptActuarial.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptActuarial.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptAsientoLiquidacion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptAsientoLiquidacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptLiquidacion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptLiquidacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="usrControlBD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="usrControlBD.Designer.cs">
+      <DependentUpon>usrControlBD.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmAsiento.resx">
+      <DependentUpon>frmAsiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetalleEgreso.resx">
+      <DependentUpon>frmDetalleEgreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrPeriodoLista.resx">
+      <DependentUpon>fmrPeriodoLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmCalcularDC.resx">
+      <DependentUpon>frmCalcularDC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmCalcularDT.resx">
+      <DependentUpon>frmCalcularDT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmCalcularLiquidacion.resx">
+      <DependentUpon>frmCalcularLiquidacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCargoLista.resx">
+      <DependentUpon>frmCargoLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCuentaLista.resx">
+      <DependentUpon>frmCuentaLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\IESS\frmDatosIESS.resx">
+      <DependentUpon>frmDatosIESS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmDeduccionGastos.resx">
+      <DependentUpon>frmDeduccionGastos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Reporte\frmDetalleContabilidad.resx">
+      <DependentUpon>frmDetalleContabilidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetalleDecimoTercero.resx">
+      <DependentUpon>frmDetalleDecimoTercero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetalleIngreso.resx">
+      <DependentUpon>frmDetalleIngreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetalleVacacion.resx">
+      <DependentUpon>frmDetalleVacacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionPermiso.resx">
+      <DependentUpon>frmGestionPermiso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmIngresoValorGrupo.resx">
+      <DependentUpon>frmIngresoValorGrupo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmListaPrestamos.resx">
+      <DependentUpon>frmListaPrestamos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\IESS\frmIESS.resx">
+      <DependentUpon>frmIESS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmListaReproceso.resx">
+      <DependentUpon>frmListaReproceso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\IESS\frmMaternidad.resx">
+      <DependentUpon>frmMaternidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\IESS\frmMaternidadLista.resx">
+      <DependentUpon>frmMaternidadLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Reporte\frmPagoQuincena.resx">
+      <DependentUpon>frmPagoQuincena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLiquidacionRep.resx">
+      <DependentUpon>frmLiquidacionRep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaCuenta.resx">
+      <DependentUpon>frmListaCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPeridoRolLista.resx">
+      <DependentUpon>frmPeridoRolLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmPrestamoDescuento.resx">
+      <DependentUpon>frmPrestamoDescuento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmRolIndividual.resx">
+      <DependentUpon>frmRolIndividual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmTransferenciaBanco.resx">
+      <DependentUpon>frmTransferenciaBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmView.resx">
+      <DependentUpon>frmView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Contabilidad.rdlc" />
+    <EmbeddedResource Include="Reportes\PagoQuincena.rdlc" />
+    <EmbeddedResource Include="Administracion\Reporte\frmActuarial.resx">
+      <DependentUpon>frmActuarial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametros\Administracion\frmEmpresaLista.resx">
+      <DependentUpon>frmEmpresaLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmOperacionRol.resx">
+      <DependentUpon>frmOperacionRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametros\Administracion\frmPermisoTipo.resx">
+      <DependentUpon>frmPermisoTipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\frmAccesoClave.resx">
+      <DependentUpon>frmAccesoClave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Empleado\frmVacacionesAprobacion.resx">
+      <DependentUpon>frmVacacionesAprobacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmConsumoLocal.resx">
+      <DependentUpon>frmConsumoLocal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametros\Administracion\frmContrato.resx">
+      <DependentUpon>frmContrato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametros\Administracion\frmContratoFin.resx">
+      <DependentUpon>frmContratoFin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametros\Nomina\frmCuentaGrupo.resx">
+      <DependentUpon>frmCuentaGrupo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametros\Nomina\frmCuentaIO.resx">
+      <DependentUpon>frmCuentaIO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Empleado\frmDiscapacidad.resx">
+      <DependentUpon>frmDiscapacidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Empleado\frmEmpleado.resx">
+      <DependentUpon>frmEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Empleado\frmEmpleadoLista.resx">
+      <DependentUpon>frmEmpleadoLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametros\Administracion\frmEmpresa.resx">
+      <DependentUpon>frmEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametros\Administracion\frmEscalafon.resx">
+      <DependentUpon>frmEscalafon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmHabilitaQuincena.resx">
+      <DependentUpon>frmHabilitaQuincena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametros\Nomina\frmImpuestoRenta.resx">
+      <DependentUpon>frmImpuestoRenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametros\Administracion\frmJornada.resx">
+      <DependentUpon>frmJornada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaEmergente.resx">
+      <DependentUpon>frmListaEmergente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametros\Administracion\frmLocal.resx">
+      <DependentUpon>frmLocal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametros\Administracion\frmLocalLista.resx">
+      <DependentUpon>frmLocalLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmPeriodo.resx">
+      <DependentUpon>frmPeriodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Empleado\frmPermisoSolicitud.resx">
+      <DependentUpon>frmPermisoSolicitud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmQuincena.resx">
+      <DependentUpon>frmQuincena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Nomina\frmResumenRol.resx">
+      <DependentUpon>frmResumenRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Empleado\frmVacaciones.resx">
+      <DependentUpon>frmVacaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Empleado\frmVacacionesSolicitud.resx">
+      <DependentUpon>frmVacacionesSolicitud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametros\Nomina\frmValorAdicional.resx">
+      <DependentUpon>frmValorAdicional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Administracion\Reporte\frmViewReport.resx">
+      <DependentUpon>frmViewReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Report1.rdlc" />
+    <EmbeddedResource Include="Reportes\Rol.rdlc" />
+    <EmbeddedResource Include="Reportes\SolicitudVacacion.rdlc" />
+    <EmbeddedResource Include="Reportes\SolicitudVacacionLocal.rdlc" />
+    <EmbeddedResource Include="Reportes\rptActuarial.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptActuarial.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RolIndividual.rdlc" />
+    <EmbeddedResource Include="rptAsientoLiquidacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAsientoLiquidacion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptLiquidacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLiquidacion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="usrControlBD.resx">
+      <DependentUpon>usrControlBD.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="NominaTCG_ClaveTemporal.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Catalogo.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Prueba.xsc">
+      <DependentUpon>Prueba.xsd</DependentUpon>
+    </None>
+    <None Include="Prueba.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Prueba.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Prueba.xss">
+      <DependentUpon>Prueba.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{db8fb2a9-6416-4aa8-825d-ffe72e0c6512}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entity.csproj">
+      <Project>{0007f1aa-42fc-4769-a73b-04febe8201cd}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Parametros\Seguridad\" />
+    <Folder Include="Resource\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SARH.ico" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

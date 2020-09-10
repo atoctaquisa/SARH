@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Entity.Catalogo" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAIAAAggAIEQAAAAAAAACAAAAAAAQgAAA=</HashCode>
+      <FileName>Catalogo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity.DatEmp">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BCEEBBwQEAAAABEQMwiwAAAIAAQSACMFmCAhAKBgIAQ=</HashCode>
+      <FileName>DatEmp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity.DatEmpSec" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>DatEmpSec.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity.DatEmpCon">
+    <Position X="0.5" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAABQAgAAIAABAAIAIAAAAAAAAABgAAgApIEEACAAw=</HashCode>
+      <FileName>DatEmpCon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity.DatEmpFam" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAMAIAgAAAABAAAAAASAAAAAAAAAAAA=</HashCode>
+      <FileName>DatEmpFam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity.Dat
+         ">
+    <Position X="6.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>DatEmpDiscapacidad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity.DatLab">
+    <Position X="6.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAADCQAAAAABAEAoIACAAAAAAAQQEAACAAAAAAAAAAQ=</HashCode>
+      <FileName>DatLab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity.DatEmpValFijo">
+    <Position X="5.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIBAAAAAAAIAAAAAAgABAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>DatEmpValFijo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
