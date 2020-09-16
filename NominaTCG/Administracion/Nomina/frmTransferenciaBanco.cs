@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogic;
 using db = Entity;
-
+using System.IO;
 namespace NominaTCG
 {
     public partial class frmTransferenciaBanco : Form
     {
         private ContratoController ContratoBO { get; set; }
         private EmpleadoController EmpleadoBO { get; set; }
+        private SistemaController SistemaBO { get; set; }
         private string empID { get; set; }
         private string procesoID { get; set; }
         private string anioINI { get; set; }
@@ -41,6 +42,7 @@ namespace NominaTCG
             InitializeComponent();
             ContratoBO = ContratoController.Instancia;
             EmpleadoBO = EmpleadoController.Instancia;
+            SistemaBO = SistemaController.Instancia;
             IniciaControl();
         }
 
@@ -206,7 +208,7 @@ namespace NominaTCG
                     string nameFile = emp["RAZON"].ToString() + cboTipo.Text.ToUpper().Replace(" ", string.Empty) + "-" + Convert.ToDateTime(txtFechaIni.Text).Month + Convert.ToDateTime(txtFechaIni.Text).Year + ".txt";
                     if (datos.Rows.Count > 0)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Deploy\" + nameFile))
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(ReadPath() + nameFile))
                         {
                             foreach (DataRow row in datos.Rows)
                             {
@@ -220,8 +222,8 @@ namespace NominaTCG
                     DataTable datos = EmpleadoBO.TransferenciaBancariaDecimo(procesoID, anioINI, anioFIN, emp["PAT_ID"].ToString(), tipoID.ToString());
                     string nameFile = emp["RAZON"].ToString() + cboTipo.Text.ToUpper().Replace(" ", string.Empty) + "-" +anioINI+anioFIN + ".txt";
                     if (datos.Rows.Count > 0)
-                    {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Deploy\" + nameFile))
+                    {                        
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(ReadPath() + nameFile))
                         {
                             foreach (DataRow row in datos.Rows)
                             {
@@ -238,6 +240,16 @@ namespace NominaTCG
 
         }
 
+        private string ReadPath()
+        {
+            string path = @"C:\Transferencia\"; // SistemaBO.Path("61"); // 
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            return path;
+        }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             IniciaControl();
@@ -247,131 +259,6 @@ namespace NominaTCG
         {
             _instancia = null;
             this.Close();
-        }
-
-        private void ttMessage_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
-
-        private void txtRol_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabAdmin_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtEmpleado_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPeriodo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFechaFin_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFechaIni_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtReproceso_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboBanco_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
-
-        private void lblTitulo_Click(object sender, EventArgs e)
-        {
-
-        }
+        }      
     }
 }

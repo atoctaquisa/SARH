@@ -60,9 +60,9 @@ namespace BusinessLogic
         {
             return ReportDataDA.RolIndividual(rolID,reproID,empID,localID,cadenaID);           
         }
-        public DataTable PagoQuincena(string rolID, string patrono, string local, string empID)
+        public DataTable PagoQuincena(string rolID,string reproID, string patrono, string local, string empID)
         {
-            return ReportDataDA.PagoQuincena(rolID, patrono , local , empID );
+            return ReportDataDA.PagoQuincena(rolID, reproID, patrono , local , empID );
         }
         public DataTable DetalleContabilidad(string rolID, string reproID)
         {

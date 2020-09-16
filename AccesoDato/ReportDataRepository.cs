@@ -108,6 +108,10 @@ namespace DataAccess
                                                ESTADO, GRUPO, ESC_ID
                                             FROM DESARROLLO.DAT_IMP_ROL_EXC WHERE ROL_ID_GEN=:ROL_ID_GEN AND ROL_REPRO=:ROL_REPRO";
 
+        private string sqlSueldoQuincena = "DESARROLLO.P_GEN_CUEN_SUELDO";
+        private string sqlSueldoQuincenaTotal = "DESARROLLO.P_GEN_CUEN_SUELDO_TOT";
+        private string sqlSueldoQuincenaGlobal = "DESARROLLO.P_GEN_CUEN_SUELDO_GT";
+
         public DataTable Actuarial(string nAnio)
         {
             //OracleParameter[] prm = new OracleParameter[] 
@@ -156,9 +160,31 @@ namespace DataAccess
             };
             return db.GetData(sqlDetalleContabilidad,prm);
         }
-        public DataTable PagoQuincena(string rolID, string patrono, string local, string empID)
+        public DataTable PagoQuincena(string rolID, string reproID, string patrono, string local, string empID)
         {
-            OracleParameter[] prm = new OracleParameter[] 
+            
+            OracleParameter[] prm = new OracleParameter[]
+            {
+                new OracleParameter(":EMP_ID","200402001" ),
+                new OracleParameter(":ROL_ID",rolID ),
+                new OracleParameter(":REPRO_ID",reproID),
+                new OracleParameter(":ESTADO_ID","2" )
+            };
+            db.ExecProcedure(sqlSueldoQuincena, prm);
+            prm = new OracleParameter[]
+            {
+                new OracleParameter(":ESTADO_ID","2" )
+            };
+            db.ExecProcedure(sqlSueldoQuincenaTotal, prm);
+
+            prm = new OracleParameter[]
+            {
+                new OracleParameter(":ESTADO_ID","2" ),
+                new OracleParameter(":ROL_ID", rolID )
+            };
+            db.ExecProcedure(sqlSueldoQuincenaGlobal, prm);
+
+            prm = new OracleParameter[] 
             { 
                 new OracleParameter(":ROL_ID_GEN",rolID ),
                 new OracleParameter(":PAT_ID",patrono ),

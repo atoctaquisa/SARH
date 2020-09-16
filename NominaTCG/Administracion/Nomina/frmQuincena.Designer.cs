@@ -40,12 +40,16 @@
             this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblMessage = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.btnNewSave);
             this.groupBox1.Controls.Add(this.btnEditCancel);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -161,6 +165,32 @@
             this.lblTitulo.Text = "Quincenas";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button1
+            // 
+            this.button1.ImageIndex = 10;
+            this.button1.ImageList = this.imgList;
+            this.button1.Location = new System.Drawing.Point(21, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(39, 29);
+            this.button1.TabIndex = 58;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button2.ImageIndex = 11;
+            this.button2.ImageList = this.imgList;
+            this.button2.Location = new System.Drawing.Point(412, 14);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(39, 29);
+            this.button2.TabIndex = 57;
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // frmQuincena
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -195,5 +225,7 @@
         private System.Windows.Forms.Button btnEditCancel;
         private System.Windows.Forms.Button btnNewSave;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

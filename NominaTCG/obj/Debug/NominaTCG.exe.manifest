@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccesoDato.dll" size="350720">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccesoDato.dll" size="351744">
       <assemblyIdentity name="AccesoDato" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>x+HbwAqys6hrrYy448fEClwChTX9bsNBsWKT8M0Jue4=</dsig:DigestValue>
+        <dsig:DigestValue>6u3EQQUaoyT5/v4N9R+x7olD+bB71GBmrjY/i3Ww1/k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>D/19hrBfV6Yyjl7kPnT+g6CRxId1YfzLZSoWO7Zkb5U=</dsig:DigestValue>
+        <dsig:DigestValue>iCc60ZEjfRT3C/rGnaCjN5XV5uzluxYn1vQ+Arjpy2g=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1195,14 +1195,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NominaTCG.exe" size="2296232">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NominaTCG.exe" size="2297768">
       <assemblyIdentity name="NominaTCG" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2Zt3WxPI1hALF+62/ZquHtOtTqhzzZ/dUymp07OEDEM=</dsig:DigestValue>
+        <dsig:DigestValue>lCBfzixmU+aAhU5W7xHuXg4SBE+e8nqsnDWWi315buk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

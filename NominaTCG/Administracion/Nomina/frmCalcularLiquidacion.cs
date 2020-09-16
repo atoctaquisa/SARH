@@ -270,7 +270,7 @@ namespace NominaTCG
             ////cryLiquidacion.ReportSource = rpt;
             //frmLiquidacionRep frm = new frmLiquidacionRep("200612315233", "590");
             //Design.frmDialog(frm,"Reporte de Liquidación");
-            if (!txtCodigo.Text.Equals(string.Empty))
+            if (!txtCodigo.Text.Equals(string.Empty) & !txtAsiento.Text.Equals(string.Empty))
             {
                 foreach (DataGridViewCell item in dgvData.SelectedCells)
                 {
@@ -279,11 +279,47 @@ namespace NominaTCG
                         string liqID = dgvData.Rows[item.RowIndex].Cells["LIQ_ID"].Value.ToString();
                         frmLiquidacionRep frm = new frmLiquidacionRep(txtCodigo.Text, liqID);
                         Design.frmDialog(frm, "Reporte de Liquidación");
+
+                        string[] param = { txtPatrono.Text,
+                                            dgvData.Rows[item.RowIndex].Cells["LIQ_REM_ACT"].Value.ToString(),
+                        txtObservacion.Text,};
+
+                        //rpt.SetParameterValue("P_PATRONO", (from myRow in dataDT.AsEnumerable()
+                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Patrono"
+                        //                                    select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
+                        //rpt.SetParameterValue("P_RBU", (from myRow in dataDT.AsEnumerable()
+                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Sueldo"
+                        //                                select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
+                        //rpt.SetParameterValue("P_TOTAL", (from myRow in dataDT.AsEnumerable()
+                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Total Sueldo"
+                        //                                  select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
+                        //rpt.SetParameterValue("P_OBSERVACION", (from myRow in dataDT.AsEnumerable()
+                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Observación"
+                        //                                        select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
+                        //rpt.SetParameterValue("P_VESTIMENTA", (from myRow in dataDT.AsEnumerable()
+                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Vestimenta"
+                        //                                       select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
+                        //rpt.SetParameterValue("P_CAUSA", (from myRow in dataDT.AsEnumerable()
+                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Causa"
+                        //                                  select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
+                        //rpt.SetParameterValue("P_FIRMA", (from myRow in dataDT.AsEnumerable()
+                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Firma"
+                        //                                  select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
+                        //rpt.SetParameterValue("P_BONO", (from myRow in dataDT.AsEnumerable()
+                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Bono"
+                        //                                 select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
+                        //rpt.SetParameterValue("P_RAZON", (from myRow in dataDT.AsEnumerable()
+                        //                                 where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Razón"
+                        //                                  select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
+                        //rpt.SetParameterValue("P_CONTRATO", (from myRow in dataDT.AsEnumerable()
+                        //                                 where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Contrato"
+                        //                                     select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
                     }
                 }
-            }
+            }            
 
         }
+        
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {

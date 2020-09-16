@@ -570,7 +570,7 @@ namespace NominaTCG
         {
             if (StateButton.Equals(Acction.Edit))
             {
-                if (dgvData.CurrentRow!=null)
+                if (dgvData.CurrentRow!=null)                    
                     dgvData.Rows.RemoveAt(dgvData.CurrentRow.Index);
                 TotalSalary();
             }

@@ -74,13 +74,17 @@ namespace NominaTCG
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             string path;
-            path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Reportes\PagoQuincena.rdlc";
-            //System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+            path = //@"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Reportes\PagoQuincena.rdlc";
+            System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)+ @"\PagoQuincena.rdlc";
             LocalReport report = new LocalReport();
             //report.ReportPath = path + @"\RolIndividual.rdlc";
             ReportBO = ReportDataController.Instancia;
             
-            DataTable dtConsulta = ReportBO.PagoQuincena(ContratoBO.RolSeg.segRolId.ToString(), cboPatrono.SelectedValue == null ? "" : cboPatrono.SelectedValue.ToString(), LocalBO.Local.LocalID.ToString(), EmpleadoBO.Empleado.empId.ToString() );
+            DataTable dtConsulta = ReportBO.PagoQuincena(ContratoBO.RolSeg.segRolId.ToString(),
+                ContratoBO.RolSeg.segRolRepro.ToString(),
+                cboPatrono.SelectedValue == null ? "" : cboPatrono.SelectedValue.ToString(), 
+                LocalBO.Local.LocalID == 0 ? "": LocalBO.Local.LocalID.ToString(),
+                EmpleadoBO.Empleado.empId ==0 ? "": EmpleadoBO.Empleado.empId.ToString() );
             frmViewReport frm = new frmViewReport(dtConsulta, new ReportDataSource("PagoQuincena", dtConsulta), path);
             frm.Show();
             ClearControl();

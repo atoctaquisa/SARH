@@ -876,7 +876,7 @@
             this.txtPerNumero.MaxLength = 10;
             this.txtPerNumero.Name = "txtPerNumero";
             this.txtPerNumero.Size = new System.Drawing.Size(110, 20);
-            this.txtPerNumero.TabIndex = 33;
+            this.txtPerNumero.TabIndex = 33;            
             this.txtPerNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPerNumero_KeyPress);
             // 
             // txtPerTelefonoSeg

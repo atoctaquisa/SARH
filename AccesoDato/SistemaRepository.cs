@@ -36,6 +36,8 @@ namespace DataAccess
                                             WHERE APPCDGO=:codeSystem AND MENUCODE=:mnuCode
                                             AND EXISTS(SELECT * FROM DAT_TPUS_MENU T 
                                             WHERE TPUSCDGO=:userRol AND T.MENUCDGO=M.MENUCDGO)";
+        private const string sqlPath = @"	SELECT SET_VALOR FROM DESARROLLO.DAT_INV_SET
+	                                        WHERE SET_ID=:PARAM_ID";
         //private const string s
         #endregion
         
@@ -44,6 +46,14 @@ namespace DataAccess
         #endregion
         
         #region Methods
+        public string Path(string paramID)
+        {
+            OracleParameter[] prm = new OracleParameter[]
+           {
+                new OracleParameter(":PARAM_ID",paramID )
+           };
+            return  db.GetString(sqlPath, prm);
+        }
         public Boolean stateMenu(string codeSystem, string mnuCode, string userRol)
         {
             string item;

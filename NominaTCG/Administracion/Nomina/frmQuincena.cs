@@ -76,5 +76,11 @@ namespace NominaTCG
         {
             _instancia = null;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _instancia = null;
+            this.Close();
+        }
     }
 }

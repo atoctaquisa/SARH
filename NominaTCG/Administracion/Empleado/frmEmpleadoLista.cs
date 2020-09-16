@@ -27,47 +27,9 @@ namespace NominaTCG
         }
 
         private void AssignControl(int index)
-        {
-            //IFrmResumenRol frm = frmResumenRol.Instancia as IFrmResumenRol;
-            //if (frm != null)
-            //{
-            //    string idCodigo = dgvData.Rows[index].Cells["EMP_ID"].Value.ToString();
-            //    frm.getEmpleadoID(idCodigo);
-            
-            EmpleadoBO.Empleado.empId = Convert.ToInt64(dgvData.Rows[index].Cells["EMP_ID"].Value.ToString());
-            //EmpleadoBO.Empleado.empCi = dgvData.Rows[index].Cells["EMP_CI"].Value.ToString();
-            EmpleadoBO.Empleado.empNombre = dgvData.Rows[index].Cells["NOMBRE"].Value.ToString();
-            //EmpleadoBO.Empleado.empApellido = dgvData.Rows[index].Cells["EMP_APELLIDO"].Value.ToString();
-            //EmpleadoBO.Empleado.empNumIess = dgvData.Rows[index].Cells["EMP_NUM_IESS"].Value.ToString();
-            //EmpleadoBO.Empleado.empCuenta = dgvData.Rows[index].Cells["EMP_CUENTA"].Value.ToString();
-            //EmpleadoBO.Empleado.empPasaporte = dgvData.Rows[index].Cells["EMP_PASAPORTE"].Value.ToString();
-            //EmpleadoBO.Empleado.empPagFonRes = Convert.ToInt32(dgvData.Rows[index].Cells["EMP_PAG_FON_RES"].Value.ToString());
-            //EmpleadoBO.Empleado.empTipoCnta = Convert.ToInt32(dgvData.Rows[index].Cells["EMP_TIPO_CNTA"].Value.ToString());
-            //EmpleadoBO.Empleado.empNumConadis = dgvData.Rows[index].Cells["EMP_NUM_CONADIS"].Value.ToString();
-            //EmpleadoBO.Empleado.empPagDecTer = Convert.ToInt32(dgvData.Rows[index].Cells["EMP_PAG_DEC_TER"].Value.ToString());
-            //EmpleadoBO.Empleado.empPagDecCua = Convert.ToInt32(dgvData.Rows[index].Cells["EMP_PAG_DEC_CUA"].Value.ToString());
-            //EmpleadoBO.Empleado.empBarrio = dgvData.Rows[index].Cells["EMP_BARRIO"].Value.ToString();
-            //EmpleadoBO.Empleado.empDirec = dgvData.Rows[index].Cells["EMP_DIREC"].Value.ToString();
-            //EmpleadoBO.Empleado.empTelefono = dgvData.Rows[index].Cells["EMP_TELEFONO"].Value.ToString();
-            //EmpleadoBO.Empleado.empSecId = Convert.ToInt32(dgvData.Rows[index].Cells["EMP_SEC_ID"].Value.ToString());
-            //EmpleadoBO.Empleado.empDireNumero = dgvData.Rows[index].Cells["EMP_DIRE_NUMERO"].Value.ToString();
-            //EmpleadoBO.Empleado.empTelefono2 = dgvData.Rows[index].Cells["EMP_TELEFONO2"].Value.ToString();
-            //EmpleadoBO.Empleado.empLugNac = dgvData.Rows[index].Cells["EMP_LUG_NAC"].Value.ToString();
-            //EmpleadoBO.Empleado.empFecNac = Convert.ToDateTime(dgvData.Rows[index].Cells["EMP_FEC_NAC"].Value.ToString());
-            //EmpleadoBO.Empleado.empSexo = Convert.ToInt32(dgvData.Rows[index].Cells["EMP_SEXO"].Value.ToString());
-            //EmpleadoBO.Empleado.empEdu = dgvData.Rows[index].Cells["EMP_EDU"].Value.ToString();
-            //EmpleadoBO.Empleado.empFecSeg = dgvData.Rows[index].Cells["EMP_FEC_SEG"].Value.ToString();
-            //EmpleadoBO.Empleado.empEstCivil = dgvData.Rows[index].Cells["EMP_EST_CIVIL"].Value.ToString();
-            //EmpleadoBO.Empleado.empTipSangre = dgvData.Rows[index].Cells["EMP_TIP_SANGRE"].Value.ToString();
-            //DateTime dateResult;
-            //EmpleadoBO.Empleado.empFecSalidareal = DateTime.TryParse(dgvData.Rows[index].Cells["EMP_FEC_SALIDAREAL"].Value.ToString(), out dateResult) ? dateResult : Convert.ToDateTime("01/01/9999");
-            //EmpleadoBO.Empleado.labFecIngreso = DateTime.TryParse(dgvData.Rows[index].Cells["LAB_FEC_INGRESO"].Value.ToString(), out dateResult) ? dateResult : Convert.ToDateTime("01/01/9999");
-            //EmpleadoBO.Empleado.empFecSalida = DateTime.TryParse(dgvData.Rows[index].Cells["EMP_FEC_SALIDA"].Value.ToString(), out dateResult) ? dateResult : Convert.ToDateTime("01/01/9999");
-            //EmpleadoBO.Empleado.empFecReg = DateTime.TryParse(dgvData.Rows[index].Cells["EMP_FEC_REG"].Value.ToString(), out dateResult) ? dateResult : Convert.ToDateTime("01/01/9999");
-            //EmpleadoBO.Empleado.empFecMod = DateTime.TryParse(dgvData.Rows[index].Cells["EMP_FEC_MOD"].Value.ToString(), out dateResult) ? dateResult : Convert.ToDateTime("01/01/9999");
-            //EmpleadoBO.Empleado.empDiscapacidad = Convert.ToInt32(dgvData.Rows[index].Cells["EMP_DISCAPACIDAD"].Value.ToString());
-            //EmpleadoBO.Empleado.empMail = dgvData.Rows[index].Cells["EMP_MAIL"].Value.ToString();
-            //}
+        {           
+            EmpleadoBO.Empleado.empId = Convert.ToInt64(dgvData.Rows[index].Cells["EMP_ID"].Value.ToString());            
+            EmpleadoBO.Empleado.empNombre = dgvData.Rows[index].Cells["NOMBRE"].Value.ToString();           
         }
         private void LoadData()
         {            

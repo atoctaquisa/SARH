@@ -102,10 +102,6 @@
             // 
             this.ErrProv.ContainerControl = this;
             // 
-            // ttMessage
-            // 
-            this.ttMessage.Popup += new System.Windows.Forms.PopupEventHandler(this.ttMessage_Popup);
-            // 
             // txtRol
             // 
             this.txtRol.Location = new System.Drawing.Point(106, 63);
@@ -113,8 +109,7 @@
             this.txtRol.Name = "txtRol";
             this.txtRol.ReadOnly = true;
             this.txtRol.Size = new System.Drawing.Size(121, 20);
-            this.txtRol.TabIndex = 0;
-            this.txtRol.TextChanged += new System.EventHandler(this.txtRol_TextChanged);
+            this.txtRol.TabIndex = 0;            
             // 
             // Label1
             // 
@@ -123,8 +118,7 @@
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(23, 13);
             this.Label1.TabIndex = 11;
-            this.Label1.Text = "Rol";
-            this.Label1.Click += new System.EventHandler(this.Label1_Click);
+            this.Label1.Text = "Rol";            
             // 
             // Label2
             // 
@@ -133,8 +127,7 @@
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(59, 13);
             this.Label2.TabIndex = 6;
-            this.Label2.Text = "Reproceso";
-            this.Label2.Click += new System.EventHandler(this.Label2_Click);
+            this.Label2.Text = "Reproceso";            
             // 
             // Label3
             // 
@@ -143,8 +136,7 @@
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(65, 13);
             this.Label3.TabIndex = 7;
-            this.Label3.Text = "Fecha Inicio";
-            this.Label3.Click += new System.EventHandler(this.Label3_Click);
+            this.Label3.Text = "Fecha Inicio";            
             // 
             // tabAdmin
             // 
@@ -154,8 +146,7 @@
             this.tabAdmin.Name = "tabAdmin";
             this.tabAdmin.SelectedIndex = 0;
             this.tabAdmin.Size = new System.Drawing.Size(462, 371);
-            this.tabAdmin.TabIndex = 2;
-            this.tabAdmin.SelectedIndexChanged += new System.EventHandler(this.tabAdmin_SelectedIndexChanged);
+            this.tabAdmin.TabIndex = 2;            
             // 
             // tabPage2
             // 
@@ -167,8 +158,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(454, 345);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Administración";
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            this.tabPage2.Text = "Administración";            
             // 
             // groupBox3
             // 
@@ -193,8 +183,7 @@
             this.groupBox3.Size = new System.Drawing.Size(399, 180);
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Parámetros";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            this.groupBox3.Text = "Parámetros";            
             // 
             // txtEmpleado
             // 
@@ -203,8 +192,7 @@
             this.txtEmpleado.Name = "txtEmpleado";
             this.txtEmpleado.ReadOnly = true;
             this.txtEmpleado.Size = new System.Drawing.Size(239, 20);
-            this.txtEmpleado.TabIndex = 4;
-            this.txtEmpleado.TextChanged += new System.EventHandler(this.txtEmpleado_TextChanged);
+            this.txtEmpleado.TabIndex = 4;            
             // 
             // btnSearchPeriodo
             // 
@@ -247,8 +235,7 @@
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(54, 13);
             this.Label5.TabIndex = 9;
-            this.Label5.Text = "Empleado";
-            this.Label5.Click += new System.EventHandler(this.Label5_Click);
+            this.Label5.Text = "Empleado";            
             // 
             // Label10
             // 
@@ -257,8 +244,7 @@
             this.Label10.Name = "Label10";
             this.Label10.Size = new System.Drawing.Size(202, 13);
             this.Label10.TabIndex = 24;
-            this.Label10.Text = "-----------------------------------------------------------------";
-            this.Label10.Click += new System.EventHandler(this.Label10_Click);
+            this.Label10.Text = "-----------------------------------------------------------------";            
             // 
             // btnSearchEmpleado
             // 
@@ -278,8 +264,7 @@
             this.txtPeriodo.Name = "txtPeriodo";
             this.txtPeriodo.ReadOnly = true;
             this.txtPeriodo.Size = new System.Drawing.Size(121, 20);
-            this.txtPeriodo.TabIndex = 5;
-            this.txtPeriodo.TextChanged += new System.EventHandler(this.txtPeriodo_TextChanged);
+            this.txtPeriodo.TabIndex = 5;            
             // 
             // txtFechaFin
             // 
@@ -288,8 +273,7 @@
             this.txtFechaFin.Name = "txtFechaFin";
             this.txtFechaFin.ReadOnly = true;
             this.txtFechaFin.Size = new System.Drawing.Size(121, 20);
-            this.txtFechaFin.TabIndex = 3;
-            this.txtFechaFin.TextChanged += new System.EventHandler(this.txtFechaFin_TextChanged);
+            this.txtFechaFin.TabIndex = 3;            
             // 
             // Label6
             // 
@@ -298,8 +282,7 @@
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(45, 13);
             this.Label6.TabIndex = 5;
-            this.Label6.Text = "Período";
-            this.Label6.Click += new System.EventHandler(this.Label6_Click);
+            this.Label6.Text = "Período";            
             // 
             // btnSearchRol
             // 
@@ -319,8 +302,7 @@
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(54, 13);
             this.Label4.TabIndex = 8;
-            this.Label4.Text = "Fecha Fin";
-            this.Label4.Click += new System.EventHandler(this.Label4_Click);
+            this.Label4.Text = "Fecha Fin";            
             // 
             // txtFechaIni
             // 
@@ -329,8 +311,7 @@
             this.txtFechaIni.Name = "txtFechaIni";
             this.txtFechaIni.ReadOnly = true;
             this.txtFechaIni.Size = new System.Drawing.Size(121, 20);
-            this.txtFechaIni.TabIndex = 2;
-            this.txtFechaIni.TextChanged += new System.EventHandler(this.txtFechaIni_TextChanged);
+            this.txtFechaIni.TabIndex = 2;            
             // 
             // txtReproceso
             // 
@@ -339,8 +320,7 @@
             this.txtReproceso.Name = "txtReproceso";
             this.txtReproceso.ReadOnly = true;
             this.txtReproceso.Size = new System.Drawing.Size(121, 20);
-            this.txtReproceso.TabIndex = 1;
-            this.txtReproceso.TextChanged += new System.EventHandler(this.txtReproceso_TextChanged);
+            this.txtReproceso.TabIndex = 1;            
             // 
             // groupBox2
             // 
@@ -353,8 +333,7 @@
             this.groupBox2.Size = new System.Drawing.Size(399, 63);
             this.groupBox2.TabIndex = 38;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Documento";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            this.groupBox2.Text = "Documento";            
             // 
             // cboBanco
             // 
@@ -365,8 +344,7 @@
             this.cboBanco.Location = new System.Drawing.Point(72, 23);
             this.cboBanco.Name = "cboBanco";
             this.cboBanco.Size = new System.Drawing.Size(121, 21);
-            this.cboBanco.TabIndex = 8;
-            this.cboBanco.SelectedIndexChanged += new System.EventHandler(this.cboBanco_SelectedIndexChanged);
+            this.cboBanco.TabIndex = 8;            
             // 
             // Label9
             // 
@@ -375,8 +353,7 @@
             this.Label9.Name = "Label9";
             this.Label9.Size = new System.Drawing.Size(38, 13);
             this.Label9.TabIndex = 13;
-            this.Label9.Text = "Banco";
-            this.Label9.Click += new System.EventHandler(this.Label9_Click);
+            this.Label9.Text = "Banco";            
             // 
             // label7
             // 
@@ -385,8 +362,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(28, 13);
             this.label7.TabIndex = 13;
-            this.label7.Text = "Tipo";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            this.label7.Text = "Tipo";            
             // 
             // cboTipo
             // 
@@ -413,8 +389,7 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(448, 57);
             this.groupBox1.TabIndex = 33;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.groupBox1.TabStop = false;            
             // 
             // btnDelete
             // 
@@ -467,12 +442,8 @@
             this.btnBack.TabIndex = 31;
             this.btnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            this.btnBack.UseVisualStyleBackColor = true;            
+            
             // 
             // lblTitulo
             // 
@@ -485,8 +456,7 @@
             this.lblTitulo.Size = new System.Drawing.Size(462, 28);
             this.lblTitulo.TabIndex = 3;
             this.lblTitulo.Text = "Transferencias Bancarias";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;            
             // 
             // errorProvider1
             // 

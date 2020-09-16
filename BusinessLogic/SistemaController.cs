@@ -24,6 +24,10 @@ namespace BusinessLogic
         #endregion
 
         #region Methods
+        public string Path(string paramID)
+        {
+            return SistemaAD.Path(paramID);
+        }
         public Boolean stateMenu(string codeSystem, string mnuCode, string userRole)
         {
             return SistemaAD.stateMenu(codeSystem,mnuCode,userRole);
@@ -200,6 +204,14 @@ namespace BusinessLogic
                         argu.Handled = false;
                 }
             }
+        }
+        public static void OnlyTextDigitDash(KeyPressEventArgs argu)
+        {
+
+            if (!char.IsLetter(argu.KeyChar) && !char.IsControl(argu.KeyChar) && 
+                !char.IsWhiteSpace(argu.KeyChar) && !(Char.IsNumber(argu.KeyChar)) &&
+                (argu.KeyChar != '-'))
+                argu.Handled = true;
         }
     }
 }
