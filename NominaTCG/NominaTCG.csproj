@@ -262,6 +262,12 @@
     <Compile Include="Administracion\Reporte\frmPagoQuincena.Designer.cs">
       <DependentUpon>frmPagoQuincena.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHuella.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHuella.Designer.cs">
+      <DependentUpon>frmHuella.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLiquidacionRep.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -592,6 +598,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administracion\Reporte\frmPagoQuincena.resx">
       <DependentUpon>frmPagoQuincena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHuella.resx">
+      <DependentUpon>frmHuella.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLiquidacionRep.resx">
       <DependentUpon>frmLiquidacionRep.cs</DependentUpon>

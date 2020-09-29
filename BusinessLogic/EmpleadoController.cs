@@ -153,7 +153,14 @@ namespace BusinessLogic
         {
             return EmpleadoAD.ListaEmpleadoDetalle();
         }
-
+        public DataTable ListaEmpleadoDetalle(string prm)
+        {
+            return EmpleadoAD.ListaEmpleadoDetalle(prm);
+        }
+        public DataSet PaginaEmpleadoDetalle(int recordIni, int recordMax)
+        {
+            return EmpleadoAD.PaginaEmpleadoDetalle(recordIni,recordMax);
+        }
         public DataTable ListaEmpleado()
         {
             return EmpleadoAD.ListaEmpleado();

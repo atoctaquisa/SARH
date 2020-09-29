@@ -94,7 +94,7 @@ namespace NominaTCG
             EscalafonBO.Escalafon.CategoriaIESS = txtCargoIESS.Text;
             EscalafonBO.Escalafon.CodIESS = txtCodIESSS.Text;
             EscalafonBO.Escalafon.SalarioUnifi = Convert.ToDouble(txtRUB.Text);
-            EscalafonBO.Escalafon.AdiBono = Convert.ToDouble(txtSobreTiempo.Text);
+            EscalafonBO.Escalafon.AdiBono = txtSobreTiempo.Text==""?0: Convert.ToDouble(txtSobreTiempo.Text);
             EscalafonBO.Escalafon.CodActSec = txtActividad.Text;
             EscalafonBO.Escalafon.Estado = Convert.ToInt16(chkEstado.Checked);
             EscalafonBO.Escalafon.Abrev = txtAbrev.Text;

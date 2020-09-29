@@ -47,6 +47,7 @@ namespace Entity
         public string empPasaporte { get; set; }
         public decimal empSujCrdt { get; set; }
         public string empMail { get; set; }
+        public string empMailPer { get; set; }
         public decimal empClaveAsist { get; set; }
         public decimal empPorcDisc { get; set; }
         public string dscId { get; set; }

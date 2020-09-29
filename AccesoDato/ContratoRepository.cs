@@ -791,6 +791,7 @@ AND (R.ROL_ID IN (SELECT rol_id
                                                                (SELECT CON_CAU_CAUSA
                                                                   FROM DESARROLLO.DAT_CON_CAUSA
                                                                  WHERE CON_CAU_ID = E.CON_CAU_ID) CAUSA,
+                                                               DECODE(EMP_CON_FIRM_RENU,1,'SI',0,'NO') FIRMA,
                                                                DECODE (EMP_CON_RAZON_SALE,  'P', 'Positiva',  'N', 'Negativa') RAZON,
                                                                EMP_CON_OBS, EMP_CON_ID
                                                           FROM DESARROLLO.DAT_EMP_CON E
@@ -802,10 +803,24 @@ AND (R.ROL_ID IN (SELECT rol_id
         private static string sqlLiquidacionEmpleado = @"
                                                         SELECT ROWNUM ID,
                                                            EMP_ID, LIQ_ID, ESC_ID,(SELECT ESC_CARGOIESS  FROM DESARROLLO.DAT_ESC
- WHERE ESC_ID = L.ESC_ID)CARGO_IESS, 
+                                                                                    WHERE ESC_ID = L.ESC_ID)CARGO_IESS, 
                                                            LIQ_FEC_ING, LIQ_FEC_SAL, LIQ_REM_ACT, 
                                                            LIQ_FEC_REG, LIQ_RESP, DIA_ID, 
-                                                           PERC_ID, CLI_ID
+                                                           PERC_ID, CLI_ID,
+                                                            (SELECT MAX (SEG_ROL_ID)
+                                                                      FROM DESARROLLO.DAT_ROL_SEG
+                                                                     WHERE     SEG_ROL_ESTADO = 1
+                                                                           AND TO_DATE (TO_CHAR (ROL_FECHA_INI, 'DD/MON/RRRR')) <=
+                                                                               LIQ_FEC_SAL)                 PER_ID,
+                                                                   (SELECT SEG_ROL_REPRO
+                                                                      FROM DESARROLLO.DAT_ROL_SEG
+                                                                     WHERE     SEG_ROL_ESTADO = 1
+                                                                           AND SEG_ROL_ID =
+                                                                               (SELECT MAX (SEG_ROL_ID)
+                                                                                  FROM DESARROLLO.DAT_ROL_SEG
+                                                                                 WHERE     SEG_ROL_ESTADO = 1
+                                                                                       AND TO_DATE (TO_CHAR (ROL_FECHA_INI, 'DD/MON/RRRR')) <=
+                                                                                           LIQ_FEC_SAL))    REPRO_ID
                                                         FROM DESARROLLO.DAT_LIQ L WHERE EMP_ID=:EMP_ID";
         private static string sqlLiquidacionEmpleadoDT = @"
                                                            SELECT ROWNUM ID_DT, EMP_ID,
@@ -1980,24 +1995,40 @@ AND (R.ROL_ID IN (SELECT rol_id
                     new OracleParameter(":PROV_ID", provID)
                };
 
-            if (esEmpleado > 0 || esMotorista < 1)
+            if (esEmpleado > 0)
             {
                 db.ExecProcedure(sqlCalculaLiquidacionEmp, prm);
             }
             else
             {
-                db.ExecProcedure(sqlCalculaLiquidacionMot, prm);
-                //if (resp1 > 0)
-                //{
-                //    db.GetEntero(sqlCalculaLiquidacion1, prm);
-                //}
-                //else
-                //{
-                //    db.GetEntero(sqlCalculaLiquidacion, prm);
-
-                //}
-
+                if (esMotorista > 0)
+                {
+                    db.ExecProcedure(sqlCalculaLiquidacionMot, prm);
+                }
+                else
+                {
+                    db.ExecProcedure(sqlCalculaLiquidacionEmp, prm);
+                }
             }
+
+            //if (esEmpleado > 0 || esMotorista < 1)
+            //{
+            //    db.ExecProcedure(sqlCalculaLiquidacionEmp, prm);
+            //}
+            //else
+            //{
+            //    db.ExecProcedure(sqlCalculaLiquidacionMot, prm);
+            //    //if (resp1 > 0)
+            //    //{
+            //    //    db.GetEntero(sqlCalculaLiquidacion1, prm);
+            //    //}
+            //    //else
+            //    //{
+            //    //    db.GetEntero(sqlCalculaLiquidacion, prm);
+
+            //    //}
+
+            //}
 
 
             return 0;

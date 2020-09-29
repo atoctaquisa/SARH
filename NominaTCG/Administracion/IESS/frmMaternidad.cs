@@ -476,5 +476,10 @@ namespace NominaTCG
             }
         }
 
+        private void frmMaternidad_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == Convert.ToChar(Keys.F5))
+                AssignData(txtCodigo.Text);
+        }
     }
 }

@@ -141,6 +141,7 @@ namespace NominaTCG
             txtPerCuentaBanco.Text = EmpleadoBO.Empleado.empCuenta;
             cboPerDiscapacidad.SelectedValue = EmpleadoBO.Empleado.empDiscapacidad;
             txtPerCorreo.Text = EmpleadoBO.Empleado.empMail;
+            txtPerCorreoPer.Text = EmpleadoBO.Empleado.empMailPer;
             txtPerPasaporte.Text = EmpleadoBO.Empleado.empPasaporte;
             cboPerFondoReserva.SelectedValue = EmpleadoBO.Empleado.empPagFonRes;
             cboPerTipoCuenta.SelectedValue = EmpleadoBO.Empleado.empTipoCnta;
@@ -230,6 +231,7 @@ namespace NominaTCG
             cboPerDiscapacidad.Enabled = stateControl;
             txtPerNumIdentificacion.Enabled = stateControl;
             txtPerCorreo.Enabled = stateControl;
+            txtPerCorreoPer.Enabled = stateControl;
             //cboPerAfiliacion.Enabled = estadoControl;
             //txtPerAfiliacionDesde.Enabled = estadoControl;
             cboPerDecimoTercero.Enabled = stateControl;
@@ -290,6 +292,7 @@ namespace NominaTCG
             txtPerCuentaBanco.Text = string.Empty;
             cboPerDiscapacidad.SelectedValue = -1;
             txtPerCorreo.Text = string.Empty;
+            txtPerCorreoPer.Text = string.Empty;
             txtPerPasaporte.Text = string.Empty;
             cboPerFondoReserva.SelectedValue = -1;
             cboPerTipoCuenta.SelectedValue = -1;
@@ -407,9 +410,9 @@ namespace NominaTCG
             else
                 txtPerNumIdentificacion.Text = string.Empty;
 
-            if (txtPerCorreo.Text == string.Empty)
+            if (txtPerCorreoPer.Text == string.Empty)
             {
-                ErrProv.SetError(txtPerCorreo, sms);
+                ErrProv.SetError(txtPerCorreoPer, sms);
                 cnt++;
             }
             if (cboPerFondoReserva.Text == string.Empty)
@@ -666,7 +669,7 @@ namespace NominaTCG
             EmpleadoBO.Empleado.labFecIngreso = DateTime.Now;
             EmpleadoBO.Empleado.empFecNac = pPerFechaNac.Value;
             EmpleadoBO.Empleado.empCi = txtPerCedula.Text;
-            EmpleadoBO.Empleado.empNumIess = txtPerNumIESS.Text;
+            EmpleadoBO.Empleado.empNumIess = txtPerNumIESS.Text == "" ? "0" : txtPerNumIESS.Text;
             EmpleadoBO.Empleado.empEstCivil = cboPerEstadoCivil.SelectedValue.ToString();
             EmpleadoBO.Empleado.empNumHijos = 0;
             EmpleadoBO.Empleado.empCuenta = txtPerCuentaBanco.Text;
@@ -687,6 +690,7 @@ namespace NominaTCG
             EmpleadoBO.Empleado.empPagFonRes = Convert.ToInt32(cboPerFondoReserva.SelectedValue);
             EmpleadoBO.Empleado.empPasaporte = txtPerPasaporte.Text;
             EmpleadoBO.Empleado.empMail = txtPerCorreo.Text;
+            EmpleadoBO.Empleado.empMailPer = txtPerCorreoPer.Text;
             EmpleadoBO.Empleado.empPagDecTer = Convert.ToInt32(cboPerDecimoTercero.SelectedValue);
             EmpleadoBO.Empleado.empPagDecCua = Convert.ToInt32(cboPerDecimoCuarto.SelectedValue);
             EmpleadoBO.Empleado.empDependientes = 0;
@@ -720,7 +724,7 @@ namespace NominaTCG
             ContratoBO.Laboral.labRbu = Convert.ToInt32(txtLabRBU.Text);
             ContratoBO.Laboral.labVest = 0;
             ContratoBO.Laboral.labBono = 0;
-            ContratoBO.Laboral.labQuincena = Convert.ToInt32(txtLabQuincena.Text);
+            ContratoBO.Laboral.labQuincena = txtLabQuincena.Text == "" ? 0 : Convert.ToInt32(txtLabQuincena.Text);
             ContratoBO.RegistrarInfoLaboral(ContratoBO.Laboral);
             //Datos Familiares           
             resp = InfoAdditional(resp);
@@ -758,7 +762,7 @@ namespace NominaTCG
             ContratoBO.Laboral.labRbu = Convert.ToInt32(txtLabRBU.Text);
             ContratoBO.Laboral.labVest = 0;
             ContratoBO.Laboral.labBono = 0;
-            ContratoBO.Laboral.labQuincena = Convert.ToInt32(txtLabQuincena.Text);
+            ContratoBO.Laboral.labQuincena = txtLabQuincena.Text == "" ? 0 : Convert.ToInt32(txtLabQuincena.Text);
             resp = ContratoBO.RegistrarInfoLaboral(ContratoBO.Laboral);
             //Datos Familiares
             resp = InfoAdditional(resp);
@@ -888,7 +892,7 @@ namespace NominaTCG
                     EmpleadoBO.Empleado.labFecIngreso = pPerFechaIngreso.Value;
                     EmpleadoBO.Empleado.empFecNac = pPerFechaNac.Value;
                     EmpleadoBO.Empleado.empCi = txtPerCedula.Text;
-                    EmpleadoBO.Empleado.empNumIess = txtPerNumIESS.Text;
+                    EmpleadoBO.Empleado.empNumIess = txtPerNumIESS.Text==""?"0": txtPerNumIESS.Text;
                     EmpleadoBO.Empleado.empEstCivil = cboPerEstadoCivil.SelectedValue.ToString();
                     EmpleadoBO.Empleado.empNumHijos = 0;
                     EmpleadoBO.Empleado.empCuenta = txtPerCuentaBanco.Text;
@@ -909,6 +913,7 @@ namespace NominaTCG
                     EmpleadoBO.Empleado.empPagFonRes = Convert.ToInt32(cboPerFondoReserva.SelectedValue);
                     EmpleadoBO.Empleado.empPasaporte = txtPerPasaporte.Text;
                     EmpleadoBO.Empleado.empMail = txtPerCorreo.Text;
+                    EmpleadoBO.Empleado.empMailPer = txtPerCorreoPer.Text;
                     EmpleadoBO.Empleado.empPagDecTer = Convert.ToInt32(cboPerDecimoTercero.SelectedValue);
                     EmpleadoBO.Empleado.empPagDecCua = Convert.ToInt32(cboPerDecimoCuarto.SelectedValue);
                     EmpleadoBO.Empleado.empDependientes = 0;
@@ -944,7 +949,7 @@ namespace NominaTCG
                     ContratoBO.Laboral.labRbu = Convert.ToDecimal(txtLabRBU.Text);
                     ContratoBO.Laboral.labVest = 0;
                     ContratoBO.Laboral.labBono = 0;
-                    ContratoBO.Laboral.labQuincena = Convert.ToInt32(txtLabQuincena.Text);
+                    ContratoBO.Laboral.labQuincena = txtLabQuincena.Text==""? 0 : Convert.ToInt32(txtLabQuincena.Text);
                     resp = ContratoBO.RegistrarInfoLaboral(ContratoBO.Laboral);
                     break;
                 case 3://Datos Familiares
@@ -1094,6 +1099,7 @@ namespace NominaTCG
                 EmpleadoBO.Empleado.empFecMod = DateTime.TryParse(data.Rows[0]["EMP_FEC_MOD"].ToString(), out dateResult) ? dateResult : Convert.ToDateTime("01/01/9999");
                 EmpleadoBO.Empleado.empDiscapacidad = Convert.ToInt32(data.Rows[0]["EMP_DISCAPACIDAD"].ToString());
                 EmpleadoBO.Empleado.empMail = data.Rows[0]["EMP_MAIL"].ToString();
+                EmpleadoBO.Empleado.empMailPer = data.Rows[0]["EMP_MAIL_PER"].ToString();
             }
             //Datos Contrato
             DataTable Contrato = new DataTable();
@@ -1350,7 +1356,7 @@ namespace NominaTCG
                 data = EmpleadoBO.ListaEmpleado(txtCodigo.Text);
                 if (Utility.isDate(data.Rows[0]["EMP_FEC_SALIDAREAL"].ToString()) & Utility.isDate(data.Rows[0]["EMP_FEC_SALIDA"].ToString()))
                 {
-                    if (txtPerCorreo.Text != string.Empty)
+                    if (txtPerCorreoPer.Text != string.Empty)
                     {
                         if (DialogResult.Yes == Utility.MensajeQuestion("¿Desea enviar notificación de Liquidación?"))
                         {
@@ -1360,14 +1366,14 @@ namespace NominaTCG
                                                               { "[@nombre]" , txtNombre.Text.ToUpper() }                                                };
                             string message = SistemaBO.emailMessage("LIQUIDACION", emailVars);
 
-                            if (SistemaBO.sendEmail("atoctaquisa@grupotcg.com", "Notificación de proceso de Liquidación", message))
+                            if (SistemaBO.sendEmail(txtPerCorreoPer.Text, "Notificación de proceso de Liquidación", message))
                                 Utility.MensajeOK("Notificación Enviada..!!");
                             else
                                 Utility.MensajeError("Notificación Fallida..!!");
                         }
                     }
                     else
-                        Utility.MensajeInfo("Verifique el correo electrónico del empleado.");
+                        Utility.MensajeInfo("Verifique el correo electrónico del Empleado.");
                 }
                 else
                     Utility.MensajeInfo("El empleado no tiene registrada una fecha de salida.");
@@ -1522,13 +1528,13 @@ namespace NominaTCG
 
         private void txtPerCorreo_Validating(object sender, CancelEventArgs e)
         {
-            if (!Utility.IsValidEmail(txtPerCorreo.Text))
-            {
-                ErrProv.SetError(txtPerCorreo, "Correo Inválido");
-                e.Cancel = true;
-            }
-            else
-                ErrProv.Clear();
+            //if (!Utility.IsValidEmail(txtPerCorreo.Text))
+            //{
+            //    ErrProv.SetError(txtPerCorreo, "Correo Inválido");
+            //    e.Cancel = true;
+            //}
+            //else
+            //    ErrProv.Clear();
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -1578,7 +1584,7 @@ namespace NominaTCG
 
         private void txtPerNumero_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Utility.OnlyDigit(e);
+            Utility.OnlyTextDigitDash(e);
         }
 
         private void txtLabRBU_KeyPress(object sender, KeyPressEventArgs e)
@@ -1643,6 +1649,17 @@ namespace NominaTCG
                 TextBox txt = (TextBox)sender;
                 Utility.OnlyQuantity(txt, e);
             }
-        }        
+        }
+
+        private void txtPerCorreoPer_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Utility.IsValidEmail(txtPerCorreoPer.Text))
+            {
+                ErrProv.SetError(txtPerCorreoPer, "Correo Inválido");
+                e.Cancel = true;
+            }
+            else
+                ErrProv.Clear();
+        }
     }
 }

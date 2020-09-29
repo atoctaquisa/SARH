@@ -86,8 +86,26 @@ namespace DataAccess
             //}
 
         }
+        public DataSet paginacionData(string query,int recordIni, int recordMax )
+        {
+            DataTable data = new DataTable();
+            OracleCommand cmd = new OracleCommand();
+            DataSet ds = new DataSet();
+            data = null;
 
-        public DataTable GetData(string query)
+            cmd.Connection = OpenConnection();
+            cmd.CommandText = query;
+            cmd.CommandType = CommandType.Text;
+            OracleDataAdapter apt = new OracleDataAdapter();
+            apt.SelectCommand = cmd;
+            apt.Fill(ds,recordIni,recordMax,"Empleado");
+            data = ds.Tables[0];
+            cmd.Dispose();
+            CloseConnection();
+            return ds;
+        }
+
+            public DataTable GetData(string query)
         {
             DataTable data = new DataTable();
             OracleCommand cmd = new OracleCommand();
@@ -150,8 +168,7 @@ namespace DataAccess
             data = ds.Tables[0];
             cmd.Dispose();
             CloseConnection();
-            return data;           
-            
+            return data;
 
             //DataTable data = new DataTable();
             //OracleCommand cmd = new OracleCommand();

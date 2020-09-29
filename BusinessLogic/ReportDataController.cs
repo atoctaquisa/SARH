@@ -51,6 +51,10 @@ namespace BusinessLogic
         {
             return ReportDataDA.Liquidacion(empID);
         }
+        public DataSet LiquidacionParamReport(string empID, string perID, string reproID)
+        {
+            return ReportDataDA.LiquidacionParamReport(empID,perID,reproID);
+        }
 
         public DataTable LiquidacionDT(string empID, string vacID)
         {
@@ -58,11 +62,11 @@ namespace BusinessLogic
         }
         public DataTable RolIndividual(string rolID, string reproID, string empID, string localID, string cadenaID)
         {
-            return ReportDataDA.RolIndividual(rolID,reproID,empID,localID,cadenaID);           
+            return ReportDataDA.RolIndividual(rolID, reproID, empID, localID, cadenaID);
         }
-        public DataTable PagoQuincena(string rolID,string reproID, string patrono, string local, string empID)
+        public DataTable PagoQuincena(string rolID, string reproID, string patrono, string local, string empID)
         {
-            return ReportDataDA.PagoQuincena(rolID, reproID, patrono , local , empID );
+            return ReportDataDA.PagoQuincena(rolID, reproID, patrono, local, empID);
         }
         public DataTable DetalleContabilidad(string rolID, string reproID)
         {

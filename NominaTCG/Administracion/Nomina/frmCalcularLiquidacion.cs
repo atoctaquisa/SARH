@@ -15,6 +15,8 @@ namespace NominaTCG
 {
     public partial class frmCalcularLiquidacion : Form
     {
+        string _reproID;
+        string _perID;
 
         private EmpleadoController EmpleadoBO { get; set; }
         private ContratoController ContratoBO { get; set; }
@@ -69,14 +71,27 @@ namespace NominaTCG
                 txtPatrono.Text = info.Rows[0]["PATRONO"].ToString();
                 txtEstado.Text = info.Rows[0]["ESTADO"].ToString();
                 txtFechaSalida.Text = info.Rows[0]["EMP_FEC_SALIDA"].ToString().Equals("") ? "No Asignada" : Convert.ToDateTime(info.Rows[0]["EMP_FEC_SALIDA"].ToString()).ToShortDateString();
-                txtFechaContrato.Text = Convert.ToDateTime(info.Rows[0]["EMP_CON_FEC_CONTRATO"].ToString()).ToShortDateString();
+                txtFechaContrato.Text = info.Rows[0]["EMP_CON_FEC_CONTRATO"].ToString().Equals("") ? "No Asignada" : Convert.ToDateTime(info.Rows[0]["EMP_CON_FEC_CONTRATO"].ToString()).ToShortDateString();
                 txtTipo.Text = info.Rows[0]["LAB_TIPO_EMP"].ToString() == "0" ? "Nomina" : info.Rows[0]["LAB_TIPO_EMP"].ToString() == "1" ? "Serv. Prof" : "Desconocido";
                 DataTable infLQ = ContratoBO.FinContratoEmpleado(txtCodigo.Text);
-                txtRazon.Text = infLQ.Rows[0]["RAZON"].ToString();
-                txtCausa.Text = infLQ.Rows[0]["CAUSA"].ToString();
-                txtContrato.Text = info.Rows[0]["TIPO_CONTRATO"].ToString();
-                txtObservacion.Text = infLQ.Rows[0]["EMP_CON_OBS"].ToString();
-                lblEstadoRol.Text = infLQ.Rows[0]["EMP_CON_ID"].ToString();
+                if (infLQ.Rows.Count > 0)
+                {
+                    txtRazon.Text = infLQ.Rows[0]["RAZON"].ToString();
+                    txtCausa.Text = infLQ.Rows[0]["CAUSA"].ToString();
+                    txtContrato.Text = info.Rows[0]["TIPO_CONTRATO"].ToString();
+                    txtObservacion.Text = infLQ.Rows[0]["EMP_CON_OBS"].ToString();
+                    lblEstadoRol.Text = infLQ.Rows[0]["EMP_CON_ID"].ToString();
+                }
+                else
+                {
+                    txtRazon.Text = "No Asignada";
+                    txtCausa.Text = "No Asignada";
+                    txtContrato.Text = "No Asignada";
+                    txtObservacion.Text = "No Asignada";
+                    lblEstadoRol.Text = "No Asignada";
+
+
+                }
                 AssignDataDT();
 
                 //ClearControls("S");
@@ -85,10 +100,16 @@ namespace NominaTCG
 
         private void AssignDataDT()
         {
-            dgvData.DataSource = ContratoBO.LiquidacionEmpleado(txtCodigo.Text);
-            if (((DataTable)dgvData.DataSource).Rows.Count > 0)
+            _perID = string.Empty;
+            _reproID = string.Empty;
+            DataTable datos = ContratoBO.LiquidacionEmpleado(txtCodigo.Text);
+            dgvData.DataSource = datos;
+            if (datos.Rows.Count > 0)
             {
                 txtAsiento.Text = dgvData.Rows[0].Cells["DIA_ID"].Value.ToString();
+                _perID = datos.Rows[0]["PER_ID"].ToString();
+                _reproID = datos.Rows[0]["REPRO_ID"].ToString();
+
                 dgvDataDT.DataSource = ContratoBO.LiquidacionEmpleadoDT(txtCodigo.Text, dgvData.Rows[0].Cells["LIQ_ID"].Value.ToString());
                 TotalSalary();
             }
@@ -237,7 +258,18 @@ namespace NominaTCG
                 ErrProv.SetError(txtFechaSalida, "El empleado debe tener una fecha de salida");
             }
             else
-            {                
+            {
+                if (txtCodigo.Text == "")
+                {
+                    Utility.MensajeError("Seleccione un Empleado..!!");
+                    return;
+                }
+                if (Convert.ToDateTime(txtFechaSalida.Text) < Convert.ToDateTime(txtFechaIngreso.Text))
+                {
+                    Utility.MensajeError("La fecha de salida es menor que la fecha de contrato..!!");
+                    return;
+                }
+
                 if (ContratoBO.ValidaLiquidacion(txtCodigo.Text, txtFechaContrato.Text) == 0)
                 {
                     //int esMotorista= ContratoBO.EmpleadoEsMotorista(txtCodigo.Text);
@@ -277,53 +309,35 @@ namespace NominaTCG
                     if (item.Selected)
                     {
                         string liqID = dgvData.Rows[item.RowIndex].Cells["LIQ_ID"].Value.ToString();
-                        frmLiquidacionRep frm = new frmLiquidacionRep(txtCodigo.Text, liqID);
+                        frmLiquidacionRep frm = new frmLiquidacionRep(txtCodigo.Text, liqID, _perID, _reproID);
                         Design.frmDialog(frm, "Reporte de Liquidación");
 
-                        string[] param = { txtPatrono.Text,
-                                            dgvData.Rows[item.RowIndex].Cells["LIQ_REM_ACT"].Value.ToString(),
-                        txtObservacion.Text,};
+                        //string[] param = {
+                        //    txtPatrono.Text,
+                        //    dgvData.Rows[item.RowIndex].Cells["LIQ_REM_ACT"].Value.ToString(),
+                        //    txtObservacion.Text,
+                        //};
 
-                        //rpt.SetParameterValue("P_PATRONO", (from myRow in dataDT.AsEnumerable()
-                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Patrono"
-                        //                                    select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
-                        //rpt.SetParameterValue("P_RBU", (from myRow in dataDT.AsEnumerable()
-                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Sueldo"
-                        //                                select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
-                        //rpt.SetParameterValue("P_TOTAL", (from myRow in dataDT.AsEnumerable()
-                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Total Sueldo"
-                        //                                  select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
-                        //rpt.SetParameterValue("P_OBSERVACION", (from myRow in dataDT.AsEnumerable()
-                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Observación"
-                        //                                        select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
-                        //rpt.SetParameterValue("P_VESTIMENTA", (from myRow in dataDT.AsEnumerable()
-                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Vestimenta"
-                        //                                       select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
-                        //rpt.SetParameterValue("P_CAUSA", (from myRow in dataDT.AsEnumerable()
-                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Causa"
-                        //                                  select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
-                        //rpt.SetParameterValue("P_FIRMA", (from myRow in dataDT.AsEnumerable()
-                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Firma"
-                        //                                  select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
-                        //rpt.SetParameterValue("P_BONO", (from myRow in dataDT.AsEnumerable()
-                        //                                    where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Bono"
-                        //                                 select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
-                        //rpt.SetParameterValue("P_RAZON", (from myRow in dataDT.AsEnumerable()
-                        //                                 where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Razón"
-                        //                                  select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
-                        //rpt.SetParameterValue("P_CONTRATO", (from myRow in dataDT.AsEnumerable()
-                        //                                 where myRow.Field<string>("IMP_LIQ_GRU_NOM") == "Contrato"
-                        //                                     select myRow.Field<string>("IMP_LIQ_DES")).FirstOrDefault());
+
                     }
                 }
-            }            
+            }
+            else
+            {
+                Utility.MensajeInfo("Primero debe generar un asiento");
+            }
 
         }
-        
+
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            ContratoBO.GeneraAsientoLiquidacion(txtCodigo.Text);
+            if (Utility.MensajeQuestion("¿Está seguro de generar el asiento?'") == DialogResult.Yes)
+            {
+                ContratoBO.GeneraAsientoLiquidacion(txtCodigo.Text);
+                AssignData(txtCodigo.Text);
+                Utility.MensajeOK("Asiento generado");
+            }
         }
 
         private void txtAsiento_DoubleClick(object sender, EventArgs e)
@@ -343,6 +357,12 @@ namespace NominaTCG
                 TotalSalary();
             }
             dgvDataDT.Rows[e.RowIndex].ErrorText = String.Empty;
+        }
+
+        private void frmCalcularLiquidacion_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == Convert.ToChar(Keys.F5))
+                AssignData(EmpleadoBO.Empleado.empId.ToString());
         }        
     }
 }

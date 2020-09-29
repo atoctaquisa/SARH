@@ -15,7 +15,7 @@ namespace NominaTCG
     public partial class frmMain : Form
     {
         #region Variables
-        
+        bool _closeWindows = true;
         #endregion
 
         #region Properties
@@ -198,11 +198,19 @@ namespace NominaTCG
             var frm = frmVacaciones.Instancia;
             frm.MdiParent = this;            
             Design.frmShow(frm);
-        }
-
+        }        
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (_closeWindows)
+            {
+                if (Utility.MensajeQuestion("¿Desea salir del Aplicativo?") == DialogResult.No)
+                    e.Cancel = true;
+                else
+                {
+                    _closeWindows = false;
+                    Application.Exit();
+                }
+            }
         }
 
         private void mnuOperacionRol_Click(object sender, EventArgs e)

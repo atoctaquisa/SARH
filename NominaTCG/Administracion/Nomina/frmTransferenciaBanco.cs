@@ -208,8 +208,10 @@ namespace NominaTCG
                     string nameFile = emp["RAZON"].ToString() + cboTipo.Text.ToUpper().Replace(" ", string.Empty) + "-" + Convert.ToDateTime(txtFechaIni.Text).Month + Convert.ToDateTime(txtFechaIni.Text).Year + ".txt";
                     if (datos.Rows.Count > 0)
                     {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(ReadPath() + nameFile))
+                        string path = ReadPath() + nameFile;
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
                         {
+                            //Console.OutputEncoding = Encoding.ASCII;
                             foreach (DataRow row in datos.Rows)
                             {
                                 file.WriteLine(row["DATOS"]);
@@ -222,9 +224,11 @@ namespace NominaTCG
                     DataTable datos = EmpleadoBO.TransferenciaBancariaDecimo(procesoID, anioINI, anioFIN, emp["PAT_ID"].ToString(), tipoID.ToString());
                     string nameFile = emp["RAZON"].ToString() + cboTipo.Text.ToUpper().Replace(" ", string.Empty) + "-" +anioINI+anioFIN + ".txt";
                     if (datos.Rows.Count > 0)
-                    {                        
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(ReadPath() + nameFile))
+                    {
+                        string path = ReadPath() + nameFile;
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
                         {
+                            //Console.OutputEncoding = Encoding.ASCII;
                             foreach (DataRow row in datos.Rows)
                             {
                                 file.WriteLine(row["DATOS"]);

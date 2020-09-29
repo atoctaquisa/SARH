@@ -39,31 +39,32 @@ namespace DataAccess
         #endregion
 
         private string sqlLiquidacion = @"SELECT e.emp_id, ESC_CARGOMB,
-       NOMBRE,
-       EMP_CI,
-       LOC_NOMBRE,
-       LIQ_FEC_ING,
-       LIQ_FEC_SAL,
-          TO_CHAR (LIQ_FEC_ING, 'DD')
-       || ' de '
-       || (SELECT MES_NOMBRE
-             FROM DESARROLLO.dat_meses
-            WHERE MES_ID = TO_CHAR (LIQ_FEC_ING, 'MM'))
-       || ' del '
-       || TO_CHAR (LIQ_FEC_ING, 'rrrr')    ingreso,
-          TO_CHAR (LIQ_FEC_SAL, 'DD')
-       || ' de '
-       || (SELECT MES_NOMBRE
-             FROM DESARROLLO.dat_meses
-            WHERE MES_ID = TO_CHAR (LIQ_FEC_SAL, 'MM'))
-       || ' del '
-       || TO_CHAR (LIQ_FEC_SAL, 'rrrr')    salida
-  FROM DESARROLLO.v_detalle_emp  e
-       JOIN DESARROLLO.DAT_LIQ l ON (e.emp_id = l.emp_id)
- WHERE e.emp_id = :EMP_ID";
+                                                   NOMBRE,
+                                                   EMP_CI,
+                                                   LOC_NOMBRE,
+                                                   LIQ_FEC_ING,
+                                                   LIQ_FEC_SAL,
+                                                      TO_CHAR (LIQ_FEC_ING, 'DD')
+                                                   || ' de '
+                                                   || (SELECT MES_NOMBRE
+                                                         FROM DESARROLLO.dat_meses
+                                                        WHERE MES_ID = TO_CHAR (LIQ_FEC_ING, 'MM'))
+                                                   || ' del '
+                                                   || TO_CHAR (LIQ_FEC_ING, 'rrrr')    ingreso,
+                                                      TO_CHAR (LIQ_FEC_SAL, 'DD')
+                                                   || ' de '
+                                                   || (SELECT MES_NOMBRE
+                                                         FROM DESARROLLO.dat_meses
+                                                        WHERE MES_ID = TO_CHAR (LIQ_FEC_SAL, 'MM'))
+                                                   || ' del '
+                                                   || TO_CHAR (LIQ_FEC_SAL, 'rrrr')    salida
+                                              FROM DESARROLLO.v_detalle_emp  e
+                                                   JOIN DESARROLLO.DAT_LIQ l ON (e.emp_id = l.emp_id)
+                                             WHERE e.emp_id = :EMP_ID";
         private string sqlLiquidacionDT = @"SELECT IMP_LIQ_GRU_ID, IMP_LIQ_GRU_NOM, IMP_LIQ_SUB_ID, 
-   IMP_LIQ_SUB_NOM, IMP_LIQ_DES, IMP_LIQ_VALOR, 
-   trunc(IMP_LIQ_VALOR_AUX,2) FROM DESARROLLO.DAT_IMP_LIQ";
+                                                   IMP_LIQ_SUB_NOM, IMP_LIQ_DES, trunc(IMP_LIQ_VALOR,2)IMP_LIQ_VALOR, 
+                                                   trunc(IMP_LIQ_VALOR_AUX,2) FROM DESARROLLO.DAT_IMP_LIQ";
+        private string sqlLiquidacionReport = "DESARROLLO.P_IMP_LIQ";
 
         private string sqlSolicitudVacacion = @"SELECT PATRONO, NOMBRE, CEDULA, ESC_CARGOMB, SOLVAC_ID, SOLVAC_DESDE, SOLVAC_HASTA,
                                                        PERIODO, DIAS, LAB_FEC_INGRESO, SOLVAC_FECHA 
@@ -141,14 +142,51 @@ namespace DataAccess
             //return db.GetData(sqlSolicitudVacacion, prm);
             return db.GetData(sqlLiquidacion,prm);
         }
+        public DataSet LiquidacionParamReport(string empID, string perID, string reproID)
+        {
+            string sqlVestimenta = @"
+                                    SELECT ESC_SAL_UNIFICADO, ESC_VEST, ESC_ADI_BON_PRO
+                                      FROM DESARROLLO.RES_DAT_ESC
+                                     WHERE     ESC_ID = (SELECT ESC_ID
+                                                           FROM DESARROLLO.V_DETALLE_EMP
+                                                          WHERE EMP_ID = :EMP_ID)
+                                           AND RES_ROL_GENERAL = :PER_ID
+                                           AND RES_ROL_REPRO = :REPRO_ID ";
+
+            DataSet content = new DataSet();
+            DataTable data = new DataTable();
+            OracleParameter[] prm = new OracleParameter[]
+                {
+                    new OracleParameter(":EMP_ID", empID),
+                    new OracleParameter(":PER_ID", perID),
+                    new OracleParameter(":PERC_ID", reproID)
+                    
+                };
+            
+            data = db.GetData(sqlVestimenta, prm).Copy();
+            data.TableName = "Vestimenta";
+            content.Tables.Add(data);
+
+            //string sql
+            //prm = new OracleParameter[]
+            //{
+            //        new OracleParameter(":DIA_ID", diaID),
+            //        new OracleParameter(":PERC_ID", percID ),
+            //        new OracleParameter(":PAT_ID", patID)
+            //};
+            //data = db.GetData(sqlAsientoLiquidacionDT, prm).Copy();
+            //data.TableName = "Detail";
+            //content.Tables.Add(data);
+            return content;
+        }
         public DataTable LiquidacionDT(string empID, string vacID)
         {
-            //OracleParameter[] prm = new OracleParameter[]
-            //{
-            //    new OracleParameter(":EMP_ID",empID ),
-            //    new OracleParameter(":SOLVAC_ID",vacID)
-            //};
-            //return db.GetData(sqlSolicitudVacacion, prm);
+            OracleParameter[] prm = new OracleParameter[]
+            {
+                new OracleParameter(":EMP_ID",empID ),
+                new OracleParameter(":DIAR_ID",vacID)
+            };
+            db.ExecProcedure(sqlLiquidacionReport, prm);
             return db.GetData(sqlLiquidacionDT);
         }
         public DataTable DetalleContabilidad(string rolID, string reproID)

@@ -16,6 +16,7 @@ namespace NominaTCG
     {
         private EmpleadoController EmpleadoBO { get; set; }
         private DataView EmpleadoView { get; set; }
+        string _query = string.Empty;
 
         public frmEmpleadoLista()
         {
@@ -32,16 +33,26 @@ namespace NominaTCG
             EmpleadoBO.Empleado.empNombre = dgvData.Rows[index].Cells["NOMBRE"].Value.ToString();           
         }
         private void LoadData()
-        {            
-            EmpleadoView = new DataView(EmpleadoBO.ListaEmpleadoDetalle());
+        {
+
+            EmpleadoView = new DataView(EmpleadoBO.ListaEmpleadoDetalle("EMP_ID=0"));
+            Search();
+        }
+
+        private void Search()
+        {
             if (EmpleadoView.Table != null)
             {
                 EmpleadoView.Sort = "Nombre ASC";
                 dgvData.DataSource = EmpleadoView;
                 Design.vEmpleado(dgvData);
-                DataGridViewRow row = dgvData.Rows[1];
-                //dgvData.Columns[0].Width = 100;
-                row.Height = 150;
+                //if (EmpleadoView.Table.Rows.Count > 0)
+                //{
+                //    DataGridViewRow row = dgvData.Rows[1];
+                //    //dgvData.Columns[0].Width = 100;
+                //    row.Height = 150;
+                //}
+
                 cboFilter.DataSource = Design.filterData;
                 cboFilter.DisplayMember = "Nombre";
                 cboFilter.ValueMember = "ID";
@@ -54,11 +65,13 @@ namespace NominaTCG
                 Utility.MensajeError("¡No existe registros!");
             }
         }
+
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            EmpleadoView.RowFilter = "Convert(" + cboFilter.SelectedValue + ",'System.String') LIKE '%" + txtSearch.Text + "%'";
-            dgvData.DataSource = EmpleadoView;
-            lblTotalRecord.Text = "Total Registros: " + EmpleadoView.Count.ToString();
+            //EmpleadoView.RowFilter = "Convert(" + cboFilter.SelectedValue + ",'System.String') LIKE '%" + txtSearch.Text + "%'";
+            //dgvData.DataSource = EmpleadoView;
+            //lblTotalRecord.Text = "Total Registros: " + EmpleadoView.Count.ToString();
+            _query = cboFilter.SelectedValue + " LIKE '%" + txtSearch.Text.ToUpper() + "%'";
         }
 
         private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -76,7 +89,13 @@ namespace NominaTCG
         {
             Utility.OnlyTextAndDigit(e);
             if (e.KeyChar == (char)Keys.Enter)
+            {
+                EmpleadoView = new DataView(EmpleadoBO.ListaEmpleadoDetalle(_query));
+                lblTotalRecord.Text = "Total Registros: " + EmpleadoView.Count.ToString();
+                Search();                
                 dgvData.Select();
+            }
+                
 
         }
 
@@ -110,6 +129,7 @@ namespace NominaTCG
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
                 this.Close();
         }
-
+        
+        
     }
 }

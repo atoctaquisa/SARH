@@ -232,7 +232,7 @@
             this.txtAsiento.ReadOnly = true;
             this.txtAsiento.Size = new System.Drawing.Size(87, 20);
             this.txtAsiento.TabIndex = 0;
-            this.txtAsiento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAsiento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;            
             this.txtAsiento.DoubleClick += new System.EventHandler(this.txtAsiento_DoubleClick);
             // 
             // txtContrato
@@ -927,9 +927,11 @@
             this.ClientSize = new System.Drawing.Size(784, 611);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lblTitulo);
+            this.KeyPreview = true;
             this.Name = "frmCalcularLiquidacion";
             this.Text = "Calular Liquidación";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCalcularLiquidacion_FormClosing);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCalcularLiquidacion_KeyDown);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);

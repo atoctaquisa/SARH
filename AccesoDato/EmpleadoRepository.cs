@@ -35,11 +35,12 @@ namespace DataAccess
         #endregion
 
         #region Variables
-        private static string sqlDeleteEmpleado0 = "DELETE DESARROLLO.DAT_DET_ING_EMP WHERE EMP_ID = :EMP_ID";
-        private static string sqlDeleteEmpleado1 = "DELETE DESARROLLO.DAT_LAB WHERE EMP_ID = :EMP_ID";
-        private static string sqlDeleteEmpleado2 = "DELETE DESARROLLO.DAT_EMP_CON WHERE EMP_ID = :EMP_ID";
-        private static string sqlDeleteEmpleado3 = "DELETE DESARROLLO.DAT_EMP WHERE EMP_ID = :EMP_ID";
-        private static string sqlDeleteEmpleado4 = "DELETE DESARROLLO.DAT_EMP_ING WHERE EMP_ID = :EMP_ID";
+        //private static string sqlDeleteEmpleado0 = "DELETE DESARROLLO.DAT_DET_ING_EMP WHERE EMP_ID = :EMP_ID";
+        //private static string sqlDeleteEmpleado1 = "DELETE DESARROLLO.DAT_LAB WHERE EMP_ID = :EMP_ID";
+        //private static string sqlDeleteEmpleado2 = "DELETE DESARROLLO.DAT_EMP_CON WHERE EMP_ID = :EMP_ID";
+        //private static string sqlDeleteEmpleado3 = "DELETE DESARROLLO.DAT_EMP WHERE EMP_ID = :EMP_ID";
+        //private static string sqlDeleteEmpleado4 = "DELETE DESARROLLO.DAT_EMP_ING WHERE EMP_ID = :EMP_ID";
+        private static string sqlDeleteEmpleado = "P_ELIMINA_EMP";
         private static string sqlValidaCedula = "SELECT F_VALIDA_DOCUMENTO(:empCI) FROM DUAL";
         private static string sqlDiscapacidad = "SELECT DSCP_TIP_ID, DSCP_TIP_DSC FROM DESARROLLO.DAT_DSCP_TIP ";
         private static string sqlEmpleadoDiscapacidad = "SELECT DSCP_ID, EMP_ID, DSCP_TIP_ID, DSCP_NUM, DSCP_PRCT, DSCP_DSC FROM DESARROLLO.DAT_DSCP WHERE EMP_ID=:EMP_ID";
@@ -49,7 +50,7 @@ namespace DataAccess
                                                            EMP_AFIL_HUMANA,EMP_AFI_SEG_FEC,EMP_PAG_DEC_TER,EMP_PAG_DEC_CUA,EMP_BARRIO,
                                                            EMP_DIREC,EMP_TELEFONO,EMP_SEC_ID,EMP_DIRE_NUMERO,EMP_TELEFONO2,
                                                            EMP_LUG_NAC,EMP_FEC_NAC,EMP_SEXO,EMP_EDU,EMP_FEC_SEG,EMP_EST_CIVIL,EMP_TIP_SANGRE,
-                                                           EMP_FEC_SALIDAREAL,LAB_FEC_INGRESO,EMP_FEC_SALIDA,EMP_FEC_REG,EMP_FEC_MOD
+                                                           EMP_FEC_SALIDAREAL,LAB_FEC_INGRESO,EMP_FEC_SALIDA,EMP_FEC_REG,EMP_FEC_MOD, EMP_MAIL_PER 
                                                     FROM DESARROLLO.DAT_EMP ";
         //private static string sqlListarEmpleado = "SELECT * FROM V_DETALLE_EMP";
         private static string sqlListarEmpleadoDetalle = @"SELECT
@@ -68,8 +69,44 @@ namespace DataAccess
                                                                     EMP_AFI_FARMA, EMP_HOR, GRU_LOC_NOM_ID, LOC_REGIMEN, EMP_PASAPORTE, EMP_SUJ_CRDT,
                                                                     ESC_GRU_CRDT_MAX, ESC_GRU_DSCT_MAX, EMP_CON_FIRM_CON, EMP_CON_LEGALIZADO,
                                                                     FEC_CONTRATO_AUX, RBU, ESC_ADI_BON_PRO, ESC_VEST, EMP_PAG_FON_RES, LAB_RBU,
-                                                                    LAB_VEST, LAB_BONO, EMP_SEC_NOMBRE, LAB_QUINCENA
+                                                                    LAB_VEST, LAB_BONO, EMP_SEC_NOMBRE, LAB_QUINCENA, EMP_MAIL_PER
                                                           FROM DESARROLLO.V_DETALLE_EMP ";
+        private static string sqlListarEmpleadoDetallePRM = @"SELECT
+                                                                    EMP_ID, NOMBRE, LOC_NOMBRE, ESC_CARGOMB, LAB_FEC_INGRESO, EMP_FEC_NAC, EMP_SEC,
+                                                                    EMP_DIREC, EMP_EST_CIVIL, EMP_CLAVE_ASIST, EMP_PAG_DEC_CUA, EMP_CON_FEC_CONTRATO,
+                                                                    EMP_CI, ESC_CARGOIESS, LAB_ESTADO, DECODE(LAB_ESTADO, 0, 'Pasivo',1,'Activo',2,'A prueba',3,'Inactivo',4,'Suspendido',5,'Sin Rol') ESTADO,
+                                                                    ESC_GRU_NOMBRE, ESC_GRU_ID,	--(SELECT l.LOC_NOMBRE FROM DESARROLLO.DAT_LOC l Where l.loc_id=loc_id)LOCAL,
+                                                                    LOC_ID, LAB_FEC_CAMB_ESC, EMP_LUG_NAC, EMP_TELEFONO, EMP_NUM_HIJOS,
+                                                                    /*EMP_DEPENDIENTES,*/ DECODE(EMP_AFIL_HUMANA,1,'Si','No') AFILIACION, EMP_AFIL_HUMANA, ESC_ID, EMP_FEC_SALIDAREAL, EMP_FEC_SALIDA,
+                                                                    LAB_TIPO_EMP, ESC_COD_ACT_SEC, EMP_CON_CAUSA, ESC_CODIESS, GRU_CARG_ID,
+                                                                    ESC_ABRE, PATRONO, PAT_ID, EMP_BARRIO, EMP_SEXO, LOC_CIUDAD, LOC_PROVINCIA, CON_ID,
+                                                                    EMP_EDU, EMP_CUENTA, EMP_TIPO_CNTA, EMP_MAIL, TIPO_CONTRATO, CON_CAU_ID,
+                                                                    LOC_PROV_SEDE, LOC_CIU_SEDE, LOC_DIR_SEDE, ESC_FUN_MIN_TRA, GRU_LOC_ID,
+                                                                    EMP_DIRE_NUMERO, EMP_FEC_REG, EMP_FEC_MOD, EMP_FECHA_REINGRESO, EMP_CON_OBS,
+                                                                    LAB_ID, EMP_TIP_SANGRE, EMP_DISCAPACIDAD, EMP_NUM_CONADIS, LOC_CIUDAD_ABREV,
+                                                                    EMP_AFI_FARMA, EMP_HOR, GRU_LOC_NOM_ID, LOC_REGIMEN, EMP_PASAPORTE, EMP_SUJ_CRDT,
+                                                                    ESC_GRU_CRDT_MAX, ESC_GRU_DSCT_MAX, EMP_CON_FIRM_CON, EMP_CON_LEGALIZADO,
+                                                                    FEC_CONTRATO_AUX, RBU, ESC_ADI_BON_PRO, ESC_VEST, EMP_PAG_FON_RES, LAB_RBU,
+                                                                    LAB_VEST, LAB_BONO, EMP_SEC_NOMBRE, LAB_QUINCENA, EMP_MAIL_PER
+                                                          FROM DESARROLLO.V_DETALLE_EMP WHERE ";
+        private static string sqlPaginaEmpleadoDetalle = @"SELECT * from (SELECT 
+                                                                    EMP_ID, NOMBRE, LOC_NOMBRE, ESC_CARGOMB, LAB_FEC_INGRESO, EMP_FEC_NAC, EMP_SEC,
+                                                                    EMP_DIREC, EMP_EST_CIVIL, EMP_CLAVE_ASIST, EMP_PAG_DEC_CUA, EMP_CON_FEC_CONTRATO,
+                                                                    EMP_CI, ESC_CARGOIESS, LAB_ESTADO, DECODE(LAB_ESTADO, 0, 'Pasivo',1,'Activo',2,'A prueba',3,'Inactivo',4,'Suspendido',5,'Sin Rol') ESTADO,
+                                                                    ESC_GRU_NOMBRE, ESC_GRU_ID,	--(SELECT l.LOC_NOMBRE FROM DESARROLLO.DAT_LOC l Where l.loc_id=loc_id)LOCAL,
+                                                                    LOC_ID, LAB_FEC_CAMB_ESC, EMP_LUG_NAC, EMP_TELEFONO, EMP_NUM_HIJOS,
+                                                                    /*EMP_DEPENDIENTES,*/ DECODE(EMP_AFIL_HUMANA,1,'Si','No') AFILIACION, EMP_AFIL_HUMANA, ESC_ID, EMP_FEC_SALIDAREAL, EMP_FEC_SALIDA,
+                                                                    LAB_TIPO_EMP, ESC_COD_ACT_SEC, EMP_CON_CAUSA, ESC_CODIESS, GRU_CARG_ID,
+                                                                    ESC_ABRE, PATRONO, PAT_ID, EMP_BARRIO, EMP_SEXO, LOC_CIUDAD, LOC_PROVINCIA, CON_ID,
+                                                                    EMP_EDU, EMP_CUENTA, EMP_TIPO_CNTA, EMP_MAIL, TIPO_CONTRATO, CON_CAU_ID,
+                                                                    LOC_PROV_SEDE, LOC_CIU_SEDE, LOC_DIR_SEDE, ESC_FUN_MIN_TRA, GRU_LOC_ID,
+                                                                    EMP_DIRE_NUMERO, EMP_FEC_REG, EMP_FEC_MOD, EMP_FECHA_REINGRESO, EMP_CON_OBS,
+                                                                    LAB_ID, EMP_TIP_SANGRE, EMP_DISCAPACIDAD, EMP_NUM_CONADIS, LOC_CIUDAD_ABREV,
+                                                                    EMP_AFI_FARMA, EMP_HOR, GRU_LOC_NOM_ID, LOC_REGIMEN, EMP_PASAPORTE, EMP_SUJ_CRDT,
+                                                                    ESC_GRU_CRDT_MAX, ESC_GRU_DSCT_MAX, EMP_CON_FIRM_CON, EMP_CON_LEGALIZADO,
+                                                                    FEC_CONTRATO_AUX, RBU, ESC_ADI_BON_PRO, ESC_VEST, EMP_PAG_FON_RES, LAB_RBU,
+                                                                    LAB_VEST, LAB_BONO, EMP_SEC_NOMBRE, LAB_QUINCENA, rownum AS rnum
+                                                          FROM DESARROLLO.V_DETALLE_EMP ) where rnum between 1 and 10 ";
         private static string sqlFamiliares = "SELECT EMP_ID, EMP_FAM_ID, EMP_FAM_NOMBRE, EMP_FAM_FEC_NAC, EMP_FAM_PARENT, EMP_FAM_OCUP, EMP_FAM_TELF_REF, EMP_FAM_DISC FROM DESARROLLO.DAT_EMP_FAM WHERE EMP_ID=:empID";
         private static string sqlInsert = @"
                                             INSERT INTO DESARROLLO.DAT_EMP (EMP_ID,
@@ -111,6 +148,7 @@ namespace DataAccess
                                                                             EMP_PASAPORTE,
                                                                             --EMP_SUJ_CRDT,
                                                                             EMP_MAIL,
+                                                                            EMP_MAIL_PER,
                                                                             --EMP_CLAVE_ASIST,
                                                                             --EMP_PORC_DISC,
                                                                             --DSC_ID,
@@ -159,6 +197,7 @@ namespace DataAccess
                                                          :EMP_PASAPORTE,
                                                          --:EMP_SUJ_CRDT,
                                                          :EMP_MAIL,
+                                                         :EMP_MAIL_PER,
                                                          --:EMP_CLAVE_ASIST,
                                                          --:EMP_PORC_DISC,
                                                          --:DSC_ID,
@@ -208,6 +247,7 @@ namespace DataAccess
                                                    EMP_PASAPORTE       = :EMP_PASAPORTE,
                                                    --EMP_SUJ_CRDT        = :EMP_SUJ_CRDT,
                                                    EMP_MAIL            = :EMP_MAIL,
+                                                   EMP_MAIL_PER        = :EMP_MAIL_PER,
                                                    --EMP_CLAVE_ASIST     = :EMP_CLAVE_ASIST,
                                                    --EMP_PORC_DISC       = :EMP_PORC_DISC,
                                                    --DSC_ID              = :DSC_ID,
@@ -676,11 +716,11 @@ namespace DataAccess
             {
                 new OracleParameter(":EMP_ID", empID)                
             };
-            db.ExecQuery(sqlDeleteEmpleado0, prm);
-            db.ExecQuery(sqlDeleteEmpleado1, prm);
-            db.ExecQuery(sqlDeleteEmpleado2, prm);
-            db.ExecQuery(sqlDeleteEmpleado3, prm);
-            return db.ExecQuery(sqlDeleteEmpleado4, prm);
+            //db.ExecQuery(sqlDeleteEmpleado0, prm);
+            //db.ExecQuery(sqlDeleteEmpleado1, prm);
+            //db.ExecQuery(sqlDeleteEmpleado2, prm);
+            //db.ExecQuery(sqlDeleteEmpleado3, prm);
+            return db.ExecProcedure(sqlDeleteEmpleado, prm);
         }
         public int EliminaFamiliar(string empID, string famID)
         {
@@ -772,6 +812,7 @@ namespace DataAccess
                  new OracleParameter(":EMP_PASAPORTE",emp.empPasaporte),
                  //new OracleParameter(":EMP_SUJ_CRDT",emp.empSujCrdt),
                  new OracleParameter(":EMP_MAIL",emp.empMail),
+                 new OracleParameter(":EMP_MAIL_PER",emp.empMailPer),
                  //new OracleParameter(":EMP_CLAVE_ASIST",emp.empClaveAsist),
                  //new OracleParameter(":EMP_PORC_DISC",emp.empPorcDisc),
                  //new OracleParameter(":DSC_ID",emp.dscId),
@@ -839,6 +880,7 @@ namespace DataAccess
                  new OracleParameter(":EMP_PASAPORTE",emp.empPasaporte),
                  //new OracleParameter(":EMP_SUJ_CRDT",emp.empSujCrdt),
                  new OracleParameter(":EMP_MAIL",emp.empMail),
+                 new OracleParameter(":EMP_MAIL_PER",emp.empMailPer),
                  //new OracleParameter(":EMP_CLAVE_ASIST",emp.empClaveAsist),
                  //new OracleParameter(":EMP_PORC_DISC",emp.empPorcDisc),
                  //new OracleParameter(":DSC_ID",emp.dscId),
@@ -993,7 +1035,16 @@ namespace DataAccess
             return db.GetData(sqlListarEmpleadoDetalle);
             //return datos;
         }
-
+        public DataTable ListaEmpleadoDetalle(string prm)
+        {
+            return db.GetData(sqlListarEmpleadoDetallePRM+prm);
+            //return datos;
+        }
+        public DataSet PaginaEmpleadoDetalle(int recordIni, int recordMax)
+        {
+            return db.paginacionData(sqlPaginaEmpleadoDetalle, recordIni,recordMax);
+            //return datos;
+        }
         public DataTable ListaEmpleado()
         {
             return db.GetData(sqlListarEmpleado);

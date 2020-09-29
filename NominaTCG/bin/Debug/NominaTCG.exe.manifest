@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccesoDato.dll" size="351744">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccesoDato.dll" size="369664">
       <assemblyIdentity name="AccesoDato" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6u3EQQUaoyT5/v4N9R+x7olD+bB71GBmrjY/i3Ww1/k=</dsig:DigestValue>
+        <dsig:DigestValue>hXAmi3g9xVXfTPd0TjV4UkbN6paZjGB1Rb1umGJNtjs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BusinessLogic.dll" size="35840">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BusinessLogic.dll" size="36352">
       <assemblyIdentity name="BusinessLogic" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>iCc60ZEjfRT3C/rGnaCjN5XV5uzluxYn1vQ+Arjpy2g=</dsig:DigestValue>
+        <dsig:DigestValue>nhMM1NUG6CdhlhVeMM8xGidRIsB6p33xfPA3uKboh90=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -271,14 +271,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Entidades.dll" size="68608">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Entidades.dll" size="69120">
       <assemblyIdentity name="Entidades" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>WxcmVxT57wlb9efHpPpyssBxHRXGez/s/nY22ZKd+Eo=</dsig:DigestValue>
+        <dsig:DigestValue>NCKLZKhdZBtJf+G4rscKPn29RkSjDQJe0X1ukMJyFMc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1195,14 +1195,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NominaTCG.exe" size="2297768">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NominaTCG.exe" size="2304424">
       <assemblyIdentity name="NominaTCG" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lCBfzixmU+aAhU5W7xHuXg4SBE+e8nqsnDWWi315buk=</dsig:DigestValue>
+        <dsig:DigestValue>qLDja3xQxYUSrQtTSExS/c719FRydkU2XHuGUvv46jM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
