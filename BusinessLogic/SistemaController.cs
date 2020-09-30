@@ -24,13 +24,29 @@ namespace BusinessLogic
         #endregion
 
         #region Methods
+        public int RegistraHuella(string empID, string idHuella, string obsID)
+        {
+            return SistemaAD.RegistraHuella(empID, idHuella, obsID);
+        }
+        public int VerificaHuella(string empID, string idHuella)
+        {
+            return SistemaAD.VerificaHuella(empID, idHuella);
+        }
+        public string CapturaHuella()
+        {
+            return SistemaAD.CapturaHuella();
+        }
+        public int ComparaHuella(string strHuella, string strHuellaComparar)
+        {
+            return SistemaAD.ComparaHuella(strHuella, strHuellaComparar);
+        }
         public string Path(string paramID)
         {
             return SistemaAD.Path(paramID);
         }
         public Boolean stateMenu(string codeSystem, string mnuCode, string userRole)
         {
-            return SistemaAD.stateMenu(codeSystem,mnuCode,userRole);
+            return SistemaAD.stateMenu(codeSystem, mnuCode, userRole);
         }
         public string CodeSystem()
         {
@@ -41,15 +57,15 @@ namespace BusinessLogic
             return SistemaAD.Usuario();
         }
         public bool sendEmail(string userTo, string userSubject, string userSms)
-        {            
+        {
             return SistemaAD.SendEmail(userTo, userSubject, userSms);
         }
 
         public string emailMessage(string tipo, object[,] emailVars)
         {
-            return SistemaAD.emailMessage(tipo,emailVars);
+            return SistemaAD.emailMessage(tipo, emailVars);
         }
-        
+
         public string FechaCentral()
         {
             return SistemaAD.FechaCentral();
@@ -133,7 +149,7 @@ namespace BusinessLogic
         public static void OnlyTextAndDigit(KeyPressEventArgs argu)
         {
 
-            if ( !char.IsLetter(argu.KeyChar) && !char.IsControl(argu.KeyChar) && !char.IsWhiteSpace(argu.KeyChar) && !(Char.IsNumber(argu.KeyChar) ))
+            if (!char.IsLetter(argu.KeyChar) && !char.IsControl(argu.KeyChar) && !char.IsWhiteSpace(argu.KeyChar) && !(Char.IsNumber(argu.KeyChar)))
                 argu.Handled = true;
         }
 
@@ -208,7 +224,7 @@ namespace BusinessLogic
         public static void OnlyTextDigitDash(KeyPressEventArgs argu)
         {
 
-            if (!char.IsLetter(argu.KeyChar) && !char.IsControl(argu.KeyChar) && 
+            if (!char.IsLetter(argu.KeyChar) && !char.IsControl(argu.KeyChar) &&
                 !char.IsWhiteSpace(argu.KeyChar) && !(Char.IsNumber(argu.KeyChar)) &&
                 (argu.KeyChar != '-'))
                 argu.Handled = true;

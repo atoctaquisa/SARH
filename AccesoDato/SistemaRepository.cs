@@ -14,7 +14,6 @@ namespace DataAccess
     public class SistemaRepository
     {
         #region Variables
-
         private SmtpClient _smtpClient;
         private NetworkCredential _basicCredential;
         private MailAddress _fromAddress;
@@ -31,39 +30,112 @@ namespace DataAccess
         private const string sqlDateServer = "SELECT SYSDATE FROM DUAL";
         private const string sqlEmailMessage = "SELECT NTF_MENSAJE FROM DESARROLLO.DAT_NOTIFICACION WHERE NTF_NOMBRE=:NTF_NOMBRE";
         private const string sqlUsuario = "SELECT USROCDGO CODIGO, USRONOMB NOMBRE, USROLOGIN, TPUSCDGO, USROPASS, USROSTDO FROM DESARROLLO.DAT_USRO WHERE USROSTDO=1 ORDER BY 2";
-        private const string sqlCodeSystem ="SELECT APPCDGO FROM DESARROLLO.DAT_APP WHERE APPCODE='SARH'";
+        private const string sqlCodeSystem = "SELECT APPCDGO FROM DESARROLLO.DAT_APP WHERE APPCODE='SARH'";
         private const string sqlMenuState = @"SELECT MENUETDO FROM DAT_MENU M
                                             WHERE APPCDGO=:codeSystem AND MENUCODE=:mnuCode
                                             AND EXISTS(SELECT * FROM DAT_TPUS_MENU T 
                                             WHERE TPUSCDGO=:userRol AND T.MENUCDGO=M.MENUCDGO)";
         private const string sqlPath = @"	SELECT SET_VALOR FROM DESARROLLO.DAT_INV_SET
 	                                        WHERE SET_ID=:PARAM_ID";
+        private const string sqlHuellaEmp = "SELECT HUE_ID FROM DAT_HUELLA_EMPLEADO WHERE EMP_ID=:EMP_ID";
+        private const string sqlRegistraHuella = "DESARROLLO.P_HUELLA";
         //private const string s
         #endregion
-        
+
         #region Properties
         private ConnectionDDBB db { get; set; }
         #endregion
-        
+
         #region Methods
+        public int RegistraHuella(string empID, string idHuella, string obsID)
+        {
+            OracleParameter[] prm = new OracleParameter[]
+          {
+                new OracleParameter(":EMP_ID",empID ),
+                new OracleParameter(":HUE_ID",idHuella ),
+                new OracleParameter(":OBS_ID",obsID )
+          };
+
+            return db.ExecProcedure(sqlRegistraHuella, prm);
+        }
+        public int VerificaHuella(string empID, string idHuella)
+        {
+            OracleParameter[] prm = new OracleParameter[]
+          {
+                new OracleParameter(":EMP_ID",empID )
+          };
+            int ban = 0;
+            DataTable huella = db.GetData(sqlHuellaEmp, prm);
+            if (huella.Rows.Count > 0)
+            {
+                foreach (DataRow item in huella.Rows)
+                {
+                    if (ComparaHuella(idHuella, item["HUE_ID"].ToString()).Equals(1))
+                    {
+                        ban = 1;
+                        break;
+                    }
+                }
+            }
+            return ban;
+        }
+        public int ComparaHuella(string strHuella, string strHuellaComparar)
+        {
+            try
+            {
+                D2WEBLib.d2finger Lector = new D2WEBLib.d2finger();
+                Lector.huella = strHuella;
+                Lector.huellaComparar = strHuellaComparar;
+                Lector.compararHuella();
+                int resp = Lector.retorno;
+                Lector = null;
+                return resp;
+            }
+
+            catch (Exception e)
+            {
+                Logger.ErrorLog.ErrorRoutine(false, e);
+                return 0;
+            }
+        }
+        public string CapturaHuella()
+        {
+            try
+            {
+                D2WEBLib.d2finger Lector = new D2WEBLib.d2finger();
+                Lector.identificacion = "9999999999";
+                Lector.posicion = 1;
+                Lector.captura();
+                string strHuella = Lector.huellaCapturada;
+                Lector = null;
+                return strHuella;
+            }
+            catch (Exception e)
+            {
+                Logger.ErrorLog.ErrorRoutine(false, e);
+                return "";
+            }
+
+        }
+
         public string Path(string paramID)
         {
             OracleParameter[] prm = new OracleParameter[]
            {
                 new OracleParameter(":PARAM_ID",paramID )
            };
-            return  db.GetString(sqlPath, prm);
+            return db.GetString(sqlPath, prm);
         }
         public Boolean stateMenu(string codeSystem, string mnuCode, string userRol)
         {
             string item;
-            OracleParameter[] prm = new OracleParameter[] 
-            { 
-                new OracleParameter(":codeSystem",codeSystem ),                
+            OracleParameter[] prm = new OracleParameter[]
+            {
+                new OracleParameter(":codeSystem",codeSystem ),
                 new OracleParameter(":mnuCode",mnuCode ),
                 new OracleParameter(":userRol",userRol )
             };
-            item = db.GetString(sqlMenuState,prm);
+            item = db.GetString(sqlMenuState, prm);
             if (item == "S")
                 return true;
             else
@@ -82,9 +154,9 @@ namespace DataAccess
 
         public string emailMessage(string emailTipo, object[,] emailVars)
         {
-            OracleParameter[] prm = new OracleParameter[] 
-            { 
-                new OracleParameter(":NTF_NOMBRE",emailTipo )                
+            OracleParameter[] prm = new OracleParameter[]
+            {
+                new OracleParameter(":NTF_NOMBRE",emailTipo )
             };
             string result = db.GetString(sqlEmailMessage, prm);
 
@@ -122,12 +194,12 @@ namespace DataAccess
                 _smtpClient.Send(_message);
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Logger.ErrorLog.ErrorRoutine(false, e);
                 return false;
             }
-            
+
         }
         public string FechaCentral()
         {

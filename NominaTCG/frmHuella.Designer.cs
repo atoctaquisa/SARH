@@ -28,189 +28,323 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHuella));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.btnDerechaG = new System.Windows.Forms.Button();
+            this.btnD1 = new System.Windows.Forms.Button();
+            this.btnD2 = new System.Windows.Forms.Button();
+            this.btnD3 = new System.Windows.Forms.Button();
+            this.btnD4 = new System.Windows.Forms.Button();
+            this.btnD5 = new System.Windows.Forms.Button();
+            this.btnDerecha = new System.Windows.Forms.Button();
+            this.btnI5 = new System.Windows.Forms.Button();
+            this.btnI4 = new System.Windows.Forms.Button();
+            this.btnI3 = new System.Windows.Forms.Button();
+            this.btnI2 = new System.Windows.Forms.Button();
+            this.btnI1 = new System.Windows.Forms.Button();
+            this.btnIzquierdaG = new System.Windows.Forms.Button();
+            this.btnIzquierda = new System.Windows.Forms.Button();
+            this.imgList = new System.Windows.Forms.ImageList(this.components);
+            this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
+            this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.btnNewSave = new System.Windows.Forms.Button();
+            this.btnEditCancel = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnDerechaG
             // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(308, 76);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(66, 94);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDerechaG.Image = ((System.Drawing.Image)(resources.GetObject("btnDerechaG.Image")));
+            this.btnDerechaG.Location = new System.Drawing.Point(261, 27);
+            this.btnDerechaG.Name = "btnDerechaG";
+            this.btnDerechaG.Size = new System.Drawing.Size(66, 94);
+            this.btnDerechaG.TabIndex = 0;
+            this.btnDerechaG.UseVisualStyleBackColor = true;
+            this.btnDerechaG.Click += new System.EventHandler(this.btnDerechaG_Click);
             // 
-            // button2
+            // btnD1
             // 
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(331, 178);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(48, 42);
-            this.button2.TabIndex = 0;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnD1.Image = ((System.Drawing.Image)(resources.GetObject("btnD1.Image")));
+            this.btnD1.Location = new System.Drawing.Point(284, 129);
+            this.btnD1.Name = "btnD1";
+            this.btnD1.Size = new System.Drawing.Size(48, 42);
+            this.btnD1.TabIndex = 0;
+            this.btnD1.UseVisualStyleBackColor = true;
+            this.btnD1.Click += new System.EventHandler(this.btnD1_Click);
             // 
-            // button3
+            // btnD2
             // 
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(382, 88);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(35, 43);
-            this.button3.TabIndex = 0;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnD2.Image = ((System.Drawing.Image)(resources.GetObject("btnD2.Image")));
+            this.btnD2.Location = new System.Drawing.Point(335, 39);
+            this.btnD2.Name = "btnD2";
+            this.btnD2.Size = new System.Drawing.Size(35, 43);
+            this.btnD2.TabIndex = 0;
+            this.btnD2.UseVisualStyleBackColor = true;
+            this.btnD2.Click += new System.EventHandler(this.btnD2_Click);
             // 
-            // button4
+            // btnD3
             // 
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(417, 74);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(34, 43);
-            this.button4.TabIndex = 0;
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnD3.Image = ((System.Drawing.Image)(resources.GetObject("btnD3.Image")));
+            this.btnD3.Location = new System.Drawing.Point(370, 25);
+            this.btnD3.Name = "btnD3";
+            this.btnD3.Size = new System.Drawing.Size(34, 43);
+            this.btnD3.TabIndex = 0;
+            this.btnD3.UseVisualStyleBackColor = true;
+            this.btnD3.Click += new System.EventHandler(this.btnD3_Click);
             // 
-            // button5
+            // btnD4
             // 
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(448, 94);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(35, 44);
-            this.button5.TabIndex = 0;
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnD4.Image = ((System.Drawing.Image)(resources.GetObject("btnD4.Image")));
+            this.btnD4.Location = new System.Drawing.Point(401, 45);
+            this.btnD4.Name = "btnD4";
+            this.btnD4.Size = new System.Drawing.Size(35, 44);
+            this.btnD4.TabIndex = 0;
+            this.btnD4.UseVisualStyleBackColor = true;
+            this.btnD4.Click += new System.EventHandler(this.btnD4_Click);
             // 
-            // button6
+            // btnD5
             // 
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.Location = new System.Drawing.Point(482, 121);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(35, 43);
-            this.button6.TabIndex = 0;
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnD5.Image = ((System.Drawing.Image)(resources.GetObject("btnD5.Image")));
+            this.btnD5.Location = new System.Drawing.Point(435, 72);
+            this.btnD5.Name = "btnD5";
+            this.btnD5.Size = new System.Drawing.Size(35, 43);
+            this.btnD5.TabIndex = 0;
+            this.btnD5.UseVisualStyleBackColor = true;
+            this.btnD5.Click += new System.EventHandler(this.btnD5_Click);
             // 
-            // button7
+            // btnDerecha
             // 
-            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.Location = new System.Drawing.Point(301, 71);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(230, 245);
-            this.button7.TabIndex = 0;
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnDerecha.Image = ((System.Drawing.Image)(resources.GetObject("btnDerecha.Image")));
+            this.btnDerecha.Location = new System.Drawing.Point(254, 22);
+            this.btnDerecha.Name = "btnDerecha";
+            this.btnDerecha.Size = new System.Drawing.Size(230, 245);
+            this.btnDerecha.TabIndex = 0;
+            this.btnDerecha.UseVisualStyleBackColor = true;
+            this.btnDerecha.Click += new System.EventHandler(this.btnDerecha_Click);
             // 
-            // button8
+            // btnI5
             // 
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.Location = new System.Drawing.Point(47, 121);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(35, 43);
-            this.button8.TabIndex = 1;
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnI5.Image = ((System.Drawing.Image)(resources.GetObject("btnI5.Image")));
+            this.btnI5.Location = new System.Drawing.Point(23, 72);
+            this.btnI5.Name = "btnI5";
+            this.btnI5.Size = new System.Drawing.Size(35, 43);
+            this.btnI5.TabIndex = 1;
+            this.btnI5.UseVisualStyleBackColor = true;
+            this.btnI5.Click += new System.EventHandler(this.btnI5_Click);
             // 
-            // button9
+            // btnI4
             // 
-            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
-            this.button9.Location = new System.Drawing.Point(80, 90);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(35, 44);
-            this.button9.TabIndex = 2;
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnI4.Image = ((System.Drawing.Image)(resources.GetObject("btnI4.Image")));
+            this.btnI4.Location = new System.Drawing.Point(56, 41);
+            this.btnI4.Name = "btnI4";
+            this.btnI4.Size = new System.Drawing.Size(35, 44);
+            this.btnI4.TabIndex = 2;
+            this.btnI4.UseVisualStyleBackColor = true;
+            this.btnI4.Click += new System.EventHandler(this.btnI4_Click);
             // 
-            // button10
+            // btnI3
             // 
-            this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
-            this.button10.Location = new System.Drawing.Point(114, 75);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(34, 43);
-            this.button10.TabIndex = 3;
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnI3.Image = ((System.Drawing.Image)(resources.GetObject("btnI3.Image")));
+            this.btnI3.Location = new System.Drawing.Point(90, 26);
+            this.btnI3.Name = "btnI3";
+            this.btnI3.Size = new System.Drawing.Size(34, 43);
+            this.btnI3.TabIndex = 3;
+            this.btnI3.UseVisualStyleBackColor = true;
+            this.btnI3.Click += new System.EventHandler(this.btnI3_Click);
             // 
-            // button11
+            // btnI2
             // 
-            this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
-            this.button11.Location = new System.Drawing.Point(146, 87);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(35, 43);
-            this.button11.TabIndex = 4;
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnI2.Image = ((System.Drawing.Image)(resources.GetObject("btnI2.Image")));
+            this.btnI2.Location = new System.Drawing.Point(122, 38);
+            this.btnI2.Name = "btnI2";
+            this.btnI2.Size = new System.Drawing.Size(35, 43);
+            this.btnI2.TabIndex = 4;
+            this.btnI2.UseVisualStyleBackColor = true;
+            this.btnI2.Click += new System.EventHandler(this.btnI2_Click);
             // 
-            // button12
+            // btnI1
             // 
-            this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
-            this.button12.Location = new System.Drawing.Point(182, 176);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(48, 42);
-            this.button12.TabIndex = 5;
-            this.button12.UseVisualStyleBackColor = true;
+            this.btnI1.Image = ((System.Drawing.Image)(resources.GetObject("btnI1.Image")));
+            this.btnI1.Location = new System.Drawing.Point(158, 127);
+            this.btnI1.Name = "btnI1";
+            this.btnI1.Size = new System.Drawing.Size(48, 42);
+            this.btnI1.TabIndex = 5;
+            this.btnI1.UseVisualStyleBackColor = true;
+            this.btnI1.Click += new System.EventHandler(this.btnI1_Click);
             // 
-            // button13
+            // btnIzquierdaG
             // 
-            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
-            this.button13.Location = new System.Drawing.Point(192, 76);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(66, 94);
-            this.button13.TabIndex = 6;
-            this.button13.UseVisualStyleBackColor = true;
+            this.btnIzquierdaG.Image = ((System.Drawing.Image)(resources.GetObject("btnIzquierdaG.Image")));
+            this.btnIzquierdaG.Location = new System.Drawing.Point(168, 27);
+            this.btnIzquierdaG.Name = "btnIzquierdaG";
+            this.btnIzquierdaG.Size = new System.Drawing.Size(66, 94);
+            this.btnIzquierdaG.TabIndex = 6;
+            this.btnIzquierdaG.UseVisualStyleBackColor = true;
+            this.btnIzquierdaG.Click += new System.EventHandler(this.btnIzquierdaG_Click);
             // 
-            // button14
+            // btnIzquierda
             // 
-            this.button14.Image = ((System.Drawing.Image)(resources.GetObject("button14.Image")));
-            this.button14.Location = new System.Drawing.Point(35, 71);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(230, 245);
-            this.button14.TabIndex = 7;
-            this.button14.UseVisualStyleBackColor = true;
+            this.btnIzquierda.Image = ((System.Drawing.Image)(resources.GetObject("btnIzquierda.Image")));
+            this.btnIzquierda.Location = new System.Drawing.Point(11, 22);
+            this.btnIzquierda.Name = "btnIzquierda";
+            this.btnIzquierda.Size = new System.Drawing.Size(230, 245);
+            this.btnIzquierda.TabIndex = 7;
+            this.btnIzquierda.UseVisualStyleBackColor = true;
+            this.btnIzquierda.Click += new System.EventHandler(this.btnIzquierda_Click);
+            // 
+            // imgList
+            // 
+            this.imgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList.ImageStream")));
+            this.imgList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgList.Images.SetKeyName(0, "btnNew.png");
+            this.imgList.Images.SetKeyName(1, "btnEdit.png");
+            this.imgList.Images.SetKeyName(2, "btnSave.png");
+            this.imgList.Images.SetKeyName(3, "btnCancel.png");
+            this.imgList.Images.SetKeyName(4, "btnDelete.png");
+            this.imgList.Images.SetKeyName(5, "btnFind.png");
+            this.imgList.Images.SetKeyName(6, "btnPrinter.png");
+            this.imgList.Images.SetKeyName(7, "btnUpdate.png");
+            this.imgList.Images.SetKeyName(8, "btnReport.png");
+            this.imgList.Images.SetKeyName(9, "btnProcesar.png");
+            this.imgList.Images.SetKeyName(10, "btnOut.png");
+            this.imgList.Images.SetKeyName(11, "btnIn.png");
+            this.imgList.Images.SetKeyName(12, "btnDoor.png");
+            this.imgList.Images.SetKeyName(13, "btnOpen.png");
+            this.imgList.Images.SetKeyName(14, "btnFirst.png");
+            this.imgList.Images.SetKeyName(15, "btnLast.png");
+            this.imgList.Images.SetKeyName(16, "btnNext.png");
+            this.imgList.Images.SetKeyName(17, "btnPrevious.png");
+            this.imgList.Images.SetKeyName(18, "btnGenRol.png");
+            this.imgList.Images.SetKeyName(19, "btnOpenPer.png");
+            // 
+            // ErrProv
+            // 
+            this.ErrProv.ContainerControl = this;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button15);
+            this.groupBox1.Controls.Add(this.button16);
+            this.groupBox1.Controls.Add(this.btnNewSave);
+            this.groupBox1.Controls.Add(this.btnEditCancel);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox1.Location = new System.Drawing.Point(0, 274);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(502, 57);
+            this.groupBox1.TabIndex = 36;
+            this.groupBox1.TabStop = false;
+            // 
+            // button15
+            // 
+            this.button15.ImageIndex = 10;
+            this.button15.ImageList = this.imgList;
+            this.button15.Location = new System.Drawing.Point(12, 14);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(39, 29);
+            this.button15.TabIndex = 58;
+            this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button15.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button15.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button16.ImageIndex = 11;
+            this.button16.ImageList = this.imgList;
+            this.button16.Location = new System.Drawing.Point(445, 14);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(39, 29);
+            this.button16.TabIndex = 57;
+            this.button16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button16.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // btnNewSave
+            // 
+            this.btnNewSave.ImageIndex = 2;
+            this.btnNewSave.ImageList = this.imgList;
+            this.btnNewSave.Location = new System.Drawing.Point(158, 16);
+            this.btnNewSave.Name = "btnNewSave";
+            this.btnNewSave.Size = new System.Drawing.Size(89, 29);
+            this.btnNewSave.TabIndex = 33;
+            this.btnNewSave.Text = "&Guardar";
+            this.btnNewSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNewSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNewSave.UseVisualStyleBackColor = true;
+            this.btnNewSave.Visible = false;
+            this.btnNewSave.Click += new System.EventHandler(this.btnNewSave_Click);
+            // 
+            // btnEditCancel
+            // 
+            this.btnEditCancel.ImageKey = "btnCancel.png";
+            this.btnEditCancel.ImageList = this.imgList;
+            this.btnEditCancel.Location = new System.Drawing.Point(247, 16);
+            this.btnEditCancel.Name = "btnEditCancel";
+            this.btnEditCancel.Size = new System.Drawing.Size(89, 29);
+            this.btnEditCancel.TabIndex = 32;
+            this.btnEditCancel.Text = "&Cancelar";
+            this.btnEditCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditCancel.UseVisualStyleBackColor = true;
+            this.btnEditCancel.Visible = false;
+            this.btnEditCancel.Click += new System.EventHandler(this.btnEditCancel_Click);
             // 
             // frmHuella
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 398);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.button14);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button7);
+            this.ClientSize = new System.Drawing.Size(502, 331);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnI5);
+            this.Controls.Add(this.btnI4);
+            this.Controls.Add(this.btnI3);
+            this.Controls.Add(this.btnI2);
+            this.Controls.Add(this.btnI1);
+            this.Controls.Add(this.btnIzquierdaG);
+            this.Controls.Add(this.btnIzquierda);
+            this.Controls.Add(this.btnD5);
+            this.Controls.Add(this.btnD4);
+            this.Controls.Add(this.btnD3);
+            this.Controls.Add(this.btnD2);
+            this.Controls.Add(this.btnD1);
+            this.Controls.Add(this.btnDerechaG);
+            this.Controls.Add(this.btnDerecha);
             this.Name = "frmHuella";
             this.Text = "frmHuella";
+            ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button btnDerechaG;
+        private System.Windows.Forms.Button btnD1;
+        private System.Windows.Forms.Button btnD2;
+        private System.Windows.Forms.Button btnD3;
+        private System.Windows.Forms.Button btnD4;
+        private System.Windows.Forms.Button btnD5;
+        private System.Windows.Forms.Button btnDerecha;
+        private System.Windows.Forms.Button btnI5;
+        private System.Windows.Forms.Button btnI4;
+        private System.Windows.Forms.Button btnI3;
+        private System.Windows.Forms.Button btnI2;
+        private System.Windows.Forms.Button btnI1;
+        private System.Windows.Forms.Button btnIzquierdaG;
+        private System.Windows.Forms.Button btnIzquierda;
+        private System.Windows.Forms.ImageList imgList;
+        private System.Windows.Forms.ToolTip ttMessage;
+        private System.Windows.Forms.ErrorProvider ErrProv;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button btnNewSave;
+        private System.Windows.Forms.Button btnEditCancel;
     }
 }

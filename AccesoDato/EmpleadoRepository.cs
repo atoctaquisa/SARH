@@ -715,11 +715,7 @@ namespace DataAccess
             OracleParameter[] prm = new OracleParameter[]
             {
                 new OracleParameter(":EMP_ID", empID)                
-            };
-            //db.ExecQuery(sqlDeleteEmpleado0, prm);
-            //db.ExecQuery(sqlDeleteEmpleado1, prm);
-            //db.ExecQuery(sqlDeleteEmpleado2, prm);
-            //db.ExecQuery(sqlDeleteEmpleado3, prm);
+            };            
             return db.ExecProcedure(sqlDeleteEmpleado, prm);
         }
         public int EliminaFamiliar(string empID, string famID)

@@ -1661,5 +1661,14 @@ namespace NominaTCG
             else
                 ErrProv.Clear();
         }
+
+        private void btnHuella_Click(object sender, EventArgs e)
+        {
+            if (!txtCodigo.Text.Equals(""))
+            {
+                frmHuella frm = new frmHuella(txtCodigo.Text);
+                Design.frmDialog(frm, "Captura de Huella: "+txtApellido.Text + " " + txtNombre.Text);
+            }
+        }
     }
 }
