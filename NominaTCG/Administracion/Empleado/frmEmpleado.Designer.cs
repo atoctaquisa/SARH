@@ -173,9 +173,6 @@
             this.EMP_FAM_TELF_REF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabValores = new System.Windows.Forms.TabPage();
             this.dgvValor = new System.Windows.Forms.DataGridView();
-            this.ROL_ID = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.FIJ_VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FIJ_ESTADO = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label41 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnEditCancel = new System.Windows.Forms.Button();
@@ -185,6 +182,9 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.label38 = new System.Windows.Forms.Label();
             this.tabAdmin = new System.Windows.Forms.TabControl();
+            this.ROL_ID = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.FIJ_VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FIJ_ESTADO = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabInformacion.SuspendLayout();
@@ -1619,30 +1619,9 @@
             this.dgvValor.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvValor_CellEndEdit);
             this.dgvValor.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvValor_CellValidating);
             this.dgvValor.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvValor_CurrentCellDirtyStateChanged);
+            this.dgvValor.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvValor_DataError);
             this.dgvValor.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvValor_EditingControlShowing);
-            // 
-            // ROL_ID
-            // 
-            this.ROL_ID.DataPropertyName = "ROL_ID";
-            this.ROL_ID.HeaderText = "Rol";
-            this.ROL_ID.Name = "ROL_ID";
-            this.ROL_ID.Width = 300;
-            // 
-            // FIJ_VALOR
-            // 
-            this.FIJ_VALOR.DataPropertyName = "FIJ_VALOR";
-            this.FIJ_VALOR.HeaderText = "Valor";
-            this.FIJ_VALOR.Name = "FIJ_VALOR";
-            this.FIJ_VALOR.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.FIJ_VALOR.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // FIJ_ESTADO
-            // 
-            this.FIJ_ESTADO.DataPropertyName = "FIJ_ESTADO";
-            this.FIJ_ESTADO.FalseValue = "0";
-            this.FIJ_ESTADO.HeaderText = "Estado";
-            this.FIJ_ESTADO.Name = "FIJ_ESTADO";
-            this.FIJ_ESTADO.TrueValue = "1";
+            this.dgvValor.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvValor_UserDeletingRow);
             // 
             // label41
             // 
@@ -1751,6 +1730,30 @@
             this.tabAdmin.SelectedIndex = 0;
             this.tabAdmin.Size = new System.Drawing.Size(864, 583);
             this.tabAdmin.TabIndex = 0;
+            // 
+            // ROL_ID
+            // 
+            this.ROL_ID.DataPropertyName = "ROL_ID";
+            this.ROL_ID.HeaderText = "Rol";
+            this.ROL_ID.Name = "ROL_ID";
+            this.ROL_ID.Width = 300;
+            // 
+            // FIJ_VALOR
+            // 
+            this.FIJ_VALOR.DataPropertyName = "FIJ_VALOR";
+            this.FIJ_VALOR.HeaderText = "Valor";
+            this.FIJ_VALOR.Name = "FIJ_VALOR";
+            this.FIJ_VALOR.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.FIJ_VALOR.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // FIJ_ESTADO
+            // 
+            this.FIJ_ESTADO.DataPropertyName = "FIJ_ESTADO";
+            this.FIJ_ESTADO.FalseValue = "0";
+            this.FIJ_ESTADO.HeaderText = "Estado";
+            this.FIJ_ESTADO.Name = "FIJ_ESTADO";
+            this.FIJ_ESTADO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.FIJ_ESTADO.TrueValue = "1";
             // 
             // frmEmpleado
             // 
@@ -1893,9 +1896,6 @@
         private System.Windows.Forms.DataGridView dgvFamiliar;
         private System.Windows.Forms.TabPage tabValores;
         private System.Windows.Forms.DataGridView dgvValor;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ROL_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FIJ_VALOR;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn FIJ_ESTADO;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnEditCancel;
         private System.Windows.Forms.Button btnExit;
@@ -1936,5 +1936,8 @@
         private System.Windows.Forms.TextBox txtPerCorreoPer;
         private System.Windows.Forms.Button btnHuella;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ROL_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FIJ_VALOR;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn FIJ_ESTADO;
     }
 }

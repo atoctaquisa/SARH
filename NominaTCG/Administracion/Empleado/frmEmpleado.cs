@@ -727,27 +727,227 @@ namespace NominaTCG
             ContratoBO.Laboral.labQuincena = txtLabQuincena.Text == "" ? 0 : Convert.ToInt32(txtLabQuincena.Text);
             ContratoBO.RegistrarInfoLaboral(ContratoBO.Laboral);
             //Datos Familiares           
-            resp = InfoAdditional(resp);
+            //resp = InfoAdditional(resp);
+            DataTable data;
+            DataTable dataChange;
+            resp = UpdateDataEmp(Convert.ToInt64(idEmp), out data, out dataChange);
+
             return resp;
         }
-        private Int64 RegisterData(string idEmp)
+        //private Int64 RegisterData(string idEmp)
+        //{
+        //    Int64 resp = 0;
+        //    //Datos de Contrato
+        //    ContratoBO.EmpleadoContrato.empId = Convert.ToInt64(idEmp);
+        //    ContratoBO.EmpleadoContrato.empConId = 1;
+        //    ContratoBO.EmpleadoContrato.conId = Convert.ToInt32(cboConContrato.SelectedValue);
+        //    ContratoBO.EmpleadoContrato.patId = Convert.ToInt32(cboConPatrono.SelectedValue);
+        //    ContratoBO.EmpleadoContrato.empConRazonSale = (cboConRazon.SelectedValue == null) ? "" : cboConRazon.SelectedValue.ToString();
+        //    ContratoBO.EmpleadoContrato.empConFirmRenu = (cboConFirma.SelectedValue == null) ? dbType.intNull : Convert.ToUInt16(cboConFirma.SelectedValue);//Convert.ToInt32(cboConFirma.SelectedValue);
+        //    ContratoBO.EmpleadoContrato.empConFecLiqui = DateTime.TryParse(mtxtConFechaLiquidacion.Text, out dbType.dateResult) ? dbType.dateResult : dbType.dateNull;
+        //    ContratoBO.EmpleadoContrato.empConFirmLiqui = (cboConFirma.SelectedValue == null) ? dbType.intNull : Convert.ToUInt16(cboConFirma.SelectedValue); //d .ToString();
+        //    ContratoBO.EmpleadoContrato.empConFecContrato = DateTime.TryParse(mtxtConFechaContrato.Text, out dbType.dateResult) ? dbType.dateResult : dbType.dateNull;  //Convert.ToDateTime(mtxtConFechaContrato.Text);
+        //    ContratoBO.EmpleadoContrato.empConObs = txtConObservacion.Text;
+        //    ContratoBO.EmpleadoContrato.conCauId = (cboConCausaFin.SelectedValue == null) ? dbType.intNull : Convert.ToInt32(cboConCausaFin.SelectedValue);
+        //    resp = ContratoBO.RegistraContrato(ContratoBO.EmpleadoContrato, "I");
+        //    //Datos Laborales 
+        //    ContratoBO.Laboral.empId = Convert.ToInt64(idEmp);
+        //    ContratoBO.Laboral.labId = 2;
+        //    ContratoBO.Laboral.locId = Convert.ToInt32(cboLabLocal.SelectedValue);
+        //    ContratoBO.Laboral.escId = Convert.ToInt32(cboLabCargo.SelectedValue);
+        //    ContratoBO.Laboral.labFecCambEsc = Convert.ToDateTime(mtxtLabFecha.Text);
+        //    ContratoBO.Laboral.labSueldoBono = 0;
+        //    ContratoBO.Laboral.labObs = txtLabObservacion.Text;
+        //    ContratoBO.Laboral.labFecReg = DateTime.Now;
+        //    ContratoBO.Laboral.labFecMod = null;
+        //    ContratoBO.Laboral.labFecObsSis = "";
+        //    ContratoBO.Laboral.labEstado = Convert.ToInt32(cboLabEstado.SelectedValue);
+        //    ContratoBO.Laboral.labTipoEmp = Convert.ToInt32(cboLabTipoPago.SelectedValue);
+        //    ContratoBO.Laboral.labRbu = Convert.ToInt32(txtLabRBU.Text);
+        //    ContratoBO.Laboral.labVest = 0;
+        //    ContratoBO.Laboral.labBono = 0;
+        //    ContratoBO.Laboral.labQuincena = txtLabQuincena.Text == "" ? 0 : Convert.ToInt32(txtLabQuincena.Text);
+        //    resp = ContratoBO.RegistrarInfoLaboral(ContratoBO.Laboral);
+        //    //Datos Familiares
+        //    //resp = InfoAdditional(Convert.ToInt64(idEmp));
+        //    DataTable data;
+        //    DataTable dataChange;
+        //    resp = UpdateDataEmp(Convert.ToInt64(idEmp), out data, out dataChange);
+        //    return resp;
+        //}
+
+        //private long InfoAdditional(long resp)
+        //{
+        //    DataTable data;
+        //    DataTable dataChange;
+        //    data = new DataTable();
+        //    dataChange = new DataTable();
+        //    data = (DataTable)dgvFamiliar.DataSource;
+        //    dataChange = null;
+        //    dataChange = data.GetChanges(DataRowState.Deleted);
+        //    if (dataChange != null)
+        //    {
+        //        foreach (DataRow row in dataChange.Rows)
+        //        {
+        //            EmpleadoBO.EliminaFamiliar(txtCodigo.Text, row["EMP_FAM_ID", DataRowVersion.Original].ToString());
+        //        }
+        //    }
+        //    dataChange = null;
+        //    dataChange = data.GetChanges(DataRowState.Added);
+        //    if (dataChange != null)
+        //    {
+        //        foreach (DataRow row in dataChange.Rows)
+        //        {
+        //            EmpleadoBO.Familia.empFamNombre = row["EMP_FAM_NOMBRE"].ToString();
+        //            EmpleadoBO.Familia.empFamFecNac = Convert.ToDateTime(row["EMP_FAM_FEC_NAC"].ToString());
+        //            EmpleadoBO.Familia.empFamParent = row["EMP_FAM_PARENT"].ToString();
+        //            EmpleadoBO.Familia.empFamOcup = row["EMP_FAM_OCUP"].ToString();
+        //            EmpleadoBO.Familia.empFamTelfRef = row["EMP_FAM_TELF_REF"].ToString();
+        //            if (row["EMP_FAM_DISC"].Equals(DBNull.Value))
+        //                EmpleadoBO.Familia.empFamDisc = 0;
+        //            else
+        //                EmpleadoBO.Familia.empFamDisc = Convert.ToInt16(row["EMP_FAM_DISC"].ToString());
+        //            EmpleadoBO.Familia.empId = Convert.ToDecimal(txtCodigo.Text);
+        //            EmpleadoBO.Familia.empFamId = EmpleadoBO.Familiares(txtCodigo.Text).Rows.Count + 1;
+        //            resp = EmpleadoBO.RegistarFamiliar(EmpleadoBO.Familia);
+        //        }
+        //    }
+        //    dataChange = null;
+        //    dataChange = data.GetChanges(DataRowState.Modified);
+        //    if (dataChange != null)
+        //    {
+        //        foreach (DataRow row in dataChange.Rows)
+        //        {
+        //            EmpleadoBO.Familia.empFamNombre = row["EMP_FAM_NOMBRE"].ToString();
+        //            EmpleadoBO.Familia.empFamFecNac = Convert.ToDateTime(row["EMP_FAM_FEC_NAC"].ToString());
+        //            EmpleadoBO.Familia.empFamParent = row["EMP_FAM_PARENT"].ToString();
+        //            EmpleadoBO.Familia.empFamOcup = row["EMP_FAM_OCUP"].ToString();
+        //            EmpleadoBO.Familia.empFamTelfRef = row["EMP_FAM_TELF_REF"].ToString();
+        //            if (row["EMP_FAM_DISC"].Equals(DBNull.Value))
+        //                EmpleadoBO.Familia.empFamDisc = 0;
+        //            else
+        //                EmpleadoBO.Familia.empFamDisc = Convert.ToInt16(row["EMP_FAM_DISC"].ToString());
+        //            EmpleadoBO.Familia.empId = Convert.ToDecimal(txtCodigo.Text);
+        //            EmpleadoBO.Familia.empFamId = Convert.ToInt32(row["EMP_FAM_ID"].ToString());
+        //            resp = EmpleadoBO.ActualizarFamiliar(EmpleadoBO.Familia);
+        //        }
+        //    }
+
+
+
+        //    //Valores Fijos
+        //    data = new DataTable();
+        //    dataChange = new DataTable();
+        //    data = (DataTable)dgvValor.DataSource;
+
+        //    dataChange = data.GetChanges(DataRowState.Deleted);
+        //    if (dataChange != null)
+        //    {
+        //        foreach (DataRow row in dataChange.Rows)
+        //        {
+        //            resp = ContratoBO.EliminaValorFijo(txtCodigo.Text, Convert.ToInt32(row["ROL_ID", DataRowVersion.Original].ToString()));
+        //        }
+        //    }
+        //    dataChange = null;
+        //    dataChange = data.GetChanges(DataRowState.Added);
+        //    if (dataChange != null)
+        //    {
+        //        foreach (DataRow row in dataChange.Rows)
+        //        {
+        //            ContratoBO.ValorFijo.rolId = Convert.ToInt32(row["ROL_ID"].ToString());
+        //            ContratoBO.ValorFijo.fijValor = Convert.ToInt32(row["FIJ_VALOR"].ToString());
+        //            //ContratoBO.ValorFijo.fijEstado = Convert.ToInt16(row["FIJ_ESTADO"].Equals(DBNull.Value));//(row["FIJ_ESTADO"].Equals(DBNull.Value)) ? 0 : 1;
+        //            if (row["FIJ_ESTADO"].Equals(DBNull.Value))
+        //                ContratoBO.ValorFijo.fijEstado = 0;
+        //            else
+        //                ContratoBO.ValorFijo.fijEstado = Convert.ToInt16(row["FIJ_ESTADO"].ToString());
+        //            ContratoBO.ValorFijo.empId = Convert.ToDecimal(txtCodigo.Text);
+        //            resp = ContratoBO.RegistrarValorFijo(ContratoBO.ValorFijo);
+        //        }
+        //    }
+        //    dataChange = null;
+        //    dataChange = data.GetChanges(DataRowState.Modified);
+        //    if (dataChange != null)
+        //    {
+        //        foreach (DataRow row in dataChange.Rows)
+        //        {
+        //            ContratoBO.ValorFijo.rolId = Convert.ToInt32(row["ROL_ID"].ToString());
+        //            int auxRolID = Convert.ToInt32(row["ROL_ID", DataRowVersion.Original].ToString());
+        //            ContratoBO.ValorFijo.fijValor = Convert.ToInt32(row["FIJ_VALOR"].ToString());
+        //            //ContratoBO.ValorFijo.fijEstado = Convert.ToInt16(row["FIJ_ESTADO"].ToString());
+        //            if (row["FIJ_ESTADO"].Equals(DBNull.Value))
+        //                ContratoBO.ValorFijo.fijEstado = 0;
+        //            else
+        //                ContratoBO.ValorFijo.fijEstado = Convert.ToInt16(row["FIJ_ESTADO"].ToString());
+        //            ContratoBO.ValorFijo.empId = Convert.ToDecimal(txtCodigo.Text);
+        //            resp = ContratoBO.ActualizarValorFijo(ContratoBO.ValorFijo, auxRolID);
+        //        }
+        //    }
+
+
+
+        //    return resp;
+        //}
+
+        private Int64 RegisterData(int tabID, string tipo)
         {
             Int64 resp = 0;
-            //Datos de Contrato
-            ContratoBO.EmpleadoContrato.empId = Convert.ToInt64(idEmp);
+            DataTable data;
+            DataTable dataChange;
+            Int64 codigoEMP = 0;
+
+            //Datos Personales
+            EmpleadoBO.Empleado.empId = (txtCodigo.Text == string.Empty) ? 0 : Convert.ToInt64(txtCodigo.Text);
+            EmpleadoBO.Empleado.empNombre = txtNombre.Text.ToUpper();
+            EmpleadoBO.Empleado.empDirec = txtPerDireccion.Text.ToUpper();
+            EmpleadoBO.Empleado.empTelefono = txtPerTelefono.Text;
+            EmpleadoBO.Empleado.empLugNac = txtPerLugarNac.Text.ToUpper();
+            EmpleadoBO.Empleado.labFecIngreso = pPerFechaIngreso.Value;
+            EmpleadoBO.Empleado.empFecNac = pPerFechaNac.Value;
+            EmpleadoBO.Empleado.empCi = txtPerCedula.Text;
+            EmpleadoBO.Empleado.empNumIess = txtPerNumIESS.Text == "" ? "0" : txtPerNumIESS.Text;
+            EmpleadoBO.Empleado.empEstCivil = cboPerEstadoCivil.SelectedValue.ToString();
+            EmpleadoBO.Empleado.empNumHijos = 0;
+            EmpleadoBO.Empleado.empCuenta = txtPerCuentaBanco.Text;
+            EmpleadoBO.Empleado.empApellido = txtApellido.Text.ToUpper();
+            EmpleadoBO.Empleado.empAfilHumana = 0;
+            EmpleadoBO.Empleado.empTelefono2 = txtPerTelefonoSeg.Text;
+            EmpleadoBO.Empleado.empTipoCnta = Convert.ToInt32(cboPerTipoCuenta.SelectedValue);
+            EmpleadoBO.Empleado.empSexo = Convert.ToInt32(cboPerSexo.SelectedValue);
+            EmpleadoBO.Empleado.empSecId = Convert.ToInt32(cboPerSector.SelectedValue);
+            EmpleadoBO.Empleado.empBarrio = txtPerBarrio.Text.ToUpper();
+            EmpleadoBO.Empleado.empEdu = cboPerEducacion.SelectedValue.ToString();
+            EmpleadoBO.Empleado.empDireNumero = txtPerNumero.Text;
+            EmpleadoBO.Empleado.empTipSangre = txtPerTipoSangre.Text;
+            EmpleadoBO.Empleado.empDiscapacidad = Convert.ToInt32(cboPerDiscapacidad.SelectedValue);
+            EmpleadoBO.Empleado.empNumConadis = txtPerNumIdentificacion.Text;
+            EmpleadoBO.Empleado.empAfiFarma = 0;
+            EmpleadoBO.Empleado.empAfiFarmaFec = dbType.dateNull;
+            EmpleadoBO.Empleado.empPagFonRes = Convert.ToInt32(cboPerFondoReserva.SelectedValue);
+            EmpleadoBO.Empleado.empPasaporte = txtPerPasaporte.Text;
+            EmpleadoBO.Empleado.empMail = txtPerCorreo.Text;
+            EmpleadoBO.Empleado.empMailPer = txtPerCorreoPer.Text;
+            EmpleadoBO.Empleado.empPagDecTer = Convert.ToInt32(cboPerDecimoTercero.SelectedValue);
+            EmpleadoBO.Empleado.empPagDecCua = Convert.ToInt32(cboPerDecimoCuarto.SelectedValue);
+            EmpleadoBO.Empleado.empDependientes = 0;
+            codigoEMP = resp = EmpleadoBO.RegistarEmpleado(EmpleadoBO.Empleado, tipo);
+
+            //Datos de Contrato                   
+            ContratoBO.EmpleadoContrato.empId = Convert.ToInt64(codigoEMP);
             ContratoBO.EmpleadoContrato.empConId = 1;
             ContratoBO.EmpleadoContrato.conId = Convert.ToInt32(cboConContrato.SelectedValue);
             ContratoBO.EmpleadoContrato.patId = Convert.ToInt32(cboConPatrono.SelectedValue);
             ContratoBO.EmpleadoContrato.empConRazonSale = (cboConRazon.SelectedValue == null) ? "" : cboConRazon.SelectedValue.ToString();
-            ContratoBO.EmpleadoContrato.empConFirmRenu = (cboConFirma.SelectedValue == null) ? dbType.intNull : Convert.ToUInt16(cboConFirma.SelectedValue);//Convert.ToInt32(cboConFirma.SelectedValue);
+            ContratoBO.EmpleadoContrato.empConFirmRenu = (cboConFirma.SelectedValue == null) ? dbType.intNull : Convert.ToUInt16(cboConFirma.SelectedValue); //Convert.ToInt32(cboConFirma.SelectedValue);
             ContratoBO.EmpleadoContrato.empConFecLiqui = DateTime.TryParse(mtxtConFechaLiquidacion.Text, out dbType.dateResult) ? dbType.dateResult : dbType.dateNull;
-            ContratoBO.EmpleadoContrato.empConFirmLiqui = (cboConFirma.SelectedValue == null) ? dbType.intNull : Convert.ToUInt16(cboConFirma.SelectedValue); //d .ToString();
-            ContratoBO.EmpleadoContrato.empConFecContrato = DateTime.TryParse(mtxtConFechaContrato.Text, out dbType.dateResult) ? dbType.dateResult : dbType.dateNull;  //Convert.ToDateTime(mtxtConFechaContrato.Text);
+            ContratoBO.EmpleadoContrato.empConFirmLiqui = (cboConFirma.SelectedValue == null) ? dbType.intNull : Convert.ToUInt16(cboConFirma.SelectedValue);//dbType.intNull;//cboConFirma.SelectedValue.ToString();
+            ContratoBO.EmpleadoContrato.empConFecContrato = Convert.ToDateTime(mtxtConFechaContrato.Text);
             ContratoBO.EmpleadoContrato.empConObs = txtConObservacion.Text;
             ContratoBO.EmpleadoContrato.conCauId = (cboConCausaFin.SelectedValue == null) ? dbType.intNull : Convert.ToInt32(cboConCausaFin.SelectedValue);
-            resp = ContratoBO.RegistraContrato(ContratoBO.EmpleadoContrato, "I");
-            //Datos Laborales 
-            ContratoBO.Laboral.empId = Convert.ToInt64(idEmp);
+            resp = ContratoBO.RegistraContrato(ContratoBO.EmpleadoContrato, tipo);
+
+            //2. Datos Laborales
+            ContratoBO.Laboral.empId = Convert.ToInt64(codigoEMP);
             ContratoBO.Laboral.labId = 2;
             ContratoBO.Laboral.locId = Convert.ToInt32(cboLabLocal.SelectedValue);
             ContratoBO.Laboral.escId = Convert.ToInt32(cboLabCargo.SelectedValue);
@@ -759,24 +959,119 @@ namespace NominaTCG
             ContratoBO.Laboral.labFecObsSis = "";
             ContratoBO.Laboral.labEstado = Convert.ToInt32(cboLabEstado.SelectedValue);
             ContratoBO.Laboral.labTipoEmp = Convert.ToInt32(cboLabTipoPago.SelectedValue);
-            ContratoBO.Laboral.labRbu = Convert.ToInt32(txtLabRBU.Text);
+            ContratoBO.Laboral.labRbu = Convert.ToDecimal(txtLabRBU.Text);
             ContratoBO.Laboral.labVest = 0;
             ContratoBO.Laboral.labBono = 0;
             ContratoBO.Laboral.labQuincena = txtLabQuincena.Text == "" ? 0 : Convert.ToInt32(txtLabQuincena.Text);
             resp = ContratoBO.RegistrarInfoLaboral(ContratoBO.Laboral);
-            //Datos Familiares
-            resp = InfoAdditional(resp);
+
+            //3. Datos Familiares
+            resp = UpdateDataEmp(codigoEMP, out data, out dataChange);
+
+
+            //4. Valores Fijos
+            //resp = UpdateDataEmp(resp, out data, out dataChange);
+
+
+            //switch (tabID)
+            //{
+            //    case 0://Datos Personales
+            //        EmpleadoBO.Empleado.empId = (txtCodigo.Text == string.Empty) ? 0 : Convert.ToInt64(txtCodigo.Text);
+            //        EmpleadoBO.Empleado.empNombre = txtNombre.Text.ToUpper();
+            //        EmpleadoBO.Empleado.empDirec = txtPerDireccion.Text.ToUpper();
+            //        EmpleadoBO.Empleado.empTelefono = txtPerTelefono.Text;
+            //        EmpleadoBO.Empleado.empLugNac = txtPerLugarNac.Text.ToUpper();
+            //        EmpleadoBO.Empleado.labFecIngreso = pPerFechaIngreso.Value;
+            //        EmpleadoBO.Empleado.empFecNac = pPerFechaNac.Value;
+            //        EmpleadoBO.Empleado.empCi = txtPerCedula.Text;
+            //        EmpleadoBO.Empleado.empNumIess = txtPerNumIESS.Text==""?"0": txtPerNumIESS.Text;
+            //        EmpleadoBO.Empleado.empEstCivil = cboPerEstadoCivil.SelectedValue.ToString();
+            //        EmpleadoBO.Empleado.empNumHijos = 0;
+            //        EmpleadoBO.Empleado.empCuenta = txtPerCuentaBanco.Text;
+            //        EmpleadoBO.Empleado.empApellido = txtApellido.Text.ToUpper();
+            //        EmpleadoBO.Empleado.empAfilHumana = 0;
+            //        EmpleadoBO.Empleado.empTelefono2 = txtPerTelefonoSeg.Text;
+            //        EmpleadoBO.Empleado.empTipoCnta = Convert.ToInt32(cboPerTipoCuenta.SelectedValue);
+            //        EmpleadoBO.Empleado.empSexo = Convert.ToInt32(cboPerSexo.SelectedValue);
+            //        EmpleadoBO.Empleado.empSecId = Convert.ToInt32(cboPerSector.SelectedValue);
+            //        EmpleadoBO.Empleado.empBarrio = txtPerBarrio.Text.ToUpper();
+            //        EmpleadoBO.Empleado.empEdu = cboPerEducacion.SelectedValue.ToString();
+            //        EmpleadoBO.Empleado.empDireNumero = txtPerNumero.Text;
+            //        EmpleadoBO.Empleado.empTipSangre = txtPerTipoSangre.Text;
+            //        EmpleadoBO.Empleado.empDiscapacidad = Convert.ToInt32(cboPerDiscapacidad.SelectedValue);
+            //        EmpleadoBO.Empleado.empNumConadis = txtPerNumIdentificacion.Text;
+            //        EmpleadoBO.Empleado.empAfiFarma = 0;
+            //        EmpleadoBO.Empleado.empAfiFarmaFec = dbType.dateNull;
+            //        EmpleadoBO.Empleado.empPagFonRes = Convert.ToInt32(cboPerFondoReserva.SelectedValue);
+            //        EmpleadoBO.Empleado.empPasaporte = txtPerPasaporte.Text;
+            //        EmpleadoBO.Empleado.empMail = txtPerCorreo.Text;
+            //        EmpleadoBO.Empleado.empMailPer = txtPerCorreoPer.Text;
+            //        EmpleadoBO.Empleado.empPagDecTer = Convert.ToInt32(cboPerDecimoTercero.SelectedValue);
+            //        EmpleadoBO.Empleado.empPagDecCua = Convert.ToInt32(cboPerDecimoCuarto.SelectedValue);
+            //        EmpleadoBO.Empleado.empDependientes = 0;
+            //        resp = EmpleadoBO.RegistarEmpleado(EmpleadoBO.Empleado, tipo);
+            //        break;
+            //    case 1://Datos de Contrato                   
+            //        ContratoBO.EmpleadoContrato.empId = Convert.ToInt64(txtCodigo.Text);
+            //        ContratoBO.EmpleadoContrato.empConId = 1;
+            //        ContratoBO.EmpleadoContrato.conId = Convert.ToInt32(cboConContrato.SelectedValue);
+            //        ContratoBO.EmpleadoContrato.patId = Convert.ToInt32(cboConPatrono.SelectedValue);
+            //        ContratoBO.EmpleadoContrato.empConRazonSale = (cboConRazon.SelectedValue == null) ? "" : cboConRazon.SelectedValue.ToString();
+            //        ContratoBO.EmpleadoContrato.empConFirmRenu = (cboConFirma.SelectedValue == null) ? dbType.intNull : Convert.ToUInt16(cboConFirma.SelectedValue); //Convert.ToInt32(cboConFirma.SelectedValue);
+            //        ContratoBO.EmpleadoContrato.empConFecLiqui = DateTime.TryParse(mtxtConFechaLiquidacion.Text, out dbType.dateResult) ? dbType.dateResult : dbType.dateNull;
+            //        ContratoBO.EmpleadoContrato.empConFirmLiqui = (cboConFirma.SelectedValue == null) ? dbType.intNull : Convert.ToUInt16(cboConFirma.SelectedValue);//dbType.intNull;//cboConFirma.SelectedValue.ToString();
+            //        ContratoBO.EmpleadoContrato.empConFecContrato = Convert.ToDateTime(mtxtConFechaContrato.Text);
+            //        ContratoBO.EmpleadoContrato.empConObs = txtConObservacion.Text;
+            //        ContratoBO.EmpleadoContrato.conCauId = (cboConCausaFin.SelectedValue == null) ? dbType.intNull : Convert.ToInt32(cboConCausaFin.SelectedValue);
+            //        resp = ContratoBO.RegistraContrato(ContratoBO.EmpleadoContrato, tipo);
+            //        break;
+            //    case 2://Datos Laborales
+            //        ContratoBO.Laboral.empId = Convert.ToInt64(txtCodigo.Text);
+            //        ContratoBO.Laboral.labId = 2;
+            //        ContratoBO.Laboral.locId = Convert.ToInt32(cboLabLocal.SelectedValue);
+            //        ContratoBO.Laboral.escId = Convert.ToInt32(cboLabCargo.SelectedValue);
+            //        ContratoBO.Laboral.labFecCambEsc = Convert.ToDateTime(mtxtLabFecha.Text);
+            //        ContratoBO.Laboral.labSueldoBono = 0;
+            //        ContratoBO.Laboral.labObs = txtLabObservacion.Text;
+            //        ContratoBO.Laboral.labFecReg = DateTime.Now;
+            //        ContratoBO.Laboral.labFecMod = null;
+            //        ContratoBO.Laboral.labFecObsSis = "";
+            //        ContratoBO.Laboral.labEstado = Convert.ToInt32(cboLabEstado.SelectedValue);
+            //        ContratoBO.Laboral.labTipoEmp = Convert.ToInt32(cboLabTipoPago.SelectedValue);
+            //        ContratoBO.Laboral.labRbu = Convert.ToDecimal(txtLabRBU.Text);
+            //        ContratoBO.Laboral.labVest = 0;
+            //        ContratoBO.Laboral.labBono = 0;
+            //        ContratoBO.Laboral.labQuincena = txtLabQuincena.Text==""? 0 : Convert.ToInt32(txtLabQuincena.Text);
+            //        resp = ContratoBO.RegistrarInfoLaboral(ContratoBO.Laboral);
+            //        break;
+            //    case 3://Datos Familiares
+            //        resp = UpdateDataEmp(resp, out data, out dataChange);
+            //        break;
+
+            //    case 4://Valores Fijos
+            //        resp = UpdateDataEmp(resp, out data, out dataChange);                    
+            //        break;               
+            //}
 
             return resp;
         }
 
-        private long InfoAdditional(long resp)
+        private long UpdateDataEmp(long codigoEMP, out DataTable data, out DataTable dataChange)
         {
-            DataTable data;
-            DataTable dataChange;
+            long resp=0;
             data = new DataTable();
             dataChange = new DataTable();
             data = (DataTable)dgvFamiliar.DataSource;
+            dataChange = null;
+            dataChange = data.GetChanges(DataRowState.Deleted);
+            if (dataChange != null)
+            {
+                foreach (DataRow row in dataChange.Rows)
+                {
+                    EmpleadoBO.EliminaFamiliar(codigoEMP.ToString(), row["EMP_FAM_ID", DataRowVersion.Original].ToString());
+                }
+            }
+            dataChange = null;
             dataChange = data.GetChanges(DataRowState.Added);
             if (dataChange != null)
             {
@@ -791,8 +1086,8 @@ namespace NominaTCG
                         EmpleadoBO.Familia.empFamDisc = 0;
                     else
                         EmpleadoBO.Familia.empFamDisc = Convert.ToInt16(row["EMP_FAM_DISC"].ToString());
-                    EmpleadoBO.Familia.empId = Convert.ToDecimal(txtCodigo.Text);
-                    EmpleadoBO.Familia.empFamId = EmpleadoBO.Familiares(txtCodigo.Text).Rows.Count + 1;
+                    EmpleadoBO.Familia.empId = Convert.ToDecimal(codigoEMP);
+                    EmpleadoBO.Familia.empFamId = EmpleadoBO.Familiares(codigoEMP.ToString()).Rows.Count + 1;
                     resp = EmpleadoBO.RegistarFamiliar(EmpleadoBO.Familia);
                 }
             }
@@ -811,27 +1106,28 @@ namespace NominaTCG
                         EmpleadoBO.Familia.empFamDisc = 0;
                     else
                         EmpleadoBO.Familia.empFamDisc = Convert.ToInt16(row["EMP_FAM_DISC"].ToString());
-                    EmpleadoBO.Familia.empId = Convert.ToDecimal(txtCodigo.Text);
+                    EmpleadoBO.Familia.empId = Convert.ToDecimal(codigoEMP);
                     EmpleadoBO.Familia.empFamId = Convert.ToInt32(row["EMP_FAM_ID"].ToString());
                     resp = EmpleadoBO.ActualizarFamiliar(EmpleadoBO.Familia);
                 }
+
             }
 
+
+            ////////////////////////////////////////////
+            data = new DataTable();
+            dataChange = new DataTable();
+            data = (DataTable)dgvValor.DataSource;
             dataChange = null;
             dataChange = data.GetChanges(DataRowState.Deleted);
             if (dataChange != null)
             {
                 foreach (DataRow row in dataChange.Rows)
                 {
-                    EmpleadoBO.EliminaFamiliar(txtCodigo.Text, row["EMP_FAM_ID", DataRowVersion.Original].ToString());
+                    resp = ContratoBO.EliminaValorFijo(codigoEMP.ToString(), Convert.ToInt32(row["ROL_ID", DataRowVersion.Original].ToString()));
                 }
             }
-
-            //Valores Fijos
-            data = new DataTable();
-            dataChange = new DataTable();
-            data = (DataTable)dgvValor.DataSource;
-
+            dataChange = null;
             dataChange = data.GetChanges(DataRowState.Added);
             if (dataChange != null)
             {
@@ -839,8 +1135,12 @@ namespace NominaTCG
                 {
                     ContratoBO.ValorFijo.rolId = Convert.ToInt32(row["ROL_ID"].ToString());
                     ContratoBO.ValorFijo.fijValor = Convert.ToInt32(row["FIJ_VALOR"].ToString());
-                    ContratoBO.ValorFijo.fijEstado = Convert.ToInt16(row["FIJ_ESTADO"].Equals(DBNull.Value));//(row["FIJ_ESTADO"].Equals(DBNull.Value)) ? 0 : 1;
-                    ContratoBO.ValorFijo.empId = Convert.ToDecimal(txtCodigo.Text);
+                    //ContratoBO.ValorFijo.fijEstado = Convert.ToInt16(row["FIJ_ESTADO"].Equals(DBNull.Value));//(row["FIJ_ESTADO"].Equals(DBNull.Value)) ? 0 : 1;
+                    if (row["FIJ_ESTADO"].Equals(DBNull.Value))
+                        ContratoBO.ValorFijo.fijEstado = 0;
+                    else
+                        ContratoBO.ValorFijo.fijEstado = Convert.ToInt16(row["FIJ_ESTADO"].ToString());
+                    ContratoBO.ValorFijo.empId = Convert.ToDecimal(codigoEMP);
                     resp = ContratoBO.RegistrarValorFijo(ContratoBO.ValorFijo);
                 }
             }
@@ -858,204 +1158,10 @@ namespace NominaTCG
                         ContratoBO.ValorFijo.fijEstado = 0;
                     else
                         ContratoBO.ValorFijo.fijEstado = Convert.ToInt16(row["FIJ_ESTADO"].ToString());
-                    ContratoBO.ValorFijo.empId = Convert.ToDecimal(txtCodigo.Text);
+                    ContratoBO.ValorFijo.empId = Convert.ToDecimal(codigoEMP.ToString());
                     resp = ContratoBO.ActualizarValorFijo(ContratoBO.ValorFijo, auxRolID);
                 }
             }
-
-            dataChange = null;
-            dataChange = data.GetChanges(DataRowState.Deleted);
-            if (dataChange != null)
-            {
-                foreach (DataRow row in dataChange.Rows)
-                {
-                    resp = ContratoBO.EliminaValorFijo(txtCodigo.Text, Convert.ToInt32(row["ROL_ID", DataRowVersion.Original].ToString()));
-                }
-            }
-
-            return resp;
-        }
-
-        private Int64 RegisterData(int tabID, string tipo)
-        {
-            Int64 resp = 0;
-            DataTable data;
-            DataTable dataChange;
-            switch (tabID)
-            {
-                case 0://Datos Personales
-                    EmpleadoBO.Empleado.empId = (txtCodigo.Text == string.Empty) ? 0 : Convert.ToInt64(txtCodigo.Text);
-                    EmpleadoBO.Empleado.empNombre = txtNombre.Text.ToUpper();
-                    EmpleadoBO.Empleado.empDirec = txtPerDireccion.Text.ToUpper();
-                    EmpleadoBO.Empleado.empTelefono = txtPerTelefono.Text;
-                    EmpleadoBO.Empleado.empLugNac = txtPerLugarNac.Text.ToUpper();
-                    EmpleadoBO.Empleado.labFecIngreso = pPerFechaIngreso.Value;
-                    EmpleadoBO.Empleado.empFecNac = pPerFechaNac.Value;
-                    EmpleadoBO.Empleado.empCi = txtPerCedula.Text;
-                    EmpleadoBO.Empleado.empNumIess = txtPerNumIESS.Text==""?"0": txtPerNumIESS.Text;
-                    EmpleadoBO.Empleado.empEstCivil = cboPerEstadoCivil.SelectedValue.ToString();
-                    EmpleadoBO.Empleado.empNumHijos = 0;
-                    EmpleadoBO.Empleado.empCuenta = txtPerCuentaBanco.Text;
-                    EmpleadoBO.Empleado.empApellido = txtApellido.Text.ToUpper();
-                    EmpleadoBO.Empleado.empAfilHumana = 0;
-                    EmpleadoBO.Empleado.empTelefono2 = txtPerTelefonoSeg.Text;
-                    EmpleadoBO.Empleado.empTipoCnta = Convert.ToInt32(cboPerTipoCuenta.SelectedValue);
-                    EmpleadoBO.Empleado.empSexo = Convert.ToInt32(cboPerSexo.SelectedValue);
-                    EmpleadoBO.Empleado.empSecId = Convert.ToInt32(cboPerSector.SelectedValue);
-                    EmpleadoBO.Empleado.empBarrio = txtPerBarrio.Text.ToUpper();
-                    EmpleadoBO.Empleado.empEdu = cboPerEducacion.SelectedValue.ToString();
-                    EmpleadoBO.Empleado.empDireNumero = txtPerNumero.Text;
-                    EmpleadoBO.Empleado.empTipSangre = txtPerTipoSangre.Text;
-                    EmpleadoBO.Empleado.empDiscapacidad = Convert.ToInt32(cboPerDiscapacidad.SelectedValue);
-                    EmpleadoBO.Empleado.empNumConadis = txtPerNumIdentificacion.Text;
-                    EmpleadoBO.Empleado.empAfiFarma = 0;
-                    EmpleadoBO.Empleado.empAfiFarmaFec = dbType.dateNull;
-                    EmpleadoBO.Empleado.empPagFonRes = Convert.ToInt32(cboPerFondoReserva.SelectedValue);
-                    EmpleadoBO.Empleado.empPasaporte = txtPerPasaporte.Text;
-                    EmpleadoBO.Empleado.empMail = txtPerCorreo.Text;
-                    EmpleadoBO.Empleado.empMailPer = txtPerCorreoPer.Text;
-                    EmpleadoBO.Empleado.empPagDecTer = Convert.ToInt32(cboPerDecimoTercero.SelectedValue);
-                    EmpleadoBO.Empleado.empPagDecCua = Convert.ToInt32(cboPerDecimoCuarto.SelectedValue);
-                    EmpleadoBO.Empleado.empDependientes = 0;
-                    resp = EmpleadoBO.RegistarEmpleado(EmpleadoBO.Empleado, tipo);
-                    break;
-                case 1://Datos de Contrato                   
-                    ContratoBO.EmpleadoContrato.empId = Convert.ToInt64(txtCodigo.Text);
-                    ContratoBO.EmpleadoContrato.empConId = 1;
-                    ContratoBO.EmpleadoContrato.conId = Convert.ToInt32(cboConContrato.SelectedValue);
-                    ContratoBO.EmpleadoContrato.patId = Convert.ToInt32(cboConPatrono.SelectedValue);
-                    ContratoBO.EmpleadoContrato.empConRazonSale = (cboConRazon.SelectedValue == null) ? "" : cboConRazon.SelectedValue.ToString();
-                    ContratoBO.EmpleadoContrato.empConFirmRenu = (cboConFirma.SelectedValue == null) ? dbType.intNull : Convert.ToUInt16(cboConFirma.SelectedValue); //Convert.ToInt32(cboConFirma.SelectedValue);
-                    ContratoBO.EmpleadoContrato.empConFecLiqui = DateTime.TryParse(mtxtConFechaLiquidacion.Text, out dbType.dateResult) ? dbType.dateResult : dbType.dateNull;
-                    ContratoBO.EmpleadoContrato.empConFirmLiqui = (cboConFirma.SelectedValue == null) ? dbType.intNull : Convert.ToUInt16(cboConFirma.SelectedValue);//dbType.intNull;//cboConFirma.SelectedValue.ToString();
-                    ContratoBO.EmpleadoContrato.empConFecContrato = Convert.ToDateTime(mtxtConFechaContrato.Text);
-                    ContratoBO.EmpleadoContrato.empConObs = txtConObservacion.Text;
-                    ContratoBO.EmpleadoContrato.conCauId = (cboConCausaFin.SelectedValue == null) ? dbType.intNull : Convert.ToInt32(cboConCausaFin.SelectedValue);
-                    resp = ContratoBO.RegistraContrato(ContratoBO.EmpleadoContrato, tipo);
-                    break;
-                case 2://Datos Laborales
-                    ContratoBO.Laboral.empId = Convert.ToInt64(txtCodigo.Text);
-                    ContratoBO.Laboral.labId = 2;
-                    ContratoBO.Laboral.locId = Convert.ToInt32(cboLabLocal.SelectedValue);
-                    ContratoBO.Laboral.escId = Convert.ToInt32(cboLabCargo.SelectedValue);
-                    ContratoBO.Laboral.labFecCambEsc = Convert.ToDateTime(mtxtLabFecha.Text);
-                    ContratoBO.Laboral.labSueldoBono = 0;
-                    ContratoBO.Laboral.labObs = txtLabObservacion.Text;
-                    ContratoBO.Laboral.labFecReg = DateTime.Now;
-                    ContratoBO.Laboral.labFecMod = null;
-                    ContratoBO.Laboral.labFecObsSis = "";
-                    ContratoBO.Laboral.labEstado = Convert.ToInt32(cboLabEstado.SelectedValue);
-                    ContratoBO.Laboral.labTipoEmp = Convert.ToInt32(cboLabTipoPago.SelectedValue);
-                    ContratoBO.Laboral.labRbu = Convert.ToDecimal(txtLabRBU.Text);
-                    ContratoBO.Laboral.labVest = 0;
-                    ContratoBO.Laboral.labBono = 0;
-                    ContratoBO.Laboral.labQuincena = txtLabQuincena.Text==""? 0 : Convert.ToInt32(txtLabQuincena.Text);
-                    resp = ContratoBO.RegistrarInfoLaboral(ContratoBO.Laboral);
-                    break;
-                case 3://Datos Familiares
-                    data = new DataTable();
-                    dataChange = new DataTable();
-                    data = (DataTable)dgvFamiliar.DataSource;
-                    dataChange = data.GetChanges(DataRowState.Added);
-                    if (dataChange != null)
-                    {
-                        foreach (DataRow row in dataChange.Rows)
-                        {
-                            EmpleadoBO.Familia.empFamNombre = row["EMP_FAM_NOMBRE"].ToString();
-                            EmpleadoBO.Familia.empFamFecNac = Convert.ToDateTime(row["EMP_FAM_FEC_NAC"].ToString());
-                            EmpleadoBO.Familia.empFamParent = row["EMP_FAM_PARENT"].ToString();
-                            EmpleadoBO.Familia.empFamOcup = row["EMP_FAM_OCUP"].ToString();
-                            EmpleadoBO.Familia.empFamTelfRef = row["EMP_FAM_TELF_REF"].ToString();
-                            if (row["EMP_FAM_DISC"].Equals(DBNull.Value))
-                                EmpleadoBO.Familia.empFamDisc = 0;
-                            else
-                                EmpleadoBO.Familia.empFamDisc = Convert.ToInt16(row["EMP_FAM_DISC"].ToString());
-                            EmpleadoBO.Familia.empId = Convert.ToDecimal(txtCodigo.Text);
-                            EmpleadoBO.Familia.empFamId = EmpleadoBO.Familiares(txtCodigo.Text).Rows.Count + 1;
-                            resp = EmpleadoBO.RegistarFamiliar(EmpleadoBO.Familia);
-                        }
-                    }
-                    dataChange = null;
-                    dataChange = data.GetChanges(DataRowState.Modified);
-                    if (dataChange != null)
-                    {
-                        foreach (DataRow row in dataChange.Rows)
-                        {
-                            EmpleadoBO.Familia.empFamNombre = row["EMP_FAM_NOMBRE"].ToString();
-                            EmpleadoBO.Familia.empFamFecNac = Convert.ToDateTime(row["EMP_FAM_FEC_NAC"].ToString());
-                            EmpleadoBO.Familia.empFamParent = row["EMP_FAM_PARENT"].ToString();
-                            EmpleadoBO.Familia.empFamOcup = row["EMP_FAM_OCUP"].ToString();
-                            EmpleadoBO.Familia.empFamTelfRef = row["EMP_FAM_TELF_REF"].ToString();
-                            if (row["EMP_FAM_DISC"].Equals(DBNull.Value))
-                                EmpleadoBO.Familia.empFamDisc = 0;
-                            else
-                                EmpleadoBO.Familia.empFamDisc = Convert.ToInt16(row["EMP_FAM_DISC"].ToString());
-                            EmpleadoBO.Familia.empId = Convert.ToDecimal(txtCodigo.Text);
-                            EmpleadoBO.Familia.empFamId = Convert.ToInt32(row["EMP_FAM_ID"].ToString());
-                            resp = EmpleadoBO.ActualizarFamiliar(EmpleadoBO.Familia);
-                        }
-
-                    }
-
-                    dataChange = null;
-                    dataChange = data.GetChanges(DataRowState.Deleted);
-                    if (dataChange != null)
-                    {
-                        foreach (DataRow row in dataChange.Rows)
-                        {
-                            EmpleadoBO.EliminaFamiliar(txtCodigo.Text, row["EMP_FAM_ID", DataRowVersion.Original].ToString());
-                        }
-                    }
-                    break;
-
-                case 4://Valores Fijos
-                    data = new DataTable();
-                    dataChange = new DataTable();
-                    data = (DataTable)dgvValor.DataSource;
-
-                    dataChange = data.GetChanges(DataRowState.Added);
-                    if (dataChange != null)
-                    {
-                        foreach (DataRow row in dataChange.Rows)
-                        {
-                            ContratoBO.ValorFijo.rolId = Convert.ToInt32(row["ROL_ID"].ToString());
-                            ContratoBO.ValorFijo.fijValor = Convert.ToInt32(row["FIJ_VALOR"].ToString());
-                            ContratoBO.ValorFijo.fijEstado = Convert.ToInt16(row["FIJ_ESTADO"].Equals(DBNull.Value));//(row["FIJ_ESTADO"].Equals(DBNull.Value)) ? 0 : 1;
-                            ContratoBO.ValorFijo.empId = Convert.ToDecimal(txtCodigo.Text);
-                            resp = ContratoBO.RegistrarValorFijo(ContratoBO.ValorFijo);
-                        }
-                    }
-                    dataChange = null;
-                    dataChange = data.GetChanges(DataRowState.Modified);
-                    if (dataChange != null)
-                    {
-                        foreach (DataRow row in dataChange.Rows)
-                        {
-                            ContratoBO.ValorFijo.rolId = Convert.ToInt32(row["ROL_ID"].ToString());
-                            int auxRolID = Convert.ToInt32(row["ROL_ID", DataRowVersion.Original].ToString());
-                            ContratoBO.ValorFijo.fijValor = Convert.ToInt32(row["FIJ_VALOR"].ToString());
-                            //ContratoBO.ValorFijo.fijEstado = Convert.ToInt16(row["FIJ_ESTADO"].ToString());
-                            if (row["FIJ_ESTADO"].Equals(DBNull.Value))
-                                ContratoBO.ValorFijo.fijEstado = 0;
-                            else
-                                ContratoBO.ValorFijo.fijEstado = Convert.ToInt16(row["FIJ_ESTADO"].ToString());
-                            ContratoBO.ValorFijo.empId = Convert.ToDecimal(txtCodigo.Text);
-                            resp = ContratoBO.ActualizarValorFijo(ContratoBO.ValorFijo, auxRolID);
-                        }
-                    }
-
-                    dataChange = null;
-                    dataChange = data.GetChanges(DataRowState.Deleted);
-                    if (dataChange != null)
-                    {
-                        foreach (DataRow row in dataChange.Rows)
-                        {
-                            resp = ContratoBO.EliminaValorFijo(txtCodigo.Text, Convert.ToInt32(row["ROL_ID", DataRowVersion.Original].ToString()));
-                        }
-                    }
-                    break;
-            }
-
             return resp;
         }
 
@@ -1203,14 +1309,16 @@ namespace NominaTCG
 
         private void btnNewSave_Click(object sender, EventArgs e)
         {
-            if (tabInformacion.SelectedIndex != 0 & this.btnNewSave.Text == "&Nuevo")
-                return;
+            //if (tabInformacion.SelectedIndex != 0 & this.btnNewSave.Text == "&Nuevo")
+              //  return;
 
             if (this.btnNewSave.Text == "&Nuevo")
             {
                 StateButton = Acction.New;
                 ClearControls(tabInformacion.SelectedIndex);
                 ActiveControls(true, tabInformacion.SelectedIndex);
+                tabInformacion.SelectedIndex = 0;
+                txtNombre.Focus();
             }
             else
             {
@@ -1251,7 +1359,7 @@ namespace NominaTCG
                                         if (idRecord != 0)
                                         {
                                             EmpNewID = idRecord.ToString();
-                                            idRecord = RegisterData(idRecord.ToString());
+                                            //idRecord = RegisterData(idRecord.ToString());
                                             AssignData(EmpNewID);
                                             StateButton = Acction.Save;
                                             ActiveControls(false, tabInformacion.SelectedIndex);
@@ -1285,20 +1393,24 @@ namespace NominaTCG
                     {
                         idRecord = RegisterData(tabInformacion.SelectedIndex, "U");
                         EmpNewID = txtCodigo.Text;
-                    }
-
-                    if (idRecord.Equals(0))
-                    {
-                        Utility.MensajeError("¡Error! al registrar la información");
-                        return;
-                    }
-                    else
-                    {
                         AssignData(EmpNewID);
                         StateButton = Acction.Save;
                         ActiveControls(false, tabInformacion.SelectedIndex);
                         Utility.MensajeInfo("Registro Exitoso!!");
                     }
+
+                    //if (idRecord.Equals(0))
+                    //{
+                    //    Utility.MensajeError("¡Error! al registrar la información");
+                    //    return;
+                    //}
+                    //else
+                    //{
+                    //    AssignData(EmpNewID);
+                    //    StateButton = Acction.Save;
+                    //    ActiveControls(false, tabInformacion.SelectedIndex);
+                    //    Utility.MensajeInfo("Registro Exitoso!!");
+                    //}
                 }
                 else
                     return;
@@ -1508,13 +1620,6 @@ namespace NominaTCG
             }
         }
 
-        private void dgvValor_CurrentCellDirtyStateChanged(object sender, EventArgs e)
-        {
-            if (dgvValor.IsCurrentCellDirty)
-            {
-                dgvValor.CommitEdit(DataGridViewDataErrorContexts.Commit);
-            }
-        }
 
         private void txtPerCedula_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1597,6 +1702,19 @@ namespace NominaTCG
             Utility.OnlyDigit(e);
         }
 
+        private void dgvValor_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            //dgvValor.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            if (dgvValor.IsCurrentCellDirty)
+            {
+                dgvValor.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+            //if (this.dgvValor.IsCurrentCellDirty && this.dgvValor.CurrentCell is DataGridViewCheckBoxCell)
+            //{
+            //    this.dgvValor.EndEdit();
+            //}
+        }
+
         private void dgvValor_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             if (e.ColumnIndex == -1 | e.RowIndex == -1)
@@ -1667,8 +1785,21 @@ namespace NominaTCG
             if (!txtCodigo.Text.Equals(""))
             {
                 frmHuella frm = new frmHuella(txtCodigo.Text);
-                Design.frmDialog(frm, "Captura de Huella: "+txtApellido.Text + " " + txtNombre.Text);
+                Design.frmDialog(frm, "Captura de Huella: " + txtApellido.Text + " " + txtNombre.Text);
             }
+        }
+
+        private void dgvValor_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if (DialogResult.No == Utility.MensajeQuestion("¿Esta seguro de eliminar el registro?"))
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void dgvValor_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            //e.Cancel = true;
         }
     }
 }

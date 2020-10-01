@@ -74,3 +74,55 @@ Stack Trace	: en Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int3
    en System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
    en System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
 ^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 10:33:01
+Time		: 1/10/2020
+Computer	: ALTR
+Error		: ORA-00001: unique constraint (DESARROLLO.PK_DAT_EMP_VAL_FIJO) violated
+Stack Trace	: en Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   en Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   en Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   en DataAccess.ConnectionDDBB.ExecQuery(String query, OracleParameter[] prm) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:línea 450
+   en DataAccess.ContratoRepository.RegistrarValorFijo(DatEmpValFijo valFijo) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:línea 1596
+   en BusinessLogic.ContratoController.RegistrarValorFijo(DatEmpValFijo valFijo) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:línea 298
+   en NominaTCG.frmEmpleado.UpdateDataEmp(Int64 resp, DataTable& data, DataTable& dataChange) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Administracion\Empleado\frmEmpleado.cs:línea 1118
+   en NominaTCG.frmEmpleado.RegisterData(Int32 tabID, String tipo) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Administracion\Empleado\frmEmpleado.cs:línea 959
+   en NominaTCG.frmEmpleado.btnNewSave_Click(Object sender, EventArgs e) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Administracion\Empleado\frmEmpleado.cs:línea 1378
+   en System.Windows.Forms.Control.OnClick(EventArgs e)
+   en System.Windows.Forms.Button.OnClick(EventArgs e)
+   en System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   en System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   en System.Windows.Forms.Control.WndProc(Message& m)
+   en System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   en System.Windows.Forms.Button.WndProc(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   en System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 11:33:27
+Time		: 1/10/2020
+Computer	: ALTR
+Error		: ORA-02292: integrity constraint (DESARROLLO.FK_DAT_CAB_VAC_EMP_ID) violated - child record found
+ORA-06512: at "DESARROLLO.P_ELIMINA_EMP", line 10
+ORA-06512: at line 1
+Stack Trace	: en Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   en Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   en Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   en DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:línea 411
+   en DataAccess.EmpleadoRepository.DeleteEmpleado(String empID) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\EmpleadoRepository.cs:línea 719
+   en BusinessLogic.EmpleadoController.DeleteEmpleado(String empID) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\EmpleadoController.cs:línea 121
+   en NominaTCG.frmEmpleado.btnDelete_Click(Object sender, EventArgs e)
+   en System.Windows.Forms.Control.OnClick(EventArgs e)
+   en System.Windows.Forms.Button.OnClick(EventArgs e)
+   en System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   en System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   en System.Windows.Forms.Control.WndProc(Message& m)
+   en System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   en System.Windows.Forms.Button.WndProc(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   en System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
