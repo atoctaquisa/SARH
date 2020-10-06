@@ -251,7 +251,7 @@ namespace NominaTCG
             cboPerEducacion.Enabled = stateControl;
             //txtPerFechaSalidaR.Enabled = stateControl;
             //mtxtFechaSalida.Enabled = stateControl;
-            btnReingreso.Enabled = stateControl;
+            //btnReingreso.Enabled = stateControl;
             //Datos Contrato
             mtxtConFechaLiquidacion.Enabled = stateControl;
             mtxtConFechaContrato.Enabled = stateControl;
@@ -352,7 +352,6 @@ namespace NominaTCG
                 ((DataTable)dgvValor.DataSource).Rows.Clear();
             ErrProv.Clear();
         }
-
 
         private bool ValidateControls(int tabID)
         {
@@ -1053,12 +1052,12 @@ namespace NominaTCG
             //        break;               
             //}
 
-            return resp;
+            return codigoEMP; //resp;
         }
 
         private long UpdateDataEmp(long codigoEMP, out DataTable data, out DataTable dataChange)
         {
-            long resp=0;
+            long resp = 0;
             data = new DataTable();
             dataChange = new DataTable();
             data = (DataTable)dgvFamiliar.DataSource;
@@ -1257,6 +1256,12 @@ namespace NominaTCG
             LoadControls();
         }
 
+        private void CorrerProceso()
+        {
+            //Hacer que se tarde 10000 milisegundos (10 segundos) 
+            Thread.Sleep(10000);
+            MessageBox.Show("Proceso finalizado");
+        }
 
         #endregion
 
@@ -1281,12 +1286,6 @@ namespace NominaTCG
             Design.frmDialog(frm, "Discapacitación");
         }
 
-        private void CorrerProceso()
-        {
-            //Hacer que se tarde 10000 milisegundos (10 segundos) 
-            Thread.Sleep(10000);
-            MessageBox.Show("Proceso finalizado");
-        }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -1310,7 +1309,7 @@ namespace NominaTCG
         private void btnNewSave_Click(object sender, EventArgs e)
         {
             //if (tabInformacion.SelectedIndex != 0 & this.btnNewSave.Text == "&Nuevo")
-              //  return;
+            //  return;
 
             if (this.btnNewSave.Text == "&Nuevo")
             {
@@ -1496,71 +1495,123 @@ namespace NominaTCG
         {
             if (!txtCodigo.Text.Equals(string.Empty))
             {
-                if (DialogResult.Yes == Utility.MensajeQuestion("¿Desea registrar como reingreso al empleado?"))
+                DataTable data = new DataTable();
+                string empID = txtCodigo.Text;
+                data = EmpleadoBO.ListaEmpleado(empID);
+                if (data.Rows.Count > 0)
                 {
-                    DataTable data = new DataTable();
-                    string empID = txtCodigo.Text;
-                    data = EmpleadoBO.ListaEmpleado(empID);
-                    if (data.Rows.Count > 0)
+                    if (Utility.isDate(data.Rows[0]["EMP_FEC_SALIDAREAL"].ToString()) | Utility.isDate(data.Rows[0]["EMP_FEC_SALIDA"].ToString()))
                     {
 
-                        if (Utility.isDate(data.Rows[0]["EMP_FEC_SALIDAREAL"].ToString()) | Utility.isDate(data.Rows[0]["EMP_FEC_SALIDA"].ToString()))
+                        if (btnReingreso.Text == "&Reingreso")
                         {
-                            int numIngreso = EmpleadoBO.ValidaEmpleadoEmpresa(txtPerCedula.Text, cboConPatrono.SelectedValue.ToString());
-                            if (numIngreso > 1)
+                            ActiveControls(true, tabInformacion.SelectedIndex);
+                            btnNewSave.Visible = false;
+                            btnEditCancel.Visible = false;
+                            //Datos Contrato            
+                            mtxtConFechaContrato.Text = string.Empty;
+                            mtxtConFechaLiquidacion.Text = string.Empty;
+                            cboConRazon.SelectedValue = -1;
+                            cboConFirma.SelectedValue = -1;
+                            cboConCausaFin.SelectedValue = -1;
+                            txtConObservacion.Text = string.Empty;
+                            cboConContrato.SelectedValue = -1;
+                            cboConPatrono.SelectedValue = -1;
+                            txtConFechaIng.Text = string.Empty;
+                            txtConFechaMod.Text = string.Empty;
+                            //Datos Laborales
+                            mtxtLabFecha.Text = string.Empty;
+                            cboLabLocal.SelectedIndex = -1;
+                            cboLabCargo.SelectedIndex = -1;
+                            cboLabEstado.SelectedIndex = -1;
+                            cboLabTipoPago.SelectedIndex = -1;
+                            txtLabRBU.Text = string.Empty;
+                            txtLabQuincena.Text = string.Empty;
+                            txtLabObservacion.Text = string.Empty;
+                            txtLabObservacionSis.Text = string.Empty;
+                            txtLabFechaReg.Text = string.Empty;
+                            txtLabFechaMod.Text = string.Empty;
+                            btnReingreso.Text = "&Aceptar";
+                            this.btnReingreso.ImageIndex = 21;
+                        }
+                        else
+                        {
+                            if (ValidateControls(tabInformacion.SelectedIndex))
                             {
-                                Utility.MensajeError("No es posible registrar al empleado, ya tiene " + numIngreso.ToString() + " reingresos en la misma empresa!!");
-                                return;
-                            }
-                            else
-                            {
-                                if (EmpleadoBO.ValidaEmpleadoActivo(txtPerCedula.Text, cboConPatrono.SelectedValue.ToString()).Equals(0))
+                                int numIngreso = EmpleadoBO.ValidaEmpleadoEmpresa(txtPerCedula.Text, cboConPatrono.SelectedValue.ToString());
+                                if (numIngreso > 1)
                                 {
-                                    EmpNewID = string.Empty;
-                                    if (ValidateControls(tabInformacion.SelectedIndex))
-                                    {
-                                        Int64 idRecord = 0;
-                                        idRecord = RegisterReEntry(idRecord.ToString());
-                                        EmpNewID = idRecord.ToString();
-                                        //idRecord = RegisterData(0, "I");
-                                        //if (idRecord != 0)
-                                        //{
-                                        //    EmpNewID = idRecord.ToString();
-                                        //    idRecord = RegisterReEntry(idRecord.ToString());
-                                        //}
-
-                                        if (idRecord.Equals(0))
-                                        {
-                                            Utility.MensajeError("¡Error! al registrar la información");
-                                            return;
-                                        }
-                                        else
-                                        {
-                                            ClearControls(tabInformacion.SelectedIndex);
-                                            AssignData(EmpNewID);
-                                            EmpleadoBO.RegistraReingreso(data.Rows[0]["EMP_CI"].ToString(), EmpNewID, empID, Catalogo.UserName);
-                                            StateButton = Acction.Save;
-                                            ActiveControls(false, tabInformacion.SelectedIndex);
-                                            Design.Controls(this.btnNewSave, this.btnEditCancel, this.btnDelete);
-                                            Utility.MensajeOK("El reingreso fue exitoso el código asignado es: " + EmpNewID);
-                                        }
-                                    }
+                                    Utility.MensajeError("No es posible registrar al empleado, ya tiene " + numIngreso.ToString() + " reingresos en la misma empresa!!");
+                                    return;
                                 }
                                 else
                                 {
-                                    Utility.MensajeError("¡Error! El empleado ya se encuentra registrado en estado activo");
+                                    if (EmpleadoBO.ValidaEmpleadoActivo(txtPerCedula.Text, cboConPatrono.SelectedValue.ToString()).Equals(0))
+                                    {
+                                        EmpNewID = string.Empty;
+
+                                        if (ValidateControls(tabInformacion.SelectedIndex))
+                                        {
+                                            //Int64 idRecord = 0;
+                                            //idRecord = RegisterReEntry(idRecord.ToString());
+                                            //EmpNewID = idRecord.ToString();                                       
+
+                                            //if (idRecord.Equals(0))
+                                            //{
+                                            //    Utility.MensajeError("¡Error! al registrar la información");
+                                            //    return;
+                                            //}
+                                            //else
+                                            //{
+                                            //    ClearControls(tabInformacion.SelectedIndex);
+                                            //    AssignData(EmpNewID);
+                                            //    EmpleadoBO.RegistraReingreso(data.Rows[0]["EMP_CI"].ToString(), EmpNewID, empID, Catalogo.UserName);
+                                            //    StateButton = Acction.Save;
+                                            //    ActiveControls(false, tabInformacion.SelectedIndex);
+                                            //    Design.Controls(this.btnNewSave, this.btnEditCancel, this.btnDelete);
+                                            //    Utility.MensajeOK("El reingreso fue exitoso el código asignado es: " + EmpNewID);
+                                            //}
+                                            if (DialogResult.Yes == Utility.MensajeQuestion("¿Desea registrar el reingreso del empleado?"))
+                                            {
+                                                EmpNewID = RegisterData(0, "I").ToString();
+                                                EmpleadoBO.RegistraReingreso(data.Rows[0]["EMP_CI"].ToString(), EmpNewID, empID, Catalogo.UserName);
+                                                ClearControls(tabInformacion.SelectedIndex);
+                                                //StateButton = Acction.Save;
+                                                AssignData(EmpNewID);
+                                                //btnNewSave.Visible = true;
+                                                //btnEditCancel.Visible = true;
+                                                //ActiveControls(false, tabInformacion.SelectedIndex);
+                                                //Design.Controls(this.btnNewSave, this.btnEditCancel, this.btnDelete);
+                                                Utility.MensajeOK("El reingreso fue exitoso el código asignado es: " + EmpNewID);
+                                            }
+                                            else
+                                            {
+                                                AssignData(txtCodigo.Text);
+                                            }
+                                            btnReingreso.Text = "&Reingreso";
+                                            this.btnReingreso.ImageIndex = 18;
+                                            ActiveControls(false, tabInformacion.SelectedIndex);
+                                            btnNewSave.Visible = true;
+                                            btnEditCancel.Visible = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Utility.MensajeError("¡Error! El empleado ya se encuentra registrado en estado activo");
+                                    }
                                 }
                             }
-
                         }
-                        else
-                            ErrProv.SetError(txtCodigo, "El empleado debe tener una fecha de salida o liquidación de la empresa..!!");
+
                     }
                     else
-                    {
-                        Utility.MensajeInfo("Seleccione primero un empleado.!!");
-                    }
+                        ErrProv.SetError(txtCodigo, "El empleado debe tener una fecha de salida o liquidación de la empresa..!!");
                 }
+                else
+                {
+                    Utility.MensajeInfo("Seleccione primero un empleado.!!");
+                }
+
             }
 
         }
@@ -1694,12 +1745,12 @@ namespace NominaTCG
 
         private void txtLabRBU_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Utility.OnlyDigit(e);
+            Utility.OnlyQuantity(sender, e);
         }
 
         private void txtLabQuincena_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Utility.OnlyDigit(e);
+            Utility.OnlyQuantity(sender, e);
         }
 
         private void dgvValor_CurrentCellDirtyStateChanged(object sender, EventArgs e)

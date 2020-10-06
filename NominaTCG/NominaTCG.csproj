@@ -128,6 +128,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContabilidadD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContabilidadD.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="frmAsiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -533,6 +539,10 @@
     <Compile Include="usrControlBD.Designer.cs">
       <DependentUpon>usrControlBD.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ContabilidadD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ContabilidadD.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAsiento.resx">
       <DependentUpon>frmAsiento.cs</DependentUpon>
     </EmbeddedResource>

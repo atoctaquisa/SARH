@@ -68,9 +68,9 @@ namespace BusinessLogic
         {
             return ReportDataDA.PagoQuincena(rolID, reproID, patrono, local, empID);
         }
-        public DataTable DetalleContabilidad(string rolID, string reproID)
+        public DataTable DetalleContabilidad(string rolID, string reproID, string tipoRep)
         {
-            return ReportDataDA.DetalleContabilidad(rolID, reproID);
+            return ReportDataDA.DetalleContabilidad(rolID, reproID, tipoRep);
         }
     }
 }

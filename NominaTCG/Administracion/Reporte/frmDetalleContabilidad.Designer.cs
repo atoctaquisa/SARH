@@ -54,6 +54,7 @@
             this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
             this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
             this.imgList = new System.Windows.Forms.ImageList(this.components);
+            this.cboTipo = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -153,7 +154,7 @@
             // 
             // txtRol
             // 
-            this.txtRol.Location = new System.Drawing.Point(166, 40);
+            this.txtRol.Location = new System.Drawing.Point(166, 28);
             this.txtRol.MaxLength = 50;
             this.txtRol.Name = "txtRol";
             this.txtRol.ReadOnly = true;
@@ -166,7 +167,7 @@
             // 
             // txtFechaFin
             // 
-            this.txtFechaFin.Location = new System.Drawing.Point(166, 103);
+            this.txtFechaFin.Location = new System.Drawing.Point(166, 91);
             this.txtFechaFin.MaxLength = 150;
             this.txtFechaFin.Name = "txtFechaFin";
             this.txtFechaFin.ReadOnly = true;
@@ -176,7 +177,7 @@
             // Label4
             // 
             this.Label4.AutoSize = true;
-            this.Label4.Location = new System.Drawing.Point(88, 107);
+            this.Label4.Location = new System.Drawing.Point(88, 95);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(54, 13);
             this.Label4.TabIndex = 8;
@@ -184,7 +185,7 @@
             // 
             // txtFechaIni
             // 
-            this.txtFechaIni.Location = new System.Drawing.Point(166, 82);
+            this.txtFechaIni.Location = new System.Drawing.Point(166, 70);
             this.txtFechaIni.MaxLength = 13;
             this.txtFechaIni.Name = "txtFechaIni";
             this.txtFechaIni.ReadOnly = true;
@@ -193,7 +194,7 @@
             // 
             // txtReproceso
             // 
-            this.txtReproceso.Location = new System.Drawing.Point(166, 61);
+            this.txtReproceso.Location = new System.Drawing.Point(166, 49);
             this.txtReproceso.MaxLength = 100;
             this.txtReproceso.Name = "txtReproceso";
             this.txtReproceso.ReadOnly = true;
@@ -215,6 +216,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cboTipo);
             this.groupBox3.Controls.Add(this.txtRol);
             this.groupBox3.Controls.Add(this.txtFechaFin);
             this.groupBox3.Controls.Add(this.btnSearchRol);
@@ -235,7 +237,7 @@
             // 
             this.btnSearchRol.ImageIndex = 5;
             this.btnSearchRol.ImageList = this.imageList1;
-            this.btnSearchRol.Location = new System.Drawing.Point(288, 39);
+            this.btnSearchRol.Location = new System.Drawing.Point(288, 27);
             this.btnSearchRol.Name = "btnSearchRol";
             this.btnSearchRol.Size = new System.Drawing.Size(31, 23);
             this.btnSearchRol.TabIndex = 35;
@@ -245,7 +247,7 @@
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.Location = new System.Drawing.Point(88, 86);
+            this.Label3.Location = new System.Drawing.Point(88, 74);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(65, 13);
             this.Label3.TabIndex = 7;
@@ -254,7 +256,7 @@
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(88, 43);
+            this.Label1.Location = new System.Drawing.Point(88, 31);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(23, 13);
             this.Label1.TabIndex = 11;
@@ -263,7 +265,7 @@
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(88, 65);
+            this.Label2.Location = new System.Drawing.Point(88, 53);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(59, 13);
             this.Label2.TabIndex = 6;
@@ -317,6 +319,17 @@
             this.imgList.Images.SetKeyName(16, "btnNext.png");
             this.imgList.Images.SetKeyName(17, "btnPrevious.png");
             // 
+            // cboTipo
+            // 
+            this.cboTipo.FormattingEnabled = true;
+            this.cboTipo.Items.AddRange(new object[] {
+            "Consolidado",
+            "Detallado"});
+            this.cboTipo.Location = new System.Drawing.Point(166, 111);
+            this.cboTipo.Name = "cboTipo";
+            this.cboTipo.Size = new System.Drawing.Size(121, 21);
+            this.cboTipo.TabIndex = 36;
+            // 
             // frmDetalleContabilidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,5 +376,6 @@
         private System.Windows.Forms.ToolTip ttMessage;
         private System.Windows.Forms.ErrorProvider ErrProv;
         private System.Windows.Forms.ImageList imgList;
+        private System.Windows.Forms.ComboBox cboTipo;
     }
 }

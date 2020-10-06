@@ -102,12 +102,27 @@ namespace DataAccess
                                                  ";
         private string sqlDetalleContabilidad = @"SELECT 
                                                ROL_LOCAL, ROL_DIAS, ROL_NOMBRE, 
-                                               ROL_CUENTA_IMP, ROL_VALOR, ROL_ORD, 
+                                               ROL_CUENTA_IMP, TRUNC (ROL_VALOR,4)ROL_VALOR, ROL_ORD, 
                                                ROL_ID_IMP, EMP_ID, ROL_ID_GEN, 
                                                ROL_REPRO, PATRONO, ROL_PAGADO, 
                                                LOC_CIUDAD, CARGO, PERIODO, 
                                                ESTADO, GRUPO, ESC_ID
                                             FROM DESARROLLO.DAT_IMP_ROL_EXC WHERE ROL_ID_GEN=:ROL_ID_GEN AND ROL_REPRO=:ROL_REPRO";
+
+        private string sqlDetalleContabilidadC = @"SELECT PATRONO, ROL_CUENTA_IMP, ROL_ORD, ROL_ID_IMP, trunc(Sum(ROL_VALOR), 4) as valor
+                                                     FROM DESARROLLO.DAT_IMP_ROL_EXC
+                                                     where  ROL_ID_GEN=:ROL_ID_GEN AND ROL_REPRO=:ROL_REPRO 
+                                                     GROUP BY PATRONO, ROL_CUENTA_IMP, ROL_ORD, ROL_ID_IMP
+                                                ORDER BY ROL_ORD,ROL_ID_IMP";
+
+        private string sqlDetalleContabilidadD = @"SELECT LOC_CIUDAD,ROL_LOCAL,ROL_NOMBRE,ROL_DIAS,ROL_CUENTA_IMP,TRUNC(ROL_VALOR,4)ROL_VALOR, ROL_ORD, ROL_ID_IMP,EMP_ID,
+		ROL_ID_GEN,ROL_REPRO,PATRONO,DECODE(ROL_PAGADO,1,'PAGADO',0,'NO PAGADO',3,'PAGO CHEQUE') AS ROL_PAGADO,CARGO,ESTADO,GRUPO
+		FROM DESARROLLO.DAT_IMP_ROL_EXC
+		WHERE ROL_DIAS>=0 AND ROL_ID_GEN=:ROL_ID_GEN AND ROL_REPRO=:ROL_REPRO 
+		ORDER BY ROL_PAGADO DESC,ROL_LOCAL,ROL_NOMBRE ASC,PATRONO,ROL_ORD ASC,ROL_CUENTA_IMP";
+
+        private string sqlReporteDetalleSueldo = "DESARROLLO.P_IMP_SUELDO_CONS_CONTA_DET";
+        private string sqlReporteDetalleSueldoExel = "DESARROLLO.P_IMP_ROL_EXCEL";
 
         private string sqlSueldoQuincena = "DESARROLLO.P_GEN_CUEN_SUELDO";
         private string sqlSueldoQuincenaTotal = "DESARROLLO.P_GEN_CUEN_SUELDO_TOT";
@@ -125,8 +140,8 @@ namespace DataAccess
         }
         public DataTable SolicitudVacacion(string empID, string vacID)
         {
-            OracleParameter[] prm = new OracleParameter[] 
-            { 
+            OracleParameter[] prm = new OracleParameter[]
+            {
                 new OracleParameter(":EMP_ID",empID ),
                 new OracleParameter(":SOLVAC_ID",vacID)
             };
@@ -140,7 +155,7 @@ namespace DataAccess
 
             };
             //return db.GetData(sqlSolicitudVacacion, prm);
-            return db.GetData(sqlLiquidacion,prm);
+            return db.GetData(sqlLiquidacion, prm);
         }
         public DataSet LiquidacionParamReport(string empID, string perID, string reproID)
         {
@@ -160,9 +175,9 @@ namespace DataAccess
                     new OracleParameter(":EMP_ID", empID),
                     new OracleParameter(":PER_ID", perID),
                     new OracleParameter(":PERC_ID", reproID)
-                    
+
                 };
-            
+
             data = db.GetData(sqlVestimenta, prm).Copy();
             data.TableName = "Vestimenta";
             content.Tables.Add(data);
@@ -189,18 +204,35 @@ namespace DataAccess
             db.ExecProcedure(sqlLiquidacionReport, prm);
             return db.GetData(sqlLiquidacionDT);
         }
-        public DataTable DetalleContabilidad(string rolID, string reproID)
+        public DataTable DetalleContabilidad(string rolID, string reproID, string tipoRep)
         {
-            OracleParameter[] prm = new OracleParameter[] 
-            { 
+            OracleParameter[] prm = new OracleParameter[]
+         {
+                new OracleParameter(":ROL_ID_GEN",rolID ),
+                new OracleParameter(":ROL_REPRO",reproID ),
+                new OracleParameter(":OP",1 )
+         };
+
+            db.ExecProcedure(sqlReporteDetalleSueldo, prm);
+            db.ExecProcedure(sqlReporteDetalleSueldoExel, prm);
+
+            prm = new OracleParameter[]
+           {
                 new OracleParameter(":ROL_ID_GEN",rolID ),
                 new OracleParameter(":ROL_REPRO",reproID )
-            };
-            return db.GetData(sqlDetalleContabilidad,prm);
+           };
+            string sql;
+            if (tipoRep.Equals("Consolidado"))
+                sql = sqlDetalleContabilidadC;
+            else
+                sql = sqlDetalleContabilidadD;
+
+
+            return db.GetData(sqlDetalleContabilidad, prm);
         }
         public DataTable PagoQuincena(string rolID, string reproID, string patrono, string local, string empID)
         {
-            
+
             OracleParameter[] prm = new OracleParameter[]
             {
                 new OracleParameter(":EMP_ID","200402001" ),
@@ -222,19 +254,19 @@ namespace DataAccess
             };
             db.ExecProcedure(sqlSueldoQuincenaGlobal, prm);
 
-            prm = new OracleParameter[] 
-            { 
+            prm = new OracleParameter[]
+            {
                 new OracleParameter(":ROL_ID_GEN",rolID ),
                 new OracleParameter(":PAT_ID",patrono ),
                 new OracleParameter(":LOC_ID",local.Equals("0")?"": local),
                 new OracleParameter(":EMP_CI",empID.Equals("0")?"": empID )
             };
-            return db.GetData(sqlPagoQuincena,prm);
+            return db.GetData(sqlPagoQuincena, prm);
         }
         public DataTable RolIndividual(string rolID, string reproID, string empID, string localID, string cadenaID)
         {
-            OracleParameter[] prm = new OracleParameter[] 
-            { 
+            OracleParameter[] prm = new OracleParameter[]
+            {
                 new OracleParameter(":rolID",rolID ),
                 new OracleParameter(":reproID",reproID ),
                 new OracleParameter(":empID",empID.Equals("0")?"": empID ),
