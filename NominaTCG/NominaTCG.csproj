@@ -316,6 +316,12 @@
     <Compile Include="Administracion\Reporte\frmActuarial.Designer.cs">
       <DependentUpon>frmActuarial.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProgress.Designer.cs">
+      <DependentUpon>frmProgress.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -629,6 +635,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administracion\Nomina\frmTransferenciaBanco.resx">
       <DependentUpon>frmTransferenciaBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProgress.resx">
+      <DependentUpon>frmProgress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmView.resx">
       <DependentUpon>frmView.cs</DependentUpon>

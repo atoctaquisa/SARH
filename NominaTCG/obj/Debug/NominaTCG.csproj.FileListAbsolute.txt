@@ -367,3 +367,4 @@ C:\Users\Alvaro\source\repos\NominaTCG\NominaTCG\obj\Debug\NominaTCG.exe
 C:\Users\Alvaro\source\repos\NominaTCG\NominaTCG\obj\Debug\NominaTCG.pdb
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmView.resources
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmHuella.resources
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmProgress.resources

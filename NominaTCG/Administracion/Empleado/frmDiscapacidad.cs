@@ -171,17 +171,24 @@ namespace NominaTCG
 
         private void dgvDatos_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            dgvDatos.Rows[e.RowIndex].ErrorText = string.Empty;
+            //dgvDatos.Rows[e.RowIndex].ErrorText = string.Empty;
+            int index = dgvDatos.CurrentCell.ColumnIndex;
+            if (dgvDatos.Columns[index].Name == "NUM" | dgvDatos.Columns[index].Name == "PRCT")
+            {
+                dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
+            }
         }
 
+        DataGridViewTextBoxEditingControl dText;
         private void dgvDatos_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             int index = dgvDatos.CurrentCell.ColumnIndex;
             if (dgvDatos.Columns[index].Name == "NUM" | dgvDatos.Columns[index].Name == "PRCT")
             {
-                DataGridViewTextBoxEditingControl dText = (DataGridViewTextBoxEditingControl)e.Control;
-                dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
+                dText = (DataGridViewTextBoxEditingControl)e.Control;
+                //dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
                 dText.KeyPress += new KeyPressEventHandler(dText_KeyPress);
+                
             }
         }
 
@@ -189,11 +196,15 @@ namespace NominaTCG
         {
             TextBox txt = (TextBox)sender;
             Utility.OnlyDigit(e);
-            //int index = dgvDatos.CurrentCell.ColumnIndex;
-            //if (dgvDatos.Columns[index].Name == "NUM" | dgvDatos.Columns[index].Name == "PRCT")
-            //{
-                
-            //}
+            ////int index = dgvDatos.CurrentCell.ColumnIndex;
+            ////if (dgvDatos.Columns[index].Name == "NUM" | dgvDatos.Columns[index].Name == "PRCT")
+            ////{
+
+            ////}
+            //if (!(Char.IsNumber(e.KeyChar) || Char.IsControl(e.KeyChar)))
+            //    e.Handled = true;
+            //else
+            //    e.Handled = false;
         }
     }
 }

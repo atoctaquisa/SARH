@@ -56,6 +56,9 @@ namespace NominaTCG
             frmAccesoClave frm = new frmAccesoClave();
             frm.ShowDialog();
             tssUsuario.Text = "Usuario: " + Catalogo.UserName;
+            tssPerfil.Text = "Perfil: " + Catalogo.UserProfile;
+            toolVs.Text = "vs: "+System.IO.File.GetLastWriteTime(Application.ExecutablePath).ToShortDateString().Replace("/",".");
+            toolServer.Text = Catalogo.ServerData;
         }       
         #endregion
 
@@ -361,7 +364,7 @@ namespace NominaTCG
 
         private void mnuPrestamos_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://192.168.1.116:9502/analytics/saw.dll?bipublisherEntry&Action=open&itemType=.xdo&bipPath=%2FInformes%20Recursos%20Humanos%2FProvisiones.xdo&path=%2Fshared%2FInformes%20Recursos%20Humanos%2FProvisiones.xdo");
+            System.Diagnostics.Process.Start("http://192.168.1.116:9502/analytics/saw.dll?bipublisherEntry&Action=edit&itemType=.xdo&bipPath=%2FInformes%20Recursos%20Humanos%2FPrestamos.xdo&path=%2Fshared%2FInformes%20Recursos%20Humanos%2FPrestamos.xdo");
         }
 
         private void mnuRolNegativo_Click(object sender, EventArgs e)
@@ -372,6 +375,11 @@ namespace NominaTCG
         private void mnuIngresoEgreso_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("http://192.168.1.116:9502/analytics/saw.dll?bipublisherEntry&Action=open&itemType=.xdo&bipPath=%2FInformes%20Recursos%20Humanos%2FIngresoEgresoEmpleado.xdo&path=%2Fshared%2FInformes%20Recursos%20Humanos%2FIngresoEgresoEmpleado.xdo");
+        }
+
+        private void mnuSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

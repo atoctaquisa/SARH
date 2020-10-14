@@ -24,6 +24,10 @@ namespace BusinessLogic
         #endregion
 
         #region Methods
+        public string ServerData()
+        {
+            return SistemaAD.ServerData();
+        }
         public int RegistraHuella(string empID, string idHuella, string obsID)
         {
             return SistemaAD.RegistraHuella(empID, idHuella, obsID);
@@ -158,45 +162,91 @@ namespace BusinessLogic
             if (!char.IsLetter(argu.KeyChar) && !char.IsControl(argu.KeyChar) && !char.IsWhiteSpace(argu.KeyChar))
                 argu.Handled = true;
         }
-        public static bool IsValidEmail(string strIn)
-        {
-            bool invalid = false;
 
-            if (String.IsNullOrEmpty(strIn))
+        public static bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
                 return false;
 
-            // Use IdnMapping class to convert Unicode domain names.
-            strIn = System.Text.RegularExpressions.Regex.Replace(strIn, @"(@)(.+)$", DomainMapper);
-            if (invalid)
-                return false;
-
-            // Return true if strIn is in valid e-mail format.
-            return System.Text.RegularExpressions.Regex.IsMatch(strIn,
-                   @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
-                @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
-                   System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-        }
-
-        private static string DomainMapper(Match match)
-        {
-            // IdnMapping class with default property values.
-            IdnMapping idn = new IdnMapping();
-
-            string domainName = match.Groups[2].Value;
             try
             {
-                domainName = idn.GetAscii(domainName);
+                // Normalize the domain
+                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+
+                // Examines the domain part of the email and normalizes it.
+                string DomainMapper(Match match)
+                {
+                    // Use IdnMapping class to convert Unicode domain names.
+                    var idn = new IdnMapping();
+
+                    // Pull out and process domain name (throws ArgumentException on invalid)
+                    string domainName = idn.GetAscii(match.Groups[2].Value);
+
+                    return match.Groups[1].Value + domainName;
+                }
             }
-            catch (ArgumentException ex)
+            catch (RegexMatchTimeoutException e)
             {
-                Console.WriteLine("Error occured:" + ex.Message);
+                return false;
             }
-            catch (Exception ex2)
+            catch (ArgumentException e)
             {
-                Console.WriteLine("Error occured:" + ex2.Message);
+                return false;
             }
-            return match.Groups[1].Value + domainName;
+
+            try
+            {
+                return Regex.IsMatch(email,
+                    @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
         }
+
+
+        //public static bool IsValidEmail(string strIn)
+        //{
+        //    bool invalid = false;
+
+        //    if (String.IsNullOrEmpty(strIn))
+        //        return false;
+
+        //    // Use IdnMapping class to convert Unicode domain names.
+        //    strIn = System.Text.RegularExpressions.Regex.Replace(strIn, @"(@)(.+)$", DomainMapper);
+        //    if (invalid)
+        //        return false;
+
+        //    // Return true if strIn is in valid e-mail format.
+        //    return System.Text.RegularExpressions.Regex.IsMatch(strIn,
+        //           @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+        //        @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+        //           System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        //}
+
+        //private static string DomainMapper(Match match)
+        //{
+        //    // IdnMapping class with default property values.
+        //    IdnMapping idn = new IdnMapping();
+
+        //    string domainName = match.Groups[2].Value;
+        //    try
+        //    {
+        //        domainName = idn.GetAscii(domainName);
+        //    }
+        //    catch (ArgumentException ex)
+        //    {
+        //        Console.WriteLine("Error occured:" + ex.Message);
+        //    }
+        //    catch (Exception ex2)
+        //    {
+        //        Console.WriteLine("Error occured:" + ex2.Message);
+        //    }
+        //    return match.Groups[1].Value + domainName;
+        //}
         public static void OnlyDigit(KeyPressEventArgs argu)
         {
             if (!(Char.IsNumber(argu.KeyChar) || Char.IsControl(argu.KeyChar)))

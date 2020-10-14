@@ -228,7 +228,7 @@ namespace NominaTCG
             cboPerFondoReserva.Enabled = stateControl;
             txtPerCuentaBanco.Enabled = stateControl;
             cboPerTipoCuenta.Enabled = stateControl;
-            cboPerDiscapacidad.Enabled = stateControl;
+            //cboPerDiscapacidad.Enabled = stateControl;
             txtPerNumIdentificacion.Enabled = stateControl;
             txtPerCorreo.Enabled = stateControl;
             txtPerCorreoPer.Enabled = stateControl;
@@ -290,7 +290,7 @@ namespace NominaTCG
             txtPerCedula.Text = string.Empty;
             txtPerNumIESS.Text = string.Empty;
             txtPerCuentaBanco.Text = string.Empty;
-            cboPerDiscapacidad.SelectedValue = -1;
+            cboPerDiscapacidad.SelectedValue = 0;
             txtPerCorreo.Text = string.Empty;
             txtPerCorreoPer.Text = string.Empty;
             txtPerPasaporte.Text = string.Empty;
@@ -398,16 +398,16 @@ namespace NominaTCG
                 ErrProv.SetError(cboPerDiscapacidad, sms);
                 cnt++;
             }
-            if (cboPerDiscapacidad.Text.Equals("Si"))
-            {
-                if (txtPerNumIdentificacion.Text == string.Empty)
-                {
-                    ErrProv.SetError(txtPerNumIdentificacion, sms);
-                    cnt++;
-                }
-            }
-            else
-                txtPerNumIdentificacion.Text = string.Empty;
+            //if (cboPerDiscapacidad.Text.Equals("Si"))
+            //{
+            //    if (txtPerNumIdentificacion.Text == string.Empty)
+            //    {
+            //        ErrProv.SetError(txtPerNumIdentificacion, sms);
+            //        cnt++;
+            //    }
+            //}
+            //else
+            //    txtPerNumIdentificacion.Text = string.Empty;
 
             if (txtPerCorreoPer.Text == string.Empty)
             {
@@ -1062,7 +1062,8 @@ namespace NominaTCG
             dataChange = new DataTable();
             data = (DataTable)dgvFamiliar.DataSource;
             dataChange = null;
-            dataChange = data.GetChanges(DataRowState.Deleted);
+            if (data != null)            
+                dataChange = data.GetChanges(DataRowState.Deleted);
             if (dataChange != null)
             {
                 foreach (DataRow row in dataChange.Rows)
@@ -1071,7 +1072,8 @@ namespace NominaTCG
                 }
             }
             dataChange = null;
-            dataChange = data.GetChanges(DataRowState.Added);
+            if (data != null)
+                dataChange = data.GetChanges(DataRowState.Added);
             if (dataChange != null)
             {
                 foreach (DataRow row in dataChange.Rows)
@@ -1091,7 +1093,8 @@ namespace NominaTCG
                 }
             }
             dataChange = null;
-            dataChange = data.GetChanges(DataRowState.Modified);
+            if (data != null)
+                dataChange = data.GetChanges(DataRowState.Modified);
             if (dataChange != null)
             {
                 foreach (DataRow row in dataChange.Rows)
@@ -1118,7 +1121,8 @@ namespace NominaTCG
             dataChange = new DataTable();
             data = (DataTable)dgvValor.DataSource;
             dataChange = null;
-            dataChange = data.GetChanges(DataRowState.Deleted);
+            if (data != null)
+                dataChange = data.GetChanges(DataRowState.Deleted);
             if (dataChange != null)
             {
                 foreach (DataRow row in dataChange.Rows)
@@ -1127,7 +1131,8 @@ namespace NominaTCG
                 }
             }
             dataChange = null;
-            dataChange = data.GetChanges(DataRowState.Added);
+            if (data != null)
+                dataChange = data.GetChanges(DataRowState.Added);
             if (dataChange != null)
             {
                 foreach (DataRow row in dataChange.Rows)
@@ -1144,7 +1149,8 @@ namespace NominaTCG
                 }
             }
             dataChange = null;
-            dataChange = data.GetChanges(DataRowState.Modified);
+            if (data != null)
+                dataChange = data.GetChanges(DataRowState.Modified);
             if (dataChange != null)
             {
                 foreach (DataRow row in dataChange.Rows)
@@ -1443,20 +1449,20 @@ namespace NominaTCG
 
         private void cboPerDiscapacidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (StateButton == Acction.Edit | StateButton == Acction.New)
-            {
-                if (cboConCausaFin.DataSource == null)
-                    return;
-                if (Convert.ToInt32(cboPerDiscapacidad.SelectedValue) == 1)
-                {
-                    frmDiscapacidad frm = new frmDiscapacidad(txtCodigo.Text);
-                    frm.ShowDialog();
-                }
-                else
-                {
-                    txtPerNumIdentificacion.Text = string.Empty;
-                }
-            }
+            //if (StateButton == Acction.Edit | StateButton == Acction.New)
+            //{
+            //    if (cboConCausaFin.DataSource == null)
+            //        return;
+            //    if (Convert.ToInt32(cboPerDiscapacidad.SelectedValue) == 1)
+            //    {
+            //        frmDiscapacidad frm = new frmDiscapacidad(txtCodigo.Text);
+            //        frm.ShowDialog();
+            //    }
+            //    else
+            //    {
+            //        txtPerNumIdentificacion.Text = string.Empty;
+            //    }
+            //}
         }
 
         private void btnNotifica_Click(object sender, EventArgs e)
@@ -1795,8 +1801,14 @@ namespace NominaTCG
         private void dgvValor_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             dgvValor.Rows[e.RowIndex].ErrorText = string.Empty;
+            int index = dgvValor.CurrentCell.ColumnIndex;
+            if (dgvValor.Columns[index].Name == "FIJ_VALOR")
+            {
+                //DataGridViewTextBoxEditingControl 
+                dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
+            }
         }
-
+            DataGridViewTextBoxEditingControl dText;
         private void dgvValor_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             //TextBox txt = (TextBox)e.Control;
@@ -1804,8 +1816,9 @@ namespace NominaTCG
             //txt.KeyPress += new KeyPressEventHandler(dText_KeyPress);           
             if (e.Control.GetType().Name.Equals("DataGridViewTextBoxEditingControl"))
             {
-                DataGridViewTextBoxEditingControl dText = (DataGridViewTextBoxEditingControl)e.Control;
-                dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
+                //DataGridViewTextBoxEditingControl 
+                    dText = (DataGridViewTextBoxEditingControl)e.Control;
+                //dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
                 dText.KeyPress += new KeyPressEventHandler(dText_KeyPress);
             }
         }
@@ -1851,6 +1864,12 @@ namespace NominaTCG
         private void dgvValor_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             //e.Cancel = true;
+        }
+
+        private void frmEmpleado_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == Convert.ToChar(Keys.F5))
+                AssignData(EmpleadoBO.Empleado.empId.ToString());
         }
     }
 }

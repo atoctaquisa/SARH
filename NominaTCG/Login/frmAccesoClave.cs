@@ -33,6 +33,8 @@ namespace NominaTCG
                 Catalogo.UserSystem = SistemaBO.Usuario().Rows[cboUsuario.SelectedIndex]["CODIGO"].ToString();
                 Catalogo.UserName = SistemaBO.Usuario().Rows[cboUsuario.SelectedIndex]["NOMBRE"].ToString();
                 Catalogo.UserRole = SistemaBO.Usuario().Rows[cboUsuario.SelectedIndex]["TPUSCDGO"].ToString();
+                Catalogo.UserProfile = SistemaBO.Usuario().Rows[cboUsuario.SelectedIndex]["TPUSDSCR"].ToString();
+                Catalogo.ServerData = SistemaBO.ServerData();
                 this.Close();
 
             }

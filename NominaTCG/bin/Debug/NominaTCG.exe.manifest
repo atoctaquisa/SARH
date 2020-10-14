@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccesoDato.dll" size="374784">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccesoDato.dll" size="375296">
       <assemblyIdentity name="AccesoDato" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>SENfMhtAvV3dQeH8kOtscED2Lz/yuoDD20YkbIrS6+A=</dsig:DigestValue>
+        <dsig:DigestValue>ykyFY5vdOEdsltV5mvUNjSEJSk3FGHjKQy2tJ+KtjkI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dsFIUEOC5EMksklNAIOQN/6Unj8TKm3JcbiHtjCQdnQ=</dsig:DigestValue>
+        <dsig:DigestValue>EtGWRlc0iX/rvJBowWjp1G3HbV9+wCBQWbZxEBkVXNU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -278,7 +278,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4b9AHvq6ZHS+pA4a1mMs6UXdPqHSK4w60oKHSfVqy5A=</dsig:DigestValue>
+        <dsig:DigestValue>gbK/EgNEZdTxjUOkmu1NoQwHwF5RtcQ215tCsbgVK1o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1195,14 +1195,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NominaTCG.exe" size="2411432">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NominaTCG.exe" size="2497448">
       <assemblyIdentity name="NominaTCG" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>UKP2dF5nIJ+sLF4E8u+/B7ToRIrkjk5IgA/RSIegyqg=</dsig:DigestValue>
+        <dsig:DigestValue>RZ/xTwYIF4xwdaNVLM8tV1qs9/WSKdx77Nkv4STpjHs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

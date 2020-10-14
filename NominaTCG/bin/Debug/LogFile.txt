@@ -1,0 +1,63 @@
+Source		: mscorlib
+Method		: Parse
+Date		: 17:37:17
+Time		: 7/10/2020
+Computer	: ALTR
+Error		: No se puede reconocer la cadena como valor DateTime válido.
+Stack Trace	: en System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   en System.Convert.ToDateTime(String value)
+   en NominaTCG.frmEmpleado.RegisterData(Int32 tabID, String tipo) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Administracion\Empleado\frmEmpleado.cs:línea 953
+   en NominaTCG.frmEmpleado.btnNewSave_Click(Object sender, EventArgs e) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Administracion\Empleado\frmEmpleado.cs:línea 1357
+   en System.Windows.Forms.Control.OnClick(EventArgs e)
+   en System.Windows.Forms.Button.OnClick(EventArgs e)
+   en System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   en System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   en System.Windows.Forms.Control.WndProc(Message& m)
+   en System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   en System.Windows.Forms.Button.WndProc(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   en System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: mscorlib
+Method		: Parse
+Date		: 17:37:30
+Time		: 7/10/2020
+Computer	: ALTR
+Error		: No se puede reconocer la cadena como valor DateTime válido.
+Stack Trace	: en System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   en System.Convert.ToDateTime(String value)
+   en NominaTCG.frmEmpleado.RegisterData(Int32 tabID, String tipo) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Administracion\Empleado\frmEmpleado.cs:línea 953
+   en NominaTCG.frmEmpleado.btnNewSave_Click(Object sender, EventArgs e) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Administracion\Empleado\frmEmpleado.cs:línea 1357
+   en System.Windows.Forms.Control.OnClick(EventArgs e)
+   en System.Windows.Forms.Button.OnClick(EventArgs e)
+   en System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   en System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   en System.Windows.Forms.Control.WndProc(Message& m)
+   en System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   en System.Windows.Forms.Button.WndProc(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   en System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Microsoft.ReportViewer.WinForms
+Method		: EnsureExecutionSession
+Date		: 12:47:12
+Time		: 14/10/2020
+Computer	: ALTR
+Error		: Se ha producido un error durante el procesamiento local de informes.
+Stack Trace	: en Microsoft.Reporting.WinForms.LocalReport.EnsureExecutionSession()
+   en Microsoft.Reporting.WinForms.LocalReport.InternalRender(String format, Boolean allowInternalRenderers, String deviceInfo, PageCountMode pageCountMode, CreateAndRegisterStream createStreamCallback, Warning[]& warnings)
+   en Microsoft.Reporting.WinForms.LocalReport.Render(String format, String deviceInfo, PageCountMode pageCountMode, CreateStreamCallback createStream, Warning[]& warnings)
+   en Microsoft.Reporting.WinForms.LocalReport.Render(String format, String deviceInfo, CreateStreamCallback createStream, Warning[]& warnings)
+   en NominaTCG.PrintReport.Export(LocalReport report) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Design.cs:línea 892
+   en NominaTCG.frmVacacionesSolicitud.dgvDatos_CellClick(Object sender, DataGridViewCellEventArgs e) en C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Administracion\Empleado\frmVacacionesSolicitud.cs:línea 59
+   en System.Windows.Forms.DataGridView.OnCellClick(DataGridViewCellEventArgs e)
+   en System.Windows.Forms.DataGridView.OnMouseClick(MouseEventArgs e)
+   en System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   en System.Windows.Forms.Control.WndProc(Message& m)
+   en System.Windows.Forms.DataGridView.WndProc(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   en System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   en System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^

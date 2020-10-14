@@ -29,7 +29,7 @@ namespace DataAccess
         private const string sqlSendEmail = "DESARROLLO.ENVIA_CORREO_TCG@BBDDCENTRAL";
         private const string sqlDateServer = "SELECT SYSDATE FROM DUAL";
         private const string sqlEmailMessage = "SELECT NTF_MENSAJE FROM DESARROLLO.DAT_NOTIFICACION WHERE NTF_NOMBRE=:NTF_NOMBRE";
-        private const string sqlUsuario = "SELECT USROCDGO CODIGO, USRONOMB NOMBRE, USROLOGIN, TPUSCDGO, USROPASS, USROSTDO FROM DESARROLLO.DAT_USRO WHERE USROSTDO=1 ORDER BY 2";
+        private const string sqlUsuario = "SELECT USROCDGO CODIGO, USRONOMB NOMBRE, USROLOGIN, U.TPUSCDGO, USROPASS, USROSTDO, TPUSDSCR FROM DESARROLLO.DAT_USRO U JOIN DESARROLLO.DAT_TPUS T ON(T.TPUSCDGO=U.TPUSCDGO) WHERE U.USROSTDO=1 ORDER BY 2";
         private const string sqlCodeSystem = "SELECT APPCDGO FROM DESARROLLO.DAT_APP WHERE APPCODE='SARH'";
         private const string sqlMenuState = @"SELECT MENUETDO FROM DAT_MENU M
                                             WHERE APPCDGO=:codeSystem AND MENUCODE=:mnuCode
@@ -39,6 +39,8 @@ namespace DataAccess
 	                                        WHERE SET_ID=:PARAM_ID";
         private const string sqlHuellaEmp = "SELECT HUE_ID FROM DAT_HUELLA_EMPLEADO WHERE EMP_ID=:EMP_ID";
         private const string sqlRegistraHuella = "DESARROLLO.P_HUELLA";
+        private const string sqlServer = "SELECT UTL_INADDR.GET_HOST_ADDRESS IP FROM DUAL";
+        private const string sqlServerPRD = "SELECT SET_VALOR IP FROM DESARROLLO.DAT_INV_SET WHERE SET_ID=79";
         //private const string s
         #endregion
 
@@ -47,6 +49,16 @@ namespace DataAccess
         #endregion
 
         #region Methods
+        public string ServerData()
+        {
+            string server;
+            if (db.GetString(sqlServer).Equals(db.GetString(sqlServerPRD)))
+                server = "PRD";
+            else
+                server = "TEST";
+
+            return server;
+        }
         public int RegistraHuella(string empID, string idHuella, string obsID)
         {
             OracleParameter[] prm = new OracleParameter[]
