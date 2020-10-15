@@ -206,47 +206,7 @@ namespace BusinessLogic
                 return false;
             }
         }
-
-
-        //public static bool IsValidEmail(string strIn)
-        //{
-        //    bool invalid = false;
-
-        //    if (String.IsNullOrEmpty(strIn))
-        //        return false;
-
-        //    // Use IdnMapping class to convert Unicode domain names.
-        //    strIn = System.Text.RegularExpressions.Regex.Replace(strIn, @"(@)(.+)$", DomainMapper);
-        //    if (invalid)
-        //        return false;
-
-        //    // Return true if strIn is in valid e-mail format.
-        //    return System.Text.RegularExpressions.Regex.IsMatch(strIn,
-        //           @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
-        //        @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
-        //           System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-        //}
-
-        //private static string DomainMapper(Match match)
-        //{
-        //    // IdnMapping class with default property values.
-        //    IdnMapping idn = new IdnMapping();
-
-        //    string domainName = match.Groups[2].Value;
-        //    try
-        //    {
-        //        domainName = idn.GetAscii(domainName);
-        //    }
-        //    catch (ArgumentException ex)
-        //    {
-        //        Console.WriteLine("Error occured:" + ex.Message);
-        //    }
-        //    catch (Exception ex2)
-        //    {
-        //        Console.WriteLine("Error occured:" + ex2.Message);
-        //    }
-        //    return match.Groups[1].Value + domainName;
-        //}
+       
         public static void OnlyDigit(KeyPressEventArgs argu)
         {
             if (!(Char.IsNumber(argu.KeyChar) || Char.IsControl(argu.KeyChar)))

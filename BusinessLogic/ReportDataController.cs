@@ -35,6 +35,10 @@ namespace BusinessLogic
         }
         #endregion
 
+        public DataTable DetalleEmpleado(string empID)
+        {
+            return ReportDataDA.DetalleEmpleado(empID);
+        }
         private ReportDataRepository ReportDataDA { get; set; }
 
         public DataTable Actualial(string nAnio)

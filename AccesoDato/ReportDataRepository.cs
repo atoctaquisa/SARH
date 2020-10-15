@@ -127,6 +127,44 @@ namespace DataAccess
         private string sqlSueldoQuincena = "DESARROLLO.P_GEN_CUEN_SUELDO";
         private string sqlSueldoQuincenaTotal = "DESARROLLO.P_GEN_CUEN_SUELDO_TOT";
         private string sqlSueldoQuincenaGlobal = "DESARROLLO.P_GEN_CUEN_SUELDO_GT";
+        private string sqlDetalleEmpleado = @"SELECT ROWNUM                             NUM,
+                                                   LOC_CIUDAD_ABREV CIUDAD,
+                                                   LOC_NOMBRE LOCAL,
+                                                   NOMBRE EMPLEADO,
+                                                   ESC_ABRE CARGO,
+                                                   LAB_FEC_INGRESO INGRESO,
+                                                   EMP_CON_FEC_CONTRATO CONTRATO,
+                                                   TIPO_CONTRATO,
+                                                   PATRONO,
+                                                   LAB_FEC_CAMB_ESC ULTM_ASC,
+                                                   EMP_FEC_SALIDAREAL SALIDA_REAL,
+                                                   EMP_CI CEDULA,
+                                                   EMP_FEC_NAC FECHA_NACIMIENTO,
+                                                   EMP_DIREC DIRECCION,
+                                                   EMP_BARRIO BARRIO,
+                                                   (SELECT EMP_SEC_NOMBRE
+                                                      FROM DESARROLLO.DAT_EMP_SEC
+                                                     WHERE EMP_SEC_ID = V.EMP_SEC)    SECTOR,
+                                                   EMP_TELEFONO TELEFONO,
+                                                   DECODE(EMP_EST_CIVIL,'S','Soltero','C','Casado','U','Unión Libre','Se', 'Separado', 'D', 'Divorciado','V','Viudo') ESTADO_CIVIL,
+                                                   DECODE(EMP_SEXO,1,'Hombre',0,'Mujer') SEXO,
+                                                   EMP_CUENTA CUENTA,
+                                                   DECODE(EMP_DISCAPACIDAD,0,'No',1,'Si') DISCAPACIDAD,
+                                                   EMP_MAIL_PER CORREO_PERSONAL,
+                                                   EMP_MAIL CORREO_EMPRESARIAL
+                                              FROM DESARROLLO.V_DETALLE_EMP V";
+
+
+        public DataTable DetalleEmpleado(string empID)
+        {
+            OracleParameter[] prm = new OracleParameter[]
+            {
+                new OracleParameter(":EMP_ID",empID )
+
+            };
+            //return db.GetData(sqlSolicitudVacacion, prm);
+            return db.GetData(sqlDetalleEmpleado, prm);
+        }
 
         public DataTable Actuarial(string nAnio)
         {

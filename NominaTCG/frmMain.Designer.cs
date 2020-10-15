@@ -91,7 +91,7 @@
             this.mnuRolNegativo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuIngresoEgreso = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.datosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuInformacion = new System.Windows.Forms.ToolStripMenuItem();
             this.vacacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuActuarial = new System.Windows.Forms.ToolStripMenuItem();
@@ -130,7 +130,7 @@
             // mnuSalir
             // 
             this.mnuSalir.Name = "mnuSalir";
-            this.mnuSalir.Size = new System.Drawing.Size(180, 22);
+            this.mnuSalir.Size = new System.Drawing.Size(96, 22);
             this.mnuSalir.Tag = "11";
             this.mnuSalir.Text = "Salir";
             this.mnuSalir.Click += new System.EventHandler(this.mnuSalir_Click);
@@ -587,7 +587,7 @@
             // localesToolStripMenuItem
             // 
             this.localesToolStripMenuItem.Name = "localesToolStripMenuItem";
-            this.localesToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.localesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.localesToolStripMenuItem.Tag = "41";
             this.localesToolStripMenuItem.Text = "Locales";
             // 
@@ -601,7 +601,7 @@
             this.mnuRolNegativo,
             this.mnuIngresoEgreso});
             this.rolToolStripMenuItem.Name = "rolToolStripMenuItem";
-            this.rolToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.rolToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.rolToolStripMenuItem.Tag = "42";
             this.rolToolStripMenuItem.Text = "Rol de Pagos";
             // 
@@ -656,24 +656,25 @@
             // empleadosToolStripMenuItem
             // 
             this.empleadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.datosToolStripMenuItem1,
+            this.mnuInformacion,
             this.vacacionesToolStripMenuItem});
             this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.empleadosToolStripMenuItem.Tag = "43";
             this.empleadosToolStripMenuItem.Text = "Empleados";
             // 
-            // datosToolStripMenuItem1
+            // mnuInformacion
             // 
-            this.datosToolStripMenuItem1.Name = "datosToolStripMenuItem1";
-            this.datosToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
-            this.datosToolStripMenuItem1.Tag = "431";
-            this.datosToolStripMenuItem1.Text = "Información";
+            this.mnuInformacion.Name = "mnuInformacion";
+            this.mnuInformacion.Size = new System.Drawing.Size(180, 22);
+            this.mnuInformacion.Tag = "431";
+            this.mnuInformacion.Text = "Información";
+            this.mnuInformacion.Click += new System.EventHandler(this.mnuInformacion_Click);
             // 
             // vacacionesToolStripMenuItem
             // 
             this.vacacionesToolStripMenuItem.Name = "vacacionesToolStripMenuItem";
-            this.vacacionesToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.vacacionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.vacacionesToolStripMenuItem.Tag = "432";
             this.vacacionesToolStripMenuItem.Text = "Vacaciones";
             // 
@@ -682,14 +683,14 @@
             this.empresaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuActuarial});
             this.empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
-            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.empresaToolStripMenuItem.Tag = "44";
             this.empresaToolStripMenuItem.Text = "Empresa";
             // 
             // mnuActuarial
             // 
             this.mnuActuarial.Name = "mnuActuarial";
-            this.mnuActuarial.Size = new System.Drawing.Size(121, 22);
+            this.mnuActuarial.Size = new System.Drawing.Size(180, 22);
             this.mnuActuarial.Tag = "441";
             this.mnuActuarial.Text = "&Actuarial";
             this.mnuActuarial.Click += new System.EventHandler(this.mnuActuarial_Click);
@@ -796,7 +797,7 @@
         private System.Windows.Forms.ToolStripMenuItem localesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem datosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mnuInformacion;
         private System.Windows.Forms.ToolStripMenuItem vacacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuSubirConsumo;
         private System.Windows.Forms.ToolStripMenuItem mnuSubirQuincena;

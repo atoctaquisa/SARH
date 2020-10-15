@@ -381,5 +381,12 @@ namespace NominaTCG
         {
             Application.Exit();
         }
+
+        private void mnuInformacion_Click(object sender, EventArgs e)
+        {
+            var frm = frmRepEmpleado.Instancia;
+            frm.MdiParent = this;
+            Design.frmShow(frm);
+        }
     }
 }

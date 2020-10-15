@@ -58,7 +58,6 @@ C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\De
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmValorAdicional.resources
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.Properties.Resources.resources
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmViewReport.resources
-C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.usrControlBD.resources
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.csproj.GenerateResource.cache
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.csproj.CoreCompileInputs.cache
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\bin\Debug\SqlServerTypes\x64\msvcr120.dll
@@ -368,3 +367,4 @@ C:\Users\Alvaro\source\repos\NominaTCG\NominaTCG\obj\Debug\NominaTCG.pdb
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmView.resources
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmHuella.resources
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmProgress.resources
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmRepEmpleado.resources
