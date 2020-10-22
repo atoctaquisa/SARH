@@ -117,6 +117,10 @@ namespace BusinessLogic
         {
             return ContratoAD.RegistraDetalleIngreso(datos);
         }
+        public int ActualizaDetalleDiario(List<db.DatDetDiario> datos)
+        {
+            return ContratoAD.ActualizaDetalleDiario(datos);
+        }
         public int ActualizaDetalleIngreso(List<db.DatDetRolLiq> datos)
         {
             return ContratoAD.ActualizaDetalleIngreso(datos);

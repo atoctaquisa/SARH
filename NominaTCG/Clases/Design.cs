@@ -432,6 +432,23 @@ namespace NominaTCG
                 }
             }
         }
+        public static void EmgCuentaAsiento(DataGridView datos)
+        {
+            foreach (DataGridViewColumn item in datos.Columns)
+            {
+                item.Visible = false;                
+                if (item.Name.Equals("CUE_ID"))
+                {
+                    item.HeaderText = "Cuentas";
+                    item.Visible = true;
+                }
+                if (item.Name.Equals("CUE_NOMBRE"))
+                {
+                    item.HeaderText = "Descripción";
+                    item.Visible = true;
+                }
+            }
+        }
 
         public static void vPeriodoDecimo(DataGridView datos)
         {

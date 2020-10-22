@@ -368,3 +368,4 @@ C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\De
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmHuella.resources
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmProgress.resources
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmRepEmpleado.resources
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmListaCuentaAsiento.resources

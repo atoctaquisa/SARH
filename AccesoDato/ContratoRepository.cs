@@ -225,6 +225,29 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
              ,SYSDATE--:ROL_LIQ_FEC_REG
              )
 ";
+        private static string sqlActualizaDetalleDiario = @"UPDATE DESARROLLO.DAT_DET_DIARIO
+                                                               SET CUE_ID = :CUE_ID,
+                                                                   --PERC_ID = :PERC_ID,
+                                                                   --DIA_ID = :DIA_ID,
+                                                                   CLI_ID = :CLI_ID,
+                                                                   DET_DIA_DB = :DET_DIA_DB,
+                                                                   DET_DIA_HB = :DET_DIA_HB,
+                                                                   --DET_DIA_FEC_REG = :DET_DIA_FEC_REG,
+                                                                   DET_DIA_FEC_MOD = SYSDATE,--:DET_DIA_FEC_MOD,
+                                                                   DET_DIA_CLI_SEG = :DET_DIA_CLI_SEG,
+                                                                   --PAT_ID = :PAT_ID,
+                                                                   DET_ID = :DET_ID,
+                                                                   ORD_IMP = :ORD_IMP,
+                                                                   --USU_CREA = :USU_CREA,
+                                                                   --USU_MODIF = :USU_MODIF,
+                                                                   ANIO_PERC = :ANIO_PERC,
+                                                                   DET_OBSER = :DET_OBSER
+                                                             WHERE     CUE_ID = :CUE_ID
+                                                                   AND PERC_ID = :PERC_ID
+                                                                   AND DIA_ID = :DIA_ID
+                                                                   AND CLI_ID = :CLI_ID
+                                                                   AND PAT_ID = :PAT_ID
+                                                                   AND DET_ID = :DET_ID";
         private static string sqlActualizaDetalleingreso = @"
                                                             UPDATE DESARROLLO.DAT_DET_ROL_LIQ
                                                                SET --SEG_ROL_ID = :SEG_ROL_ID,
@@ -1127,6 +1150,25 @@ AND (R.ROL_ID IN (SELECT rol_id
             };
                 db.ExecQuery(sqlRegistraDetalleIngreso, prm);
             }
+            return 1;
+        }
+        public int ActualizaDetalleDiario(List<DatDetDiario> datosIngreso)
+        {
+            foreach (var datos in datosIngreso)
+            {
+                OracleParameter[] prm = new OracleParameter[]{
+               // new OracleParameter(":ROL_ID",  datos.cueId),
+               //new OracleParameter(":ROL_LIQ_ID",  datos.segRolId.ToString()+datos.empId.ToString() ),
+               //new OracleParameter(":ROL_LIQ_VALOR", datos.rolLiqValor ),
+               //new OracleParameter(":SEG_ROL_ID",datos.segRolId ),
+               //new OracleParameter(":SEG_ROL_REPRO",datos.segRolRepro ),
+               //new OracleParameter(":EMP_ID",datos.empId ),
+               //new OracleParameter(":ROL_ID",datos.rolId ),
+               //new OracleParameter(":ROL_LIQ_ID",datos.rolLiqId)
+            };
+                db.ExecQuery(sqlActualizaDetalleDiario, prm);
+            }
+
             return 1;
         }
         public int ActualizaDetalleIngreso(List<DatDetRolLiq> datosIngreso)

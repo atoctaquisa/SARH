@@ -454,6 +454,12 @@
     <Compile Include="Formas\Parametros\Administracion\frmLocalLista.Designer.cs">
       <DependentUpon>frmLocalLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmListaCuentaAsiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaCuentaAsiento.Designer.cs">
+      <DependentUpon>frmListaCuentaAsiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -709,6 +715,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formas\Parametros\Administracion\frmLocalLista.resx">
       <DependentUpon>frmLocalLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaCuentaAsiento.resx">
+      <DependentUpon>frmListaCuentaAsiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

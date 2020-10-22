@@ -286,7 +286,7 @@ namespace NominaTCG
                                 provID = 0;
                             }
                         }
-                        ContratoBO.CalculaLiquidacion(txtCodigo.Text, rbtSi.Checked == true ? 1 : 2, provID);
+                        ContratoBO.CalculaLiquidacion(txtCodigo.Text, 2, provID);//rbtSi.Checked == true ? 1 : 
                         AssignData(txtCodigo.Text);
                     }
 
@@ -363,6 +363,8 @@ namespace NominaTCG
         {
             if (e.KeyValue == Convert.ToChar(Keys.F5))
                 AssignData(EmpleadoBO.Empleado.empId.ToString());
-        }        
+        }
+
+       
     }
 }

@@ -614,6 +614,7 @@
             this.dgvData.RowHeadersVisible = false;
             this.dgvData.Size = new System.Drawing.Size(717, 194);
             this.dgvData.TabIndex = 2;
+            this.dgvData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellContentClick);
             this.dgvData.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellEndEdit);
             // 
             // btnCuenta

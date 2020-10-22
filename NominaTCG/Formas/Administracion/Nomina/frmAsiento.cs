@@ -21,8 +21,25 @@ namespace NominaTCG
         private string _percID;
         private string _patID;
         private ContratoController ContratoBO { get; set; }
+        private CuentaController CuentaBO { get; set; }
         private Acction StateButton { get; set; }
         #region Methods
+
+        private void ActiveControls(bool stdo)
+        {
+            ErrProv.Clear();
+            foreach (DataGridViewColumn item in dgvData.Columns)
+            {
+                if (item.Name == "ROL_LIQ_VALOR")
+                    item.ReadOnly = !stdo;
+                else
+                    item.ReadOnly = true;
+
+            }
+            dgvData.AllowUserToAddRows = stdo;
+
+        }
+
         private void TotalSalary()
         {
             double ingreso = 0;
@@ -41,7 +58,7 @@ namespace NominaTCG
             }
             txtIngreso.Text = ingreso.ToString();
             txtEgreso.Text = egreso.ToString();
-            diferencia = Math.Round( ingreso - egreso,2);
+            diferencia = Math.Round(ingreso - egreso, 2);
             txtRercibe.Text = diferencia.ToString();
         }
         #endregion
@@ -51,6 +68,7 @@ namespace NominaTCG
             dgvData.AutoGenerateColumns = false;
             dgvData.AllowUserToAddRows = false;
             ContratoBO = ContratoController.Instancia;
+            CuentaBO = CuentaController.Instancia;
             _diaID = diaID;
             _cliID = cliID;
             _percID = percID;
@@ -100,44 +118,101 @@ namespace NominaTCG
 
         private void btnEditCancel_Click(object sender, EventArgs e)
         {
-            if (StateButton.Equals(Acction.Cancel) | StateButton.Equals(Acction.Save))
+
+            if (btnEditCancel.Text.Equals("&Editar"))
             {
-                //ActiveControls(true);
                 StateButton = Acction.Edit;
+                ActiveControls(true);
             }
             else
             {
-                //ActiveControls(false);
                 StateButton = Acction.Cancel;
+                ActiveControls(false);
             }
 
             Design.ControlsEdit(this.btnEditCancel, this.btnNewSave);
+
         }
 
         private void btnNewSave_Click(object sender, EventArgs e)
         {
-            StateButton = Acction.Save;
-            //ContratoBO.FinContratoEmpleado(txtCodigo.Text, txtObservacion.Text, lblEstadoRol.Text);
-            //DataTable datos = (DataTable)dgvDataDT.DataSource;
-            //DataTable getDataMod = datos.GetChanges(DataRowState.Modified);
-            //if (getDataMod != null)
-            //{
+            if (btnNewSave.Text.Equals("&Guardar"))
+            {
+                StateButton = Acction.Save;
+                DataTable datos = (DataTable)dgvData.DataSource;
+                DataTable getDataMod = datos.GetChanges(DataRowState.Modified);
+                DataTable getDataAdd = datos.GetChanges(DataRowState.Added);
+                DataTable getDataDel = datos.GetChanges(DataRowState.Deleted);
 
-            //    foreach (DataRow row in getDataMod.Rows)
-            //    {
-            //        db.DatDetLiq campo = new db.DatDetLiq();
-            //        campo.empId = Convert.ToInt64(txtCodigo.Text);
-            //        campo.liqId = Convert.ToInt32(row["LIQ_ID"]);
-            //        campo.rubLiqId = Convert.ToInt32(row["RUB_LIQ_ID"]);
-            //        campo.detLiqRef = Convert.ToInt32(row["DET_LIQ_REF"]);
-            //        campo.detLiqValor = Convert.ToDecimal(row["DET_LIQ_VALOR"]);
-            //        campo.detLiqObs = row["DET_LIQ_OBS"].ToString();
-            //        ContratoBO.FinContratoEmpleadoDT(campo);
-            //    }
-            //}
-            //AssignData(txtCodigo.Text);
-            //ActiveControls(false);
-            Design.ControlsSave(this.btnEditCancel, this.btnNewSave);
+                if (getDataAdd != null | getDataMod != null | getDataDel != null)
+                {
+                    if (Utility.MensajeQuestion("¿Está seguro que desea registrar los cambios?") == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        List<db.DatDetRolLiq> datosIngreso;
+                        if (getDataMod != null)
+                        {
+                            datosIngreso = new List<db.DatDetRolLiq>();
+                            foreach (DataRow row in getDataMod.Rows)
+                            {
+                                db.DatDetRolLiq liq = new db.DatDetRolLiq();
+                                liq.empId = Convert.ToInt64(row["EMP_ID"]);
+                                liq.rolLiqFecReg = DateTime.Now;
+                                liq.rolId = Convert.ToInt64(row["ROL_ID"]);
+                                liq.rolLiqId = Convert.ToInt64(row["ROL_LIQ_ID"]);
+                                liq.rolLiqValor = Convert.ToDecimal(row["ROL_LIQ_VALOR"]);
+                                liq.segRolId = Convert.ToInt32(row["SEG_ROL_ID"]);
+                                liq.segRolRepro = Convert.ToInt32(row["SEG_ROL_REPRO"]);
+                                datosIngreso.Add(liq);
+
+                            }
+                            ContratoBO.ActualizaDetalleIngreso(datosIngreso);
+                        }
+
+                        if (getDataAdd != null)
+                        {
+                            datosIngreso = new List<db.DatDetRolLiq>();
+                            foreach (DataRow row in getDataAdd.Rows)
+                            {
+                                db.DatDetRolLiq liq = new db.DatDetRolLiq();
+                                //liq.empId = Convert.ToInt64(empleadoID);
+                                //liq.rolLiqFecReg = DateTime.Now;
+                                //liq.rolId = Convert.ToInt64(row["ROL_ID"]);
+                                ////liq.rolLiqId = Convert.ToInt64(row["ROL_LIQ_ID"]);
+                                //liq.rolLiqValor = Convert.ToDecimal(row["ROL_LIQ_VALOR"]);
+                                //liq.segRolId = Convert.ToInt32(periodoID);
+                                //liq.segRolRepro = Convert.ToInt16(reprocesoID);
+                                datosIngreso.Add(liq);
+                            }
+                            ContratoBO.RegistraDetalleIngreso(datosIngreso);
+                        }
+
+                        if (getDataDel != null)
+                        {
+                            datosIngreso = new List<db.DatDetRolLiq>();
+                            foreach (DataRow row in getDataDel.Rows)
+                            {
+                                db.DatDetRolLiq liq = new db.DatDetRolLiq();
+                                liq.empId = Convert.ToInt64(row["EMP_ID", DataRowVersion.Original]);
+                                liq.rolLiqFecReg = DateTime.Now;
+                                liq.rolId = Convert.ToInt64(row["ROL_ID", DataRowVersion.Original]);
+                                liq.rolLiqId = Convert.ToInt64(row["ROL_LIQ_ID", DataRowVersion.Original]);
+                                liq.rolLiqValor = Convert.ToDecimal(row["ROL_LIQ_VALOR", DataRowVersion.Original]);
+                                liq.segRolId = Convert.ToInt32(row["SEG_ROL_ID", DataRowVersion.Original]);
+                                liq.segRolRepro = Convert.ToInt32(row["SEG_ROL_REPRO", DataRowVersion.Original]);
+                                datosIngreso.Add(liq);
+                            }
+                            ContratoBO.EliminaDetalleIngreso(datosIngreso);
+                        }
+                        //ContratoBO.ActualizaDetalleIngreso(empleadoID, liquidacionID, Convert.ToDecimal(txtIngreso.Text), Convert.ToDecimal(txtEgreso.Text));
+                        //dgvData.DataSource = ContratoBO.DetalleIngreso(empleadoID, periodoID, reprocesoID);
+                        Utility.MensajeOK("Información Reagistrada..!!");
+                    }
+                }
+
+
+                ActiveControls(false);
+                Design.ControlsSave(this.btnEditCancel, this.btnNewSave);
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -154,20 +229,20 @@ namespace NominaTCG
                 //asiento.SetDataSource(dgvData.DataSource);
                 ReportDocument document = new ReportDocument();
                 document.Load(@"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\rptAsientoLiquidacion.rpt");
-                DataSet datos = ContratoBO.AsientoLiquidacion(_diaID, _cliID, _percID, _patID);                
+                DataSet datos = ContratoBO.AsientoLiquidacion(_diaID, _cliID, _percID, _patID);
                 document.SetDataSource(datos.Tables[1]);
                 document.SetParameterValue("P_EMPRESA", datos.Tables[0].Rows[0]["PATRONO"].ToString());
-                document.SetParameterValue("P_PERIODO", txtPeriodo.Text );
-                document.SetParameterValue("P_FECHA",txtFecha.Text );
+                document.SetParameterValue("P_PERIODO", txtPeriodo.Text);
+                document.SetParameterValue("P_FECHA", txtFecha.Text);
                 document.SetParameterValue("P_OBSERVACION", txtObservacion.Text);
                 document.SetParameterValue("P_CI", Regex.Replace(txtObservacion.Text, @"\D", ""));
-                document.SetParameterValue("P_DIARIO", txtDiario.Text );
+                document.SetParameterValue("P_DIARIO", txtDiario.Text);
                 document.SetParameterValue("P_ESTADO", txtEstado.Text);
-                
-                
-                
-                
-                
+
+
+
+
+
                 frmView frm = new frmView(document);
                 frm.Show();//Design.frmDialog(frm,"Reporte");
                 //frmLiquidacionRep frm = new frmLiquidacionRep(_cliID, txtDia.Text);
@@ -185,6 +260,38 @@ namespace NominaTCG
                 TotalSalary();
             }
             dgvData.Rows[e.RowIndex].ErrorText = String.Empty;
+        }
+
+        private void dgvData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+            if ((dgvData.Columns[e.ColumnIndex].GetType()).ToString() == "System.Windows.Forms.DataGridViewButtonColumn")
+            {
+                if (StateButton.Equals(Acction.Edit))
+                {
+                    CuentaBO.Cuenta = new db.RolEntity();
+                    var frm = new frmListaCuentaAsiento();
+                    Design.frmDialog(frm, "Cuentas");
+
+                    if (CuentaBO.Cuenta.Cuenta != null)
+                    {
+                        foreach (DataGridViewRow row in dgvData.Rows)
+                        {
+                            if (row.Index != e.RowIndex && row.Cells["Cuenta"].Value != null)
+                            {
+                                if (CuentaBO.Cuenta.Cuenta == (row.Cells["Cuenta"]).FormattedValue.ToString())
+                                {
+                                    Utility.MensajeInfo("Error..!! Ya se encuentra adicionada esta cuenta");
+                                    return;
+                                }
+                            }
+                        }
+                        dgvData.Rows[e.RowIndex].Cells["Cuenta"].Value = Convert.ToInt32(CuentaBO.Cuenta.CuentaID);
+                        dgvData.Rows[e.RowIndex].Cells["Nombre"].Value = CuentaBO.Cuenta.Cuenta;
+                    }
+                }
+            }
         }
     }
 }

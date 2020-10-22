@@ -9,8 +9,55 @@ namespace Entity
     class Entities
     {
     }
+    public class DatDetDiario
+    {
+        public decimal cueId;
+        public decimal percId;
+        public decimal diaId;
+        public decimal patId;
+        public decimal cliId;
+        public decimal detDiaDb;
+        public decimal detDiaHb;
+        public DateTime detDiaFecReg;
+        public DateTime detDiaFecMod;        
+        public decimal detDiaCliSeg;
+        public decimal detId;
+        public decimal ordImp;
+        public string usuCrea;
+        public string usuModif;
+        public decimal anioPerc;
+        public string detObser;
+    }
+        public class DatDiario
+    {
+        public decimal percId;
+        public decimal diaId;
+        public decimal diaDia;
+        public decimal cliId;
+        public decimal tipMatId;
+        public string diaObs;       
+        public decimal diaOri;
+        public DateTime diaFecDiario;
+        public string diaResp;
+        public DateTime diaFecReg;
+        public DateTime diaFecMod;
+        public decimal diaCodOri;
+        public decimal diaEstado;
+        public decimal diaIdProv;
+        public decimal patId;
+        public string diaNumCheq;
+        public DateTime diaFecCheq;
+        public string diaBeneficiario;
+        public decimal diaNumEgreso;
+        public string usuCrea;
+        public string usuModif;
+        public decimal anioPerc;
+        public decimal provId;
+        public decimal datPatId;
+        public string numDoc;
+    }
 
-    public class DatDetLiq
+        public class DatDetLiq
     {
         public decimal empId;
         public decimal liqId;

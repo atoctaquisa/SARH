@@ -52,6 +52,10 @@ namespace BusinessLogic
             return cuentaAD.RegistraGrupoCuenta(idGrupo, nombreGrupo,tipoSQL);
         }
 
+        public DataTable ListaCuentaDiario()
+        {
+            return cuentaAD.ListaCuentaDiario();
+        }
         public DataTable ListaCuenta()
         {
             return cuentaAD.ListaCuenta();

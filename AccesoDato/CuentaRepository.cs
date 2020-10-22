@@ -22,6 +22,7 @@ namespace DataAccess
                                                          AND ROL_ID BETWEEN 10001 AND 29999
                                                          AND ROL_ESTADO = 1
                                                 ORDER BY CUENTA";
+        private static string sqlListaCuentaDiario = @"SELECT CUE_ID,CUE_NOMBRE FROM DESARROLLO.DAT_CUENTA WHERE CUE_ESTADO=1 AND CUE_SUB=0 ORDER BY CUE_ID";
         private static string sqlListaCuentasPrestamo = "SELECT ROL_SUBCUENTA || ' - ' || ROL_CUENTA AS CUENTA, ROL_ID FROM desarrollo.var_rol WHERE ROL_TIPO_CUENTA = 1 AND ROL_ESTADO = 1 AND ROL_SUBCUENTA LIKE '%PREST%' ORDER BY ROL_CUENTA, ROL_SUBCUENTA ";
         private static string sqlProvisionRol = "SELECT ROL_ID, CUE_PROV_ID, PROV_ROL_ESTADO, PROV_ROL_TIPO, PROV_FECHACREACION, PROV_FECHAMODIF FROM DESARROLLO.DAT_PROVISION_ROL WHERE ROL_ID = :ROL_ID ";
         private static string sqlListaCuentaProvision = "SELECT CUE_PROV_NOMBRE,CUE_PROV_ID FROM DESARROLLO.DAT_CUENTA_PROVISION ";
@@ -232,6 +233,10 @@ namespace DataAccess
         public DataTable ListaCuentaProvision()
         {
             return db.GetData(sqlListaCuentaProvision);
+        }
+        public DataTable ListaCuentaDiario()
+        {
+            return db.GetData(sqlListaCuentaDiario);
         }
         public DataTable ListaCuenta()
         {
