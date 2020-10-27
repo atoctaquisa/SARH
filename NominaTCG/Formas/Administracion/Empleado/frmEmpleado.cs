@@ -213,73 +213,139 @@ namespace NominaTCG
             //Datos Fijos
             dgvValor.DataSource = ContratoBO.RubroAdicional(txtCodigo.Text);
         }
-
         private void ActiveControls(bool stateControl, int tabID)
         {
             //Dato Personales
             btnSearch.Enabled = !stateControl;
-            //btnListaDiscapacidad.Enabled = stateControl;
-            txtApellido.Enabled = stateControl;
-            txtNombre.Enabled = stateControl;
-            //txtPerLabFecIng.Enabled = estadoControl;
-            txtPerCedula.Enabled = stateControl;
-            txtPerPasaporte.Enabled = stateControl;
-            txtPerNumIESS.Enabled = stateControl;
+            //btnListaDiscapacidad.ReadOnly = stateControl;
+            txtApellido.ReadOnly = !stateControl;
+            txtNombre.ReadOnly = !stateControl;
+            //txtPerLabFecIng.ReadOnly = estadoControl;
+            txtPerCedula.ReadOnly = !stateControl;
+            txtPerPasaporte.ReadOnly = !stateControl;
+            txtPerNumIESS.ReadOnly = !stateControl;
             cboPerFondoReserva.Enabled = stateControl;
             txtPerCuentaBanco.Enabled = stateControl;
             cboPerTipoCuenta.Enabled = stateControl;
-            //cboPerDiscapacidad.Enabled = stateControl;
-            txtPerNumIdentificacion.Enabled = stateControl;
-            txtPerCorreo.Enabled = stateControl;
-            txtPerCorreoPer.Enabled = stateControl;
-            //cboPerAfiliacion.Enabled = estadoControl;
-            //txtPerAfiliacionDesde.Enabled = estadoControl;
+            //cboPerDiscapacidad.ReadOnly = stateControl;
+            txtPerNumIdentificacion.ReadOnly = !stateControl;
+            txtPerCorreo.ReadOnly = !stateControl;
+            txtPerCorreoPer.ReadOnly = !stateControl;
+            //cboPerAfiliacion.ReadOnly = estadoControl;
+            //txtPerAfiliacionDesde.ReadOnly = estadoControl;
             cboPerDecimoTercero.Enabled = stateControl;
             cboPerDecimoCuarto.Enabled = stateControl;
-            txtPerBarrio.Enabled = stateControl;
+            txtPerBarrio.ReadOnly = !stateControl;
             cboPerSector.Enabled = stateControl;
-            txtPerDireccion.Enabled = stateControl;
-            txtPerNumero.Enabled = stateControl;
-            txtPerTelefono.Enabled = stateControl;
-            txtPerTelefonoSeg.Enabled = stateControl;
-            txtPerLugarNac.Enabled = stateControl;
+            txtPerDireccion.ReadOnly = !stateControl;
+            txtPerNumero.ReadOnly = !stateControl;
+            txtPerTelefono.ReadOnly = !stateControl;
+            txtPerTelefonoSeg.ReadOnly = !stateControl;
+            txtPerLugarNac.ReadOnly = !stateControl;
             pPerFechaNac.Enabled = stateControl;
             pPerFechaIngreso.Enabled = stateControl;
             cboPerEstadoCivil.Enabled = stateControl;
             cboPerSexo.Enabled = stateControl;
-            txtPerTipoSangre.Enabled = stateControl;
+            txtPerTipoSangre.ReadOnly = !stateControl;
             cboPerEducacion.Enabled = stateControl;
-            //txtPerFechaSalidaR.Enabled = stateControl;
-            //mtxtFechaSalida.Enabled = stateControl;
-            //btnReingreso.Enabled = stateControl;
+            //txtPerFechaSalidaR.ReadOnly = stateControl;
+            //mtxtFechaSalida.ReadOnly = stateControl;
+            //btnReingreso.ReadOnly = stateControl;
             //Datos Contrato
-            mtxtConFechaLiquidacion.Enabled = stateControl;
-            mtxtConFechaContrato.Enabled = stateControl;
+            mtxtConFechaLiquidacion.ReadOnly = !stateControl;
+            mtxtConFechaContrato.ReadOnly = !stateControl;
             cboConRazon.Enabled = stateControl;
             cboConCausaFin.Enabled = stateControl;
-            txtConObservacion.Enabled = stateControl;
+            txtConObservacion.ReadOnly = !stateControl;
             cboConContrato.Enabled = stateControl;
             cboConPatrono.Enabled = stateControl;
             cboConFirma.Enabled = stateControl;
 
             //Datos Laborales
-            mtxtLabFecha.Enabled = stateControl;
+            mtxtLabFecha.ReadOnly = !stateControl;
             cboLabLocal.Enabled = stateControl;
             cboLabCargo.Enabled = stateControl;
-            txtLabRBU.Enabled = stateControl;
-            txtLabQuincena.Enabled = stateControl;
+            txtLabRBU.ReadOnly = !stateControl;
+            txtLabQuincena.ReadOnly = !stateControl;
             cboLabEstado.Enabled = stateControl;
             cboLabTipoPago.Enabled = stateControl;
-            txtLabObservacion.Enabled = stateControl;
-            txtLabObservacionSis.Enabled = stateControl;
+            txtLabObservacion.ReadOnly = !stateControl;
+            txtLabObservacionSis.ReadOnly = !stateControl;
 
             //Datos Familiar
-            dgvFamiliar.Enabled = stateControl;
+            dgvFamiliar.ReadOnly = !stateControl;
 
             //Datos Fijos
-            dgvValor.Enabled = stateControl;
+            dgvValor.ReadOnly = !stateControl;
 
         }
+
+        //private void ActiveControls(bool stateControl, int tabID)
+        //{
+        //    //Dato Personales
+        //    btnSearch.Enabled = !stateControl;
+        //    //btnListaDiscapacidad.Enabled = stateControl;
+        //    txtApellido.ReadOnly = stateControl;
+        //    txtNombre.Enabled = stateControl;
+        //    //txtPerLabFecIng.Enabled = estadoControl;
+        //    txtPerCedula.Enabled = stateControl;
+        //    txtPerPasaporte.Enabled = stateControl;
+        //    txtPerNumIESS.Enabled = stateControl;
+        //    cboPerFondoReserva.Enabled = stateControl;
+        //    txtPerCuentaBanco.Enabled = stateControl;
+        //    cboPerTipoCuenta.Enabled = stateControl;
+        //    //cboPerDiscapacidad.Enabled = stateControl;
+        //    txtPerNumIdentificacion.Enabled = stateControl;
+        //    txtPerCorreo.Enabled = stateControl;
+        //    txtPerCorreoPer.Enabled = stateControl;
+        //    //cboPerAfiliacion.Enabled = estadoControl;
+        //    //txtPerAfiliacionDesde.Enabled = estadoControl;
+        //    cboPerDecimoTercero.Enabled = stateControl;
+        //    cboPerDecimoCuarto.Enabled = stateControl;
+        //    txtPerBarrio.Enabled = stateControl;
+        //    cboPerSector.Enabled = stateControl;
+        //    txtPerDireccion.Enabled = stateControl;
+        //    txtPerNumero.Enabled = stateControl;
+        //    txtPerTelefono.Enabled = stateControl;
+        //    txtPerTelefonoSeg.Enabled = stateControl;
+        //    txtPerLugarNac.Enabled = stateControl;
+        //    pPerFechaNac.Enabled = stateControl;
+        //    pPerFechaIngreso.Enabled = stateControl;
+        //    cboPerEstadoCivil.Enabled = stateControl;
+        //    cboPerSexo.Enabled = stateControl;
+        //    txtPerTipoSangre.Enabled = stateControl;
+        //    cboPerEducacion.Enabled = stateControl;
+        //    //txtPerFechaSalidaR.Enabled = stateControl;
+        //    //mtxtFechaSalida.Enabled = stateControl;
+        //    //btnReingreso.Enabled = stateControl;
+        //    //Datos Contrato
+        //    mtxtConFechaLiquidacion.Enabled = stateControl;
+        //    mtxtConFechaContrato.Enabled = stateControl;
+        //    cboConRazon.Enabled = stateControl;
+        //    cboConCausaFin.Enabled = stateControl;
+        //    txtConObservacion.Enabled = stateControl;
+        //    cboConContrato.Enabled = stateControl;
+        //    cboConPatrono.Enabled = stateControl;
+        //    cboConFirma.Enabled = stateControl;
+
+        //    //Datos Laborales
+        //    mtxtLabFecha.Enabled = stateControl;
+        //    cboLabLocal.Enabled = stateControl;
+        //    cboLabCargo.Enabled = stateControl;
+        //    txtLabRBU.Enabled = stateControl;
+        //    txtLabQuincena.Enabled = stateControl;
+        //    cboLabEstado.Enabled = stateControl;
+        //    cboLabTipoPago.Enabled = stateControl;
+        //    txtLabObservacion.Enabled = stateControl;
+        //    txtLabObservacionSis.Enabled = stateControl;
+
+        //    //Datos Familiar
+        //    dgvFamiliar.Enabled = stateControl;
+
+        //    //Datos Fijos
+        //    dgvValor.Enabled = stateControl;
+
+        //}
 
         private void ClearControls(int tabID)
         {
@@ -931,19 +997,7 @@ namespace NominaTCG
             EmpleadoBO.Empleado.empDependientes = 0;
             codigoEMP = resp = EmpleadoBO.RegistarEmpleado(EmpleadoBO.Empleado, tipo);
 
-            //Datos de Contrato                   
-            ContratoBO.EmpleadoContrato.empId = Convert.ToInt64(codigoEMP);
-            ContratoBO.EmpleadoContrato.empConId = 1;
-            ContratoBO.EmpleadoContrato.conId = Convert.ToInt32(cboConContrato.SelectedValue);
-            ContratoBO.EmpleadoContrato.patId = Convert.ToInt32(cboConPatrono.SelectedValue);
-            ContratoBO.EmpleadoContrato.empConRazonSale = (cboConRazon.SelectedValue == null) ? "" : cboConRazon.SelectedValue.ToString();
-            ContratoBO.EmpleadoContrato.empConFirmRenu = (cboConFirma.SelectedValue == null) ? dbType.intNull : Convert.ToUInt16(cboConFirma.SelectedValue); //Convert.ToInt32(cboConFirma.SelectedValue);
-            ContratoBO.EmpleadoContrato.empConFecLiqui = DateTime.TryParse(mtxtConFechaLiquidacion.Text, out dbType.dateResult) ? dbType.dateResult : dbType.dateNull;
-            ContratoBO.EmpleadoContrato.empConFirmLiqui = (cboConFirma.SelectedValue == null) ? dbType.intNull : Convert.ToUInt16(cboConFirma.SelectedValue);//dbType.intNull;//cboConFirma.SelectedValue.ToString();
-            ContratoBO.EmpleadoContrato.empConFecContrato = Convert.ToDateTime(mtxtConFechaContrato.Text);
-            ContratoBO.EmpleadoContrato.empConObs = txtConObservacion.Text;
-            ContratoBO.EmpleadoContrato.conCauId = (cboConCausaFin.SelectedValue == null) ? dbType.intNull : Convert.ToInt32(cboConCausaFin.SelectedValue);
-            resp = ContratoBO.RegistraContrato(ContratoBO.EmpleadoContrato, tipo);
+           
 
             //2. Datos Laborales
             ContratoBO.Laboral.empId = Convert.ToInt64(codigoEMP);
@@ -963,6 +1017,21 @@ namespace NominaTCG
             ContratoBO.Laboral.labBono = 0;
             ContratoBO.Laboral.labQuincena = txtLabQuincena.Text == "" ? 0 : Convert.ToInt32(txtLabQuincena.Text);
             resp = ContratoBO.RegistrarInfoLaboral(ContratoBO.Laboral);
+
+            //Datos de Contrato                   
+            ContratoBO.EmpleadoContrato.empId = Convert.ToInt64(codigoEMP);
+            ContratoBO.EmpleadoContrato.empConId = 1;
+            ContratoBO.EmpleadoContrato.conId = Convert.ToInt32(cboConContrato.SelectedValue);
+            ContratoBO.EmpleadoContrato.patId = Convert.ToInt32(cboConPatrono.SelectedValue);
+            ContratoBO.EmpleadoContrato.empConRazonSale = (cboConRazon.SelectedValue == null) ? "" : cboConRazon.SelectedValue.ToString();
+            ContratoBO.EmpleadoContrato.empConFirmRenu = (cboConFirma.SelectedValue == null) ? dbType.intNull : Convert.ToUInt16(cboConFirma.SelectedValue); //Convert.ToInt32(cboConFirma.SelectedValue);
+            ContratoBO.EmpleadoContrato.empConFecLiqui = DateTime.TryParse(mtxtConFechaLiquidacion.Text, out dbType.dateResult) ? dbType.dateResult : dbType.dateNull;
+            ContratoBO.EmpleadoContrato.empConFirmLiqui = (cboConFirma.SelectedValue == null) ? dbType.intNull : Convert.ToUInt16(cboConFirma.SelectedValue);//dbType.intNull;//cboConFirma.SelectedValue.ToString();
+            ContratoBO.EmpleadoContrato.empConFecContrato = Convert.ToDateTime(mtxtConFechaContrato.Text);
+            ContratoBO.EmpleadoContrato.empConObs = txtConObservacion.Text;
+            ContratoBO.EmpleadoContrato.conCauId = (cboConCausaFin.SelectedValue == null) ? dbType.intNull : Convert.ToInt32(cboConCausaFin.SelectedValue);
+            resp = ContratoBO.RegistraContrato(ContratoBO.EmpleadoContrato, tipo);
+
 
             //3. Datos Familiares
             resp = UpdateDataEmp(codigoEMP, out data, out dataChange);
@@ -1062,7 +1131,7 @@ namespace NominaTCG
             dataChange = new DataTable();
             data = (DataTable)dgvFamiliar.DataSource;
             dataChange = null;
-            if (data != null)            
+            if (data != null)
                 dataChange = data.GetChanges(DataRowState.Deleted);
             if (dataChange != null)
             {
@@ -1314,8 +1383,6 @@ namespace NominaTCG
 
         private void btnNewSave_Click(object sender, EventArgs e)
         {
-            //if (tabInformacion.SelectedIndex != 0 & this.btnNewSave.Text == "&Nuevo")
-            //  return;
 
             if (this.btnNewSave.Text == "&Nuevo")
             {
@@ -1403,19 +1470,6 @@ namespace NominaTCG
                         ActiveControls(false, tabInformacion.SelectedIndex);
                         Utility.MensajeInfo("Registro Exitoso!!");
                     }
-
-                    //if (idRecord.Equals(0))
-                    //{
-                    //    Utility.MensajeError("¡Error! al registrar la información");
-                    //    return;
-                    //}
-                    //else
-                    //{
-                    //    AssignData(EmpNewID);
-                    //    StateButton = Acction.Save;
-                    //    ActiveControls(false, tabInformacion.SelectedIndex);
-                    //    Utility.MensajeInfo("Registro Exitoso!!");
-                    //}
                 }
                 else
                     return;
@@ -1447,24 +1501,6 @@ namespace NominaTCG
             }
         }
 
-        private void cboPerDiscapacidad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (StateButton == Acction.Edit | StateButton == Acction.New)
-            //{
-            //    if (cboConCausaFin.DataSource == null)
-            //        return;
-            //    if (Convert.ToInt32(cboPerDiscapacidad.SelectedValue) == 1)
-            //    {
-            //        frmDiscapacidad frm = new frmDiscapacidad(txtCodigo.Text);
-            //        frm.ShowDialog();
-            //    }
-            //    else
-            //    {
-            //        txtPerNumIdentificacion.Text = string.Empty;
-            //    }
-            //}
-        }
-
         private void btnNotifica_Click(object sender, EventArgs e)
         {
             if (!txtCodigo.Text.Equals(string.Empty))
@@ -1477,7 +1513,6 @@ namespace NominaTCG
                     {
                         if (DialogResult.Yes == Utility.MensajeQuestion("¿Desea enviar notificación de Liquidación?"))
                         {
-                            //string message = "Estimado/a " + txtApellido.Text.ToUpper() +" " + txtNombre.Text.ToUpper() + ", el pago de su liquidación se encuentra listo; por favor solicitamos se acerque a cobrar portando originales y copias legibles de cédula y papeleta de votación, los días jueves de 09:00 a 13:00 y de 15:00 a 18:00, a la siguiente dirección: Yánez Pinzón 678 y Av. Colón Ed. Campero 2do. Piso.";
 
                             object[,] emailVars = new object[,] { { "[@apellido]" , txtApellido.Text.ToUpper() },
                                                               { "[@nombre]" , txtNombre.Text.ToUpper() }                                                };
@@ -1558,36 +1593,12 @@ namespace NominaTCG
 
                                         if (ValidateControls(tabInformacion.SelectedIndex))
                                         {
-                                            //Int64 idRecord = 0;
-                                            //idRecord = RegisterReEntry(idRecord.ToString());
-                                            //EmpNewID = idRecord.ToString();                                       
-
-                                            //if (idRecord.Equals(0))
-                                            //{
-                                            //    Utility.MensajeError("¡Error! al registrar la información");
-                                            //    return;
-                                            //}
-                                            //else
-                                            //{
-                                            //    ClearControls(tabInformacion.SelectedIndex);
-                                            //    AssignData(EmpNewID);
-                                            //    EmpleadoBO.RegistraReingreso(data.Rows[0]["EMP_CI"].ToString(), EmpNewID, empID, Catalogo.UserName);
-                                            //    StateButton = Acction.Save;
-                                            //    ActiveControls(false, tabInformacion.SelectedIndex);
-                                            //    Design.Controls(this.btnNewSave, this.btnEditCancel, this.btnDelete);
-                                            //    Utility.MensajeOK("El reingreso fue exitoso el código asignado es: " + EmpNewID);
-                                            //}
                                             if (DialogResult.Yes == Utility.MensajeQuestion("¿Desea registrar el reingreso del empleado?"))
                                             {
                                                 EmpNewID = RegisterData(0, "I").ToString();
                                                 EmpleadoBO.RegistraReingreso(data.Rows[0]["EMP_CI"].ToString(), EmpNewID, empID, Catalogo.UserName);
                                                 ClearControls(tabInformacion.SelectedIndex);
-                                                //StateButton = Acction.Save;
                                                 AssignData(EmpNewID);
-                                                //btnNewSave.Visible = true;
-                                                //btnEditCancel.Visible = true;
-                                                //ActiveControls(false, tabInformacion.SelectedIndex);
-                                                //Design.Controls(this.btnNewSave, this.btnEditCancel, this.btnDelete);
                                                 Utility.MensajeOK("El reingreso fue exitoso el código asignado es: " + EmpNewID);
                                             }
                                             else
@@ -1652,6 +1663,23 @@ namespace NominaTCG
                 fecha = fecha.Replace(".", "/");
                 fecha = fecha.Replace("-", "/");
             }
+            if (dgvFamiliar.Columns[e.ColumnIndex].Name == "EMP_FAM_FEC_NAC")
+            {
+                if (Utility.isDate(dgvFamiliar.Rows[e.RowIndex].Cells["EMP_FAM_FEC_NAC"].Value.ToString()))
+                    dgvFamiliar.Rows[e.RowIndex].Cells["Edad"].Value= CalcularEdad(Convert.ToDateTime(dgvFamiliar.Rows[e.RowIndex].Cells["EMP_FAM_FEC_NAC"].Value), DateTime.Now);
+            }
+        }
+        public string CalcularEdad(DateTime birthDate, DateTime now)
+        {
+            int age = now.Year - birthDate.Year;
+            int mth = now.Month - birthDate.Month;
+            if (now.Month < birthDate.Month || (now.Month == birthDate.Month && now.Day < birthDate.Day))
+            {
+                age--;
+                mth = 12 - Math.Abs(mth);
+            }           
+
+            return age+ " anios "+Math.Abs(mth)+" meses";
         }
 
         private void dgvFamiliar_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -1761,15 +1789,10 @@ namespace NominaTCG
 
         private void dgvValor_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
-            //dgvValor.CommitEdit(DataGridViewDataErrorContexts.Commit);
             if (dgvValor.IsCurrentCellDirty)
             {
                 dgvValor.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
-            //if (this.dgvValor.IsCurrentCellDirty && this.dgvValor.CurrentCell is DataGridViewCheckBoxCell)
-            //{
-            //    this.dgvValor.EndEdit();
-            //}
         }
 
         private void dgvValor_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -1804,21 +1827,15 @@ namespace NominaTCG
             int index = dgvValor.CurrentCell.ColumnIndex;
             if (dgvValor.Columns[index].Name == "FIJ_VALOR")
             {
-                //DataGridViewTextBoxEditingControl 
                 dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
             }
         }
-            DataGridViewTextBoxEditingControl dText;
+        DataGridViewTextBoxEditingControl dText;
         private void dgvValor_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            //TextBox txt = (TextBox)e.Control;
-            //txt.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
-            //txt.KeyPress += new KeyPressEventHandler(dText_KeyPress);           
             if (e.Control.GetType().Name.Equals("DataGridViewTextBoxEditingControl"))
             {
-                //DataGridViewTextBoxEditingControl 
-                    dText = (DataGridViewTextBoxEditingControl)e.Control;
-                //dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
+                dText = (DataGridViewTextBoxEditingControl)e.Control;
                 dText.KeyPress += new KeyPressEventHandler(dText_KeyPress);
             }
         }

@@ -8,6 +8,7 @@ using System.Data;
 using Oracle.DataAccess.Client;
 using System.Net;
 using System.Net.Mail;
+using Entity;
 
 namespace DataAccess
 {
@@ -30,6 +31,24 @@ namespace DataAccess
         private const string sqlDateServer = "SELECT SYSDATE FROM DUAL";
         private const string sqlEmailMessage = "SELECT NTF_MENSAJE FROM DESARROLLO.DAT_NOTIFICACION WHERE NTF_NOMBRE=:NTF_NOMBRE";
         private const string sqlUsuario = "SELECT USROCDGO CODIGO, USRONOMB NOMBRE, USROLOGIN, U.TPUSCDGO, USROPASS, USROSTDO, TPUSDSCR FROM DESARROLLO.DAT_USRO U JOIN DESARROLLO.DAT_TPUS T ON(T.TPUSCDGO=U.TPUSCDGO) WHERE U.USROSTDO=1 ORDER BY 2";
+        private const string sqlUsuarioTipo = "SELECT TPUSCDGO, TPUSDSCR, TPUSUSRO, TPUSPASSW FROM DESARROLLO.DAT_TPUSORDER BY 2";
+        private const string sqlRegistraUsuario = @"INSERT INTO DESARROLLO.DAT_USRO (USROCDGO,
+                                                                                     USROLOGIN,
+                                                                                     USRONOMB,
+                                                                                     USROSTDO,
+                                                                                     TPUSCDGO,
+                                                                                     USROFCREA,
+                                                                                    -- USROFMOD,
+                                                                                     USROPASS)
+                                                         VALUES(  :USROCDGO
+                                                                 ,:USROLOGIN
+                                                                 ,:USRONOMB
+                                                                 ,1 --:USROSTDO
+                                                                 ,:TPUSCDGO
+                                                                 ,SYSDATE             /* USROFCREA */
+                                                                 --,             /* USROFMOD */
+                                                                 ,:USROPASS
+                                                                 )";
         private const string sqlCodeSystem = "SELECT APPCDGO FROM DESARROLLO.DAT_APP WHERE APPCODE='SARH'";
         private const string sqlMenuState = @"SELECT MENUETDO FROM DAT_MENU M
                                             WHERE APPCDGO=:codeSystem AND MENUCODE=:mnuCode
@@ -158,7 +177,18 @@ namespace DataAccess
         {
             return db.GetString(sqlCodeSystem);
         }
-
+        public DataTable UsuarioTipo()
+        {
+            return db.GetData(sqlUsuarioTipo);
+        }
+        public double RegistraUsuario(DatUsro usro)
+        {
+            OracleParameter[] prm = new OracleParameter[]
+           {
+                new OracleParameter(":NTF_NOMBRE",usro.tpuscdgo )
+           };
+            return db.GetDecimal(sqlRegistraUsuario);
+        }
         public DataTable Usuario()
         {
             return db.GetData(sqlUsuario);

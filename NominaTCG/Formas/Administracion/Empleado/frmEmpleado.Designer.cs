@@ -163,14 +163,6 @@
             this.label55 = new System.Windows.Forms.Label();
             this.tabFamiliares = new System.Windows.Forms.TabPage();
             this.dgvFamiliar = new System.Windows.Forms.DataGridView();
-            this.EMP_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMP_FAM_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMP_FAM_NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMP_FAM_FEC_NAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMP_FAM_PARENT = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.EMP_FAM_DISC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.EMP_FAM_OCUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMP_FAM_TELF_REF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabValores = new System.Windows.Forms.TabPage();
             this.dgvValor = new System.Windows.Forms.DataGridView();
             this.ROL_ID = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -185,6 +177,15 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.label38 = new System.Windows.Forms.Label();
             this.tabAdmin = new System.Windows.Forms.TabControl();
+            this.EMP_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMP_FAM_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMP_FAM_NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMP_FAM_FEC_NAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMP_FAM_PARENT = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.EMP_FAM_DISC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.EMP_FAM_OCUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMP_FAM_TELF_REF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabInformacion.SuspendLayout();
@@ -918,7 +919,6 @@
             this.cboPerDiscapacidad.Name = "cboPerDiscapacidad";
             this.cboPerDiscapacidad.Size = new System.Drawing.Size(100, 21);
             this.cboPerDiscapacidad.TabIndex = 5;
-            this.cboPerDiscapacidad.SelectedIndexChanged += new System.EventHandler(this.cboPerDiscapacidad_SelectedIndexChanged);
             // 
             // txtPerNumero
             // 
@@ -1499,6 +1499,7 @@
             this.EMP_FAM_ID,
             this.EMP_FAM_NOMBRE,
             this.EMP_FAM_FEC_NAC,
+            this.Edad,
             this.EMP_FAM_PARENT,
             this.EMP_FAM_DISC,
             this.EMP_FAM_OCUP,
@@ -1520,66 +1521,6 @@
             this.dgvFamiliar.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvFamiliar_CurrentCellDirtyStateChanged);
             this.dgvFamiliar.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvFamiliar_DataError);
             this.dgvFamiliar.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvFamiliar_UserDeletingRow);
-            // 
-            // EMP_ID
-            // 
-            this.EMP_ID.DataPropertyName = "EMP_ID";
-            this.EMP_ID.HeaderText = "EMP_ID";
-            this.EMP_ID.Name = "EMP_ID";
-            this.EMP_ID.Visible = false;
-            // 
-            // EMP_FAM_ID
-            // 
-            this.EMP_FAM_ID.DataPropertyName = "EMP_FAM_ID";
-            this.EMP_FAM_ID.HeaderText = "EMP_FAM_ID";
-            this.EMP_FAM_ID.Name = "EMP_FAM_ID";
-            this.EMP_FAM_ID.Visible = false;
-            // 
-            // EMP_FAM_NOMBRE
-            // 
-            this.EMP_FAM_NOMBRE.DataPropertyName = "EMP_FAM_NOMBRE";
-            this.EMP_FAM_NOMBRE.HeaderText = "Nombre";
-            this.EMP_FAM_NOMBRE.Name = "EMP_FAM_NOMBRE";
-            this.EMP_FAM_NOMBRE.Width = 250;
-            // 
-            // EMP_FAM_FEC_NAC
-            // 
-            this.EMP_FAM_FEC_NAC.DataPropertyName = "EMP_FAM_FEC_NAC";
-            this.EMP_FAM_FEC_NAC.HeaderText = "Fecha Nac";
-            this.EMP_FAM_FEC_NAC.Name = "EMP_FAM_FEC_NAC";
-            // 
-            // EMP_FAM_PARENT
-            // 
-            this.EMP_FAM_PARENT.DataPropertyName = "EMP_FAM_PARENT";
-            this.EMP_FAM_PARENT.HeaderText = "Par";
-            this.EMP_FAM_PARENT.Name = "EMP_FAM_PARENT";
-            this.EMP_FAM_PARENT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EMP_FAM_PARENT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.EMP_FAM_PARENT.Width = 80;
-            // 
-            // EMP_FAM_DISC
-            // 
-            this.EMP_FAM_DISC.DataPropertyName = "EMP_FAM_DISC";
-            this.EMP_FAM_DISC.FalseValue = "0";
-            this.EMP_FAM_DISC.HeaderText = "Disc";
-            this.EMP_FAM_DISC.Name = "EMP_FAM_DISC";
-            this.EMP_FAM_DISC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EMP_FAM_DISC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.EMP_FAM_DISC.TrueValue = "1";
-            this.EMP_FAM_DISC.Width = 50;
-            // 
-            // EMP_FAM_OCUP
-            // 
-            this.EMP_FAM_OCUP.DataPropertyName = "EMP_FAM_OCUP";
-            this.EMP_FAM_OCUP.HeaderText = "Lugar Trabajo";
-            this.EMP_FAM_OCUP.Name = "EMP_FAM_OCUP";
-            // 
-            // EMP_FAM_TELF_REF
-            // 
-            this.EMP_FAM_TELF_REF.DataPropertyName = "EMP_FAM_TELF_REF";
-            this.EMP_FAM_TELF_REF.HeaderText = "Teléfono";
-            this.EMP_FAM_TELF_REF.Name = "EMP_FAM_TELF_REF";
-            this.EMP_FAM_TELF_REF.Width = 80;
             // 
             // tabValores
             // 
@@ -1758,6 +1699,73 @@
             this.tabAdmin.Size = new System.Drawing.Size(864, 583);
             this.tabAdmin.TabIndex = 0;
             // 
+            // EMP_ID
+            // 
+            this.EMP_ID.DataPropertyName = "EMP_ID";
+            this.EMP_ID.HeaderText = "EMP_ID";
+            this.EMP_ID.Name = "EMP_ID";
+            this.EMP_ID.Visible = false;
+            // 
+            // EMP_FAM_ID
+            // 
+            this.EMP_FAM_ID.DataPropertyName = "EMP_FAM_ID";
+            this.EMP_FAM_ID.HeaderText = "EMP_FAM_ID";
+            this.EMP_FAM_ID.Name = "EMP_FAM_ID";
+            this.EMP_FAM_ID.Visible = false;
+            // 
+            // EMP_FAM_NOMBRE
+            // 
+            this.EMP_FAM_NOMBRE.DataPropertyName = "EMP_FAM_NOMBRE";
+            this.EMP_FAM_NOMBRE.HeaderText = "Nombre";
+            this.EMP_FAM_NOMBRE.Name = "EMP_FAM_NOMBRE";
+            this.EMP_FAM_NOMBRE.Width = 250;
+            // 
+            // EMP_FAM_FEC_NAC
+            // 
+            this.EMP_FAM_FEC_NAC.DataPropertyName = "EMP_FAM_FEC_NAC";
+            this.EMP_FAM_FEC_NAC.HeaderText = "Fecha Nac";
+            this.EMP_FAM_FEC_NAC.Name = "EMP_FAM_FEC_NAC";
+            // 
+            // Edad
+            // 
+            this.Edad.DataPropertyName = "Edad";
+            this.Edad.HeaderText = "Edad";
+            this.Edad.Name = "Edad";
+            this.Edad.Width = 90;
+            // 
+            // EMP_FAM_PARENT
+            // 
+            this.EMP_FAM_PARENT.DataPropertyName = "EMP_FAM_PARENT";
+            this.EMP_FAM_PARENT.HeaderText = "Par";
+            this.EMP_FAM_PARENT.Name = "EMP_FAM_PARENT";
+            this.EMP_FAM_PARENT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EMP_FAM_PARENT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EMP_FAM_PARENT.Width = 80;
+            // 
+            // EMP_FAM_DISC
+            // 
+            this.EMP_FAM_DISC.DataPropertyName = "EMP_FAM_DISC";
+            this.EMP_FAM_DISC.FalseValue = "0";
+            this.EMP_FAM_DISC.HeaderText = "Disc";
+            this.EMP_FAM_DISC.Name = "EMP_FAM_DISC";
+            this.EMP_FAM_DISC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EMP_FAM_DISC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EMP_FAM_DISC.TrueValue = "1";
+            this.EMP_FAM_DISC.Width = 50;
+            // 
+            // EMP_FAM_OCUP
+            // 
+            this.EMP_FAM_OCUP.DataPropertyName = "EMP_FAM_OCUP";
+            this.EMP_FAM_OCUP.HeaderText = "Lugar Trabajo";
+            this.EMP_FAM_OCUP.Name = "EMP_FAM_OCUP";
+            // 
+            // EMP_FAM_TELF_REF
+            // 
+            this.EMP_FAM_TELF_REF.DataPropertyName = "EMP_FAM_TELF_REF";
+            this.EMP_FAM_TELF_REF.HeaderText = "Teléfono";
+            this.EMP_FAM_TELF_REF.Name = "EMP_FAM_TELF_REF";
+            this.EMP_FAM_TELF_REF.Width = 80;
+            // 
             // frmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1925,14 +1933,6 @@
         private System.Windows.Forms.Button btnReingreso;
         private System.Windows.Forms.DateTimePicker pPerFechaIngreso;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EMP_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EMP_FAM_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EMP_FAM_NOMBRE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EMP_FAM_FEC_NAC;
-        private System.Windows.Forms.DataGridViewComboBoxColumn EMP_FAM_PARENT;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn EMP_FAM_DISC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EMP_FAM_OCUP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EMP_FAM_TELF_REF;
         private System.Windows.Forms.MaskedTextBox mtxtFechaSalida;
         private System.Windows.Forms.MaskedTextBox mtxtConFechaContrato;
         private System.Windows.Forms.MaskedTextBox mtxtConFechaLiquidacion;
@@ -1944,5 +1944,14 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn ROL_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn FIJ_VALOR;
         private System.Windows.Forms.DataGridViewCheckBoxColumn FIJ_ESTADO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EMP_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EMP_FAM_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EMP_FAM_NOMBRE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EMP_FAM_FEC_NAC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Edad;
+        private System.Windows.Forms.DataGridViewComboBoxColumn EMP_FAM_PARENT;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn EMP_FAM_DISC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EMP_FAM_OCUP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EMP_FAM_TELF_REF;
     }
 }

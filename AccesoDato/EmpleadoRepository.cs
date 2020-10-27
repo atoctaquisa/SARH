@@ -107,7 +107,7 @@ namespace DataAccess
                                                                     FEC_CONTRATO_AUX, RBU, ESC_ADI_BON_PRO, ESC_VEST, EMP_PAG_FON_RES, LAB_RBU,
                                                                     LAB_VEST, LAB_BONO, EMP_SEC_NOMBRE, LAB_QUINCENA, rownum AS rnum
                                                           FROM DESARROLLO.V_DETALLE_EMP ) where rnum between 1 and 10 ";
-        private static string sqlFamiliares = "SELECT EMP_ID, EMP_FAM_ID, EMP_FAM_NOMBRE, EMP_FAM_FEC_NAC, EMP_FAM_PARENT, EMP_FAM_OCUP, EMP_FAM_TELF_REF, EMP_FAM_DISC FROM DESARROLLO.DAT_EMP_FAM WHERE EMP_ID=:empID";
+        private static string sqlFamiliares = "SELECT EMP_ID, EMP_FAM_ID, EMP_FAM_NOMBRE, EMP_FAM_FEC_NAC, DESARROLLO.calc_edad(EMP_FAM_FEC_NAC) EDAD, EMP_FAM_PARENT, EMP_FAM_OCUP, EMP_FAM_TELF_REF, EMP_FAM_DISC FROM DESARROLLO.DAT_EMP_FAM WHERE EMP_ID=:empID";
         private static string sqlInsert = @"
                                             INSERT INTO DESARROLLO.DAT_EMP (EMP_ID,
                                                                             EMP_NOMBRE,

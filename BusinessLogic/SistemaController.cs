@@ -9,6 +9,8 @@ using System.Text.RegularExpressions;
 using System.Configuration;
 using System.Data;
 using System.Globalization;
+using db = Entity;
+
 //using System.Text.RegularExpressions;
 namespace BusinessLogic
 {
@@ -20,6 +22,7 @@ namespace BusinessLogic
         #endregion
 
         #region Propiedades
+        public db.DatUsro usuarioDB { get; set; }
         private SistemaRepository SistemaAD { get; set; }
         #endregion
 
@@ -55,6 +58,14 @@ namespace BusinessLogic
         public string CodeSystem()
         {
             return SistemaAD.CodeSystem();
+        }
+        public DataTable UsuarioTipo()
+        {
+            return SistemaAD.UsuarioTipo();
+        }
+        public double RegistraUsuario( db.DatUsro usro)
+        {
+            return SistemaAD.RegistraUsuario(usro);
         }
         public DataTable Usuario()
         {

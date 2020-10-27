@@ -9,6 +9,18 @@ namespace Entity
     class Entities
     {
     }
+
+    public class DatUsro
+    {
+        public decimal usrocdgo;
+        public string usrologin;
+        public string usronomb;
+        public decimal usrostdo;
+        public string tpuscdgo;
+        public DateTime usrofcrea;
+        public DateTime usrofmod;
+        public string usropass;
+    }
     public class DatDetDiario
     {
         public decimal cueId;
