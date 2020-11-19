@@ -85,7 +85,8 @@ namespace NominaTCG
                 cboPatrono.SelectedValue == null ? "" : cboPatrono.SelectedValue.ToString(), 
                 LocalBO.Local.LocalID == 0 ? "": LocalBO.Local.LocalID.ToString(),
                 EmpleadoBO.Empleado.empId ==0 ? "": EmpleadoBO.Empleado.empId.ToString() );
-            frmViewReport frm = new frmViewReport(dtConsulta, new ReportDataSource("PagoQuincena", dtConsulta), path);
+            //ReportParameter[] param = new ReportParameter[1];
+            frmViewReport frm = new frmViewReport(new ReportDataSource("PagoQuincena", dtConsulta), path, null);
             frm.Show();
             ClearControl();
         }

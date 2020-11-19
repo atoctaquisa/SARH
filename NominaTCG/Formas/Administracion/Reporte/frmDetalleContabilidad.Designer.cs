@@ -45,6 +45,7 @@
             this.txtReproceso = new System.Windows.Forms.TextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cboTipo = new System.Windows.Forms.ComboBox();
             this.btnSearchRol = new System.Windows.Forms.Button();
             this.Label3 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
             this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
             this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
             this.imgList = new System.Windows.Forms.ImageList(this.components);
-            this.cboTipo = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -233,6 +233,17 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Parámetros";
             // 
+            // cboTipo
+            // 
+            this.cboTipo.FormattingEnabled = true;
+            this.cboTipo.Items.AddRange(new object[] {
+            "Consolidado",
+            "Detallado"});
+            this.cboTipo.Location = new System.Drawing.Point(166, 111);
+            this.cboTipo.Name = "cboTipo";
+            this.cboTipo.Size = new System.Drawing.Size(121, 21);
+            this.cboTipo.TabIndex = 36;
+            // 
             // btnSearchRol
             // 
             this.btnSearchRol.ImageIndex = 5;
@@ -319,17 +330,6 @@
             this.imgList.Images.SetKeyName(16, "btnNext.png");
             this.imgList.Images.SetKeyName(17, "btnPrevious.png");
             // 
-            // cboTipo
-            // 
-            this.cboTipo.FormattingEnabled = true;
-            this.cboTipo.Items.AddRange(new object[] {
-            "Consolidado",
-            "Detallado"});
-            this.cboTipo.Location = new System.Drawing.Point(166, 111);
-            this.cboTipo.Name = "cboTipo";
-            this.cboTipo.Size = new System.Drawing.Size(121, 21);
-            this.cboTipo.TabIndex = 36;
-            // 
             // frmDetalleContabilidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,6 +339,7 @@
             this.Controls.Add(this.lblTitulo);
             this.Name = "frmDetalleContabilidad";
             this.Text = "Reporte Contabilidad";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDetalleContabilidad_FormClosing);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox3.ResumeLayout(false);

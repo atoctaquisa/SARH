@@ -101,7 +101,7 @@ namespace NominaTCG
                 tipo = "DC";
 
             var frm = new fmrPeriodoLista(tipo);
-            Design.frmDialog(frm,"Períodos Vigentes");
+            Design.frmDialog(frm, "Períodos Vigentes");
 
             txtPeriodo.Text = ContratoBO.RolSeg.segRolObs;
             procesoID = ContratoBO.RolSeg.segRolId.ToString();
@@ -208,7 +208,7 @@ namespace NominaTCG
                     string nameFile = emp["RAZON"].ToString() + cboTipo.Text.ToUpper().Replace(" ", string.Empty) + "-" + Convert.ToDateTime(txtFechaIni.Text).Month + Convert.ToDateTime(txtFechaIni.Text).Year + ".txt";
                     if (datos.Rows.Count > 0)
                     {
-                        string path = ReadPath() + nameFile;
+                        string path = ReadPath(emp["RAZON"].ToString()) + nameFile;
                         using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
                         {
                             //Console.OutputEncoding = Encoding.ASCII;
@@ -219,13 +219,13 @@ namespace NominaTCG
                         }
                     }
                 }
-                if (tipoID == 3 | tipoID == 4 )
+                if (tipoID == 3 | tipoID == 4)
                 {
                     DataTable datos = EmpleadoBO.TransferenciaBancariaDecimo(procesoID, anioINI, anioFIN, emp["PAT_ID"].ToString(), tipoID.ToString());
-                    string nameFile = emp["RAZON"].ToString() + cboTipo.Text.ToUpper().Replace(" ", string.Empty) + "-" +anioINI+anioFIN + ".txt";
+                    string nameFile = emp["RAZON"].ToString() + cboTipo.Text.ToUpper().Replace(" ", string.Empty) + "-" + anioINI + anioFIN + ".txt";
                     if (datos.Rows.Count > 0)
                     {
-                        string path = ReadPath() + nameFile;
+                        string path = ReadPath(emp["RAZON"].ToString()) + nameFile;
                         using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
                         {
                             //Console.OutputEncoding = Encoding.ASCII;
@@ -235,8 +235,8 @@ namespace NominaTCG
                             }
                         }
                     }
-                }              
-                
+                }
+
             }
 
             Utility.MensajeInfo("Archivos generados exitosamente.!!");
@@ -244,9 +244,10 @@ namespace NominaTCG
 
         }
 
-        private string ReadPath()
+        private string ReadPath(string empresa)
         {
-            string path = @"C:\Transferencia\"; // SistemaBO.Path("61"); // 
+            //string path = @"C:\Transferencia\"; 
+            string path = SistemaBO.Path("61") + empresa + @"\";
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
@@ -263,6 +264,6 @@ namespace NominaTCG
         {
             _instancia = null;
             this.Close();
-        }      
+        }
     }
 }

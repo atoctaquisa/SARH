@@ -13,6 +13,9 @@ namespace DataAccess
     {
         #region StatementSQL
         private static string sqlLocalDelete = "DELETE DESARROLLO.DAT_LOC WHERE LOC_ID=:LOC_ID";
+        private static string sqlClienteLista = @"SELECT DESARROLLO.PK_TRANS_CONT.F_BUSCA_NOM_LOC (CLI_ID) AS CLI_NOMBRE, CLI_ID
+                                                  FROM DESARROLLO.DAT_CLIENTE
+                                                 WHERE CLI_ESTADO = 1 AND CLI_TIPO IS NOT NULL ";
         private static string sqlLocalLista = @"SELECT LOC_ID , LOC_RUC, LOC_NOMBRE , LOC_DIR , LOC_TELF , LOC_PROVINCIA , LOC_CIUDAD , 
                                              DECODE(LOC_ESTADO,1,'ACTIVA','INACTIVA') ESTADO, LOC_PAG_SERVICIO, LOC_PART_ROL,  LOC_FEC_CREA, LOC_FEC_MOD, 
                                              LOC_PROV_SEDE PROVINCIA, LOC_CIU_SEDE, LOC_DIR_SEDE, LOC_COD_IESS, GRU_LOC_ID, LOC_REGIMEN, 
@@ -231,6 +234,13 @@ SELECT CAD_ID,
                     new OracleParameter(":idLocal", idLocal)
                 };
             datos = db.GetData(sqlLocal, prm);
+            return datos;
+        }
+
+        public DataTable ClienteLista()
+        {
+            DataTable datos = new DataTable();
+            datos = db.GetData(sqlClienteLista);
             return datos;
         }
         public DataTable Lista()

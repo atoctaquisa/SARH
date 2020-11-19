@@ -995,9 +995,7 @@ namespace NominaTCG
             EmpleadoBO.Empleado.empPagDecTer = Convert.ToInt32(cboPerDecimoTercero.SelectedValue);
             EmpleadoBO.Empleado.empPagDecCua = Convert.ToInt32(cboPerDecimoCuarto.SelectedValue);
             EmpleadoBO.Empleado.empDependientes = 0;
-            codigoEMP = resp = EmpleadoBO.RegistarEmpleado(EmpleadoBO.Empleado, tipo);
-
-           
+            codigoEMP = resp = EmpleadoBO.RegistarEmpleado(EmpleadoBO.Empleado, tipo);           
 
             //2. Datos Laborales
             ContratoBO.Laboral.empId = Convert.ToInt64(codigoEMP);
@@ -1034,7 +1032,10 @@ namespace NominaTCG
 
 
             //3. Datos Familiares
-            resp = UpdateDataEmp(codigoEMP, out data, out dataChange);
+            if(tabID.Equals(1))
+                resp = UpdateDataEmp(codigoEMP, out data);
+            else
+                resp = UpdateDataEmp(codigoEMP, out data, out dataChange);
 
 
             //4. Valores Fijos
@@ -1122,6 +1123,50 @@ namespace NominaTCG
             //}
 
             return codigoEMP; //resp;
+        }
+
+        private long UpdateDataEmp(long codigoEMP, out DataTable data)
+        {
+            long resp = 0;
+            data = new DataTable();            
+            data = (DataTable)dgvFamiliar.DataSource;           
+            if (data != null)
+            {
+                foreach (DataRow row in data.Rows)
+                {
+                    EmpleadoBO.Familia.empFamNombre = row["EMP_FAM_NOMBRE"].ToString();
+                    EmpleadoBO.Familia.empFamFecNac = Convert.ToDateTime(row["EMP_FAM_FEC_NAC"].ToString());
+                    EmpleadoBO.Familia.empFamParent = row["EMP_FAM_PARENT"].ToString();
+                    EmpleadoBO.Familia.empFamOcup = row["EMP_FAM_OCUP"].ToString();
+                    EmpleadoBO.Familia.empFamTelfRef = row["EMP_FAM_TELF_REF"].ToString();
+                    if (row["EMP_FAM_DISC"].Equals(DBNull.Value))
+                        EmpleadoBO.Familia.empFamDisc = 0;
+                    else
+                        EmpleadoBO.Familia.empFamDisc = Convert.ToInt16(row["EMP_FAM_DISC"].ToString());
+                    EmpleadoBO.Familia.empId = Convert.ToDecimal(codigoEMP);
+                    EmpleadoBO.Familia.empFamId = EmpleadoBO.Familiares(codigoEMP.ToString()).Rows.Count + 1;
+                    resp = EmpleadoBO.RegistarFamiliar(EmpleadoBO.Familia);
+                }
+            }
+            ////////////////////////////////////////////
+            data = new DataTable();           
+            data = (DataTable)dgvValor.DataSource;            
+            if (data != null)
+            {
+                foreach (DataRow row in data.Rows)
+                {
+                    ContratoBO.ValorFijo.rolId = Convert.ToInt32(row["ROL_ID"].ToString());
+                    ContratoBO.ValorFijo.fijValor = Convert.ToInt32(row["FIJ_VALOR"].ToString());
+                    //ContratoBO.ValorFijo.fijEstado = Convert.ToInt16(row["FIJ_ESTADO"].Equals(DBNull.Value));//(row["FIJ_ESTADO"].Equals(DBNull.Value)) ? 0 : 1;
+                    if (row["FIJ_ESTADO"].Equals(DBNull.Value))
+                        ContratoBO.ValorFijo.fijEstado = 0;
+                    else
+                        ContratoBO.ValorFijo.fijEstado = Convert.ToInt16(row["FIJ_ESTADO"].ToString());
+                    ContratoBO.ValorFijo.empId = Convert.ToDecimal(codigoEMP);
+                    resp = ContratoBO.RegistrarValorFijo(ContratoBO.ValorFijo);
+                }
+            }
+            return resp;
         }
 
         private long UpdateDataEmp(long codigoEMP, out DataTable data, out DataTable dataChange)
@@ -1226,7 +1271,7 @@ namespace NominaTCG
                 {
                     ContratoBO.ValorFijo.rolId = Convert.ToInt32(row["ROL_ID"].ToString());
                     int auxRolID = Convert.ToInt32(row["ROL_ID", DataRowVersion.Original].ToString());
-                    ContratoBO.ValorFijo.fijValor = Convert.ToInt32(row["FIJ_VALOR"].ToString());
+                    ContratoBO.ValorFijo.fijValor = Convert.ToDecimal(row["FIJ_VALOR"].ToString());
                     //ContratoBO.ValorFijo.fijEstado = Convert.ToInt16(row["FIJ_ESTADO"].ToString());
                     if (row["FIJ_ESTADO"].Equals(DBNull.Value))
                         ContratoBO.ValorFijo.fijEstado = 0;
@@ -1552,6 +1597,8 @@ namespace NominaTCG
                             //Datos Contrato            
                             mtxtConFechaContrato.Text = string.Empty;
                             mtxtConFechaLiquidacion.Text = string.Empty;
+                            mtxtFechaSalida.Text = string.Empty;
+                            txtPerFechaSalidaDif.Text = string.Empty;
                             cboConRazon.SelectedValue = -1;
                             cboConFirma.SelectedValue = -1;
                             cboConCausaFin.SelectedValue = -1;
@@ -1595,7 +1642,7 @@ namespace NominaTCG
                                         {
                                             if (DialogResult.Yes == Utility.MensajeQuestion("¿Desea registrar el reingreso del empleado?"))
                                             {
-                                                EmpNewID = RegisterData(0, "I").ToString();
+                                                EmpNewID = RegisterData(1, "I").ToString();
                                                 EmpleadoBO.RegistraReingreso(data.Rows[0]["EMP_CI"].ToString(), EmpNewID, empID, Catalogo.UserName);
                                                 ClearControls(tabInformacion.SelectedIndex);
                                                 AssignData(EmpNewID);

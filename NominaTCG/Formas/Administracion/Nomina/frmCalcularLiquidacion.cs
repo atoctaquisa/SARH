@@ -365,6 +365,9 @@ namespace NominaTCG
                 AssignData(EmpleadoBO.Empleado.empId.ToString());
         }
 
-       
+        private void txtAsiento_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

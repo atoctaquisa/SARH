@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpleado));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
             this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
@@ -163,6 +163,15 @@
             this.label55 = new System.Windows.Forms.Label();
             this.tabFamiliares = new System.Windows.Forms.TabPage();
             this.dgvFamiliar = new System.Windows.Forms.DataGridView();
+            this.EMP_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMP_FAM_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMP_FAM_NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMP_FAM_FEC_NAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMP_FAM_PARENT = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.EMP_FAM_DISC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.EMP_FAM_OCUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMP_FAM_TELF_REF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabValores = new System.Windows.Forms.TabPage();
             this.dgvValor = new System.Windows.Forms.DataGridView();
             this.ROL_ID = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -177,15 +186,6 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.label38 = new System.Windows.Forms.Label();
             this.tabAdmin = new System.Windows.Forms.TabControl();
-            this.EMP_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMP_FAM_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMP_FAM_NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMP_FAM_FEC_NAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMP_FAM_PARENT = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.EMP_FAM_DISC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.EMP_FAM_OCUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMP_FAM_TELF_REF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabInformacion.SuspendLayout();
@@ -934,7 +934,7 @@
             this.txtPerTelefonoSeg.Location = new System.Drawing.Point(322, 188);
             this.txtPerTelefonoSeg.MaxLength = 30;
             this.txtPerTelefonoSeg.Name = "txtPerTelefonoSeg";
-            this.txtPerTelefonoSeg.Size = new System.Drawing.Size(193, 20);
+            this.txtPerTelefonoSeg.Size = new System.Drawing.Size(232, 20);
             this.txtPerTelefonoSeg.TabIndex = 29;
             this.txtPerTelefonoSeg.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPerTelefonoSeg_KeyPress);
             // 
@@ -950,9 +950,9 @@
             // txtPerDireccion
             // 
             this.txtPerDireccion.Location = new System.Drawing.Point(145, 167);
-            this.txtPerDireccion.MaxLength = 50;
+            this.txtPerDireccion.MaxLength = 90;
             this.txtPerDireccion.Name = "txtPerDireccion";
-            this.txtPerDireccion.Size = new System.Drawing.Size(370, 20);
+            this.txtPerDireccion.Size = new System.Drawing.Size(409, 20);
             this.txtPerDireccion.TabIndex = 25;
             this.txtPerDireccion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPerDireccion_KeyPress);
             // 
@@ -1485,14 +1485,14 @@
             // 
             // dgvFamiliar
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFamiliar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFamiliar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvFamiliar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFamiliar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.EMP_ID,
@@ -1504,14 +1504,14 @@
             this.EMP_FAM_DISC,
             this.EMP_FAM_OCUP,
             this.EMP_FAM_TELF_REF});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFamiliar.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFamiliar.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvFamiliar.Location = new System.Drawing.Point(26, 26);
             this.dgvFamiliar.Name = "dgvFamiliar";
             this.dgvFamiliar.Size = new System.Drawing.Size(783, 271);
@@ -1521,6 +1521,73 @@
             this.dgvFamiliar.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvFamiliar_CurrentCellDirtyStateChanged);
             this.dgvFamiliar.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvFamiliar_DataError);
             this.dgvFamiliar.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvFamiliar_UserDeletingRow);
+            // 
+            // EMP_ID
+            // 
+            this.EMP_ID.DataPropertyName = "EMP_ID";
+            this.EMP_ID.HeaderText = "EMP_ID";
+            this.EMP_ID.Name = "EMP_ID";
+            this.EMP_ID.Visible = false;
+            // 
+            // EMP_FAM_ID
+            // 
+            this.EMP_FAM_ID.DataPropertyName = "EMP_FAM_ID";
+            this.EMP_FAM_ID.HeaderText = "EMP_FAM_ID";
+            this.EMP_FAM_ID.Name = "EMP_FAM_ID";
+            this.EMP_FAM_ID.Visible = false;
+            // 
+            // EMP_FAM_NOMBRE
+            // 
+            this.EMP_FAM_NOMBRE.DataPropertyName = "EMP_FAM_NOMBRE";
+            this.EMP_FAM_NOMBRE.HeaderText = "Nombre";
+            this.EMP_FAM_NOMBRE.Name = "EMP_FAM_NOMBRE";
+            this.EMP_FAM_NOMBRE.Width = 250;
+            // 
+            // EMP_FAM_FEC_NAC
+            // 
+            this.EMP_FAM_FEC_NAC.DataPropertyName = "EMP_FAM_FEC_NAC";
+            this.EMP_FAM_FEC_NAC.HeaderText = "Fecha Nac";
+            this.EMP_FAM_FEC_NAC.Name = "EMP_FAM_FEC_NAC";
+            // 
+            // Edad
+            // 
+            this.Edad.DataPropertyName = "Edad";
+            this.Edad.HeaderText = "Edad";
+            this.Edad.Name = "Edad";
+            this.Edad.Width = 90;
+            // 
+            // EMP_FAM_PARENT
+            // 
+            this.EMP_FAM_PARENT.DataPropertyName = "EMP_FAM_PARENT";
+            this.EMP_FAM_PARENT.HeaderText = "Par";
+            this.EMP_FAM_PARENT.Name = "EMP_FAM_PARENT";
+            this.EMP_FAM_PARENT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EMP_FAM_PARENT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EMP_FAM_PARENT.Width = 80;
+            // 
+            // EMP_FAM_DISC
+            // 
+            this.EMP_FAM_DISC.DataPropertyName = "EMP_FAM_DISC";
+            this.EMP_FAM_DISC.FalseValue = "0";
+            this.EMP_FAM_DISC.HeaderText = "Disc";
+            this.EMP_FAM_DISC.Name = "EMP_FAM_DISC";
+            this.EMP_FAM_DISC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EMP_FAM_DISC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EMP_FAM_DISC.TrueValue = "1";
+            this.EMP_FAM_DISC.Width = 50;
+            // 
+            // EMP_FAM_OCUP
+            // 
+            this.EMP_FAM_OCUP.DataPropertyName = "EMP_FAM_OCUP";
+            this.EMP_FAM_OCUP.HeaderText = "Lugar Trabajo";
+            this.EMP_FAM_OCUP.Name = "EMP_FAM_OCUP";
+            // 
+            // EMP_FAM_TELF_REF
+            // 
+            this.EMP_FAM_TELF_REF.DataPropertyName = "EMP_FAM_TELF_REF";
+            this.EMP_FAM_TELF_REF.HeaderText = "Teléfono";
+            this.EMP_FAM_TELF_REF.Name = "EMP_FAM_TELF_REF";
+            this.EMP_FAM_TELF_REF.Width = 80;
             // 
             // tabValores
             // 
@@ -1534,27 +1601,27 @@
             // 
             // dgvValor
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvValor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvValor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvValor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvValor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ROL_ID,
             this.FIJ_VALOR,
             this.FIJ_ESTADO});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvValor.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvValor.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvValor.Location = new System.Drawing.Point(26, 23);
             this.dgvValor.Name = "dgvValor";
             this.dgvValor.Size = new System.Drawing.Size(791, 271);
@@ -1698,73 +1765,6 @@
             this.tabAdmin.SelectedIndex = 0;
             this.tabAdmin.Size = new System.Drawing.Size(864, 583);
             this.tabAdmin.TabIndex = 0;
-            // 
-            // EMP_ID
-            // 
-            this.EMP_ID.DataPropertyName = "EMP_ID";
-            this.EMP_ID.HeaderText = "EMP_ID";
-            this.EMP_ID.Name = "EMP_ID";
-            this.EMP_ID.Visible = false;
-            // 
-            // EMP_FAM_ID
-            // 
-            this.EMP_FAM_ID.DataPropertyName = "EMP_FAM_ID";
-            this.EMP_FAM_ID.HeaderText = "EMP_FAM_ID";
-            this.EMP_FAM_ID.Name = "EMP_FAM_ID";
-            this.EMP_FAM_ID.Visible = false;
-            // 
-            // EMP_FAM_NOMBRE
-            // 
-            this.EMP_FAM_NOMBRE.DataPropertyName = "EMP_FAM_NOMBRE";
-            this.EMP_FAM_NOMBRE.HeaderText = "Nombre";
-            this.EMP_FAM_NOMBRE.Name = "EMP_FAM_NOMBRE";
-            this.EMP_FAM_NOMBRE.Width = 250;
-            // 
-            // EMP_FAM_FEC_NAC
-            // 
-            this.EMP_FAM_FEC_NAC.DataPropertyName = "EMP_FAM_FEC_NAC";
-            this.EMP_FAM_FEC_NAC.HeaderText = "Fecha Nac";
-            this.EMP_FAM_FEC_NAC.Name = "EMP_FAM_FEC_NAC";
-            // 
-            // Edad
-            // 
-            this.Edad.DataPropertyName = "Edad";
-            this.Edad.HeaderText = "Edad";
-            this.Edad.Name = "Edad";
-            this.Edad.Width = 90;
-            // 
-            // EMP_FAM_PARENT
-            // 
-            this.EMP_FAM_PARENT.DataPropertyName = "EMP_FAM_PARENT";
-            this.EMP_FAM_PARENT.HeaderText = "Par";
-            this.EMP_FAM_PARENT.Name = "EMP_FAM_PARENT";
-            this.EMP_FAM_PARENT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EMP_FAM_PARENT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.EMP_FAM_PARENT.Width = 80;
-            // 
-            // EMP_FAM_DISC
-            // 
-            this.EMP_FAM_DISC.DataPropertyName = "EMP_FAM_DISC";
-            this.EMP_FAM_DISC.FalseValue = "0";
-            this.EMP_FAM_DISC.HeaderText = "Disc";
-            this.EMP_FAM_DISC.Name = "EMP_FAM_DISC";
-            this.EMP_FAM_DISC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EMP_FAM_DISC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.EMP_FAM_DISC.TrueValue = "1";
-            this.EMP_FAM_DISC.Width = 50;
-            // 
-            // EMP_FAM_OCUP
-            // 
-            this.EMP_FAM_OCUP.DataPropertyName = "EMP_FAM_OCUP";
-            this.EMP_FAM_OCUP.HeaderText = "Lugar Trabajo";
-            this.EMP_FAM_OCUP.Name = "EMP_FAM_OCUP";
-            // 
-            // EMP_FAM_TELF_REF
-            // 
-            this.EMP_FAM_TELF_REF.DataPropertyName = "EMP_FAM_TELF_REF";
-            this.EMP_FAM_TELF_REF.HeaderText = "Teléfono";
-            this.EMP_FAM_TELF_REF.Name = "EMP_FAM_TELF_REF";
-            this.EMP_FAM_TELF_REF.Width = 80;
             // 
             // frmEmpleado
             // 

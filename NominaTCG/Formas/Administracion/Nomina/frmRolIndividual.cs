@@ -70,12 +70,12 @@ namespace NominaTCG
         private void btnCadena_Click(object sender, EventArgs e)
         {
             
-        }
+        }       
 
         private void btnDetalleRol_Click(object sender, EventArgs e)
         {
             string path;
-            //path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Reportes\Rol.rdlc";
+            //path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Reportes\Rol.rdlc";
             path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + @"\Rol.rdlc";
             LocalReport report = new LocalReport();
             //report.ReportPath = path + @"\RolIndividual.rdlc";
@@ -83,9 +83,26 @@ namespace NominaTCG
             string rolID = dgvData.Rows[dgvData.CurrentRow.Index].Cells["SEG_ROL_ID"].Value.ToString();
             string reproID = dgvData.Rows[dgvData.CurrentRow.Index].Cells["SEG_ROL_REPRO"].Value.ToString();
             DataTable dtConsulta = ReportBO.RolIndividual(rolID, reproID, EmpleadoBO.Empleado.empId.ToString(), LocalBO.Local.LocalID.ToString(), cboCadena.SelectedValue == null ? "" : cboCadena.SelectedValue.ToString());
-            frmViewReport frm = new frmViewReport(dtConsulta, new ReportDataSource("DataSet1", dtConsulta), path);
+            //DataTable dtConsultaSub = ReportBO.RolIndividualSub("1");
+            ReportDataSource data = new ReportDataSource("DataSet1", dtConsulta);
+            //ReportDataSource dataSub = new ReportDataSource("DataSet1", dtConsultaSub);
+            //ReportParameter[] param = new ReportParameter[1];
+            frmViewReport frm = new frmViewReport(data, path,null);
             frm.Show();
             ClearControl();
+
+
+            //_reportViewer.LocalReport.DataSources.Clear();
+            //var departmentsModels = new ReportDataSource() { Name = "Department_DS", Value = departments };
+            //_reportViewer.LocalReport.DataSources.Add(departmentsModels);
+            //var path = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())));
+            //var MainPage = path + @"\subreportDemo\MainReport.rdlc";
+            //_reportViewer.LocalReport.ReportPath = MainPage;
+            //_reportViewer.LocalReport.SubreportProcessing += LocalReport_SubreportProcessing;
+            //_reportViewer.LocalReport.EnableExternalImages = true;
+            //_reportViewer.SetDisplayMode(DisplayMode.PrintLayout);
+            //_reportViewer.Refresh();
+            //_reportViewer.RefreshReport();
 
             //string path;
             //path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Reportes\Report1.rdlc";

@@ -232,7 +232,7 @@
             this.txtAsiento.ReadOnly = true;
             this.txtAsiento.Size = new System.Drawing.Size(87, 20);
             this.txtAsiento.TabIndex = 0;
-            this.txtAsiento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAsiento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;            
             this.txtAsiento.DoubleClick += new System.EventHandler(this.txtAsiento_DoubleClick);
             // 
             // txtContrato

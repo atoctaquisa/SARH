@@ -85,7 +85,172 @@ namespace DataAccess
                                           FROM DESARROLLO.ACTUARIAL_TMP  A
                                                JOIN DESARROLLO.ACTUARIAL_INGRESO_TMP I ON (A.CEDULA = I.CEDULA)";
         private string sqlGeneraRol = @"DESARROLLO.P_IMP_DAT_ROL_IND3";
-        private string sqlListaRol = "SELECT DETALLE FROM DAT_ROL_IND";
+        private string sqlListaRol = "SELECT  DISTINCT IND_ID, DETALLE, IND_COL FROM DAT_ROL_IND ORDER BY IND_ID ";
+        private string sqlListaRolSub = "SELECT DISTINCT IND_ID, DETALLE, IND_COL FROM DAT_ROL_IND where IND_ID=:IND_ID";
+        //private string sqlPrestamoDT = @"SELECT PRESTAMO,
+        //                                       DESCRIPCION,
+        //                                       NOMBRE,
+        //                                       PRES_VALOR,
+        //                                       PAGO,
+        //                                       PRES_ESTADO,
+        //                                       MES_DESCUENTO,
+        //                                       MES_INICIO,
+        //                                       PATRONO,PRES_PLAZO,
+        //                                       PAT_ID
+        //                                  FROM (  SELECT                                              --*--MES_DESCUENTO
+        //                                                 'Prestamo: $' || PRES_VALOR || ' Cuotas: ' || PRES_PLAZO
+        //                                                     PRESTAMO,
+        //                                                    'Cuenta: '
+        //                                                 || ROL_SUBCUENTA
+        //                                                 || ' Observación: '
+        //                                                 || PRES_OBSERVACION
+        //                                                     DESCRIPCION,
+        //                                                 NOMBRE,
+        //                                                 PRES_VALOR,
+        //                                                 DECODE (PRES_ESTADO,  0, 'PAGADO',  1, 'PENDIENTE')
+        //                                                     PRES_ESTADO,
+        //                                                 MES_DESCUENTO,
+        //                                                 DET_PRES_ROL,
+        //                                                 MES_INICIO,
+        //                                                 ROUND (DET_PRES_VALOR, 3)
+        //                                                     PAGO,
+        //                                                 PATRONO,PRES_PLAZO,
+        //                                                 PAT_ID,EMP_ID
+        //                                            FROM DESARROLLO.V_DET_PRESTAMOS
+        //                                           WHERE     ROL_ID_GEN IN (SELECT DISTINCT ROL_ID_GEN
+        //                                                                      FROM DESARROLLO.V_DET_PRESTAMOS
+        //                                                                     WHERE DET_PRES_ROL = :PER_ID)
+        //                                                 AND EMP_ID IN (SELECT DISTINCT EMP_ID
+        //                                                                  FROM DESARROLLO.V_DET_PRESTAMOS
+        //                                                                 WHERE DET_PRES_ROL = :PER_ID)
+        //                                        GROUP BY PATRONO,
+        //                                                 NOMBRE,
+        //                                                 PRES_VALOR,
+        //                                                 PRES_PLAZO,
+        //                                                 ROL_SUBCUENTA,
+        //                                                 PRES_OBSERVACION,
+        //                                                 PRES_ESTADO,
+        //                                                 MES_DESCUENTO,
+        //                                                 DET_PRES_ROL,
+        //                                                 MES_INICIO,
+        //                                                 DET_PRES_VALOR,
+        //                                                 PAT_ID,EMP_ID
+        //                                                 ORDER BY 1,2,3,7) ";
+        private string sqlPrestamoDT = @"SELECT PRESTAMO,
+                                               DESCRIPCION,
+                                               NOMBRE,
+                                               PRES_VALOR,
+                                               PAGO,
+                                               PRES_ESTADO,
+                                               MES_DESCUENTO,
+                                               MES_INICIO,
+                                               PATRONO,PRES_PLAZO,
+                                               PAT_ID
+                                          FROM (  SELECT                                              --*--MES_DESCUENTO
+                                                         'Prestamo: $' || PRES_VALOR || ' Cuotas: ' || PRES_PLAZO
+                                                             PRESTAMO,
+                                                            /*'Cuenta: '
+                                                         || ROL_SUBCUENTA
+                                                         || ' Observación: '
+                                                         ||*/ PRES_OBSERVACION
+                                                             DESCRIPCION,
+                                                         NOMBRE,
+                                                         PRES_VALOR,
+                                                         DECODE (DESARROLLO.F_VER_EST_PRESTAMO (EMP_ID,
+                                                        ROL_ID,
+                                                        ROL_ID_GEN,
+                                                        ROL_REPRO,
+                                                        PRES_PLAZO),
+                         0, 'PAGADO',
+                         1, 'PENDIENTE')
+                     PRES_ESTADO,
+                                                         MES_DESCUENTO,
+                                                         DET_PRES_ROL,
+                                                         MES_INICIO,
+                                                         ROUND (DET_PRES_VALOR, 3)
+                                                             PAGO,
+                                                         PATRONO,PRES_PLAZO,
+                                                         PAT_ID,EMP_ID
+                                                    FROM DESARROLLO.V_DET_PRESTAMOS)
+                                                    WHERE PAT_ID>0
+                                                   ";
+        //private string sqlPrestamo = @" SELECT PRESTAMO,
+        //                                       DESCRIPCION,
+        //                                       PRES_PLAZO,
+        //                                       NOMBRE,
+        //                                       PRES_VALOR - PAGO     PENDIENTE,
+        //                                       PRES_VALOR,
+        //                                       PRES_ESTADO,
+        //                                       PATRONO,
+        //                                       PAT_ID
+        //                                  FROM (  SELECT 'Prestamo: $' || PRES_VALOR || ' Cuotas: ' || PRES_PLAZO
+        //                                                     PRESTAMO,
+        //                                                    'Cuenta: '
+        //                                                 || ROL_SUBCUENTA
+        //                                                 || ' Observación: '
+        //                                                 || PRES_OBSERVACION
+        //                                                     DESCRIPCION,
+        //                                                 PRES_PLAZO,
+        //                                                 NOMBRE,
+        //                                                 PRES_VALOR,
+        //                                                 DECODE (PRES_ESTADO,  0, 'PAGADO',  1, 'PENDIENTE')
+        //                                                     PRES_ESTADO,
+        //                                                 ROUND (SUM (DET_PRES_VALOR), 3)
+        //                                                     PAGO,
+        //                                                 PATRONO,
+        //                                                 PAT_ID,EMP_ID
+        //                                            FROM DESARROLLO.V_DET_PRESTAMOS
+        //                                           WHERE     ROL_ID_GEN IN (SELECT DISTINCT ROL_ID_GEN
+        //                                                                      FROM DESARROLLO.V_DET_PRESTAMOS
+        //                                                                     WHERE DET_PRES_ROL = :PER_ID)
+        //                                                 AND EMP_ID IN (SELECT DISTINCT EMP_ID
+        //                                                                  FROM DESARROLLO.V_DET_PRESTAMOS
+        //                                                                 WHERE DET_PRES_ROL = :PER_ID)                                                 
+        //                                        GROUP BY PATRONO,
+        //                                                 NOMBRE,
+        //                                                 PRES_VALOR,
+        //                                                 PRES_PLAZO,
+        //                                                 ROL_SUBCUENTA,
+        //                                                 PRES_OBSERVACION,
+        //                                                 PRES_ESTADO, PAT_ID,EMP_ID)
+        //                                 ";
+        private string sqlPrestamo = @"
+SELECT PRESTAMO,
+       DESCRIPCION,
+       PRES_PLAZO,
+       NOMBRE,
+       PAGO     PENDIENTE,
+       PRES_VALOR,
+       PRES_ESTADO,
+       PATRONO,
+       PAT_ID
+  FROM (  SELECT 'Prestamo: $' || PRES_VALOR || ' Cuotas: ' || PRES_PLAZO
+                     PRESTAMO,
+                    /*'Cuenta: '
+                 || ROL_SUBCUENTA
+                 || ' Observación: '
+                 ||*/ PRES_OBSERVACION
+                     DESCRIPCION,
+                 PRES_PLAZO,
+                 NOMBRE,
+                 PRES_VALOR,
+                 DECODE (DESARROLLO.F_VER_EST_PRESTAMO (EMP_ID,
+                                                        ROL_ID,
+                                                        ROL_ID_GEN,
+                                                        ROL_REPRO,
+                                                        PRES_PLAZO),
+                         0, 'PAGADO',
+                         1, 'PENDIENTE')
+                     PRES_ESTADO,
+                 ROUND ((DET_PRES_VALOR), 3)
+                     PAGO,
+                 PATRONO,
+                 PAT_ID,
+                 EMP_ID,
+                 ROL_ID_GEN
+            FROM DESARROLLO.V_DET_PRESTAMOS)
+            WHERE PAT_ID>0
+";
         private string sqlPagoQuincena = @" SELECT 
                                             ROL_ID_GEN, ROL_REPRO, LOC_ID, 
                                                LOC_NOMBRE, EMP_ID, EMP_CI, 
@@ -268,7 +433,61 @@ namespace DataAccess
 
             return db.GetData(sqlDetalleContabilidad, prm);
         }
-        public DataTable PagoQuincena(string rolID, string reproID, string patrono, string local, string empID)
+
+        public DataTable Prestamo(string rolID, string estado, string patrono, string tipo, string empID)
+        {
+            String sqlWhere = String.Empty; ;
+            //if (!estado.Equals(""))
+            //{
+            //    sqlWhere = " WHERE PRES_ESTADO ='" + estado.ToUpper() + "'";
+            //    if (!patrono.Equals(""))
+            //        sqlWhere += " AND PAT_ID = " + patrono;
+            //    if (!empID.Equals(""))
+            //        sqlWhere += " AND EMP_ID = " + empID;
+            //}
+            //else
+            //{
+            //    if (!patrono.Equals(""))
+            //    {
+            //        sqlWhere += " WHERE PAT_ID = " + patrono;
+            //        if (!empID.Equals(""))
+            //            sqlWhere += " AND EMP_ID = " + empID;
+            //    }            
+            //    else
+            //    {
+            //        if (!empID.Equals(""))
+            //            sqlWhere += " WHERE EMP_ID = " + empID;
+            //    }
+            //}
+
+            if (!estado.Equals(""))
+                sqlWhere = " AND PRES_ESTADO ='" + estado.ToUpper() + "'";
+            if (!patrono.Equals(""))
+                sqlWhere += " AND PAT_ID = " + patrono;
+            if (!empID.Equals(""))
+                sqlWhere += " AND EMP_ID = " + empID;
+            if (!rolID.Equals("0") & !rolID.Equals(""))
+            {
+                sqlWhere += " AND ROL_ID_GEN IN (SELECT DISTINCT ROL_ID_GEN FROM DESARROLLO.V_DET_PRESTAMOS WHERE DET_PRES_ROL="+ rolID+")";
+                sqlWhere += " AND EMP_ID IN(SELECT DISTINCT EMP_ID FROM DESARROLLO.V_DET_PRESTAMOS WHERE DET_PRES_ROL=" + rolID + ")";
+            }
+                
+
+
+            string sql;
+            if (tipo.Equals("Detallado"))
+                sql = sqlPrestamoDT + sqlWhere;
+            else
+                sql = sqlPrestamo + sqlWhere;
+
+            OracleParameter[] prm = new OracleParameter[]
+            {                
+                new OracleParameter(":PER_ID",rolID ),
+                new OracleParameter(":PER_ID",rolID )
+            };
+            return db.GetData(sql, prm);
+        }
+            public DataTable PagoQuincena(string rolID, string reproID, string patrono, string local, string empID)
         {
 
             OracleParameter[] prm = new OracleParameter[]
@@ -307,8 +526,8 @@ namespace DataAccess
             {
                 new OracleParameter(":rolID",rolID ),
                 new OracleParameter(":reproID",reproID ),
-                new OracleParameter(":empID",empID.Equals("0")?"": empID ),
-                new OracleParameter(":localID",localID.Equals("0")?"": localID),
+                new OracleParameter(":empID",empID.Equals("0")? null: empID ),
+                new OracleParameter(":localID",localID.Equals("0")? null: localID),
                 new OracleParameter(":ciudadlID",string.Empty ),
                 new OracleParameter(":cadenaID",cadenaID)
             };
@@ -316,5 +535,13 @@ namespace DataAccess
             return db.GetData(sqlListaRol);
         }
 
+        public DataTable RolIndividualSub(string rolID)
+        {
+            OracleParameter[] prm = new OracleParameter[]
+            {
+                new OracleParameter(":IND_ID",rolID )
+            };
+             return db.GetData(sqlListaRolSub, prm );
+        }
     }
 }

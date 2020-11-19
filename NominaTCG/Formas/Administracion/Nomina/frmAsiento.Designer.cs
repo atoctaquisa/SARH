@@ -82,14 +82,6 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.btnCuenta = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DEBE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HABER = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LOCAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LOCAL_ID = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.MEMO = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.txtIngreso = new System.Windows.Forms.TextBox();
@@ -102,6 +94,14 @@
             this.label15 = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnCuenta = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DEBE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HABER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LOCAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LOCAL_ID = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.CLI_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
@@ -242,7 +242,7 @@
             // 
             this.button2.ImageIndex = 5;
             this.button2.ImageList = this.imgList;
-            this.button2.Location = new System.Drawing.Point(234, 58);
+            this.button2.Location = new System.Drawing.Point(282, 58);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(31, 23);
             this.button2.TabIndex = 2;
@@ -294,7 +294,7 @@
             this.txtDiario.Location = new System.Drawing.Point(109, 18);
             this.txtDiario.Name = "txtDiario";
             this.txtDiario.ReadOnly = true;
-            this.txtDiario.Size = new System.Drawing.Size(74, 20);
+            this.txtDiario.Size = new System.Drawing.Size(124, 20);
             this.txtDiario.TabIndex = 0;
             // 
             // txtFecha
@@ -302,7 +302,7 @@
             this.txtFecha.Enabled = false;
             this.txtFecha.Location = new System.Drawing.Point(109, 39);
             this.txtFecha.Name = "txtFecha";
-            this.txtFecha.Size = new System.Drawing.Size(74, 20);
+            this.txtFecha.Size = new System.Drawing.Size(124, 20);
             this.txtFecha.TabIndex = 0;
             // 
             // btnReversar
@@ -320,7 +320,7 @@
             this.txtTipo.Enabled = false;
             this.txtTipo.Location = new System.Drawing.Point(109, 60);
             this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(124, 20);
+            this.txtTipo.Size = new System.Drawing.Size(172, 20);
             this.txtTipo.TabIndex = 0;
             // 
             // btnProcesar
@@ -592,7 +592,7 @@
             this.HABER,
             this.LOCAL,
             this.LOCAL_ID,
-            this.MEMO});
+            this.CLI_ID});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -611,80 +611,10 @@
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvData.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvData.RowHeadersVisible = false;
             this.dgvData.Size = new System.Drawing.Size(717, 194);
             this.dgvData.TabIndex = 2;
             this.dgvData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellContentClick);
             this.dgvData.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellEndEdit);
-            // 
-            // btnCuenta
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = "...";
-            this.btnCuenta.DefaultCellStyle = dataGridViewCellStyle2;
-            this.btnCuenta.FillWeight = 0.3303525F;
-            this.btnCuenta.HeaderText = "";
-            this.btnCuenta.Name = "btnCuenta";
-            this.btnCuenta.Text = "";
-            this.btnCuenta.ToolTipText = "Cuenta";
-            this.btnCuenta.Width = 20;
-            // 
-            // Cuenta
-            // 
-            this.Cuenta.DataPropertyName = "CUE_ID";
-            this.Cuenta.FillWeight = 0.9204162F;
-            this.Cuenta.HeaderText = "Cuenta";
-            this.Cuenta.Name = "Cuenta";
-            this.Cuenta.Width = 70;
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "CUENTA";
-            this.Nombre.FillWeight = 21.78268F;
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.Width = 280;
-            // 
-            // DEBE
-            // 
-            this.DEBE.DataPropertyName = "DET_DIA_DB";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.DEBE.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DEBE.HeaderText = "Debe";
-            this.DEBE.Name = "DEBE";
-            this.DEBE.Width = 70;
-            // 
-            // HABER
-            // 
-            this.HABER.DataPropertyName = "DET_DIA_HB";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.HABER.DefaultCellStyle = dataGridViewCellStyle4;
-            this.HABER.HeaderText = "Haber";
-            this.HABER.Name = "HABER";
-            this.HABER.Width = 70;
-            // 
-            // LOCAL
-            // 
-            this.LOCAL.DataPropertyName = "LOCAL";
-            this.LOCAL.HeaderText = "Local";
-            this.LOCAL.Name = "LOCAL";
-            this.LOCAL.Width = 150;
-            // 
-            // LOCAL_ID
-            // 
-            this.LOCAL_ID.HeaderText = "";
-            this.LOCAL_ID.Name = "LOCAL_ID";
-            this.LOCAL_ID.Width = 20;
-            // 
-            // MEMO
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = "Memo";
-            this.MEMO.DefaultCellStyle = dataGridViewCellStyle5;
-            this.MEMO.HeaderText = "";
-            this.MEMO.Name = "MEMO";
-            this.MEMO.Visible = false;
-            this.MEMO.Width = 35;
             // 
             // tabControl1
             // 
@@ -802,6 +732,76 @@
             // 
             this.ErrProv.ContainerControl = this;
             // 
+            // btnCuenta
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = "...";
+            this.btnCuenta.DefaultCellStyle = dataGridViewCellStyle2;
+            this.btnCuenta.FillWeight = 0.3303525F;
+            this.btnCuenta.HeaderText = "";
+            this.btnCuenta.Name = "btnCuenta";
+            this.btnCuenta.Text = "";
+            this.btnCuenta.ToolTipText = "Cuenta";
+            this.btnCuenta.Width = 20;
+            // 
+            // Cuenta
+            // 
+            this.Cuenta.DataPropertyName = "CUE_ID";
+            this.Cuenta.FillWeight = 0.9204162F;
+            this.Cuenta.HeaderText = "Cuenta";
+            this.Cuenta.Name = "Cuenta";
+            this.Cuenta.Width = 70;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "CUENTA";
+            this.Nombre.FillWeight = 21.78268F;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.Width = 280;
+            // 
+            // DEBE
+            // 
+            this.DEBE.DataPropertyName = "DET_DIA_DB";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.DEBE.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DEBE.HeaderText = "Debe";
+            this.DEBE.Name = "DEBE";
+            this.DEBE.Width = 70;
+            // 
+            // HABER
+            // 
+            this.HABER.DataPropertyName = "DET_DIA_HB";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.HABER.DefaultCellStyle = dataGridViewCellStyle4;
+            this.HABER.HeaderText = "Haber";
+            this.HABER.Name = "HABER";
+            this.HABER.Width = 70;
+            // 
+            // LOCAL
+            // 
+            this.LOCAL.DataPropertyName = "LOCAL";
+            this.LOCAL.HeaderText = "Local";
+            this.LOCAL.Name = "LOCAL";
+            this.LOCAL.Width = 150;
+            // 
+            // LOCAL_ID
+            // 
+            this.LOCAL_ID.HeaderText = "";
+            this.LOCAL_ID.Name = "LOCAL_ID";
+            this.LOCAL_ID.Width = 20;
+            // 
+            // CLI_ID
+            // 
+            dataGridViewCellStyle5.NullValue = "Memo";
+            this.CLI_ID.DefaultCellStyle = dataGridViewCellStyle5;
+            this.CLI_ID.HeaderText = "";
+            this.CLI_ID.Name = "CLI_ID";
+            this.CLI_ID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CLI_ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CLI_ID.Visible = false;
+            this.CLI_ID.Width = 35;
+            // 
             // frmAsiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -880,6 +880,8 @@
         private System.Windows.Forms.TextBox txtFechaReg;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button btnEditCancel;
+        private System.Windows.Forms.Button btnNewSave;
         private System.Windows.Forms.DataGridViewButtonColumn btnCuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
@@ -887,8 +889,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HABER;
         private System.Windows.Forms.DataGridViewTextBoxColumn LOCAL;
         private System.Windows.Forms.DataGridViewButtonColumn LOCAL_ID;
-        private System.Windows.Forms.DataGridViewButtonColumn MEMO;
-        private System.Windows.Forms.Button btnEditCancel;
-        private System.Windows.Forms.Button btnNewSave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CLI_ID;
     }
 }

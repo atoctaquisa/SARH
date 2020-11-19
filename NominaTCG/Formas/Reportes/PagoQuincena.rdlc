@@ -477,7 +477,6 @@
                               <PaddingBottom>2pt</PaddingBottom>
                             </Style>
                           </Textbox>
-                          <rd:Selected>true</rd:Selected>
                         </CellContents>
                       </TablixHeader>
                       <KeepWithGroup>Before</KeepWithGroup>
@@ -678,7 +677,7 @@
         <DataSetName>PagoQuincena</DataSetName>
         <Top>0.37042cm</Top>
         <Left>0.55562cm</Left>
-        <Height>2.76188cm</Height>
+        <Height>2.76186cm</Height>
         <Width>15.56575cm</Width>
         <Style>
           <Border>

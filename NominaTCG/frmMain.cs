@@ -364,7 +364,10 @@ namespace NominaTCG
 
         private void mnuPrestamos_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://192.168.1.116:9502/analytics/saw.dll?bipublisherEntry&Action=edit&itemType=.xdo&bipPath=%2FInformes%20Recursos%20Humanos%2FPrestamos.xdo&path=%2Fshared%2FInformes%20Recursos%20Humanos%2FPrestamos.xdo");
+            //System.Diagnostics.Process.Start("http://192.168.1.116:9502/analytics/saw.dll?bipublisherEntry&Action=edit&itemType=.xdo&bipPath=%2FInformes%20Recursos%20Humanos%2FPrestamos.xdo&path=%2Fshared%2FInformes%20Recursos%20Humanos%2FPrestamos.xdo");
+            var frm = frmRepPrestamo.Instancia;
+            frm.MdiParent = this;
+            Design.frmShow(frm);
         }
 
         private void mnuRolNegativo_Click(object sender, EventArgs e)

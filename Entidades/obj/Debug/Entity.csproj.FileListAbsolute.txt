@@ -1,6 +1,6 @@
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\Entidades\bin\Debug\Entidades.dll
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\Entidades\bin\Debug\Entidades.pdb
-C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\Entidades\obj\Debug\Entity.csprojAssemblyReference.cache
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\Entidades\obj\Debug\Entity.csproj.CoreCompileInputs.cache
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\Entidades\obj\Debug\Entidades.dll
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\Entidades\obj\Debug\Entity.csprojAssemblyReference.cache

@@ -628,6 +628,73 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="V_DET_PRESTAMOS" msprop:Generator_TableClassName="V_DET_PRESTAMOSDataTable" msprop:Generator_TableVarName="tableV_DET_PRESTAMOS" msprop:Generator_RowChangedName="V_DET_PRESTAMOSRowChanged" msprop:Generator_TablePropName="V_DET_PRESTAMOS" msprop:Generator_RowDeletingName="V_DET_PRESTAMOSRowDeleting" msprop:Generator_RowChangingName="V_DET_PRESTAMOSRowChanging" msprop:Generator_RowEvHandlerName="V_DET_PRESTAMOSRowChangeEventHandler" msprop:Generator_RowDeletedName="V_DET_PRESTAMOSRowDeleted" msprop:Generator_RowClassName="V_DET_PRESTAMOSRow" msprop:Generator_UserTableName="V_DET_PRESTAMOS" msprop:Generator_RowEvArgName="V_DET_PRESTAMOSRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PRESTAMO" msprop:Generator_ColumnVarNameInTable="columnPRESTAMO" msprop:Generator_ColumnPropNameInRow="PRESTAMO" msprop:Generator_ColumnPropNameInTable="PRESTAMOColumn" msprop:Generator_UserColumnName="PRESTAMO" type="xs:string" minOccurs="0" />
+              <xs:element name="DESCRIPCION" msprop:Generator_ColumnVarNameInTable="columnDESCRIPCION" msprop:Generator_ColumnPropNameInRow="DESCRIPCION" msprop:Generator_ColumnPropNameInTable="DESCRIPCIONColumn" msprop:Generator_UserColumnName="DESCRIPCION" type="xs:string" minOccurs="0" />
+              <xs:element name="NOMBRE" msprop:Generator_ColumnVarNameInTable="columnNOMBRE" msprop:Generator_ColumnPropNameInRow="NOMBRE" msprop:Generator_ColumnPropNameInTable="NOMBREColumn" msprop:Generator_UserColumnName="NOMBRE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="321" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PENDIENTE" msprop:Generator_ColumnVarNameInTable="columnPENDIENTE" msprop:Generator_ColumnPropNameInRow="PENDIENTE" msprop:Generator_ColumnPropNameInTable="PENDIENTEColumn" msprop:Generator_UserColumnName="PENDIENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="PRES_ESTADO" msprop:Generator_ColumnVarNameInTable="columnPRES_ESTADO" msprop:Generator_ColumnPropNameInRow="PRES_ESTADO" msprop:Generator_ColumnPropNameInTable="PRES_ESTADOColumn" msprop:Generator_UserColumnName="PRES_ESTADO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PATRONO" msprop:Generator_ColumnVarNameInTable="columnPATRONO" msprop:Generator_ColumnPropNameInRow="PATRONO" msprop:Generator_ColumnPropNameInTable="PATRONOColumn" msprop:Generator_UserColumnName="PATRONO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRES_VALOR" msprop:Generator_ColumnVarNameInTable="columnPRES_VALOR" msprop:Generator_ColumnPropNameInRow="PRES_VALOR" msprop:Generator_ColumnPropNameInTable="PRES_VALORColumn" msprop:Generator_UserColumnName="PRES_VALOR" type="xs:string" minOccurs="0" />
+              <xs:element name="PRES_PLAZO" msprop:Generator_ColumnVarNameInTable="columnPRES_PLAZO" msprop:Generator_ColumnPropNameInRow="PRES_PLAZO" msprop:Generator_ColumnPropNameInTable="PRES_PLAZOColumn" msprop:Generator_UserColumnName="PRES_PLAZO" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="V_DET_PRESTAMOS_DT" msprop:Generator_TableClassName="V_DET_PRESTAMOS_DTDataTable" msprop:Generator_TableVarName="tableV_DET_PRESTAMOS_DT" msprop:Generator_RowChangedName="V_DET_PRESTAMOS_DTRowChanged" msprop:Generator_TablePropName="V_DET_PRESTAMOS_DT" msprop:Generator_RowDeletingName="V_DET_PRESTAMOS_DTRowDeleting" msprop:Generator_RowChangingName="V_DET_PRESTAMOS_DTRowChanging" msprop:Generator_RowEvHandlerName="V_DET_PRESTAMOS_DTRowChangeEventHandler" msprop:Generator_RowDeletedName="V_DET_PRESTAMOS_DTRowDeleted" msprop:Generator_RowClassName="V_DET_PRESTAMOS_DTRow" msprop:Generator_UserTableName="V_DET_PRESTAMOS_DT" msprop:Generator_RowEvArgName="V_DET_PRESTAMOS_DTRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PRESTAMO" msprop:Generator_ColumnVarNameInTable="columnPRESTAMO" msprop:Generator_ColumnPropNameInRow="PRESTAMO" msprop:Generator_ColumnPropNameInTable="PRESTAMOColumn" msprop:Generator_UserColumnName="PRESTAMO" type="xs:string" minOccurs="0" />
+              <xs:element name="DESCRIPCION" msprop:Generator_ColumnVarNameInTable="columnDESCRIPCION" msprop:Generator_ColumnPropNameInRow="DESCRIPCION" msprop:Generator_ColumnPropNameInTable="DESCRIPCIONColumn" msprop:Generator_UserColumnName="DESCRIPCION" type="xs:string" minOccurs="0" />
+              <xs:element name="NOMBRE" msprop:Generator_ColumnVarNameInTable="columnNOMBRE" msprop:Generator_ColumnPropNameInRow="NOMBRE" msprop:Generator_ColumnPropNameInTable="NOMBREColumn" msprop:Generator_UserColumnName="NOMBRE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="321" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRES_VALOR" msprop:Generator_ColumnVarNameInTable="columnPRES_VALOR" msprop:Generator_ColumnPropNameInRow="PRES_VALOR" msprop:Generator_ColumnPropNameInTable="PRES_VALORColumn" msprop:Generator_UserColumnName="PRES_VALOR" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PAGO" msprop:Generator_ColumnVarNameInTable="columnPAGO" msprop:Generator_ColumnPropNameInRow="PAGO" msprop:Generator_ColumnPropNameInTable="PAGOColumn" msprop:Generator_UserColumnName="PAGO" type="xs:string" minOccurs="0" />
+              <xs:element name="PRES_ESTADO" msprop:Generator_ColumnVarNameInTable="columnPRES_ESTADO" msprop:Generator_ColumnPropNameInRow="PRES_ESTADO" msprop:Generator_ColumnPropNameInTable="PRES_ESTADOColumn" msprop:Generator_UserColumnName="PRES_ESTADO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MES_DESCUENTO" msprop:Generator_ColumnVarNameInTable="columnMES_DESCUENTO" msprop:Generator_ColumnPropNameInRow="MES_DESCUENTO" msprop:Generator_ColumnPropNameInTable="MES_DESCUENTOColumn" msprop:Generator_UserColumnName="MES_DESCUENTO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MES_INICIO" msprop:Generator_ColumnVarNameInTable="columnMES_INICIO" msprop:Generator_ColumnPropNameInRow="MES_INICIO" msprop:Generator_ColumnPropNameInTable="MES_INICIOColumn" msprop:Generator_UserColumnName="MES_INICIO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PATRONO" msprop:Generator_ColumnVarNameInTable="columnPATRONO" msprop:Generator_ColumnPropNameInRow="PATRONO" msprop:Generator_ColumnPropNameInTable="PATRONOColumn" msprop:Generator_UserColumnName="PATRONO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PAT_ID" msprop:Generator_ColumnVarNameInTable="columnPAT_ID" msprop:Generator_ColumnPropNameInRow="PAT_ID" msprop:Generator_ColumnPropNameInTable="PAT_IDColumn" msprop:Generator_UserColumnName="PAT_ID" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PRES_PLAZO" msprop:Generator_ColumnVarNameInTable="columnPRES_PLAZO" msprop:Generator_ColumnPropNameInRow="PRES_PLAZO" msprop:Generator_ColumnPropNameInTable="PRES_PLAZOColumn" msprop:Generator_UserColumnName="PRES_PLAZO" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">

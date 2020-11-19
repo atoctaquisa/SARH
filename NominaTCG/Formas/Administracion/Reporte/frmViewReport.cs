@@ -16,16 +16,23 @@ namespace NominaTCG
     {
         private DataTable _Datos;
         private ReportDataSource _reporte;
+        private ReportParameter[] _param;
+        //private ReportDataSource _reporteSub;
         private string _path;
-        public frmViewReport(DataTable datos,ReportDataSource reporte,string path)
+        public frmViewReport(ReportDataSource reporte, string path, ReportParameter[] param)
         {
             InitializeComponent();
-            _Datos = new System.Data.DataTable();
-            _Datos = datos;
-            _reporte = reporte;
-            _path = path;
+            //_Datos = new System.Data.DataTable();
+            //_Datos = datos;
+            _reporte = reporte;            
+            _path = path;            
+            _param = param;
         }
-
+        
+        //void a(object sender, SubreportProcessingEventArgs e)
+        //{
+        //    e.DataSources.Add(_reporteSub);
+        //}
         private void frmViewReport_Load(object sender, EventArgs e)
         {
             this.reportViewer1.ProcessingMode = ProcessingMode.Local;
@@ -33,8 +40,15 @@ namespace NominaTCG
             //this.reportViewer1.LocalReport.ReportEmbeddedResource = "SolicitudVacacion.rdlc";
             this.reportViewer1.LocalReport.ReportPath =_path;
             //ReportDataSource rds = new ReportDataSource("DataSet1", _Datos);
+           
+           
             this.reportViewer1.LocalReport.DataSources.Clear();
             this.reportViewer1.LocalReport.DataSources.Add(_reporte);
+            if(_param!=null )
+                this.reportViewer1.LocalReport.SetParameters(_param);
+
+            //this.reportViewer1.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(a);
+
             this.reportViewer1.RefreshReport();
             //this.reportViewer1.PrintDialog();
 

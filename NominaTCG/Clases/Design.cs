@@ -24,13 +24,13 @@ namespace NominaTCG
             datos.ReadOnly = true;
             //datos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
-        
+
         private static void StyleGridDialog(DataGridView datos)
         {
             datos.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(238)))), ((int)(((byte)(222)))));
             datos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             datos.RowHeadersVisible = false;
-            datos.AutoGenerateColumns = false; 
+            datos.AutoGenerateColumns = false;
             datos.AllowUserToAddRows = false;
             datos.AllowUserToDeleteRows = false;
             datos.ReadOnly = true;
@@ -61,15 +61,15 @@ namespace NominaTCG
                     item.Visible = true;
                     //item.DisplayIndex = 1; 
                     item.HeaderText = "Concepto";
-                    
+
                 }
                 if (item.Name.Equals("PROY_VALOR"))
                 {
                     item.Width = 70;
                     item.Visible = true;
                     //item.DisplayIndex = 2; 
-                    item.HeaderText = "Valor";                    
-                }                
+                    item.HeaderText = "Valor";
+                }
                 //if (item.Name.Equals("MAXLIM"))
                 //{
                 //    item.Width = 70;
@@ -88,8 +88,8 @@ namespace NominaTCG
                 {
                     item.Width = 115;
                     item.Visible = true;
-                    item.HeaderText = "F. Creación";                    
-                }                
+                    item.HeaderText = "F. Creación";
+                }
             }
         }
 
@@ -103,8 +103,8 @@ namespace NominaTCG
         public static void vContratoFin(DataGridView datos)
         {
             datos.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8);
-            datos.AutoGenerateColumns = false;            
-            datos.RowHeadersVisible = false;            
+            datos.AutoGenerateColumns = false;
+            datos.RowHeadersVisible = false;
         }
 
         public static void vAccidenteEnfMat(DataGridView datos)
@@ -116,10 +116,10 @@ namespace NominaTCG
             filterData.Columns.Add("Nombre");
             datos.RowHeadersVisible = false;
 
-   //         EMP_ID, ROL_ID_GEN, ROL_REPRO, 
-   //IESS_FECHAINICIO, IESS_FECHAFIN, IESS_FECHAINGRESO, 
-   //IESS_FECHAMODIF, IESS_TIPO, IESS_OBSERVACION, 
-   //DIAS_25, DIAS_100
+            //         EMP_ID, ROL_ID_GEN, ROL_REPRO, 
+            //IESS_FECHAINICIO, IESS_FECHAFIN, IESS_FECHAINGRESO, 
+            //IESS_FECHAMODIF, IESS_TIPO, IESS_OBSERVACION, 
+            //DIAS_25, DIAS_100
             foreach (DataGridViewColumn item in datos.Columns)
             {
                 item.Visible = false;
@@ -148,31 +148,31 @@ namespace NominaTCG
                     item.Visible = true;
                     item.HeaderText = "Observación";
                     filterData.Rows.Add(item.Name, item.HeaderText);
-                }               
+                }
             }
         }
 
         public static void vCuentaIO(DataGridView datos)
         {
             datos.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8);
-            StyleGridDialog(datos);            
+            StyleGridDialog(datos);
             filterData = new DataTable();
             filterData.Columns.Add("ID");
             filterData.Columns.Add("Nombre");
-            datos.RowHeadersVisible = false;           
+            datos.RowHeadersVisible = false;
             foreach (DataGridViewColumn item in datos.Columns)
             {
                 item.Visible = false;
 
                 if (item.Name.Equals("CUENTA"))
-                {                    
+                {
                     item.Visible = true;
                     item.HeaderText = "Cuenta";
                     filterData.Rows.Add(item.Name, item.HeaderText);
                 }
 
                 if (item.Name.Equals("ROL_ID"))
-                {                 
+                {
                     item.Visible = true;
                     item.HeaderText = "Código";
                     filterData.Rows.Add(item.Name, item.HeaderText);
@@ -180,21 +180,21 @@ namespace NominaTCG
             }
         }
 
-       
+
 
         public static void vContrato(DataGridView datos)
         {
-            datos.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8);            
-            datos.RowHeadersVisible = false;            
+            datos.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8);
+            datos.RowHeadersVisible = false;
         }
         public static void vEscalafon(DataGridView datos)
         {
             StyleGridDialog(datos);
-            
+
             filterData = new DataTable();
             filterData.Columns.Add("ID");
             filterData.Columns.Add("Nombre");
-            
+
             foreach (DataGridViewColumn item in datos.Columns)
             {
                 item.Visible = false;
@@ -255,10 +255,36 @@ namespace NominaTCG
                 {
                     item.Visible = true;
                     item.HeaderText = "Estado";
-                }   
+                }
             }
         }
-        public static void vLocales(DataGridView datos)
+        public static void vCliente(DataGridView datos)
+        {
+            StyleGridDialog(datos);
+            filterData = new DataTable();
+            filterData.Columns.Add("ID");
+            filterData.Columns.Add("Nombre");
+            foreach (DataGridViewColumn item in datos.Columns)
+            {
+                item.Visible = false;
+                if (item.Name.Equals("CLI_ID"))
+                {
+                    item.HeaderText = "Código";
+                    item.Width = 60;
+                    item.Visible = true;
+                    filterData.Rows.Add(item.Name, item.HeaderText);
+                }
+
+                if (item.Name.Equals("CLI_NOMBRE"))
+                {
+                    item.Width = 180;
+                    item.Visible = true;
+                    item.HeaderText = "Local";
+                    filterData.Rows.Add(item.Name, item.HeaderText);
+                }
+            }
+        }
+                public static void vLocales(DataGridView datos)
         {
             StyleGridDialog(datos);
             filterData = new DataTable();

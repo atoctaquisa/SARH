@@ -68,6 +68,14 @@ namespace BusinessLogic
         {
             return ReportDataDA.RolIndividual(rolID, reproID, empID, localID, cadenaID);
         }
+        public DataTable RolIndividualSub(string rolID)
+        {
+            return ReportDataDA.RolIndividualSub(rolID);
+        }
+        public DataTable Prestamo(string rolID, string estado, string patrono, string tipo, string empID)
+        {
+            return ReportDataDA.Prestamo(rolID, estado, patrono, tipo, empID);
+        }
         public DataTable PagoQuincena(string rolID, string reproID, string patrono, string local, string empID)
         {
             return ReportDataDA.PagoQuincena(rolID, reproID, patrono, local, empID);

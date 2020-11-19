@@ -15,6 +15,7 @@ namespace NominaTCG
     public partial class frmDatosIESS : Form
     {
         private ContratoController ContratoBO { get; set; }
+        private SistemaController SistemaBO { get; set; }
 
         #region Instancia / Constructor
         private static frmDatosIESS _instancia;
@@ -35,6 +36,7 @@ namespace NominaTCG
         {
             InitializeComponent();
             ContratoBO = ContratoController.Instancia;
+            SistemaBO = SistemaController.Instancia;
             cboBanco.DataSource = Catalogo.NovedadTipo();
             cboBanco.DisplayMember = "Nombre";
             cboBanco.ValueMember = "ID";
@@ -89,10 +91,11 @@ namespace NominaTCG
             {
                 DataTable datos = ContratoBO.GeneraDatosIESS(txtRol.Text, txtReproceso.Text, cboBanco.SelectedValue.ToString(), txtFechaIni.Text, txtFechaFin.Text);
 
-                string nameFile = cboBanco.SelectedText.ToString();//emp["RAZON"].ToString() + cboTipo.Text.ToUpper().Replace(" ", string.Empty) + "-" + anioINI + anioFIN + ".txt";
+                string nameFile = cboBanco.Text.ToString();//emp["RAZON"].ToString() + cboTipo.Text.ToUpper().Replace(" ", string.Empty) + "-" + anioINI + anioFIN + ".txt";
+                string path = SistemaBO.Path("62");
                 if (datos.Rows.Count > 0)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Deploy\" + nameFile))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(path+ nameFile+".txt"))
                     {
                         foreach (DataRow row in datos.Rows)
                         {

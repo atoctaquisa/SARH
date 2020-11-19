@@ -129,6 +129,11 @@ namespace BusinessLogic
             
         }
 
+        public DataTable ClienteLista()
+        {
+            return LocalDA.ClienteLista();
+        }
+
         public DataTable Lista()
         {
             return LocalDA.Lista();
