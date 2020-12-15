@@ -33,7 +33,7 @@ namespace NominaTCG
         private void AssignControl(int index)
         {            
             CuentaBO.Cuenta.Cuenta = dgvData.Rows[index].Cells["CUE_NOMBRE"].Value.ToString();
-            CuentaBO.Cuenta.CuentaID = Convert.ToInt32(dgvData.Rows[index].Cells["CUE_ID"].Value);
+            CuentaBO.Cuenta.CuentaID = Convert.ToInt64(dgvData.Rows[index].Cells["CUE_ID"].Value);
         }
 
             private void txtFiltro_TextChanged(object sender, EventArgs e)

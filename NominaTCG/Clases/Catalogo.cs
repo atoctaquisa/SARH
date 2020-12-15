@@ -15,6 +15,7 @@ namespace NominaTCG
         public static string UserRole { get; set; }
         public static string UserProfile { get; set; }
         public static string ServerData { get; set; }
+        public static string PathReport { get; set; }
 
         public static DataTable NovedadTipo()
         {

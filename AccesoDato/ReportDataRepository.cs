@@ -170,7 +170,7 @@ namespace DataAccess
                                                          ROUND (DET_PRES_VALOR, 3)
                                                              PAGO,
                                                          PATRONO,PRES_PLAZO,
-                                                         PAT_ID,EMP_ID
+                                                         PAT_ID,EMP_ID,ROL_ID_GEN
                                                     FROM DESARROLLO.V_DET_PRESTAMOS)
                                                     WHERE PAT_ID>0
                                                    ";
@@ -274,11 +274,12 @@ SELECT PRESTAMO,
                                                ESTADO, GRUPO, ESC_ID
                                             FROM DESARROLLO.DAT_IMP_ROL_EXC WHERE ROL_ID_GEN=:ROL_ID_GEN AND ROL_REPRO=:ROL_REPRO";
 
-        private string sqlDetalleContabilidadC = @"SELECT PATRONO, ROL_CUENTA_IMP, ROL_ORD, ROL_ID_IMP, trunc(Sum(ROL_VALOR), 4) as valor
+        private string sqlDetalleContabilidadC = @"SELECT PATRONO, ROL_CUENTA_IMP, trunc(Sum(ROL_VALOR), 4) as valor
                                                      FROM DESARROLLO.DAT_IMP_ROL_EXC
                                                      where  ROL_ID_GEN=:ROL_ID_GEN AND ROL_REPRO=:ROL_REPRO 
-                                                     GROUP BY PATRONO, ROL_CUENTA_IMP, ROL_ORD, ROL_ID_IMP
-                                                ORDER BY ROL_ORD,ROL_ID_IMP";
+                                                     GROUP BY PATRONO, ROL_CUENTA_IMP--, ROL_ORD, ROL_ID_IMP
+--                                                ORDER BY ROL_ORD,ROL_ID_IMP
+";
 
         private string sqlDetalleContabilidadD = @"SELECT LOC_CIUDAD,ROL_LOCAL,ROL_NOMBRE,ROL_DIAS,ROL_CUENTA_IMP,TRUNC(ROL_VALOR,4)ROL_VALOR, ROL_ORD, ROL_ID_IMP,EMP_ID,
 		ROL_ID_GEN,ROL_REPRO,PATRONO,DECODE(ROL_PAGADO,1,'PAGADO',0,'NO PAGADO',3,'PAGO CHEQUE') AS ROL_PAGADO,CARGO,ESTADO,GRUPO
@@ -514,7 +515,7 @@ SELECT PRESTAMO,
             prm = new OracleParameter[]
             {
                 new OracleParameter(":ROL_ID_GEN",rolID ),
-                new OracleParameter(":PAT_ID",patrono ),
+                new OracleParameter(":PAT_ID",patrono.Equals("0")?"": patrono ),
                 new OracleParameter(":LOC_ID",local.Equals("0")?"": local),
                 new OracleParameter(":EMP_CI",empID.Equals("0")?"": empID )
             };

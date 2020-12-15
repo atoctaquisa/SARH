@@ -995,11 +995,11 @@ namespace NominaTCG
             EmpleadoBO.Empleado.empPagDecTer = Convert.ToInt32(cboPerDecimoTercero.SelectedValue);
             EmpleadoBO.Empleado.empPagDecCua = Convert.ToInt32(cboPerDecimoCuarto.SelectedValue);
             EmpleadoBO.Empleado.empDependientes = 0;
-            codigoEMP = resp = EmpleadoBO.RegistarEmpleado(EmpleadoBO.Empleado, tipo);           
+            codigoEMP = resp = EmpleadoBO.RegistarEmpleado(EmpleadoBO.Empleado, tipo);
 
             //2. Datos Laborales
             ContratoBO.Laboral.empId = Convert.ToInt64(codigoEMP);
-            ContratoBO.Laboral.labId = 2;
+            //ContratoBO.Laboral.labId = 2;
             ContratoBO.Laboral.locId = Convert.ToInt32(cboLabLocal.SelectedValue);
             ContratoBO.Laboral.escId = Convert.ToInt32(cboLabCargo.SelectedValue);
             ContratoBO.Laboral.labFecCambEsc = Convert.ToDateTime(mtxtLabFecha.Text);
@@ -1018,7 +1018,7 @@ namespace NominaTCG
 
             //Datos de Contrato                   
             ContratoBO.EmpleadoContrato.empId = Convert.ToInt64(codigoEMP);
-            ContratoBO.EmpleadoContrato.empConId = 1;
+            //ContratoBO.EmpleadoContrato.empConId = 1;
             ContratoBO.EmpleadoContrato.conId = Convert.ToInt32(cboConContrato.SelectedValue);
             ContratoBO.EmpleadoContrato.patId = Convert.ToInt32(cboConPatrono.SelectedValue);
             ContratoBO.EmpleadoContrato.empConRazonSale = (cboConRazon.SelectedValue == null) ? "" : cboConRazon.SelectedValue.ToString();
@@ -1032,7 +1032,7 @@ namespace NominaTCG
 
 
             //3. Datos Familiares
-            if(tabID.Equals(1))
+            if (tabID.Equals(1))
                 resp = UpdateDataEmp(codigoEMP, out data);
             else
                 resp = UpdateDataEmp(codigoEMP, out data, out dataChange);
@@ -1128,8 +1128,8 @@ namespace NominaTCG
         private long UpdateDataEmp(long codigoEMP, out DataTable data)
         {
             long resp = 0;
-            data = new DataTable();            
-            data = (DataTable)dgvFamiliar.DataSource;           
+            data = new DataTable();
+            data = (DataTable)dgvFamiliar.DataSource;
             if (data != null)
             {
                 foreach (DataRow row in data.Rows)
@@ -1149,8 +1149,8 @@ namespace NominaTCG
                 }
             }
             ////////////////////////////////////////////
-            data = new DataTable();           
-            data = (DataTable)dgvValor.DataSource;            
+            data = new DataTable();
+            data = (DataTable)dgvValor.DataSource;
             if (data != null)
             {
                 foreach (DataRow row in data.Rows)
@@ -1252,7 +1252,7 @@ namespace NominaTCG
                 foreach (DataRow row in dataChange.Rows)
                 {
                     ContratoBO.ValorFijo.rolId = Convert.ToInt32(row["ROL_ID"].ToString());
-                    ContratoBO.ValorFijo.fijValor = Convert.ToInt32(row["FIJ_VALOR"].ToString());
+                    ContratoBO.ValorFijo.fijValor = Convert.ToDecimal(row["FIJ_VALOR"].ToString());
                     //ContratoBO.ValorFijo.fijEstado = Convert.ToInt16(row["FIJ_ESTADO"].Equals(DBNull.Value));//(row["FIJ_ESTADO"].Equals(DBNull.Value)) ? 0 : 1;
                     if (row["FIJ_ESTADO"].Equals(DBNull.Value))
                         ContratoBO.ValorFijo.fijEstado = 0;
@@ -1333,7 +1333,7 @@ namespace NominaTCG
             {
                 ContratoBO.EmpleadoContrato = new Entity.DatEmpCon();
                 ContratoBO.EmpleadoContrato.empId = EmpleadoBO.Empleado.empId;
-                ContratoBO.EmpleadoContrato.empConId = 1;
+                ContratoBO.EmpleadoContrato.empConId = Convert.ToInt16(Contrato.Rows[0]["EMP_CON_ID"]);
                 ContratoBO.EmpleadoContrato.conId = Contrato.Rows[0]["CON_ID"] == DBNull.Value ? -1 : Convert.ToInt32(Contrato.Rows[0]["CON_ID"].ToString());
                 ContratoBO.EmpleadoContrato.patId = Contrato.Rows[0]["PAT_ID"] == DBNull.Value ? -1 : Convert.ToInt32(Contrato.Rows[0]["PAT_ID"].ToString());
                 ContratoBO.EmpleadoContrato.empConRazonSale = Contrato.Rows[0]["EMP_CON_RAZON_SALE"].ToString();
@@ -1355,7 +1355,7 @@ namespace NominaTCG
             {
                 ContratoBO.Laboral = new Entity.DatLab();
                 ContratoBO.Laboral.empId = EmpleadoBO.Empleado.empId;
-                ContratoBO.Laboral.labId = 2;
+                ContratoBO.Laboral.labId = Convert.ToInt32(InfoLaboral.Rows[0]["LAB_ID"]);
                 ContratoBO.Laboral.locId = Convert.ToInt32(InfoLaboral.Rows[0]["LOC_ID"]);
                 ContratoBO.Laboral.escId = Convert.ToInt32(InfoLaboral.Rows[0]["ESC_ID"]);
                 DateTime dateResult;
@@ -1446,62 +1446,71 @@ namespace NominaTCG
                     EmpNewID = string.Empty;
                     if (StateButton == Acction.New)
                     {
-                        DataTable empEmpresa = new DataTable();
-                        empEmpresa = EmpleadoBO.ListaEmpleadoCI(txtPerCedula.Text);
-                        int numIngreso = EmpleadoBO.ValidaEmpleadoSalidaEmpresa(txtPerCedula.Text, cboConPatrono.SelectedValue.ToString());
+                        int numIngreso = 0;
+                        numIngreso = EmpleadoBO.ValidaEmpleadoEmpresa(txtPerCedula.Text);
                         if (numIngreso == 0)
                         {
-                            numIngreso = EmpleadoBO.ValidaEmpleadoEmpresa(txtPerCedula.Text, cboConPatrono.SelectedValue.ToString());
-                            if (numIngreso > 1)
+                            DataTable empEmpresa = new DataTable();
+                            empEmpresa = EmpleadoBO.ListaEmpleadoCI(txtPerCedula.Text);
+                            numIngreso = EmpleadoBO.ValidaEmpleadoSalidaEmpresa(txtPerCedula.Text, cboConPatrono.SelectedValue.ToString());
+                            if (numIngreso == 0)
                             {
-                                Utility.MensajeError("No es posible registrar más de dos ingresos!!");
-                                return;
-                            }
-                            else
-                            {
-                                if (EmpleadoBO.ValidaEmpleadoActivo(txtPerCedula.Text, cboConPatrono.SelectedValue.ToString()).Equals(0))
+                                numIngreso = EmpleadoBO.ValidaEmpleadoEmpresa(txtPerCedula.Text, cboConPatrono.SelectedValue.ToString());
+                                if (numIngreso > 1)
                                 {
-                                    string[] fecha = EmpleadoBO.ValidaFechaIngreso(txtCodigo.Text);
-
-                                    if (!(Convert.ToDateTime(pPerFechaIngreso.Value.ToShortDateString()).Date >= Convert.ToDateTime(fecha[0].ToString()).Date & Convert.ToDateTime(pPerFechaIngreso.Value.ToShortDateString()).Date <= Convert.ToDateTime(fecha[1].ToString()).Date))
-                                    {
-                                        tabInformacion.SelectedIndex = 0;
-                                        ErrProv.SetError(pPerFechaIngreso, "La fecha de ingreso debe estar entre: " + fecha[0].ToString() + " - " + fecha[1].ToString());
-                                        return;
-                                    }
-                                    else
-                                    {
-                                        ErrProv.Clear();
-                                        idRecord = RegisterData(0, "I");
-                                        if (idRecord != 0)
-                                        {
-                                            EmpNewID = idRecord.ToString();
-                                            //idRecord = RegisterData(idRecord.ToString());
-                                            AssignData(EmpNewID);
-                                            StateButton = Acction.Save;
-                                            ActiveControls(false, tabInformacion.SelectedIndex);
-                                            Utility.MensajeInfo("Registro Exitoso!!");
-                                        }
-                                        else
-                                        {
-                                            Utility.MensajeError("Error al registrar la información!!");
-                                        }
-                                    }
+                                    Utility.MensajeError("No es posible registrar más de dos ingresos!!");
+                                    return;
                                 }
                                 else
                                 {
-                                    Utility.MensajeError("El empleado ya se encuentra registrado en estado ACTIVO!!");
-                                    return;
+                                    if (EmpleadoBO.ValidaEmpleadoActivo(txtPerCedula.Text, cboConPatrono.SelectedValue.ToString()).Equals(0))
+                                    {
+                                        string[] fecha = EmpleadoBO.ValidaFechaIngreso(txtCodigo.Text);
 
+                                        if (!(Convert.ToDateTime(pPerFechaIngreso.Value.ToShortDateString()).Date >= Convert.ToDateTime(fecha[0].ToString()).Date & Convert.ToDateTime(pPerFechaIngreso.Value.ToShortDateString()).Date <= Convert.ToDateTime(fecha[1].ToString()).Date))
+                                        {
+                                            tabInformacion.SelectedIndex = 0;
+                                            ErrProv.SetError(pPerFechaIngreso, "La fecha de ingreso debe estar entre: " + fecha[0].ToString() + " - " + fecha[1].ToString());
+                                            return;
+                                        }
+                                        else
+                                        {
+                                            ErrProv.Clear();
+                                            idRecord = RegisterData(0, "I");
+                                            if (idRecord != 0)
+                                            {
+                                                EmpNewID = idRecord.ToString();
+                                                //idRecord = RegisterData(idRecord.ToString());
+                                                AssignData(EmpNewID);
+                                                StateButton = Acction.Save;
+                                                ActiveControls(false, tabInformacion.SelectedIndex);
+                                                Utility.MensajeInfo("Registro Exitoso!!");
+                                            }
+                                            else
+                                            {
+                                                Utility.MensajeError("Error al registrar la información!!");
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Utility.MensajeError("El empleado ya se encuentra registrado en estado ACTIVO!!");
+                                        return;
+
+                                    }
                                 }
+                            }
+                            else
+                            {
+                                Utility.MensajeError("El Empleado ya se encuentra registrado en esta empresa en estado ACTIVO..!!");
+                                ErrProv.SetError(cboConPatrono, "Verifique la empresa)");
+                                tabInformacion.SelectedIndex = 1;
+                                return;
                             }
                         }
                         else
                         {
-                            Utility.MensajeError("El Empleado ya se encuentra registrado en esta empresa en estado ACTIVO..!!");
-                            ErrProv.SetError(cboConPatrono, "Verifique la empresa)");
-                            tabInformacion.SelectedIndex = 1;
-                            return;
+                            Utility.MensajeError("Ya existe un registro de esta cédula!!");
                         }
 
                     }
@@ -1713,7 +1722,7 @@ namespace NominaTCG
             if (dgvFamiliar.Columns[e.ColumnIndex].Name == "EMP_FAM_FEC_NAC")
             {
                 if (Utility.isDate(dgvFamiliar.Rows[e.RowIndex].Cells["EMP_FAM_FEC_NAC"].Value.ToString()))
-                    dgvFamiliar.Rows[e.RowIndex].Cells["Edad"].Value= CalcularEdad(Convert.ToDateTime(dgvFamiliar.Rows[e.RowIndex].Cells["EMP_FAM_FEC_NAC"].Value), DateTime.Now);
+                    dgvFamiliar.Rows[e.RowIndex].Cells["Edad"].Value = CalcularEdad(Convert.ToDateTime(dgvFamiliar.Rows[e.RowIndex].Cells["EMP_FAM_FEC_NAC"].Value), DateTime.Now);
             }
         }
         public string CalcularEdad(DateTime birthDate, DateTime now)
@@ -1724,9 +1733,9 @@ namespace NominaTCG
             {
                 age--;
                 mth = 12 - Math.Abs(mth);
-            }           
+            }
 
-            return age+ " anios "+Math.Abs(mth)+" meses";
+            return age + " anios " + Math.Abs(mth) + " meses";
         }
 
         private void dgvFamiliar_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -1934,6 +1943,40 @@ namespace NominaTCG
         {
             if (e.KeyValue == Convert.ToChar(Keys.F5))
                 AssignData(EmpleadoBO.Empleado.empId.ToString());
+        }      
+
+        private void txtPerCedula_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMsg;
+            if ((StateButton == Acction.New & txtPerCedula.ReadOnly.Equals(false)) && !ExisteEmpleado(txtPerCedula.Text, out errorMsg))
+            {
+                e.Cancel = true;
+                txtPerCedula.Select(0, txtPerCedula.Text.Length);
+                this.ErrProv.SetError(txtPerCedula, errorMsg);
+            }
+            else
+            {
+                this.ErrProv.Clear();
+            }
+
+        }
+        public bool ExisteEmpleado(string emailAddress, out string errorMessage)
+        {
+            if (emailAddress.Length == 0)
+            {
+                errorMessage = "Identificación inválida";
+                return false;
+            }
+
+            int cont = EmpleadoBO.ValidaEmpleadoEmpresa(txtPerCedula.Text);
+            if (cont == 0)
+            {
+                errorMessage = string.Empty ;
+                return true;
+            }
+            
+            errorMessage = "Ya existe un registro con esta cédula";
+            return false;
         }
     }
 }

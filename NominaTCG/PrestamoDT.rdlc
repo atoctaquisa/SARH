@@ -865,7 +865,7 @@
         <DataSetName>dsPrestamo</DataSetName>
         <Top>1.71662cm</Top>
         <Height>1.8cm</Height>
-        <Width>24.99149cm</Width>
+        <Width>24.99148cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -920,7 +920,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>1.38449in</Height>
+    <Height>1.62072in</Height>
     <Style />
   </Body>
   <Width>9.83917in</Width>

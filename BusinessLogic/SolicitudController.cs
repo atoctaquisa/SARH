@@ -81,9 +81,9 @@ namespace BusinessLogic
         {
             return SolicitudAD.VerificaDiasVacacion(empID,perID);
         }
-        public DataTable ListaSolicitudVacacion(string codigo, int estado, string empID, string fechaD, string fechaH)
+        public DataTable ListaSolicitudVacacion(string codigo, int estado, string empID, string fechaD, string fechaH, string locID)
         {
-            return SolicitudAD.ListaSolicitudVacacion(codigo,estado,empID,fechaD,fechaH );
+            return SolicitudAD.ListaSolicitudVacacion(codigo,estado,empID,fechaD,fechaH, locID );
         }
         public int ApruebaSolicitud(string empID, string cabVacID, string obsr)
         {

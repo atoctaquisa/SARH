@@ -22,6 +22,7 @@ namespace NominaTCG
         private SolicitudController SolicitudBO { get; set; }
         private EmpleadoController EmpleadoBO { get; set; }
         private SistemaController SistemaBO { get; set; }
+        private LocalController LocalBO { get; set; }
         #endregion
 
         #region Instancia / Constructor
@@ -45,6 +46,7 @@ namespace NominaTCG
             InitializeComponent();
             SolicitudBO = SolicitudController.Instancia;
             SistemaBO = SistemaController.Instancia;
+            LocalBO = LocalController.Instancia;
             dgvVaciones.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7);
             dgvVaciones.AutoGenerateColumns = false;
             EmpleadoBO = EmpleadoController.Instancia;
@@ -75,13 +77,14 @@ namespace NominaTCG
                                                   { "[@periodo]" , periodo },
                                                   { "[@fechaIngreso]" , ingreso },
                                                   { "[@fechaHasta]", hasta },
-                                                  { "[@fechaDesde]" , desde },                                                  
-                                                  { "[@dias]" , dias  },                                                  
+                                                  { "[@fechaDesde]" , desde },
+                                                  { "[@dias]" , dias  },
                                                   { "[@solicitud]" , numero },
                                                   { "[@estado]" , estado },
-                                                  { "[@razonSocial]" , empleado },                                                 
+                                                  { "[@razonSocial]" , empleado },
                                                 };
-            SistemaBO.sendEmail(/*email*/ "atoctaquisa@grupotcg.com", "Solicitud de Vacaciones", SistemaBO.emailMessage("SOLICITUD DE VACACION", emailVars));
+            SistemaBO.sendEmail(email.Equals("") ? "sistemas@grupotcg.com" : email, "Solicitud de Vacaciones", SistemaBO.emailMessage("SOLICITUD DE VACACION", emailVars));
+            SistemaBO.sendEmail("lvillareal@grupotcg.com", "Solicitud de Vacaciones", SistemaBO.emailMessage("SOLICITUD DE VACACION", emailVars));
         }
         #endregion
 
@@ -90,12 +93,15 @@ namespace NominaTCG
             EmpleadoBO.Empleado = new Entity.DatEmp();
             var frm = new frmEmpleadoLista();
             frm.ShowDialog();
+            txtEmpleado.Text = EmpleadoBO.Empleado.empNombre;
         }
 
         private void btnLocal_Click(object sender, EventArgs e)
         {
+            LocalBO.Local = new Entity.LocalEntity();
             var frm = new frmLocalLista();
             frm.ShowDialog();
+            txtLocal.Text = LocalBO.Local.Nombre;
         }
 
         private void btnProcess_Click(object sender, EventArgs e)
@@ -106,7 +112,7 @@ namespace NominaTCG
                 foreach (DataGridViewRow item in dgvVaciones.Rows)
                 {
                     if (Convert.ToInt16(item.Cells["apbr"].Value) == 1)
-                        cont++;                    
+                        cont++;
                     if (Convert.ToInt16(item.Cells["Anular"].Value) == 1)
                         cont++;
                 }
@@ -121,11 +127,12 @@ namespace NominaTCG
                 int cont = 0;
                 foreach (DataGridViewRow item in dgvVaciones.Rows)
                 {
+                    string correo = EmpleadoBO.EmpleadoEmail(item.Cells["EMP_ID"].Value.ToString());
                     if (Convert.ToInt16(item.Cells["apbr"].Value) == 1)
                     {
                         SolicitudBO.ApruebaSolicitud(item.Cells["EMP_ID"].Value.ToString(), item.Cells["SOLVAC_ID"].Value.ToString(), item.Cells["Obs"].Value.ToString());
                         Notificar(item.Cells["Empleado"].Value.ToString(),
-                            EmpleadoBO.EmpleadoEmail(item.Cells["EMP_ID"].Value.ToString()),
+                            correo,
                             item.Cells["SOLVAC_ID"].Value.ToString(),
                             item.Cells["Solicitud"].Value.ToString(),
                             "Aprobada",
@@ -140,7 +147,7 @@ namespace NominaTCG
                     if (Convert.ToInt16(item.Cells["Anular"].Value) == 1)
                     {
                         Notificar(item.Cells["Empleado"].Value.ToString(),
-                            EmpleadoBO.EmpleadoEmail(item.Cells["EMP_ID"].Value.ToString()),//"atoctaquisa@grupotcg.com",
+                            correo,
                             item.Cells["SOLVAC_ID"].Value.ToString(),
                             item.Cells["Solicitud"].Value.ToString(),
                             "Negada",
@@ -175,7 +182,7 @@ namespace NominaTCG
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            dgvVaciones.DataSource = null;
+            //dgvVaciones.DataSource = null;
             //cboEstado.SelectedValue = 2;
             txtCodigo.Text = string.Empty;
             txtEmpleado.Text = string.Empty;
@@ -187,7 +194,12 @@ namespace NominaTCG
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            dgvVaciones.DataSource = SolicitudBO.ListaSolicitudVacacion(txtCodigo.Text, Convert.ToInt16(cboEstado.SelectedValue), (txtEmpleado.Text == string.Empty ? "0" : EmpleadoBO.Empleado.empId.ToString()), _fechaD.ToString(), _fechaH.ToString());
+            dgvVaciones.DataSource = null;
+            dgvVaciones.DataSource = SolicitudBO.ListaSolicitudVacacion(txtCodigo.Text, Convert.ToInt16(cboEstado.SelectedValue), 
+                (txtEmpleado.Text == string.Empty ? "0" : EmpleadoBO.Empleado.empId.ToString()),
+                _fechaD.ToString(), _fechaH.ToString(), 
+                txtLocal.Text == string.Empty ? "0" : LocalBO.Local.LocalID.ToString());
+            btnCancel_Click(sender, e);
         }
 
         private void pDesde_ValueChanged(object sender, EventArgs e)

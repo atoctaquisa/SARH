@@ -77,6 +77,10 @@ namespace BusinessLogic
         {
             return EmpleadoAD.ValidaEmpleadoEmpresa(empCI, emprID);
         }
+        public int ValidaEmpleadoEmpresa(string empCI)
+        {
+            return EmpleadoAD.ValidaEmpleadoEmpresa(empCI);
+        }
         public int ValidaEmpleadoEmpresa(string empCI, string emprID)
         {
             return EmpleadoAD.ValidaEmpleadoEmpresa(empCI, emprID);

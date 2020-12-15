@@ -298,7 +298,7 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.lblTitulo);
             this.Name = "frmRepPrestamo";
-            this.Text = "frmRepPrestamo";
+            this.Text = "Reporte de Préstamos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmRepPrestamo_FormClosing);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).EndInit();

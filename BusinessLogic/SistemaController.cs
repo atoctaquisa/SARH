@@ -51,6 +51,7 @@ namespace BusinessLogic
         {
             return SistemaAD.Path(paramID);
         }
+       
         public Boolean stateMenu(string codeSystem, string mnuCode, string userRole)
         {
             return SistemaAD.stateMenu(codeSystem, mnuCode, userRole);

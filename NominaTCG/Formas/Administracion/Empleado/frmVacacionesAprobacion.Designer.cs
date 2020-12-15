@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVacacionesAprobacion));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.imgList = new System.Windows.Forms.ImageList(this.components);
             this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
             this.lblTitulo = new System.Windows.Forms.Label();
@@ -107,6 +107,7 @@
             this.imgList.Images.SetKeyName(15, "btnLast.png");
             this.imgList.Images.SetKeyName(16, "btnNext.png");
             this.imgList.Images.SetKeyName(17, "btnPrevious.png");
+            this.imgList.Images.SetKeyName(18, "btnClear.png");
             // 
             // lblTitulo
             // 
@@ -127,6 +128,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnCancel);
             this.tabPage2.Controls.Add(this.ckAnular);
             this.tabPage2.Controls.Add(this.chkApbr);
             this.tabPage2.Controls.Add(this.pHasta);
@@ -157,23 +159,21 @@
             // ckAnular
             // 
             this.ckAnular.AutoSize = true;
-            this.ckAnular.Location = new System.Drawing.Point(48, 111);
+            this.ckAnular.Location = new System.Drawing.Point(49, 132);
             this.ckAnular.Name = "ckAnular";
             this.ckAnular.Size = new System.Drawing.Size(15, 14);
             this.ckAnular.TabIndex = 75;
             this.ckAnular.UseVisualStyleBackColor = true;
-            this.ckAnular.Visible = false;
             this.ckAnular.CheckedChanged += new System.EventHandler(this.ckAnular_CheckedChanged);
             // 
             // chkApbr
             // 
             this.chkApbr.AutoSize = true;
-            this.chkApbr.Location = new System.Drawing.Point(19, 111);
+            this.chkApbr.Location = new System.Drawing.Point(19, 132);
             this.chkApbr.Name = "chkApbr";
             this.chkApbr.Size = new System.Drawing.Size(15, 14);
             this.chkApbr.TabIndex = 75;
             this.chkApbr.UseVisualStyleBackColor = true;
-            this.chkApbr.Visible = false;
             this.chkApbr.CheckedChanged += new System.EventHandler(this.chkApbr_CheckedChanged);
             // 
             // pHasta
@@ -216,7 +216,6 @@
             // 
             // btnEmpleado
             // 
-            this.btnEmpleado.Enabled = false;
             this.btnEmpleado.ImageIndex = 5;
             this.btnEmpleado.ImageList = this.imgList;
             this.btnEmpleado.Location = new System.Drawing.Point(358, 30);
@@ -228,10 +227,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Controls.Add(this.btnExit);
-            this.groupBox1.Controls.Add(this.btnFind);
             this.groupBox1.Controls.Add(this.btnProcess);
+            this.groupBox1.Controls.Add(this.btnFind);
             this.groupBox1.Controls.Add(this.btnBack);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Location = new System.Drawing.Point(3, 503);
@@ -243,16 +241,17 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCancel.ImageKey = "btnCancel.png";
+            this.btnCancel.ImageKey = "btnClear.png";
             this.btnCancel.ImageList = this.imgList;
-            this.btnCancel.Location = new System.Drawing.Point(436, 14);
+            this.btnCancel.Location = new System.Drawing.Point(606, 56);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 29);
             this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "&Cancelar";
+            this.btnCancel.Text = "&Limpiar";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Visible = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnExit
@@ -275,9 +274,9 @@
             this.btnFind.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnFind.ImageKey = "btnFind.png";
             this.btnFind.ImageList = this.imgList;
-            this.btnFind.Location = new System.Drawing.Point(353, 14);
+            this.btnFind.Location = new System.Drawing.Point(401, 14);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(83, 29);
+            this.btnFind.Size = new System.Drawing.Size(89, 29);
             this.btnFind.TabIndex = 2;
             this.btnFind.Text = "&Buscar";
             this.btnFind.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -290,7 +289,7 @@
             this.btnProcess.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnProcess.ImageIndex = 9;
             this.btnProcess.ImageList = this.imgList;
-            this.btnProcess.Location = new System.Drawing.Point(525, 14);
+            this.btnProcess.Location = new System.Drawing.Point(490, 14);
             this.btnProcess.Name = "btnProcess";
             this.btnProcess.Size = new System.Drawing.Size(89, 29);
             this.btnProcess.TabIndex = 4;
@@ -357,7 +356,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(40, 111);
+            this.label7.Location = new System.Drawing.Point(45, 111);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(27, 13);
             this.label7.TabIndex = 61;
@@ -435,10 +434,10 @@
             this.Hasta,
             this.Incorpora,
             this.Obs});
-            this.dgvVaciones.Location = new System.Drawing.Point(9, 107);
+            this.dgvVaciones.Location = new System.Drawing.Point(9, 127);
             this.dgvVaciones.Name = "dgvVaciones";
             this.dgvVaciones.RowHeadersVisible = false;
-            this.dgvVaciones.Size = new System.Drawing.Size(929, 396);
+            this.dgvVaciones.Size = new System.Drawing.Size(929, 376);
             this.dgvVaciones.TabIndex = 6;
             this.dgvVaciones.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvVaciones_CurrentCellDirtyStateChanged);
             // 
@@ -510,8 +509,8 @@
             // Periodo
             // 
             this.Periodo.DataPropertyName = "PERIODO";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.Periodo.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.Periodo.DefaultCellStyle = dataGridViewCellStyle3;
             this.Periodo.HeaderText = "Período";
             this.Periodo.Name = "Periodo";
             this.Periodo.Width = 80;

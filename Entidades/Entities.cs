@@ -24,10 +24,12 @@ namespace Entity
     public class DatDetDiario
     {
         public decimal cueId;
+        public decimal cueId_;
         public decimal percId;
         public decimal diaId;
         public decimal patId;
         public decimal cliId;
+        public decimal cliId_;
         public decimal detDiaDb;
         public decimal detDiaHb;
         public DateTime detDiaFecReg;
@@ -94,6 +96,8 @@ namespace Entity
         public string empId;
         public decimal rolIdGen;
         public decimal rolRepro;
+        public decimal rolIdGen_;
+        public decimal rolRepro_;
         public decimal diaNum;
         public decimal diaPorc;
 
@@ -104,6 +108,8 @@ namespace Entity
         public string empId;
         public decimal rolIdGen;
         public decimal rolRepro;
+        public decimal rolIdGen_;
+        public decimal rolRepro_;
         public string  iessFechainicio;
         public string  iessFechafin;
         public DateTime iessFechaingreso;
@@ -156,7 +162,7 @@ namespace Entity
         public decimal empID { get; set; }
         public decimal rolIdGen { get; set; }
         public decimal rolRepro { get; set; }
-        public decimal rolId { get; set; }
+        public double rolId { get; set; }
         public decimal presPlazo { get; set; }
         public decimal presValor { get; set; }
         public string presObservacion { get; set; }
@@ -170,7 +176,7 @@ namespace Entity
     {
         public decimal? patID { get; set; }
         public decimal? empID { get; set; }
-        public decimal? cuentaID { get; set; }
+        public double? cuentaID { get; set; }
         public decimal? localID { get; set; }
         public decimal? cargoID { get; set; }
         public decimal? valor { get; set; }
@@ -329,7 +335,7 @@ namespace Entity
         public DateTime FechaCrea { get; set; }
         public int RolTip { get; set; }
         public int? RolLocal { get; set; }
-        public int CuentaID { get; set; }
+        public double CuentaID { get; set; }
         public int CuentaCostID { get; set; }
         public int? GrupoRolID { get; set; }
         public int TipoCuenta { get; set; }

@@ -29,34 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaternidad));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvDias = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Porcentaje = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ROL_ID_GEN_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dgvData = new System.Windows.Forms.DataGridView();
-            this.EMP_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMPLEADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ROL_ID_GEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ROL_REPRO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PROCESO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.perID = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.IESS_TIPO = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.IESS_FECHAINICIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IESS_FECHAFIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DIAS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IESS_OBSERVACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.imgList = new System.Windows.Forms.ImageList(this.components);
@@ -86,18 +69,38 @@
             this.btnNewSave = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dgvData = new System.Windows.Forms.DataGridView();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
             this.tabAdmin = new System.Windows.Forms.TabControl();
             this.catalogoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.IESS_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMP_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMPLEADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ROL_ID_GEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ROL_REPRO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PROCESO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.perID = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.IESS_TIPO = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.IESS_FECHAINICIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IESS_FECHAFIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DIAS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IESS_OBSERVACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IESS_ID_DIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Porcentaje = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ROL_ID_GEN_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ROL_REPRO_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDias)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).BeginInit();
             this.tabAdmin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.catalogoBindingSource)).BeginInit();
@@ -106,10 +109,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.lblTotalRecord);
             this.tabPage2.Controls.Add(this.groupBox1);
+            this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -134,48 +137,17 @@
             this.dgvDias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
+            this.IESS_ID_DIA,
             this.Valor,
             this.Porcentaje,
-            this.ROL_ID_GEN_});
+            this.ROL_ID_GEN_,
+            this.ROL_REPRO_});
             this.dgvDias.Location = new System.Drawing.Point(20, 19);
             this.dgvDias.Name = "dgvDias";
             this.dgvDias.RowHeadersVisible = false;
             this.dgvDias.Size = new System.Drawing.Size(136, 195);
             this.dgvDias.TabIndex = 0;
             this.dgvDias.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvDias_DataError);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "DIA_ID";
-            this.ID.HeaderText = "Código";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Valor
-            // 
-            this.Valor.DataPropertyName = "DIA_NUM";
-            this.Valor.HeaderText = "Días";
-            this.Valor.Name = "Valor";
-            this.Valor.Width = 50;
-            // 
-            // Porcentaje
-            // 
-            this.Porcentaje.DataPropertyName = "DIA_PORC";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle6.NullValue = null;
-            this.Porcentaje.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Porcentaje.HeaderText = "Prc. %";
-            this.Porcentaje.Name = "Porcentaje";
-            this.Porcentaje.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Porcentaje.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Porcentaje.Width = 60;
-            // 
-            // ROL_ID_GEN_
-            // 
-            this.ROL_ID_GEN_.DataPropertyName = "ROL_ID_GEN";
-            this.ROL_ID_GEN_.HeaderText = "ROL_ID_GEN";
-            this.ROL_ID_GEN_.Name = "ROL_ID_GEN_";
-            this.ROL_ID_GEN_.Visible = false;
             // 
             // label10
             // 
@@ -194,150 +166,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(71, 20);
             this.textBox1.TabIndex = 2;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.dgvData);
-            this.groupBox4.Location = new System.Drawing.Point(18, 161);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(643, 353);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Aviso";
-            // 
-            // dgvData
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.EMP_ID,
-            this.EMPLEADO,
-            this.ROL_ID_GEN,
-            this.ROL_REPRO,
-            this.PROCESO,
-            this.perID,
-            this.IESS_TIPO,
-            this.IESS_FECHAINICIO,
-            this.IESS_FECHAFIN,
-            this.DIAS,
-            this.IESS_OBSERVACION});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvData.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvData.Location = new System.Drawing.Point(11, 19);
-            this.dgvData.Name = "dgvData";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvData.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dgvData.RowHeadersVisible = false;
-            this.dgvData.Size = new System.Drawing.Size(618, 314);
-            this.dgvData.TabIndex = 0;
-            this.dgvData.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellContentDoubleClick);
-            this.dgvData.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellEndEdit);
-            this.dgvData.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvData_CellValidating);
-            this.dgvData.CurrentCellChanged += new System.EventHandler(this.dgvData_CurrentCellChanged);
-            // 
-            // EMP_ID
-            // 
-            this.EMP_ID.DataPropertyName = "EMP_ID";
-            this.EMP_ID.HeaderText = "EMP_ID";
-            this.EMP_ID.Name = "EMP_ID";
-            this.EMP_ID.Visible = false;
-            // 
-            // EMPLEADO
-            // 
-            this.EMPLEADO.DataPropertyName = "NOMBRE";
-            this.EMPLEADO.HeaderText = "Empleado";
-            this.EMPLEADO.Name = "EMPLEADO";
-            this.EMPLEADO.Visible = false;
-            this.EMPLEADO.Width = 250;
-            // 
-            // ROL_ID_GEN
-            // 
-            this.ROL_ID_GEN.DataPropertyName = "ROL_ID_GEN";
-            this.ROL_ID_GEN.HeaderText = "Período";
-            this.ROL_ID_GEN.Name = "ROL_ID_GEN";
-            this.ROL_ID_GEN.Visible = false;
-            this.ROL_ID_GEN.Width = 50;
-            // 
-            // ROL_REPRO
-            // 
-            this.ROL_REPRO.DataPropertyName = "ROL_REPRO";
-            this.ROL_REPRO.HeaderText = "Repro";
-            this.ROL_REPRO.Name = "ROL_REPRO";
-            this.ROL_REPRO.Visible = false;
-            this.ROL_REPRO.Width = 50;
-            // 
-            // PROCESO
-            // 
-            this.PROCESO.DataPropertyName = "PROCESO";
-            this.PROCESO.HeaderText = "Proceso";
-            this.PROCESO.Name = "PROCESO";
-            this.PROCESO.Width = 60;
-            // 
-            // perID
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.NullValue = "...";
-            this.perID.DefaultCellStyle = dataGridViewCellStyle8;
-            this.perID.HeaderText = "";
-            this.perID.Name = "perID";
-            this.perID.Visible = false;
-            this.perID.Width = 20;
-            // 
-            // IESS_TIPO
-            // 
-            this.IESS_TIPO.DataPropertyName = "IESS_TIPO";
-            this.IESS_TIPO.HeaderText = "Tipo";
-            this.IESS_TIPO.Name = "IESS_TIPO";
-            this.IESS_TIPO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IESS_TIPO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.IESS_TIPO.Width = 120;
-            // 
-            // IESS_FECHAINICIO
-            // 
-            this.IESS_FECHAINICIO.DataPropertyName = "IESS_FECHAINICIO";
-            this.IESS_FECHAINICIO.HeaderText = "Fecha Ini";
-            this.IESS_FECHAINICIO.Name = "IESS_FECHAINICIO";
-            this.IESS_FECHAINICIO.Width = 80;
-            // 
-            // IESS_FECHAFIN
-            // 
-            this.IESS_FECHAFIN.DataPropertyName = "IESS_FECHAFIN";
-            this.IESS_FECHAFIN.HeaderText = "Fecha Fin";
-            this.IESS_FECHAFIN.Name = "IESS_FECHAFIN";
-            this.IESS_FECHAFIN.Width = 80;
-            // 
-            // DIAS
-            // 
-            this.DIAS.DataPropertyName = "DIAS";
-            this.DIAS.HeaderText = "Días";
-            this.DIAS.Name = "DIAS";
-            this.DIAS.Width = 50;
-            // 
-            // IESS_OBSERVACION
-            // 
-            this.IESS_OBSERVACION.DataPropertyName = "IESS_OBSERVACION";
-            this.IESS_OBSERVACION.HeaderText = "Observaciones";
-            this.IESS_OBSERVACION.Name = "IESS_OBSERVACION";
-            this.IESS_OBSERVACION.Width = 200;
             // 
             // groupBox3
             // 
@@ -662,6 +490,66 @@
             this.btnBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBack.UseVisualStyleBackColor = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.dgvData);
+            this.groupBox4.Location = new System.Drawing.Point(18, 161);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(643, 353);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Aviso";
+            // 
+            // dgvData
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IESS_ID,
+            this.EMP_ID,
+            this.EMPLEADO,
+            this.ROL_ID_GEN,
+            this.ROL_REPRO,
+            this.PROCESO,
+            this.perID,
+            this.IESS_TIPO,
+            this.IESS_FECHAINICIO,
+            this.IESS_FECHAFIN,
+            this.DIAS,
+            this.IESS_OBSERVACION});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvData.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvData.Location = new System.Drawing.Point(11, 19);
+            this.dgvData.Name = "dgvData";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvData.RowHeadersVisible = false;
+            this.dgvData.Size = new System.Drawing.Size(618, 314);
+            this.dgvData.TabIndex = 0;
+            this.dgvData.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellContentDoubleClick);
+            this.dgvData.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellEndEdit);
+            this.dgvData.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvData_CellValidating);
+            this.dgvData.CurrentCellChanged += new System.EventHandler(this.dgvData_CurrentCellChanged);
+            // 
             // lblTitulo
             // 
             this.lblTitulo.BackColor = System.Drawing.Color.Navy;
@@ -693,6 +581,144 @@
             // 
             this.catalogoBindingSource.DataSource = typeof(NominaTCG.Catalogo);
             // 
+            // IESS_ID
+            // 
+            this.IESS_ID.DataPropertyName = "IESS_ID";
+            this.IESS_ID.HeaderText = "IESS_ID";
+            this.IESS_ID.Name = "IESS_ID";
+            this.IESS_ID.Visible = false;
+            // 
+            // EMP_ID
+            // 
+            this.EMP_ID.DataPropertyName = "EMP_ID";
+            this.EMP_ID.HeaderText = "EMP_ID";
+            this.EMP_ID.Name = "EMP_ID";
+            this.EMP_ID.Visible = false;
+            // 
+            // EMPLEADO
+            // 
+            this.EMPLEADO.DataPropertyName = "NOMBRE";
+            this.EMPLEADO.HeaderText = "Empleado";
+            this.EMPLEADO.Name = "EMPLEADO";
+            this.EMPLEADO.Visible = false;
+            this.EMPLEADO.Width = 250;
+            // 
+            // ROL_ID_GEN
+            // 
+            this.ROL_ID_GEN.DataPropertyName = "ROL_ID_GEN";
+            this.ROL_ID_GEN.HeaderText = "Período";
+            this.ROL_ID_GEN.Name = "ROL_ID_GEN";
+            this.ROL_ID_GEN.Visible = false;
+            this.ROL_ID_GEN.Width = 50;
+            // 
+            // ROL_REPRO
+            // 
+            this.ROL_REPRO.DataPropertyName = "ROL_REPRO";
+            this.ROL_REPRO.HeaderText = "Repro";
+            this.ROL_REPRO.Name = "ROL_REPRO";
+            this.ROL_REPRO.Visible = false;
+            this.ROL_REPRO.Width = 50;
+            // 
+            // PROCESO
+            // 
+            this.PROCESO.DataPropertyName = "PROCESO";
+            this.PROCESO.HeaderText = "Proceso";
+            this.PROCESO.Name = "PROCESO";
+            this.PROCESO.Width = 60;
+            // 
+            // perID
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = "...";
+            this.perID.DefaultCellStyle = dataGridViewCellStyle3;
+            this.perID.HeaderText = "";
+            this.perID.Name = "perID";
+            this.perID.Visible = false;
+            this.perID.Width = 20;
+            // 
+            // IESS_TIPO
+            // 
+            this.IESS_TIPO.DataPropertyName = "IESS_TIPO";
+            this.IESS_TIPO.HeaderText = "Tipo";
+            this.IESS_TIPO.Name = "IESS_TIPO";
+            this.IESS_TIPO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IESS_TIPO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.IESS_TIPO.Width = 120;
+            // 
+            // IESS_FECHAINICIO
+            // 
+            this.IESS_FECHAINICIO.DataPropertyName = "IESS_FECHAINICIO";
+            this.IESS_FECHAINICIO.HeaderText = "Fecha Ini";
+            this.IESS_FECHAINICIO.Name = "IESS_FECHAINICIO";
+            this.IESS_FECHAINICIO.Width = 80;
+            // 
+            // IESS_FECHAFIN
+            // 
+            this.IESS_FECHAFIN.DataPropertyName = "IESS_FECHAFIN";
+            this.IESS_FECHAFIN.HeaderText = "Fecha Fin";
+            this.IESS_FECHAFIN.Name = "IESS_FECHAFIN";
+            this.IESS_FECHAFIN.Width = 80;
+            // 
+            // DIAS
+            // 
+            this.DIAS.DataPropertyName = "DIAS";
+            this.DIAS.HeaderText = "Días";
+            this.DIAS.Name = "DIAS";
+            this.DIAS.Width = 50;
+            // 
+            // IESS_OBSERVACION
+            // 
+            this.IESS_OBSERVACION.DataPropertyName = "IESS_OBSERVACION";
+            this.IESS_OBSERVACION.HeaderText = "Observaciones";
+            this.IESS_OBSERVACION.Name = "IESS_OBSERVACION";
+            this.IESS_OBSERVACION.Width = 200;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "DIA_ID";
+            this.ID.HeaderText = "Código";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // IESS_ID_DIA
+            // 
+            this.IESS_ID_DIA.HeaderText = "IESS_ID";
+            this.IESS_ID_DIA.Name = "IESS_ID_DIA";
+            this.IESS_ID_DIA.Visible = false;
+            // 
+            // Valor
+            // 
+            this.Valor.DataPropertyName = "DIA_NUM";
+            this.Valor.HeaderText = "Días";
+            this.Valor.Name = "Valor";
+            this.Valor.Width = 50;
+            // 
+            // Porcentaje
+            // 
+            this.Porcentaje.DataPropertyName = "DIA_PORC";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle1.NullValue = null;
+            this.Porcentaje.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Porcentaje.HeaderText = "Prc. %";
+            this.Porcentaje.Name = "Porcentaje";
+            this.Porcentaje.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Porcentaje.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Porcentaje.Width = 60;
+            // 
+            // ROL_ID_GEN_
+            // 
+            this.ROL_ID_GEN_.DataPropertyName = "ROL_ID_GEN";
+            this.ROL_ID_GEN_.HeaderText = "ROL_ID_GEN";
+            this.ROL_ID_GEN_.Name = "ROL_ID_GEN_";
+            this.ROL_ID_GEN_.Visible = false;
+            // 
+            // ROL_REPRO_
+            // 
+            this.ROL_REPRO_.DataPropertyName = "ROL_REPRO";
+            this.ROL_REPRO_.HeaderText = "ROL_REPRO_";
+            this.ROL_REPRO_.Name = "ROL_REPRO_";
+            this.ROL_REPRO_.Visible = false;
+            // 
             // frmMaternidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -710,11 +736,11 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDias)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).EndInit();
             this.tabAdmin.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.catalogoBindingSource)).EndInit();
@@ -765,10 +791,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Porcentaje;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ROL_ID_GEN_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IESS_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn EMP_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn EMPLEADO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ROL_ID_GEN;
@@ -780,5 +803,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IESS_FECHAFIN;
         private System.Windows.Forms.DataGridViewTextBoxColumn DIAS;
         private System.Windows.Forms.DataGridViewTextBoxColumn IESS_OBSERVACION;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IESS_ID_DIA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Porcentaje;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ROL_ID_GEN_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ROL_REPRO_;
     }
 }

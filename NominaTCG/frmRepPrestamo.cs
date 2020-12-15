@@ -21,6 +21,7 @@ namespace NominaTCG
     {
 
         private LocalController LocalBO { get; set; }
+        private SistemaController SistemaBO { get; set; }
         private EmpleadoController EmpleadoBO { get; set; }
         private ReportDataController ReportBO { get; set; }
         private ContratoController ContratoBO { get; set; }
@@ -82,25 +83,28 @@ namespace NominaTCG
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             ReportParameter[] param = null;
-            string path = string.Empty; ;
+            string path = string.Empty;            
             if (cboTipo.Text.Equals("") | cboTipo.Text.Equals("Consolidado"))
             {
                 param = new ReportParameter[1];
                 param[0] = new ReportParameter("perID", ContratoBO.RolSeg.segRolId.ToString());
                 //path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Prestamo.rdlc";
-                path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + @"\Prestamo.rdlc";
+                //path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + @"\Prestamo.rdlc";
+                path= Catalogo.PathReport + "Prestamo.rdlc";
             }
             if(cboTipo.Text.Equals("Detallado"))
             {
                 param = null;
                 //path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\PrestamoDT.rdlc";
-                path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + @"\PrestamoDT.rdlc";
+                //path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + @"\PrestamoDT.rdlc";
+                path = Catalogo.PathReport + "PrestamoDT.rdlc";
             }
             if (cboTipo.Text.Equals("Consolidado Empresa"))
             {
                 param = null;
                 //path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\PrestamoDT.rdlc";
-                path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + @"\PrestamoEM.rdlc";
+                //path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + @"\PrestamoEM.rdlc";
+                path = Catalogo.PathReport + "PrestamoEM.rdlc";
             }
 
             LocalReport report = new LocalReport();

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="NominaTCG.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
+  <asmv1:assemblyIdentity name="NominaTCG.exe" version="1.0.0.21" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
   <description asmv2:iconFile="SARH.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccesoDato.dll" size="400384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccesoDato.dll" size="413696">
       <assemblyIdentity name="AccesoDato" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>xzu+W+9ZJIapIPkDg59maJmsJukIeprgHOuLO+XAp9Y=</dsig:DigestValue>
+        <dsig:DigestValue>dDeAZJ0Vk3TIT7BoJMFzYy6I5diNGJ2cUclkgQU64LU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>D7KcK1i/HJKO6RB0Fmc7n8K+xzzsxS697RvpHYUaw24=</dsig:DigestValue>
+        <dsig:DigestValue>k6PZXyb51/AmF2WfP7+2TtVZno1eMixP3KD4n0kaWEY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -271,14 +271,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Entidades.dll" size="69632">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Entidades.dll" size="70144">
       <assemblyIdentity name="Entidades" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+Er527Hl2dX9kBI2u6egbVjDTwHg6GWdPdmuIjKkbIY=</dsig:DigestValue>
+        <dsig:DigestValue>nr1/QsZxMKst/jT6FdmRCJHvxaNswrhXrrDB/O2VGHw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1195,14 +1195,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NominaTCG.exe" size="2601384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NominaTCG.exe" size="2588584">
       <assemblyIdentity name="NominaTCG" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>kJoAP0gY7kyKEU0KWXliq/4f12DGhqDtGvanv2u8WrM=</dsig:DigestValue>
+        <dsig:DigestValue>/rVTlGWgbC6kC0W8jNfeW3p/ZX5FnNwdzaocP/KtpOU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

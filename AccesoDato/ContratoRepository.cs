@@ -225,6 +225,54 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
              ,SYSDATE--:ROL_LIQ_FEC_REG
              )
 ";
+        private static string sqlIdDetalleDiaio = @"
+                                                    SELECT NVL (MAX (DET_ID), 0) + 1
+                                                      FROM DESARROLLO.DAT_DET_DIARIO
+                                                     WHERE     CUE_ID = :CUE_ID
+                                                           AND PERC_ID = :PERC_ID
+                                                           AND DIA_ID = :DIA_ID
+                                                           AND CLI_ID = :CLI_ID
+                                                           AND PAT_ID = :PAT_ID";
+        private static string sqlOrdenImpresion = @"
+                                                    SELECT NVL (MAX (DET_ID), 0)+1                                                      
+                                                      FROM DESARROLLO.DAT_DET_DIARIO
+                                                     WHERE     PERC_ID = :PERC_ID
+                                                           AND DIA_ID = :DIA_ID
+                                                           AND PAT_ID = :PAT_ID";
+        private static string sqlRegistraDetalleDiario = @"
+                                                            INSERT INTO DESARROLLO.DAT_DET_DIARIO (CUE_ID,
+                                                                                                   PERC_ID,
+                                                                                                   DIA_ID,
+                                                                                                   CLI_ID,
+                                                                                                   DET_DIA_DB,
+                                                                                                   DET_DIA_HB,
+                                                                                                   DET_DIA_FEC_REG,
+                                                                                                   --DET_DIA_FEC_MOD,
+                                                                                                   DET_DIA_CLI_SEG,
+                                                                                                   PAT_ID,
+                                                                                                   DET_ID,
+                                                                                                   ORD_IMP,
+                                                                                                   USU_CREA,
+                                                                                                   --USU_MODIF,
+                                                                                                   --ANIO_PERC,
+                                                                                                   DET_OBSER)
+                                                                 VALUES ( :CUE_ID
+                                                                         ,:PERC_ID
+                                                                         ,:DIA_ID
+                                                                         ,:CLI_ID
+                                                                         ,:DET_DIA_DB
+                                                                         ,:DET_DIA_HB
+                                                                         ,SYSDATE--:DET_DIA_FEC_REG
+                                                                         --,:DET_DIA_FEC_MOD
+                                                                         ,:DET_DIA_CLI_SEG
+                                                                         ,:PAT_ID
+                                                                         ,:DET_ID
+                                                                         ,:ORD_IMP
+                                                                         ,:USU_CREA
+			                                                             --,:USU_MODIF
+                                                                         --,:ANIO_PERC
+			                                                             ,:DET_OBSER
+                                                                         )";
         private static string sqlActualizaDetalleDiario = @"UPDATE DESARROLLO.DAT_DET_DIARIO
                                                                SET CUE_ID = :CUE_ID,
                                                                    --PERC_ID = :PERC_ID,
@@ -234,15 +282,22 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
                                                                    DET_DIA_HB = :DET_DIA_HB,
                                                                    --DET_DIA_FEC_REG = :DET_DIA_FEC_REG,
                                                                    DET_DIA_FEC_MOD = SYSDATE,--:DET_DIA_FEC_MOD,
-                                                                   DET_DIA_CLI_SEG = :DET_DIA_CLI_SEG,
+                                                                   --DET_DIA_CLI_SEG = :DET_DIA_CLI_SEG,
                                                                    --PAT_ID = :PAT_ID,
-                                                                   DET_ID = :DET_ID,
-                                                                   ORD_IMP = :ORD_IMP,
+                                                                   --DET_ID = :DET_ID,
+                                                                   --ORD_IMP = :ORD_IMP,
                                                                    --USU_CREA = :USU_CREA,
-                                                                   --USU_MODIF = :USU_MODIF,
-                                                                   ANIO_PERC = :ANIO_PERC,
-                                                                   DET_OBSER = :DET_OBSER
+                                                                   USU_MODIF = :USU_MODIF
+                                                                   --ANIO_PERC = :ANIO_PERC,
+                                                                   --DET_OBSER = :DET_OBSER
                                                              WHERE     CUE_ID = :CUE_ID
+                                                                   AND PERC_ID = :PERC_ID
+                                                                   AND DIA_ID = :DIA_ID
+                                                                   AND CLI_ID = :CLI_ID
+                                                                   AND PAT_ID = :PAT_ID
+                                                                   AND DET_ID = :DET_ID";
+        private static string sqlEliminaDetalleDiario = @"DELETE DESARROLLO.DAT_DET_DIARIO 
+                                                              WHERE     CUE_ID = :CUE_ID
                                                                    AND PERC_ID = :PERC_ID
                                                                    AND DIA_ID = :DIA_ID
                                                                    AND CLI_ID = :CLI_ID
@@ -288,7 +343,7 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
         private static string sqlListaContrato = "SELECT CON_ID, CON_NOMBRE, CON_DESC FROM DESARROLLO.DAT_CONTRATO";
         private static string sqlContratoFin = "SELECT CON_CAU_ID, CON_CAU_CAUSA, CON_CAU_ABREV, CON_CAU_FECHACREACION FROM DESARROLLO.DAT_CON_CAUSA";
         private static string sqlContratoEmpleado = "SELECT EMP_ID, EMP_CON_ID, CON_ID, PAT_ID, EMP_CON_RAZON_SALE, EMP_CON_FIRM_RENU, EMP_CON_FEC_LIQUI, EMP_CON_FIRM_LIQUI, EMP_CON_FEC_LEG_SA, EMP_CON_FIRM_SALIDA, EMP_CON_FEC_MIN_TR, EMP_CON_FEC_CONTRATO, EMP_CON_OBS, EMP_CON_FEC_REG, EMP_CON_FEC_MOD, EMP_CON_CAUSA, EMP_CON_ESTADO, CON_CAU_ID, EMP_CON_FIRM_CON, EMP_CON_LEGALIZADO FROM DESARROLLO.DAT_EMP_CON WHERE EMP_ID=:EMP_ID";
-        private static string sqlInfoLaboral = "SELECT EMP_ID, LAB_ID, LOC_ID, ESC_ID, LAB_FEC_CAMB_ESC, LAB_SUELDO_BONO, LAB_OBS, LAB_FEC_REG, LAB_FEC_MOD, LAB_FEC_OBS_SIS, LAB_ESTADO, LAB_TIPO_EMP, LAB_RBU, LAB_VEST, LAB_BONO, LAB_QUINCENA FROM DESARROLLO.DAT_LAB WHERE EMP_ID =:EMP_ID";
+        private static string sqlInfoLaboral = "SELECT EMP_ID, LAB_ID, LOC_ID, ESC_ID, LAB_FEC_CAMB_ESC, LAB_SUELDO_BONO, LAB_OBS, LAB_FEC_REG, LAB_FEC_MOD, LAB_FEC_OBS_SIS, LAB_ESTADO, LAB_TIPO_EMP, LAB_RBU, LAB_VEST, LAB_BONO, LAB_QUINCENA FROM DESARROLLO.DAT_LAB WHERE EMP_ID =:EMP_ID AND LAB_ID=(SELECT MAX(LAB_ID) FROM DESARROLLO.DAT_LAB WHERE EMP_ID = :EMP_ID)";
 
 
 
@@ -338,7 +393,7 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
                                              --:EMP_CON_LEGALIZADO 
                                              )";
         private static string sqlActualizaContrato = @"
-                                UPDATE DESARROLLO.DAT_EMP_CON SET   EMP_CON_ID=:EMP_CON_ID,
+                                UPDATE DESARROLLO.DAT_EMP_CON SET   
                                                                     CON_ID=:CON_ID,
                                                                     PAT_ID=:PAT_ID,
                                                                     EMP_CON_RAZON_SALE=:EMP_CON_RAZON_SALE,
@@ -357,7 +412,7 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
                                                                     CON_CAU_ID=:CON_CAU_ID
                                                                     --EMP_CON_FIRM_CON,
                                                                     --EMP_CON_LEGALIZADO
-                                 WHERE EMP_ID=:EMP_ID";
+                                 WHERE EMP_ID=:EMP_ID AND EMP_CON_ID=:EMP_CON_ID";
         private static string sqlRegistrarInfoLaboral = @"
                     INSERT INTO DESARROLLO.DAT_LAB (EMP_ID,
                                                     LAB_ID,
@@ -394,8 +449,7 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
                                  :LAB_QUINCENA
                                  )";
         private static string sqlActualizaInfoLaboral = @"
-                    UPDATE DESARROLLO.DAT_LAB SET
-                                                    LAB_ID=:LAB_ID,
+                    UPDATE DESARROLLO.DAT_LAB SET                                                    
                                                     LOC_ID=:LOC_ID,
                                                     ESC_ID=:ESC_ID,
                                                     --LAB_FEC_CAMB_ESC,
@@ -410,7 +464,7 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
                                                     LAB_VEST=:LAB_VEST,
                                                     LAB_BONO=:LAB_BONO,
                                                     LAB_QUINCENA=:LAB_QUINCENA
-                     WHERE EMP_ID=:EMP_ID";
+                     WHERE EMP_ID=:EMP_ID AND LAB_ID=:LAB_ID";
         private static string sqlRegistrarValorFijo = @"INSERT INTO DESARROLLO.DAT_EMP_VAL_FIJO (EMP_ID,
                                          ROL_ID,
                                          FIJ_VALOR,
@@ -870,7 +924,7 @@ AND (R.ROL_ID IN (SELECT rol_id
                 {
                     new OracleParameter(":PERC_ID", perID)
                 };
-            return db.GetEntero(sqlPeriodoDiario,prm );
+            return db.GetEntero(sqlPeriodoDiario, prm);
         }
 
         public DataSet AsientoLiquidacion(string diaID, string cliID, string percID, string patID)
@@ -882,16 +936,16 @@ AND (R.ROL_ID IN (SELECT rol_id
                     new OracleParameter(":DIA_ID", diaID),
                     new OracleParameter(":CLI_ID", cliID),
                     new OracleParameter(":PERC_ID", percID),
-                    new OracleParameter(":PAT_ID", patID )                    
+                    new OracleParameter(":PAT_ID", patID )
                 };
-            data = db.GetData(sqlAsientoLiquidacion , prm).Copy();
+            data = db.GetData(sqlAsientoLiquidacion, prm).Copy();
             data.TableName = "Master";
             content.Tables.Add(data);
             prm = new OracleParameter[]
             {
                     new OracleParameter(":DIA_ID", diaID),
                     new OracleParameter(":PERC_ID", percID ),
-                    new OracleParameter(":PAT_ID", patID)                    
+                    new OracleParameter(":PAT_ID", patID)
             };
             data = db.GetData(sqlAsientoLiquidacionDT, prm).Copy();
             data.TableName = "Detail";
@@ -1125,7 +1179,7 @@ AND (R.ROL_ID IN (SELECT rol_id
         {
             foreach (var datos in datosIngreso)
             {
-                OracleParameter[] prm = new OracleParameter[]{               
+                OracleParameter[] prm = new OracleParameter[]{
                new OracleParameter(":SEG_ROL_ID",datos.segRolId ),
                new OracleParameter(":SEG_ROL_REPRO",datos.segRolRepro ),
                new OracleParameter(":EMP_ID",datos.empId ),
@@ -1144,7 +1198,7 @@ AND (R.ROL_ID IN (SELECT rol_id
                new OracleParameter(":SEG_ROL_ID",datos.segRolId ),
                new OracleParameter(":SEG_ROL_REPRO",datos.segRolRepro ),
                new OracleParameter(":EMP_ID",datos.empId ),
-               new OracleParameter(":ROL_ID",datos.rolId ),                              
+               new OracleParameter(":ROL_ID",datos.rolId ),
                new OracleParameter(":ROL_LIQ_ID",  datos.segRolId.ToString()+datos.empId.ToString() ),
                new OracleParameter(":ROL_LIQ_VALOR", datos.rolLiqValor )
             };
@@ -1152,24 +1206,97 @@ AND (R.ROL_ID IN (SELECT rol_id
             }
             return 1;
         }
-        public int ActualizaDetalleDiario(List<DatDetDiario> datosIngreso)
+        public int ActualizaDetalleDiario(List<DatDetDiario> datosIngreso, string tipoOp)
         {
-            foreach (var datos in datosIngreso)
+            OracleParameter[] prm;
+            int resp = 0;
+            switch (tipoOp)
             {
-                OracleParameter[] prm = new OracleParameter[]{
-               // new OracleParameter(":ROL_ID",  datos.cueId),
-               //new OracleParameter(":ROL_LIQ_ID",  datos.segRolId.ToString()+datos.empId.ToString() ),
-               //new OracleParameter(":ROL_LIQ_VALOR", datos.rolLiqValor ),
-               //new OracleParameter(":SEG_ROL_ID",datos.segRolId ),
-               //new OracleParameter(":SEG_ROL_REPRO",datos.segRolRepro ),
-               //new OracleParameter(":EMP_ID",datos.empId ),
-               //new OracleParameter(":ROL_ID",datos.rolId ),
-               //new OracleParameter(":ROL_LIQ_ID",datos.rolLiqId)
-            };
-                db.ExecQuery(sqlActualizaDetalleDiario, prm);
+
+                case "I":
+                    foreach (var datos in datosIngreso)
+                    {
+                        prm = new OracleParameter[] {
+                        new OracleParameter(":PERC_ID",  datos.percId),
+                        new OracleParameter(":DIA_ID", datos.diaId),
+                        new OracleParameter(":PAT_ID",  datos.patId)};
+                        datos.ordImp = db.GetEntero(sqlOrdenImpresion, prm);
+
+                        prm = new OracleParameter[] {
+                        new OracleParameter(":CUE_ID",  datos.cueId),
+                        new OracleParameter(":PERC_ID",  datos.percId),
+                        new OracleParameter(":DIA_ID", datos.diaId),
+                        new OracleParameter(":CLI_ID",datos.cliId  ),
+                        new OracleParameter(":PAT_ID",  datos.patId)};
+                        datos.detId = db.GetEntero(sqlIdDetalleDiaio, prm);
+
+                        prm = new OracleParameter[]{
+                       new OracleParameter(":CUE_ID",  datos.cueId),
+                       new OracleParameter(":PERC_ID",  datos.percId  ),
+                       new OracleParameter(":DIA_ID", datos.diaId  ),
+                       new OracleParameter(":CLI_ID",datos.cliId  ),
+                       new OracleParameter(":DET_DIA_DB",datos.detDiaDb  ),
+                       new OracleParameter(":DET_DIA_HB",datos.detDiaHb  ),
+                       //new OracleParameter(":DET_DIA_FEC_REG",datos.detDiaFecReg  ),
+                       //new OracleParameter(":DET_DIA_FEC_MOD",datos.detDiaFecMod ),
+                       new OracleParameter(":DET_DIA_CLI_SEG",  datos.cliId),
+                       new OracleParameter(":PAT_ID",  datos.patId  ),
+                       new OracleParameter(":DET_ID", datos.detId  ),
+                       new OracleParameter(":ORD_IMP", datos.ordImp ),
+                       new OracleParameter(":USU_CREA",datos.usuCrea  ),
+                       //new OracleParameter(":USU_MODIF",datos.usuModif  ),
+                       //new OracleParameter(":ANIO_PERC",datos.anioPerc  ),
+                       new OracleParameter(":DET_OBSER",datos.detObser)};
+                        resp = db.ExecQuery(sqlRegistraDetalleDiario, prm);
+                    }
+                    break;
+                case "U":
+                    foreach (var datos in datosIngreso)
+                    {
+                        prm = new OracleParameter[]{
+                       new OracleParameter(":CUE_ID",  datos.cueId),
+                       //new OracleParameter(":PERC_ID",  datos.percId  ),
+                       //new OracleParameter(":DIA_ID", datos.diaId  ),
+                       new OracleParameter(":CLI_ID",datos.cliId  ),
+                       new OracleParameter(":DET_DIA_DB",datos.detDiaDb  ),
+                       new OracleParameter(":DET_DIA_HB",datos.detDiaHb  ),
+                       //new OracleParameter(":DET_DIA_FEC_REG",datos.detDiaFecReg  ),
+                       //new OracleParameter(":DET_DIA_FEC_MOD",datos.detDiaFecMod ),
+                       //new OracleParameter(":DET_DIA_CLI_SEG",  datos.detDiaCliSeg),
+                       //new OracleParameter(":PAT_ID",  datos.patId  ),
+                       //new OracleParameter(":DET_ID", datos.detId  ),
+                       //new OracleParameter(":ORD_IMP",datos.ordImp  ),
+                       //new OracleParameter(":USU_CREA",datos.usuCrea  ),
+                       new OracleParameter(":USU_MODIF",datos.usuModif  ),
+                       //new OracleParameter(":ANIO_PERC",datos.anioPerc  ),
+                       //new OracleParameter(":DET_OBSER",datos.detObser ),
+                       //--------------
+                       new OracleParameter(":CUE_ID",  datos.cueId_),
+                       new OracleParameter(":PERC_ID",  datos.percId),
+                       new OracleParameter(":DIA_ID", datos.diaId),
+                       new OracleParameter(":CLI_ID",datos.cliId_),
+                       new OracleParameter(":PAT_ID",  datos.patId),
+                       new OracleParameter(":DET_ID", datos.detId)};
+                        resp = db.ExecQuery(sqlActualizaDetalleDiario, prm);
+                    }
+                    break;
+
+                case "D":
+                    foreach (var datos in datosIngreso)
+                    {
+                        prm = new OracleParameter[]{
+                       new OracleParameter(":CUE_ID", datos.cueId),
+                       new OracleParameter(":PERC_ID", datos.percId),
+                       new OracleParameter(":DIA_ID", datos.diaId),
+                       new OracleParameter(":CLI_ID", datos.cliId),
+                       new OracleParameter(":PAT_ID", datos.patId),
+                       new OracleParameter(":DET_ID", datos.detId)};
+                        resp = db.ExecQuery(sqlEliminaDetalleDiario, prm);
+                    }
+                    break;
             }
 
-            return 1;
+            return resp;
         }
         public int ActualizaDetalleIngreso(List<DatDetRolLiq> datosIngreso)
         {
@@ -1534,14 +1661,14 @@ AND (R.ROL_ID IN (SELECT rol_id
 
         }
 
-        public int ProcesaDiario(string  perID, string diaID)
+        public int ProcesaDiario(string perID, string diaID)
         {
             OracleParameter[] prm = new OracleParameter[]{
                 new OracleParameter(":PERC_ID",perID ),
                 new OracleParameter(":DIA_ID",diaID)
             };
-            return  db.GetEntero(sqlProcesaDiario, prm);
-            
+            return db.GetEntero(sqlProcesaDiario, prm);
+
 
         }
 
@@ -1668,7 +1795,7 @@ AND (R.ROL_ID IN (SELECT rol_id
             {
                 OracleParameter[] prm = new OracleParameter[]{
                     new OracleParameter(":EMP_ID",lab.empId),
-                    new OracleParameter(":LAB_ID",lab.labId ),
+                    new OracleParameter(":LAB_ID",cnt+1 ),
                     new OracleParameter(":LOC_ID",lab.locId),
                     new OracleParameter(":ESC_ID",lab.escId),
                     new OracleParameter(":LAB_FEC_CAMB_ESC",lab.labFecCambEsc ),
@@ -1686,9 +1813,7 @@ AND (R.ROL_ID IN (SELECT rol_id
 
             else
             {
-                OracleParameter[] prm = new OracleParameter[]{
-
-                    new OracleParameter(":LAB_ID",lab.labId ),
+                OracleParameter[] prm = new OracleParameter[]{                    
                     new OracleParameter(":LOC_ID",lab.locId),
                     new OracleParameter(":ESC_ID",lab.escId),
                     //new OracleParameter(":LAB_FEC_CAMB_ESC",lab.labFecCambEsc ),
@@ -1700,7 +1825,8 @@ AND (R.ROL_ID IN (SELECT rol_id
                     new OracleParameter(":LAB_VEST",lab.labVest),
                     new OracleParameter(":LAB_BONO",lab.labBono),
                     new OracleParameter(":LAB_QUINCENA",lab.labQuincena),
-                    new OracleParameter(":EMP_ID",lab.empId)};
+                    new OracleParameter(":EMP_ID",lab.empId),
+                    new OracleParameter(":LAB_ID",lab.labId)};
                 return db.ExecQuery(sqlActualizaInfoLaboral, prm);
 
             }
@@ -1713,7 +1839,7 @@ AND (R.ROL_ID IN (SELECT rol_id
             {
                 OracleParameter[] prm = new OracleParameter[]{
                 new OracleParameter(":EMP_ID",emp.empId),
-                new OracleParameter(":EMP_CON_ID",emp.empConId),
+                new OracleParameter(":EMP_CON_ID",cnt+1),
                 new OracleParameter(":CON_ID",emp.conId),
                 new OracleParameter(":PAT_ID",emp.patId),
                 new OracleParameter(":EMP_CON_RAZON_SALE",emp.empConRazonSale),
@@ -1730,8 +1856,7 @@ AND (R.ROL_ID IN (SELECT rol_id
             }
             else
             {
-                OracleParameter[] prm = new OracleParameter[]{
-                new OracleParameter(":EMP_CON_ID",emp.empConId),
+                OracleParameter[] prm = new OracleParameter[]{                
                 new OracleParameter(":CON_ID",emp.conId),
                 new OracleParameter(":PAT_ID",emp.patId),
                 new OracleParameter(":EMP_CON_RAZON_SALE",emp.empConRazonSale),
@@ -1742,7 +1867,8 @@ AND (R.ROL_ID IN (SELECT rol_id
                 new OracleParameter(":EMP_CON_FEC_CONTRATO",emp.empConFecContrato),
                 new OracleParameter(":EMP_CON_OBS",emp.empConObs),
                 new OracleParameter(":CON_CAU_ID",emp.conCauId),
-                new OracleParameter(":EMP_ID",emp.empId)
+                new OracleParameter(":EMP_ID",emp.empId),
+                new OracleParameter(":EMP_CON_ID",emp.empConId)
                 };
 
                 if (db.ExecQuery(sqlActualizaContrato, prm).Equals(1))
@@ -1767,7 +1893,7 @@ AND (R.ROL_ID IN (SELECT rol_id
                             new OracleParameter(":EMP_ID",OracleDbType.Int64){Value = emp.empId}};
                         db.ExecQuery(sqlActualizaSalidaEmp2, prmLiq);
 
-                        prmLiq = new OracleParameter[]{                            
+                        prmLiq = new OracleParameter[]{
                             new OracleParameter("p_emp_id",OracleDbType.Int64){Value = emp.empId}};
                         db.ExecProcedure(sqlActualizaSalidaEmp3, prmLiq);
                     }
@@ -1791,6 +1917,7 @@ AND (R.ROL_ID IN (SELECT rol_id
         {
             OracleParameter[] prm = new OracleParameter[]
                 {
+                    new OracleParameter(":EMP_ID", empID),
                     new OracleParameter(":EMP_ID", empID)
                 };
             return db.GetData(sqlInfoLaboral, prm);
@@ -1997,7 +2124,7 @@ AND (R.ROL_ID IN (SELECT rol_id
                };
             return db.GetEntero(sqlValidaLiquidacion, prm);
         }
-        public string  TipoContrato(string empID)
+        public string TipoContrato(string empID)
         {
             OracleParameter[] prm = new OracleParameter[]
                {
@@ -2021,7 +2148,7 @@ AND (R.ROL_ID IN (SELECT rol_id
                };
             return db.GetEntero(sqlEmpleadoEsMotorista, prm);
         }
-            public int CalculaLiquidacion(string empID, int pagoID, int provID)
+        public int CalculaLiquidacion(string empID, int pagoID, int provID)
         {
             OracleParameter[] prm = new OracleParameter[]
                {

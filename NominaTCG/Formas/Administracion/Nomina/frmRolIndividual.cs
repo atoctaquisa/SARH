@@ -76,7 +76,7 @@ namespace NominaTCG
         {
             string path;
             //path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Reportes\Rol.rdlc";
-            path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + @"\Rol.rdlc";
+            path = Catalogo.PathReport + "Rol.rdlc"; //System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + @"\Rol.rdlc";
             LocalReport report = new LocalReport();
             //report.ReportPath = path + @"\RolIndividual.rdlc";
             ReportBO = ReportDataController.Instancia;

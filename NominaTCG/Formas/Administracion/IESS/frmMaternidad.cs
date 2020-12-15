@@ -15,33 +15,23 @@ namespace NominaTCG
 {
     public partial class frmMaternidad : Form
     {
+        #region Properties
         private SolicitudController SolicitudBO { get; set; }
         private EmpleadoController EmpleadoBO { get; set; }
         private ContratoController ContratoBO { get; set; }
         private Acction StateButton { get; set; }
+        #endregion
+
 
         #region Methodos
 
-        private bool ValidaDatos(DataTable getDataAdd, DataTable getDataDiaAdd, string tipoID)
+        private bool ValidaDatos(DataTable getData, DataTable getDataDia)
         {
-            int ban = 1;
-            //if (tipoID.Equals("I"))
-            //{
-            //    if (getDataAdd == null)
-            //         Utility.MensajeError((ban++).ToString() + "Registre las fechas del aviso");
+            int ban = 1;           
 
-            //    if (getDataDiaAdd != null)
-            //         Utility.MensajeError((ban++).ToString() + "Registre los porcentajes de días");
-
-            //    if (ban > 1)
-            //        return false;
-            //    else
-            //        return true;
-            //}
-
-            if (getDataAdd != null)
+            if (getData != null)
             {
-                foreach (DataRow row in getDataAdd.Rows)
+                foreach (DataRow row in getData.Rows)
                 {
                     if (row["IESS_TIPO"].ToString().Equals(""))
                         Utility.MensajeError((ban++).ToString() + "Seleccione el tipo de aviso");
@@ -52,27 +42,16 @@ namespace NominaTCG
                         Utility.MensajeError((ban++).ToString() + "La Fecha Fin no pueden ser menor que la Fecha Inicial");
                 }
             }
-            if (getDataDiaAdd != null)
+            if (getDataDia != null)
             {
-                foreach (DataRow row in getDataDiaAdd.Rows)
+                foreach (DataRow row in getDataDia.Rows)
                 {
                     if (row["DIA_NUM"].ToString().Equals(""))
                         Utility.MensajeError((ban++).ToString() + "Registre el días");
                     if (row["DIA_PORC"].ToString().Equals(""))
                         Utility.MensajeError((ban++).ToString() + "Seleccione el porcentaje");
                 }
-            }
-
-            //foreach (DataGridViewRow item in dgvData.Rows)
-            //{
-            //    if (!item.IsNewRow)
-            //    {
-            //        if (item.Cells["EMP_ID"].Value.Equals(DBNull.Value))
-            //            item.Cells["EMP_ID"].ErrorText = (ban++).ToString() + " :Seleccione al Empleado";
-            //        else
-            //            item.Cells["EMP_ID"].ErrorText = string.Empty;
-            //    }
-            //}
+            }           
 
             if (ban > 1)
                 return false;
@@ -189,17 +168,7 @@ namespace NominaTCG
             DataTable periodo = ContratoBO.ListaPeriodo("PREPO");
             string periodoActivo = periodo.Rows[0][0].ToString();
             if(periodoActivo.Equals(rolID) | rolID =="")
-            {
-                //foreach (DataGridViewRow item in dgvDias.Rows)
-                //{
-                //    if (!item.IsNewRow)
-                //    {
-                //        if (item.Cells["ROL_ID_GEN_"].Value.ToString().Equals(periodoActivo))
-                //            item.ReadOnly = false;
-                //        else
-                //            item.ReadOnly = false;
-                //    }
-                //}
+            {                
                 dgvDias.AllowUserToAddRows = true ;
                 dgvDias.ReadOnly = false;
             }
@@ -228,6 +197,8 @@ namespace NominaTCG
                     notifica.rolRepro = Convert.ToUInt32(periodo.Rows[0][1]);
                     notifica.iessFechainicio = row["IESS_FECHAINICIO"].ToString();
                     notifica.iessFechafin = row["IESS_FECHAFIN"].ToString();
+                    notifica.rolIdGen_  = Convert.ToUInt32(row["ROL_ID_GEN"].ToString());
+                    notifica.rolRepro_  = Convert.ToUInt32(row["ROL_REPRO"].ToString());
                     notifica.iessTipo = Convert.ToUInt32(row["IESS_TIPO"]);
                     notifica.iessObservacion = row["IESS_OBSERVACION"].ToString();
                     iess.Add(notifica);
@@ -241,6 +212,8 @@ namespace NominaTCG
                     dias.empId = txtCodigo.Text;
                     dias.rolIdGen = Convert.ToUInt32(periodo.Rows[0][0]);
                     dias.rolRepro = Convert.ToUInt32(periodo.Rows[0][1]);
+                    dias.rolIdGen_ = Convert.ToUInt32(row["ROL_ID_GEN"]);
+                    dias.rolRepro_ = Convert.ToUInt32(row["ROL_REPRO"]);
                     dias.diaNum = Convert.ToUInt32(row["DIA_NUM"]);
                     dias.diaPorc = Convert.ToUInt32(row["DIA_PORC"]);
                     dias.diaId = row["DIA_ID"]==DBNull.Value?0: Convert.ToUInt32(row["DIA_ID"]);
@@ -312,20 +285,7 @@ namespace NominaTCG
         {
             _instancia = null;
             this.Close();
-        }
-
-        private void dgvData_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if ((dgvData.Columns[e.ColumnIndex].GetType()).ToString() == "System.Windows.Forms.DataGridViewButtonColumn")
-            {
-                if (StateButton.Equals(Acction.Edit))
-                {
-                    var frm = new frmMaternidadLista();
-                    Design.frmDialog(this, "Lista de Datos");
-                }
-            }
-
-        }
+        }        
 
         private void btnEditCancel_Click(object sender, EventArgs e)
         {
@@ -342,35 +302,15 @@ namespace NominaTCG
             {
                 StateButton = Acction.Cancel;
                 Design.ControlsEdit(this.btnEditCancel, this.btnNewSave);
-                ActiveControls(false);
-                btnEditCancel.Enabled = false;
+                ActiveControls(false);                
                 btnNewSave.Enabled = false;
                 btnDelete.Enabled = false;
                 btnSearch.Enabled = true;
                 dgvDias.DataSource = null;
-                dgvDias.AllowUserToAddRows = false; 
+                dgvDias.AllowUserToAddRows = false;
+                AssignData(EmpleadoBO.Empleado.empId.ToString());
             }
-        }
-
-
-
-        private void dgvData_CurrentCellChanged(object sender, EventArgs e)
-        {
-            foreach (DataGridViewCell item in dgvData.SelectedCells)
-            {
-                if (item.Selected)
-                {
-                    string empID = txtCodigo.Text; //dgvData.Rows[item.RowIndex].Cells["EMP_ID"].Value.ToString();
-                    if (dgvData.Rows[item.RowIndex].Cells["ROL_ID_GEN"].Value != null)
-                    {
-                        string rolID = dgvData.Rows[item.RowIndex].Cells["ROL_ID_GEN"].Value.ToString();
-                        string reproID = dgvData.Rows[item.RowIndex].Cells["ROL_REPRO"].Value.ToString();
-                        dgvDias.DataSource = SolicitudBO.ListaDiaAccMatEnf(empID, rolID, reproID);
-                        HabilitaDias(rolID);
-                    }
-                }
-            }
-
+            //Design.ControlsEdit(this.btnEditCancel, this.btnNewSave);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -383,36 +323,8 @@ namespace NominaTCG
             }
         }
 
-        private void dgvDias_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            try
-            {
-                if (e.Exception.Message == "DataGridViewComboBoxCell value is not valid.")
-                {
-                    object value = dgvDias.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                    if (!((DataGridViewComboBoxColumn)dgvDias.Columns[e.ColumnIndex]).Items.Contains(value))
-                    {
-                        ((DataGridViewComboBoxColumn)dgvDias.Columns[e.ColumnIndex]).Items.Add(value);
-                    }
-                }
-
-                throw e.Exception;
-            }
-            catch (Exception ex)
-            {
-                throw new System.ArgumentException(ex.Message);
-                //if (rethrow)
-                //{
-                //    MessageBox.Show(string.Format(@"Failed to bind ComboBox. "
-                //    + "Please contact support with this message:"
-                //    + "\n\n" + ex.Message));
-                //}
-            }
-        }
-
         private void btnNewSave_Click(object sender, EventArgs e)
         {
-
             DataTable datos = (DataTable)dgvData.DataSource;
             DataTable datosDia = (DataTable)dgvDias.DataSource;
             DataTable getDataAdd = datos.GetChanges(DataRowState.Added);
@@ -420,10 +332,10 @@ namespace NominaTCG
             DataTable getDataMod = datos.GetChanges(DataRowState.Modified);
             DataTable getDataDiaMod = datosDia.GetChanges(DataRowState.Modified);
 
-            if (!ValidaDatos(getDataAdd, getDataDiaAdd,"I"))
+            if (!ValidaDatos(getDataAdd, getDataDiaAdd))
                 return;
 
-            if (!ValidaDatos(getDataMod, getDataDiaMod, "U"))
+            if (!ValidaDatos(getDataMod, getDataDiaMod))
                 return;
 
             if (Utility.MensajeQuestion("¿Está seguro que desea cargar los valores?") == System.Windows.Forms.DialogResult.Yes)
@@ -443,6 +355,67 @@ namespace NominaTCG
 
         }
 
+        private void dgvData_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((dgvData.Columns[e.ColumnIndex].GetType()).ToString() == "System.Windows.Forms.DataGridViewButtonColumn")
+            {
+                if (StateButton.Equals(Acction.Edit))
+                {
+                    var frm = new frmMaternidadLista();
+                    Design.frmDialog(this, "Lista de Datos");
+                }
+            }
+        }
+
+        private void dgvData_CurrentCellChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewCell item in dgvData.SelectedCells)
+            {
+                if (item.Selected)
+                {
+                    string empID = txtCodigo.Text;
+                    if (dgvData.Rows[item.RowIndex].Cells["ROL_ID_GEN"].Value != null)
+                    {
+                        string rolID = dgvData.Rows[item.RowIndex].Cells["ROL_ID_GEN"].Value.ToString();
+                        string reproID = dgvData.Rows[item.RowIndex].Cells["ROL_REPRO"].Value.ToString();
+                        dgvDias.DataSource = SolicitudBO.ListaDiaAccMatEnf(empID, rolID, reproID);
+                        HabilitaDias(rolID);
+                    }
+                }
+            }
+
+        }
+        
+
+        private void dgvDias_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            try
+            {
+                if (e.Exception.Message == "DataGridViewComboBoxCell value is not valid.")
+                {
+                    object value = dgvDias.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                    if (!((DataGridViewComboBoxColumn)dgvDias.Columns[e.ColumnIndex]).Items.Contains(value))
+                    {
+                        ((DataGridViewComboBoxColumn)dgvDias.Columns[e.ColumnIndex]).Items.Add(value);
+                    }
+                }
+
+                throw e.Exception;
+            }
+            catch (Exception ex)
+            {
+                //throw new System.ArgumentException(ex.Message);
+                e.Cancel = true;
+                //if (rethrow)
+                //{
+                //    MessageBox.Show(string.Format(@"Failed to bind ComboBox. "
+                //    + "Please contact support with this message:"
+                //    + "\n\n" + ex.Message));
+                //}
+            }
+        }
+
+        
         private void dgvData_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             string nameColumn = dgvData.Columns[e.ColumnIndex].Name;
@@ -481,5 +454,6 @@ namespace NominaTCG
             if (e.KeyValue == Convert.ToChar(Keys.F5))
                 AssignData(txtCodigo.Text);
         }
+        
     }
 }

@@ -49,10 +49,11 @@ namespace NominaTCG
             {
                 if (e.ColumnIndex == 8)
                 {
-                    string path;
-                    path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);                   
+                    //string path;
+                    //path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);                   
+
                     LocalReport report = new LocalReport();
-                    report.ReportPath = path + @"\SolicitudVacacion.rdlc";
+                    report.ReportPath = Catalogo.PathReport  + "SolicitudVacacion.rdlc";
                     report.DataSources.Add(
                        new ReportDataSource("DataSet1", ReportBO.SolicitudVacacion(EmpID, dgvDatos.Rows[e.RowIndex].Cells[0].Value.ToString())));
                     PrintReport prt = new PrintReport();

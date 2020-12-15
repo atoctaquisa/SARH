@@ -324,6 +324,7 @@ namespace DataAccess
         private static string sqlRegistraReingreso2 = @"INSERT INTO DESARROLLO.DAT_EMP_ING (EMP_ING, EMP_CI,EMP_ID,EMP_ID_ANT,FECHA_REG,USER_CREA)
                                                        VALUES (:EMP_ING,:EMP_CI,:EMP_ID,:EMP_ID_ANT,SYSDATE,:USER_CREA) ";
         private static string sqlValidaEmpleado = @"SELECT COUNT(1) FROM V_DETALLE_EMP WHERE EMP_CI=:EMP_CI AND PAT_ID=:PAT_ID";
+        private static string sqlValidaEmpleadoCI = @"SELECT COUNT(1) FROM V_DETALLE_EMP WHERE EMP_CI=:EMP_CI ";
         private static string sqlValidaEmpleadoActivo = @"SELECT COUNT(1) FROM V_DETALLE_EMP WHERE EMP_CI=:EMP_CI AND PAT_ID=:PAT_ID AND LAB_ESTADO=1";
         private static string sqlValidaSalidaEmpleado = @"SELECT COUNT(1) FROM V_DETALLE_EMP WHERE EMP_CI=:EMP_CI AND PAT_ID=:PAT_ID AND EMP_FEC_SALIDA IS NULL";
         private static string sqlPrestamoEmpleado = @"SELECT P.EMP_ID,
@@ -644,7 +645,14 @@ namespace DataAccess
             };
             return db.GetEntero(sqlValidaEmpleadoActivo, prm);
         }
-
+        public int ValidaEmpleadoEmpresa(string empCI)
+        {
+            OracleParameter[] prm = new OracleParameter[]
+            {
+                new OracleParameter(":EMP_CI",empCI)                
+            };
+            return db.GetEntero(sqlValidaEmpleadoCI, prm);
+        }
         public int ValidaEmpleadoEmpresa(string empCI, string emprID)
         {
             OracleParameter[] prm = new OracleParameter[]

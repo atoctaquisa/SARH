@@ -71,11 +71,16 @@ namespace NominaTCG
             dgvData.AllowUserToAddRows = false;
             ContratoBO = ContratoController.Instancia;
             CuentaBO = CuentaController.Instancia;
-            LocalBO = LocalController.Instancia;           
+            LocalBO = LocalController.Instancia;
             _diaID = diaID;
             _cliID = cliID;
             _percID = percID;
             _patID = patID;
+            LoadData();
+        }
+
+        private void LoadData()
+        {
             DataSet datos = ContratoBO.AsientoLiquidacion(_diaID, _cliID, _percID, _patID);
             if (datos.Tables[0].Rows.Count > 0)
             {
@@ -91,11 +96,10 @@ namespace NominaTCG
                 txtFechaReg.Text = datos.Tables[0].Rows[0]["DIA_FEC_REG"].ToString();
                 txtUsuarioReg.Text = datos.Tables[0].Rows[0]["DIA_RESP"].ToString();
                 txtFechaMod.Text = datos.Tables[0].Rows[0]["DIA_FEC_MOD"].ToString();
-                txtUsuarioMod.Text = datos.Tables[0].Rows[0]["USU_MODIF"].ToString();
+                txtUsuarioMod.Text = datos.Tables[0].Rows[0]["USU_MODIF"].ToString();                
                 dgvData.DataSource = datos.Tables[1];
                 TotalSalary();
             }
-
         }
 
         private void btnProcesar_Click(object sender, EventArgs e)
@@ -124,12 +128,19 @@ namespace NominaTCG
 
             if (btnEditCancel.Text.Equals("&Editar"))
             {
+                if (txtEstado.Text.Equals("Procesado"))
+                {
+                    Utility.MensajeInfo("No se puede realizar ninguana modificación");
+                    return;
+                }
+
                 StateButton = Acction.Edit;
                 ActiveControls(true);
             }
             else
             {
                 StateButton = Acction.Cancel;
+                LoadData();
                 ActiveControls(false);
             }
 
@@ -151,63 +162,84 @@ namespace NominaTCG
                 {
                     if (Utility.MensajeQuestion("¿Está seguro que desea registrar los cambios?") == System.Windows.Forms.DialogResult.Yes)
                     {
-                        List<db.DatDetDiario> datosIngreso;
+                        List<db.DatDetDiario> diarioDT;
                         if (getDataMod != null)
                         {
-                            datosIngreso = new List<db.DatDetDiario>();
+                            diarioDT = new List<db.DatDetDiario>();
                             foreach (DataRow row in getDataMod.Rows)
                             {
-                                db.DatDetDiario liq = new db.DatDetDiario();
-                                liq.percId = Convert.ToInt64(row["EMP_ID"]);
-                                //liq.patId = DateTime.Now;
-                                liq.diaId = Convert.ToInt64(row["ROL_ID"]);
-                                liq.cueId = Convert.ToInt64(row["ROL_LIQ_ID"]);
-                                liq.detDiaHb = Convert.ToDecimal(row["ROL_LIQ_VALOR"]);
-                                liq.detDiaDb = Convert.ToInt32(row["SEG_ROL_ID"]);
-                                liq.detDiaCliSeg = Convert.ToInt32(row["SEG_ROL_REPRO"]);
-                                datosIngreso.Add(liq);
-
+                                db.DatDetDiario dat = new db.DatDetDiario();
+                                dat.cueId = Convert.ToInt64(row["CUE_ID"]);
+                                dat.cueId_ = Convert.ToInt64(row["CUE_ID", DataRowVersion.Original]);
+                                dat.percId = Convert.ToInt64(_percID) ;
+                                dat.diaId = Convert.ToInt64(_diaID);
+                                dat.cliId = Convert.ToInt32(row["CLI_ID"]);
+                                dat.cliId_ = Convert.ToInt32(row["CLI_ID",DataRowVersion.Original]);
+                                dat.detDiaDb = row["DET_DIA_DB"] == DBNull.Value ? 0 : Convert.ToDecimal(row["DET_DIA_DB"]);
+                                dat.detDiaHb = row["DET_DIA_HB"] == DBNull.Value ? 0 : Convert.ToDecimal(row["DET_DIA_HB"]);
+                                //dat.detDiaFecReg 
+                                //dat.detDiaFecMod                                
+                                dat.detDiaCliSeg = Convert.ToInt64(_cliID); 
+                                dat.patId = Convert.ToInt64(_patID);
+                                dat.detId = Convert.ToInt64(row["DET_ID"]);
+                                //dat.ordImp
+                                //dat.usuCrea
+                                dat.usuModif = Catalogo.UserName;
+                                //dat.anioPerc
+                                dat.detObser = txtObservacion.Text;
+                                diarioDT.Add(dat);
                             }
-                            ContratoBO.ActualizaDetalleDiario(datosIngreso);
+                            ContratoBO.ActualizaDetalleDiario(diarioDT,"U");
                         }
 
                         if (getDataAdd != null)
                         {
-                            datosIngreso = new List<db.DatDetDiario>();
+                            diarioDT = new List<db.DatDetDiario>();
                             foreach (DataRow row in getDataAdd.Rows)
                             {
-                                db.DatDetDiario liq = new db.DatDetDiario();
-                                //liq.empId = Convert.ToInt64(empleadoID);
-                                //liq.rolLiqFecReg = DateTime.Now;
-                                //liq.rolId = Convert.ToInt64(row["ROL_ID"]);
-                                ////liq.rolLiqId = Convert.ToInt64(row["ROL_LIQ_ID"]);
-                                //liq.rolLiqValor = Convert.ToDecimal(row["ROL_LIQ_VALOR"]);
-                                //liq.segRolId = Convert.ToInt32(periodoID);
-                                //liq.segRolRepro = Convert.ToInt16(reprocesoID);
-                                datosIngreso.Add(liq);
+                                db.DatDetDiario dat = new db.DatDetDiario();
+                                dat.cueId = Convert.ToInt64(row["CUE_ID"]);
+                                //dat.cueId_ = Convert.ToInt64(row["CUE_ID", DataRowVersion.Original]);
+                                dat.percId = Convert.ToInt64(_percID);
+                                dat.diaId = Convert.ToInt64(_diaID);
+                                dat.cliId = Convert.ToInt32(row["CLI_ID"]);
+                                //dat.cliId_ = Convert.ToInt32(row["CLI_ID", DataRowVersion.Original]);
+                                dat.detDiaDb = row["DET_DIA_DB"]== DBNull.Value ? 0 : Convert.ToDecimal(row["DET_DIA_DB"]);
+                                dat.detDiaHb = row["DET_DIA_HB"] == DBNull.Value ? 0 : Convert.ToDecimal(row["DET_DIA_HB"]);
+                                //dat.detDiaFecReg 
+                                //dat.detDiaFecMod                                
+                                dat.detDiaCliSeg = Convert.ToInt64(_cliID);
+                                dat.patId = Convert.ToInt64(_patID);
+                                //dat.detId = Convert.ToInt64(row["DET_ID"]);
+                                //dat.ordImp
+                                dat.usuCrea = Catalogo.UserName;
+                                //dat.usuModif = Catalogo.UserName;
+                                //dat.anioPerc
+                                dat.detObser = txtObservacion.Text;
+                                diarioDT.Add(dat);
                             }
-                            ContratoBO.ActualizaDetalleDiario(datosIngreso);
+                            ContratoBO.ActualizaDetalleDiario(diarioDT,"I");
                         }
 
                         if (getDataDel != null)
                         {
-                            datosIngreso = new List<db.DatDetDiario>();
+                            diarioDT = new List<db.DatDetDiario>();
                             foreach (DataRow row in getDataDel.Rows)
                             {
-                                db.DatDetDiario liq = new db.DatDetDiario();
-                                //liq.empId = Convert.ToInt64(row["EMP_ID", DataRowVersion.Original]);
-                                //liq.rolLiqFecReg = DateTime.Now;
-                                //liq.rolId = Convert.ToInt64(row["ROL_ID", DataRowVersion.Original]);
-                                //liq.rolLiqId = Convert.ToInt64(row["ROL_LIQ_ID", DataRowVersion.Original]);
-                                //liq.rolLiqValor = Convert.ToDecimal(row["ROL_LIQ_VALOR", DataRowVersion.Original]);
-                                //liq.segRolId = Convert.ToInt32(row["SEG_ROL_ID", DataRowVersion.Original]);
-                                //liq.segRolRepro = Convert.ToInt32(row["SEG_ROL_REPRO", DataRowVersion.Original]);
-                                datosIngreso.Add(liq);
+                                db.DatDetDiario dat = new db.DatDetDiario();                                
+                                dat.cueId = Convert.ToInt64(row["CUE_ID", DataRowVersion.Original]);
+                                dat.percId = Convert.ToInt64(_percID);
+                                dat.diaId = Convert.ToInt64(_diaID);                                
+                                dat.cliId = Convert.ToInt32(row["CLI_ID", DataRowVersion.Original]);                                
+                                dat.patId = Convert.ToInt64(_patID);
+                                dat.detId = Convert.ToInt64(row["DET_ID", DataRowVersion.Original]);                               
+                                diarioDT.Add(dat);
                             }
-                            //ContratoBO.EliminaDetalleIngreso(datosIngreso);
+                            ContratoBO.ActualizaDetalleDiario(diarioDT,"D");
                         }
                         //ContratoBO.ActualizaDetalleIngreso(empleadoID, liquidacionID, Convert.ToDecimal(txtIngreso.Text), Convert.ToDecimal(txtEgreso.Text));
                         //dgvData.DataSource = ContratoBO.DetalleIngreso(empleadoID, periodoID, reprocesoID);
+                        LoadData();
                         Utility.MensajeOK("Información Reagistrada..!!");
                     }
                 }
@@ -253,9 +285,17 @@ namespace NominaTCG
 
         private void dgvData_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            dgvData.Rows[e.RowIndex].ErrorText = string.Empty;
+            //int index = dgvData.CurrentCell.ColumnIndex;
+            //if (dgvData.Columns[index].Name == "DEBE"| dgvData.Columns[index].Name == "HABER")
+            //{
+            //    dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
+            //}
+
             string nameColumn = dgvData.Columns[e.ColumnIndex].Name;
             if (nameColumn == "DEBE" | nameColumn == "HABER")
             {
+                dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
                 TotalSalary();
             }
             dgvData.Rows[e.RowIndex].ErrorText = String.Empty;
@@ -299,13 +339,32 @@ namespace NominaTCG
                                     }
                                 }
                             }
-                            dgvData.Rows[e.RowIndex].Cells["Cuenta"].Value = Convert.ToInt32(CuentaBO.Cuenta.CuentaID);
+                            dgvData.Rows[e.RowIndex].Cells["Cuenta"].Value = Convert.ToInt64(CuentaBO.Cuenta.CuentaID);
                             dgvData.Rows[e.RowIndex].Cells["Nombre"].Value = CuentaBO.Cuenta.Cuenta;
                         }
                     }
 
                     
                 }
+            }
+        }
+
+        void dText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int index = dgvData.CurrentCell.ColumnIndex;
+            if (dgvData.Columns[index].Name == "HABER" | dgvData.Columns[index].Name == "DEBE")
+            {
+                TextBox txt = (TextBox)sender;
+                Utility.OnlyQuantity(txt, e);
+            }
+        }
+        DataGridViewTextBoxEditingControl dText;
+        private void dgvData_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (e.Control.GetType().Name.Equals("DataGridViewTextBoxEditingControl"))
+            {
+                dText = (DataGridViewTextBoxEditingControl)e.Control;
+                dText.KeyPress += new KeyPressEventHandler(dText_KeyPress);
             }
         }
     }

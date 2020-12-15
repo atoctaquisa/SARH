@@ -77,12 +77,17 @@ namespace NominaTCG
         {
             string path;
             //path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Reportes\Contabilidad.rdlc";
-            path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + @"\Contabilidad.rdlc";
+            //path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + @"\Contabilidad.rdlc";
+            path=Catalogo.PathReport;
             //path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)+ @"\Contabilidad.rdlc";
             LocalReport report = new LocalReport();
             //report.ReportPath = path + @"\RolIndividual.rdlc";
             ReportBO = ReportDataController.Instancia;
             //ReportParameter[] param = new ReportParameter[1];
+            if(cboTipo.Text.Equals("Detallado"))
+                path+= "Contabilidad.rdlc";
+            else
+                path += "ContabilidadC.rdlc";
             DataTable dtConsulta = ReportBO.DetalleContabilidad(txtRol.Text, txtReproceso.Text,cboTipo.Text );
             frmViewReport frm = new frmViewReport(new ReportDataSource("DataSet1", dtConsulta), path, null );
             frm.Show();

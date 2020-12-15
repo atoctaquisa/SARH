@@ -70,7 +70,7 @@ namespace DataAccess
                                                                    IESS_TIPO,
                                                                    IESS_OBSERVACION,
                                                                    DIAS_25,
-                                                                   DIAS_100
+                                                                   DIAS_100,IESS_ID 
                                                               FROM DESARROLLO.DAT_IESS_ENFERMEDAD D
                                                              WHERE EMP_ID =:EMP_ID ORDER BY ROL_ID_GEN, ROL_REPRO ASC";
 private static string sqlListaAccMatEnf = @"
@@ -83,7 +83,7 @@ private static string sqlListaDiaAccMatEnf = @"
                                                ROL_ID_GEN,
                                                ROL_REPRO,
                                                DIA_NUM,
-                                               DIA_PORC
+                                               DIA_PORC, IESS_ID 
                                           FROM DESARROLLO.DAT_IESS_DIA_ENFE
                                          WHERE EMP_ID = :EMP_ID AND ROL_ID_GEN = :ROL_ID_GEN AND ROL_REPRO=:ROL_REPRO";
 private static string sqlRegistraSolicitudAccMatEnf = @"
@@ -95,7 +95,8 @@ private static string sqlRegistraSolicitudAccMatEnf = @"
                                                                                                 IESS_FECHAINGRESO,
                                                                                                 --IESS_FECHAMODIF,
                                                                                                 IESS_TIPO,
-                                                                                                IESS_OBSERVACION
+                                                                                                IESS_OBSERVACION,
+                                                                                                IESS_ID
                                                                                                 )
                                                          VALUES ( :EMP_ID
                                                                  ,:ROL_ID_GEN
@@ -128,18 +129,22 @@ private static string sqlActualizaSolicitudAccMatEnf = @"
                                                            --IESS_FECHAINGRESO = :IESS_FECHAINGRESO,
                                                            IESS_FECHAMODIF = SYSDATE,--:IESS_FECHAMODIF,
                                                            IESS_TIPO = :IESS_TIPO,
-                                                           IESS_OBSERVACION = :IESS_OBSERVACION
+                                                           IESS_OBSERVACION = :IESS_OBSERVACION,
+                                                           ROL_ID_GEN = :ROL_ID_GEN,
+                                                           ROL_REPRO = :ROL_REPRO
                                                      WHERE     EMP_ID = :EMP_ID
                                                            AND ROL_ID_GEN = :ROL_ID_GEN
                                                            AND ROL_REPRO = :ROL_REPRO";
 private static string sqlActualizaDiaAccMatEnf = @"
                                                     UPDATE DESARROLLO.DAT_IESS_DIA_ENFE
                                                        SET DIA_NUM = :DIA_NUM,
-                                                           DIA_PORC = :DIA_PORC
+                                                           DIA_PORC = :DIA_PORC,
+                                                           --ROL_ID_GEN = :ROL_ID_GEN,
+                                                           --ROL_REPRO = :ROL_REPRO                                                     
                                                     WHERE  DIA_ID = :DIA_ID
                                                       AND  EMP_ID = :EMP_ID
-                                                      AND  ROL_ID_GEN = :ROL_ID_GEN
-                                                      AND  ROL_REPRO = :ROL_REPRO";
+                                                      --AND  ROL_ID_GEN = :ROL_ID_GEN
+                                                      --AND  ROL_REPRO = :ROL_REPRO";
         #endregion
 
         #region Properties
@@ -308,10 +313,11 @@ private static string sqlActualizaDiaAccMatEnf = @"
                     new OracleParameter(":IESS_FECHAFIN",Convert.ToDateTime(item.iessFechafin).ToString("dd-MMM-yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))),
                     new OracleParameter(":IESS_TIPO",item.iessTipo),
                     new OracleParameter(":IESS_OBSERVACION",item.iessObservacion),
-                    new OracleParameter(":EMP_ID",item.empId),
                     new OracleParameter(":ROL_ID_GEN",item.rolIdGen),
-                    new OracleParameter(":ROL_REPRO",item.rolRepro)
-
+                    new OracleParameter(":ROL_REPRO",item.rolRepro),
+                    new OracleParameter(":EMP_ID",item.empId),                    
+                    new OracleParameter(":ROL_ID_GEN",item.rolIdGen_),
+                    new OracleParameter(":ROL_REPRO",item.rolRepro_)
                 };
                     db.ExecQuery(sqlActualizaSolicitudAccMatEnf, prm);
                 }
@@ -321,11 +327,13 @@ private static string sqlActualizaDiaAccMatEnf = @"
                     OracleParameter[] prm = new OracleParameter[]
                 {                   
                     new OracleParameter(":DIA_NUM",item.diaNum),
-                    new OracleParameter(":DIA_PORC",item.diaPorc),
+                    new OracleParameter(":DIA_PORC",item.diaPorc),                    
+                    new OracleParameter(":ROL_ID_GEN",item.rolIdGen),
+                    new OracleParameter(":ROL_REPRO",item.rolRepro),
                     new OracleParameter(":DIA_ID",item.diaId),
                     new OracleParameter(":EMP_ID",item.empId),
-                    new OracleParameter(":ROL_ID_GEN",item.rolIdGen),
-                    new OracleParameter(":ROL_REPRO",item.rolRepro)
+                    new OracleParameter(":ROL_ID_GEN",item.rolIdGen_),
+                    new OracleParameter(":ROL_REPRO",item.rolRepro_)
                 };
                     db.ExecQuery(sqlActualizaDiaAccMatEnf, prm);
                 }
@@ -343,7 +351,7 @@ private static string sqlActualizaDiaAccMatEnf = @"
             };
             return db.GetData(sqlListaSolicitudVacacion+ sqlSolicitudEmp, prm); 
         }
-        public DataTable ListaSolicitudVacacion(string codigo, int estado, string empID, string fechaD, string fechaH)
+        public DataTable ListaSolicitudVacacion(string codigo, int estado, string empID, string fechaD, string fechaH, string locID)
         {
             string sql = "WHERE ";
 
@@ -371,6 +379,8 @@ private static string sqlActualizaDiaAccMatEnf = @"
                     sql += " AND TRUNC(SOLVAC_FECHA)='" + Convert.ToDateTime(fechaH).ToString("dd-MMM-yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US")) + "'";
             }
 
+            if (Convert.ToInt64(locID) > 0)
+                sql += " AND LOC_ID='" + locID + "'";
 
 
 

@@ -131,11 +131,20 @@ namespace NominaTCG
             string fechaSolicitud = pDesde.Value.Date.ToShortDateString();
             string fechaSolicitudHas = pHasta.Value.Date.ToShortDateString();
             string fechaSolicitudIng = pIncorpora.Value.Date.ToShortDateString();
-
-            if (Convert.ToDateTime(fechaSistema) > Convert.ToDateTime(fechaSolicitud))
+            if (SistemaBO.Path("81").Equals("S"))
             {
-                ErrProv.SetError(txtPeriodo, "No puede generar solicitudes con fechas menores a la fecha en curso " + fechaSistema);
-                return false;
+                if (Convert.ToDateTime(fechaSistema) > Convert.ToDateTime(fechaSolicitud))
+                {
+                    ErrProv.SetError(txtPeriodo, "No puede generar solicitudes con fechas menores a la fecha en curso " + fechaSistema);
+                    return false;
+                }
+            }
+            else
+            {
+                if (Utility.MensajeQuestion("¿Está seguro que desea registrar fechas menores a la actual?") == System.Windows.Forms.DialogResult.No)
+                {
+                    return false;
+                }
             }
             if (pHasta.Value.Date < pDesde.Value.Date)
             {

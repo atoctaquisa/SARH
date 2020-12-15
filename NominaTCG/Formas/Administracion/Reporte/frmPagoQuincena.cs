@@ -20,7 +20,7 @@ namespace NominaTCG
     public partial class frmPagoQuincena : Form
     {
         private LocalController LocalBO { get; set; }
-        private EmpleadoController EmpleadoBO { get; set; }        
+        private EmpleadoController EmpleadoBO { get; set; }
         private ReportDataController ReportBO { get; set; }
         private ContratoController ContratoBO { get; set; }
         private PatronoController PatronoBO { get; set; }
@@ -53,7 +53,7 @@ namespace NominaTCG
             cboPatrono.ValueMember = "PAT_ID";
             cboPatrono.SelectedIndex = -1;
         }
-        
+
         #endregion
 
         private void ClearControl()
@@ -62,7 +62,7 @@ namespace NominaTCG
             LocalBO.Local = new LocalEntity();
             txtEmpleado.Text = string.Empty;
             txtLocal.Text = string.Empty;
-            txtPerido.Text = string.Empty; 
+            txtPerido.Text = string.Empty;
             cboPatrono.SelectedIndex = -1;
         }
 
@@ -74,17 +74,18 @@ namespace NominaTCG
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             string path;
-            path = //@"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Reportes\PagoQuincena.rdlc";
-            System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)+ @"\PagoQuincena.rdlc";
+            //path = //@"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Reportes\PagoQuincena.rdlc";
+            //System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)+ @"\PagoQuincena.rdlc";
+            path = Catalogo.PathReport + "PagoQuincena.rdlc";
             LocalReport report = new LocalReport();
             //report.ReportPath = path + @"\RolIndividual.rdlc";
             ReportBO = ReportDataController.Instancia;
-            
+
             DataTable dtConsulta = ReportBO.PagoQuincena(ContratoBO.RolSeg.segRolId.ToString(),
                 ContratoBO.RolSeg.segRolRepro.ToString(),
-                cboPatrono.SelectedValue == null ? "" : cboPatrono.SelectedValue.ToString(), 
-                LocalBO.Local.LocalID == 0 ? "": LocalBO.Local.LocalID.ToString(),
-                EmpleadoBO.Empleado.empId ==0 ? "": EmpleadoBO.Empleado.empId.ToString() );
+                cboPatrono.SelectedValue == null ? "" : cboPatrono.SelectedValue.ToString(),
+                LocalBO.Local.LocalID == 0 ? "" : LocalBO.Local.LocalID.ToString(),
+                EmpleadoBO.Empleado.empId == 0 ? "" : EmpleadoBO.Empleado.empId.ToString());
             //ReportParameter[] param = new ReportParameter[1];
             frmViewReport frm = new frmViewReport(new ReportDataSource("PagoQuincena", dtConsulta), path, null);
             frm.Show();
@@ -139,7 +140,7 @@ namespace NominaTCG
             this.Close();
         }
 
-       
-       
+
+
     }
 }
