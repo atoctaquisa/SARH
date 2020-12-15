@@ -1537,6 +1537,7 @@ namespace NominaTCG
             {
                 StateButton = Acction.Edit;
                 ActiveControls(true, tabInformacion.SelectedIndex);
+                pPerFechaIngreso.Enabled = false;
             }
             else
             {
@@ -1603,6 +1604,7 @@ namespace NominaTCG
                             ActiveControls(true, tabInformacion.SelectedIndex);
                             btnNewSave.Visible = false;
                             btnEditCancel.Visible = false;
+                            txtPerCedula.ReadOnly = true;
                             //Datos Contrato            
                             mtxtConFechaContrato.Text = string.Empty;
                             mtxtConFechaLiquidacion.Text = string.Empty;
@@ -1947,8 +1949,8 @@ namespace NominaTCG
 
         private void txtPerCedula_Validating(object sender, CancelEventArgs e)
         {
-            string errorMsg;
-            if ((StateButton == Acction.New & txtPerCedula.ReadOnly.Equals(false)) && !ExisteEmpleado(txtPerCedula.Text, out errorMsg))
+            string errorMsg;//& !btnReingreso.Text.Equals("&Aceptar")
+            if ((StateButton == Acction.New & txtPerCedula.ReadOnly.Equals(false) ) && !ExisteEmpleado(txtPerCedula.Text, out errorMsg))
             {
                 e.Cancel = true;
                 txtPerCedula.Select(0, txtPerCedula.Text.Length);

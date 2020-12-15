@@ -104,19 +104,7 @@ namespace NominaTCG
                     }
                 }
             }
-
-            //string path;
-            //path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Reportes\Rol.rdlc";
-            ////System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
-            //LocalReport report = new LocalReport();
-            ////report.ReportPath = path + @"\RolIndividual.rdlc";
-            //ReportBO = ReportDataController.Instancia;
-            //string rolID = dgvData.Rows[dgvData.CurrentRow.Index].Cells["SEG_ROL_ID"].Value.ToString();
-            //string reproID = dgvData.Rows[dgvData.CurrentRow.Index].Cells["SEG_ROL_REPRO"].Value.ToString();
-            //DataTable dtConsulta = ReportBO.RolIndividual(rolID, reproID, EmpleadoBO.Empleado.empId.ToString(), LocalBO.Local.LocalID.ToString(), cboCadena.SelectedValue == null ? "" : cboCadena.SelectedValue.ToString());
-            //frmViewReport frm = new frmViewReport(dtConsulta, new ReportDataSource("DataSet1", dtConsulta), path);
-            //frm.Show();
-            //ClearControl();
+          
         }
 
         private void btnExit_Click(object sender, EventArgs e)

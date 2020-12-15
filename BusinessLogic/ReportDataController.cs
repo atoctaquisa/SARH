@@ -35,9 +35,9 @@ namespace BusinessLogic
         }
         #endregion
 
-        public DataTable DetalleEmpleado(string empID)
+        public DataTable DetalleEmpleado(string subQuery)
         {
-            return ReportDataDA.DetalleEmpleado(empID);
+            return ReportDataDA.DetalleEmpleado(subQuery);
         }
         private ReportDataRepository ReportDataDA { get; set; }
 

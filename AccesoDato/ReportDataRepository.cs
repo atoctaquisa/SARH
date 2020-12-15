@@ -321,15 +321,15 @@ SELECT PRESTAMO,
                                               FROM DESARROLLO.V_DETALLE_EMP V";
 
 
-        public DataTable DetalleEmpleado(string empID)
+        public DataTable DetalleEmpleado(string subQuery)
         {
-            OracleParameter[] prm = new OracleParameter[]
-            {
-                new OracleParameter(":EMP_ID",empID )
+            //OracleParameter[] prm = new OracleParameter[]
+            //{
+            //    new OracleParameter(":EMP_ID",subQuery )
 
-            };
+            //};
             //return db.GetData(sqlSolicitudVacacion, prm);
-            return db.GetData(sqlDetalleEmpleado, prm);
+            return db.GetData(sqlDetalleEmpleado);
         }
 
         public DataTable Actuarial(string nAnio)

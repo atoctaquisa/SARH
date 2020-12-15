@@ -41,5 +41,38 @@ namespace NominaTCG
         {
              dgvData.DataSource = reportBO.DetalleEmpleado("");
         }
+
+        private void frmRepEmpleado_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _instancia = null;
+        }
+
+
+        //SELECT ROWNUM                             NUM,
+        //                                           LOC_CIUDAD_ABREV CIUDAD,
+        //                                           LOC_NOMBRE LOCAL,
+        //                                           NOMBRE EMPLEADO,
+        //                                           ESC_ABRE CARGO,
+        //                                           LAB_FEC_INGRESO INGRESO,
+        //                                           EMP_CON_FEC_CONTRATO CONTRATO,
+        //                                           TIPO_CONTRATO,
+        //                                           PATRONO,
+        //                                           LAB_FEC_CAMB_ESC ULTM_ASC,
+        //                                           EMP_FEC_SALIDAREAL SALIDA_REAL,
+        //                                           EMP_CI CEDULA,
+        //                                           EMP_FEC_NAC FECHA_NACIMIENTO,
+        //                                           EMP_DIREC DIRECCION,
+        //                                           EMP_BARRIO BARRIO,
+        //                                           (SELECT EMP_SEC_NOMBRE
+        //                                              FROM DESARROLLO.DAT_EMP_SEC
+        //                                             WHERE EMP_SEC_ID = V.EMP_SEC)    SECTOR,
+        //                                           EMP_TELEFONO TELEFONO,
+        //                                           DECODE(EMP_EST_CIVIL, 'S', 'Soltero', 'C', 'Casado', 'U', 'Unión Libre', 'Se', 'Separado', 'D', 'Divorciado', 'V', 'Viudo') ESTADO_CIVIL,
+        //                                           DECODE(EMP_SEXO,1,'Hombre',0,'Mujer') SEXO,
+        //                                           EMP_CUENTA CUENTA,
+        //                                           DECODE(EMP_DISCAPACIDAD, 0, 'No', 1, 'Si') DISCAPACIDAD,
+        //                                           EMP_MAIL_PER CORREO_PERSONAL,
+        //                                           EMP_MAIL CORREO_EMPRESARIAL
+        //                                      FROM DESARROLLO.V_DETALLE_EMP V
     }
 }
