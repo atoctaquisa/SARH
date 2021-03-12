@@ -218,6 +218,8 @@ namespace NominaTCG
             //Dato Personales
             btnSearch.Enabled = !stateControl;
             //btnListaDiscapacidad.ReadOnly = stateControl;
+            chkPasaporte.Enabled = stateControl;
+            chkPasaporte.Checked = false;
             txtApellido.ReadOnly = !stateControl;
             txtNombre.ReadOnly = !stateControl;
             //txtPerLabFecIng.ReadOnly = estadoControl;
@@ -443,11 +445,14 @@ namespace NominaTCG
             }
             else
             {
-                if (EmpleadoBO.ValidaCeldula(txtPerCedula.Text) == 0)
+                if (!chkPasaporte.Checked)
                 {
-                    ErrProv.SetError(txtPerCedula, "Número de cédula incorrecta.!!");
-                    cnt++;
-                };
+                    if (EmpleadoBO.ValidaCeldula(txtPerCedula.Text) == 0)
+                    {
+                        ErrProv.SetError(txtPerCedula, "Número de cédula incorrecta.!!");
+                        cnt++;
+                    }
+                }
             }
             //if (txtPerNumIESS.Text == string.Empty)
             //{
@@ -1979,6 +1984,20 @@ namespace NominaTCG
             
             errorMessage = "Ya existe un registro con esta cédula";
             return false;
+        }
+
+        private void chkPasaporte_CheckedChanged(object sender, EventArgs e)
+        {
+            //if (chkPasaporte.Checked)
+            //{
+            //    txtPerCedula.Enabled = false ;
+            //    txtPerPasaporte.Enabled = true;
+            //}                
+            //else
+            //{
+            //    txtPerCedula.Enabled = true ;
+            //    txtPerPasaporte.Enabled = false;
+            //}
         }
     }
 }

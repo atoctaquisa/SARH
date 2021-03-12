@@ -106,7 +106,7 @@ private static string sqlRegistraSolicitudAccMatEnf = @"
                                                                  ,SYSDATE --:IESS_FECHAINGRESO
                                                                  --,:IESS_FECHAMODIF
                                                                  ,:IESS_TIPO
-                                                                 ,:IESS_OBSERVACION             
+                                                                 ,:IESS_OBSERVACION, SEQ_IESS_DIA_ENF.NEXTVAL
                                                                  )";
 private static string sqlRegistraDiaAccMatEnf = @"
                                                 INSERT INTO DESARROLLO.DAT_IESS_DIA_ENFE (DIA_ID,
@@ -138,13 +138,14 @@ private static string sqlActualizaSolicitudAccMatEnf = @"
 private static string sqlActualizaDiaAccMatEnf = @"
                                                     UPDATE DESARROLLO.DAT_IESS_DIA_ENFE
                                                        SET DIA_NUM = :DIA_NUM,
-                                                           DIA_PORC = :DIA_PORC,
+                                                           DIA_PORC = :DIA_PORC
                                                            --ROL_ID_GEN = :ROL_ID_GEN,
                                                            --ROL_REPRO = :ROL_REPRO                                                     
                                                     WHERE  DIA_ID = :DIA_ID
                                                       AND  EMP_ID = :EMP_ID
                                                       --AND  ROL_ID_GEN = :ROL_ID_GEN
-                                                      --AND  ROL_REPRO = :ROL_REPRO";
+                                                      --AND  ROL_REPRO = :ROL_REPRO
+";
         #endregion
 
         #region Properties
@@ -328,12 +329,12 @@ private static string sqlActualizaDiaAccMatEnf = @"
                 {                   
                     new OracleParameter(":DIA_NUM",item.diaNum),
                     new OracleParameter(":DIA_PORC",item.diaPorc),                    
-                    new OracleParameter(":ROL_ID_GEN",item.rolIdGen),
-                    new OracleParameter(":ROL_REPRO",item.rolRepro),
+                    //new OracleParameter(":ROL_ID_GEN",item.rolIdGen),
+                    //new OracleParameter(":ROL_REPRO",item.rolRepro),
                     new OracleParameter(":DIA_ID",item.diaId),
-                    new OracleParameter(":EMP_ID",item.empId),
-                    new OracleParameter(":ROL_ID_GEN",item.rolIdGen_),
-                    new OracleParameter(":ROL_REPRO",item.rolRepro_)
+                    new OracleParameter(":EMP_ID",item.empId)
+                    //new OracleParameter(":ROL_ID_GEN",item.rolIdGen_),
+                    //new OracleParameter(":ROL_REPRO",item.rolRepro_)
                 };
                     db.ExecQuery(sqlActualizaDiaAccMatEnf, prm);
                 }

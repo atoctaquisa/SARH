@@ -15,7 +15,7 @@
     <TargetFrameworkProfile />
     <PublishUrl>\\192.168.1.91\publico\SARH\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Unc</InstallFrom>
+    <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -23,10 +23,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>\\192.168.1.91\publico\SARH\</InstallUrl>
     <UpdateUrl>\\192.168.1.91\publico\SARH\</UpdateUrl>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>25</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>41</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -131,6 +131,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formas\Administracion\Reporte\frmProvisiones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\Administracion\Reporte\frmProvisiones.Designer.cs">
+      <DependentUpon>frmProvisiones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formas\Administracion\Reporte\frmViewReportSub.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -463,16 +469,22 @@
     <Compile Include="Formas\Parametros\Administracion\frmLocalLista.Designer.cs">
       <DependentUpon>frmLocalLista.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmClienteLista.cs">
+    <Compile Include="Formas\Administracion\Reporte\frmAsistenciaPersonal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmClienteLista.Designer.cs">
+    <Compile Include="Formas\Administracion\Reporte\frmAsistenciaPersonal.Designer.cs">
+      <DependentUpon>frmAsistenciaPersonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\frmClienteLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\frmClienteLista.Designer.cs">
       <DependentUpon>frmClienteLista.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListaCuentaAsiento.cs">
+    <Compile Include="Formas\frmListaCuentaAsiento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListaCuentaAsiento.Designer.cs">
+    <Compile Include="Formas\frmListaCuentaAsiento.Designer.cs">
       <DependentUpon>frmListaCuentaAsiento.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
@@ -524,25 +536,37 @@
       <DependentUpon>frmValorAdicional.cs</DependentUpon>
     </Compile>
     <Compile Include="Clases\IFrm.cs" />
-    <Compile Include="frmRepEmpleado.cs">
+    <Compile Include="Formas\Administracion\Reporte\frmRepEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRepEmpleado.Designer.cs">
+    <Compile Include="Formas\Administracion\Reporte\frmRepEmpleado.Designer.cs">
       <DependentUpon>frmRepEmpleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRepPrestamo.cs">
+    <Compile Include="Formas\Administracion\Reporte\frmRepPrestamo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRepPrestamo.Designer.cs">
+    <Compile Include="Formas\Administracion\Reporte\frmRepPrestamo.Designer.cs">
       <DependentUpon>frmRepPrestamo.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmUsuario.cs">
+    <Compile Include="Formas\Administracion\Reporte\frmRolNegativoRep.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUsuario.Designer.cs">
+    <Compile Include="Formas\Administracion\Reporte\frmRolNegativoRep.Designer.cs">
+      <DependentUpon>frmRolNegativoRep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Login\frmUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\Login\frmUsuario.Designer.cs">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Formas\Administracion\Reporte\frmVacacionRep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\Administracion\Reporte\frmVacacionRep.Designer.cs">
+      <DependentUpon>frmVacacionRep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Prueba.cs">
       <DependentUpon>Prueba.xsd</DependentUpon>
@@ -578,6 +602,14 @@
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Formas\Reportes\AsistenciaEmpleado.rdlc" />
+    <EmbeddedResource Include="Formas\Administracion\Reporte\frmProvisiones.resx">
+      <DependentUpon>frmProvisiones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\Reportes\Actuarial.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\ActuarialSalida.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\Contabilidad - Copy.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\ContabilidadC - Copy.rdlc" />
     <EmbeddedResource Include="Formas\Reportes\ContabilidadC.rdlc" />
     <EmbeddedResource Include="Formas\Administracion\Reporte\frmViewReportSub.resx">
       <DependentUpon>frmViewReportSub.cs</DependentUpon>
@@ -680,7 +712,7 @@
       <DependentUpon>frmView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formas\Reportes\Contabilidad.rdlc" />
-    <EmbeddedResource Include="Formas\Reportes\PagoQuincena.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\PagoQuincena - Copy.rdlc" />
     <EmbeddedResource Include="Formas\Administracion\Reporte\frmActuarial.resx">
       <DependentUpon>frmActuarial.cs</DependentUpon>
     </EmbeddedResource>
@@ -747,11 +779,19 @@
     <EmbeddedResource Include="Formas\Parametros\Administracion\frmLocalLista.resx">
       <DependentUpon>frmLocalLista.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formas\Reportes\PagoQuincena.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\Provision - Copy.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\Provision.rdlc" />
     <EmbeddedResource Include="Formas\Reportes\Rol.rdlc" />
-    <EmbeddedResource Include="frmClienteLista.resx">
+    <EmbeddedResource Include="Formas\Reportes\RolNegativo.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\Vacacion - Copy.rdlc" />
+    <EmbeddedResource Include="Formas\Administracion\Reporte\frmAsistenciaPersonal.resx">
+      <DependentUpon>frmAsistenciaPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\frmClienteLista.resx">
       <DependentUpon>frmClienteLista.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListaCuentaAsiento.resx">
+    <EmbeddedResource Include="Formas\frmListaCuentaAsiento.resx">
       <DependentUpon>frmListaCuentaAsiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
@@ -778,17 +818,23 @@
     <EmbeddedResource Include="Formas\Parametros\Nomina\frmValorAdicional.resx">
       <DependentUpon>frmValorAdicional.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRepEmpleado.resx">
+    <EmbeddedResource Include="Formas\Administracion\Reporte\frmRepEmpleado.resx">
       <DependentUpon>frmRepEmpleado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRepPrestamo.resx">
+    <EmbeddedResource Include="Formas\Administracion\Reporte\frmRepPrestamo.resx">
       <DependentUpon>frmRepPrestamo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUsuario.resx">
+    <EmbeddedResource Include="Formas\Administracion\Reporte\frmRolNegativoRep.resx">
+      <DependentUpon>frmRolNegativoRep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\Login\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PrestamoDT.rdlc" />
-    <EmbeddedResource Include="PrestamoEM.rdlc" />
+    <EmbeddedResource Include="Formas\Administracion\Reporte\frmVacacionRep.resx">
+      <DependentUpon>frmVacacionRep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\Reportes\PrestamoDT.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\PrestamoEM.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -819,7 +865,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptLiquidacion.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Prestamo.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\Prestamo.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\Vacacion.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\VacacionDT.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\VacacionSub.rdlc" />
     <None Include="NominaTCG_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Catalogo.datasource" />

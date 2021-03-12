@@ -197,51 +197,52 @@ namespace NominaTCG
                     tipoID = 0;
                     break;
             }
-
-
-            DataTable empresa = EmpleadoBO.TransferenciaBancaria(txtRol.Text, txtReproceso.Text, empID, tipoID.ToString());
-            foreach (DataRow emp in empresa.Rows)
+            
+            if (Utility.MensajeQuestion("Esta seguro que desea generar: "+tipoID.ToString()+"-" + cboTipo.Text.ToUpper()) == DialogResult.Yes)
             {
-                if (tipoID == 1 | tipoID == 2)
+                DataTable empresa = EmpleadoBO.TransferenciaBancaria(txtRol.Text, txtReproceso.Text, empID, tipoID.ToString());
+                foreach (DataRow emp in empresa.Rows)
                 {
-                    DataTable datos = EmpleadoBO.TransferenciaBancaria(emp["PAT_ID"].ToString());
-                    string nameFile = emp["RAZON"].ToString() + cboTipo.Text.ToUpper().Replace(" ", string.Empty) + "-" + Convert.ToDateTime(txtFechaIni.Text).Month + Convert.ToDateTime(txtFechaIni.Text).Year + ".txt";
-                    if (datos.Rows.Count > 0)
+                    if (tipoID == 1 | tipoID == 2)
                     {
-                        string path = ReadPath(emp["RAZON"].ToString()) + nameFile;
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
+                        DataTable datos = EmpleadoBO.TransferenciaBancaria(emp["PAT_ID"].ToString());
+                        string nameFile = emp["RAZON"].ToString() + cboTipo.Text.ToUpper().Replace(" ", string.Empty) + "-" + Convert.ToDateTime(txtFechaIni.Text).Month + Convert.ToDateTime(txtFechaIni.Text).Year + ".txt";
+                        if (datos.Rows.Count > 0)
                         {
-                            //Console.OutputEncoding = Encoding.ASCII;
-                            foreach (DataRow row in datos.Rows)
+                            string path = ReadPath(emp["RAZON"].ToString()) + nameFile;
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
                             {
-                                file.WriteLine(row["DATOS"]);
+                                //Console.OutputEncoding = Encoding.ASCII;
+                                foreach (DataRow row in datos.Rows)
+                                {
+                                    file.WriteLine(row["DATOS"]);
+                                }
                             }
                         }
                     }
-                }
-                if (tipoID == 3 | tipoID == 4)
-                {
-                    DataTable datos = EmpleadoBO.TransferenciaBancariaDecimo(procesoID, anioINI, anioFIN, emp["PAT_ID"].ToString(), tipoID.ToString());
-                    string nameFile = emp["RAZON"].ToString() + cboTipo.Text.ToUpper().Replace(" ", string.Empty) + "-" + anioINI + anioFIN + ".txt";
-                    if (datos.Rows.Count > 0)
+                    if (tipoID == 3 | tipoID == 4)
                     {
-                        string path = ReadPath(emp["RAZON"].ToString()) + nameFile;
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
+                        DataTable datos = EmpleadoBO.TransferenciaBancariaDecimo(procesoID, anioINI, anioFIN, emp["PAT_ID"].ToString(), tipoID.ToString());
+                        string nameFile = emp["RAZON"].ToString() + cboTipo.Text.ToUpper().Replace(" ", string.Empty) + "-" + anioINI + anioFIN + ".txt";
+                        if (datos.Rows.Count > 0)
                         {
-                            //Console.OutputEncoding = Encoding.ASCII;
-                            foreach (DataRow row in datos.Rows)
+                            string path = ReadPath(emp["RAZON"].ToString()) + nameFile;
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
                             {
-                                file.WriteLine(row["DATOS"]);
+                                //Console.OutputEncoding = Encoding.ASCII;
+                                foreach (DataRow row in datos.Rows)
+                                {
+                                    file.WriteLine(row["DATOS"]);
+                                }
                             }
                         }
                     }
+
                 }
 
+                Utility.MensajeInfo("Archivos generados exitosamente.!!");
+                IniciaControl();
             }
-
-            Utility.MensajeInfo("Archivos generados exitosamente.!!");
-            IniciaControl();
-
         }
 
         private string ReadPath(string empresa)

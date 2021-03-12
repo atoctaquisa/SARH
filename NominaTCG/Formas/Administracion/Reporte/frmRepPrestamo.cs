@@ -114,7 +114,7 @@ namespace NominaTCG
                 cboPatrono.SelectedValue == null ? "" : cboPatrono.SelectedValue.ToString(),
                 cboTipo.Text,
                 EmpleadoBO.Empleado.empId == 0 ? "" : EmpleadoBO.Empleado.empId.ToString());
-            frmViewReport frm = new frmViewReport(new ReportDataSource("dsPrestamo", dtConsulta), path, param);
+            frmViewReport frm = new frmViewReport(new ReportDataSource("dsPrestamo", dtConsulta), path, param, string.Empty);
             frm.Show();
             ClearControl();
         }

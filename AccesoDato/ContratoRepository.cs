@@ -333,6 +333,9 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
                                                            AND SEG_ROL_ID = :SEG_ROL_ID
                                                            AND SEG_ROL_REPRO = :SEG_ROL_REPRO";
         private static string sqlGetReproceso = "SELECT DESARROLLO.PK_NOMINATCG.GET_REPROCESO ( :EMP_ID, :PER_ID) FROM DUAL";
+        private static string sqlReproceso = @"SELECT MAX(SEG_ROL_REPRO) REPRO_ID
+                                                      FROM DESARROLLO.DAT_ROL_SEG
+                                                     WHERE     SEG_ROL_ID = :SEG_ROL_ID";
         private static string sqlListaReproceso = @"
                                                     SELECT SEG_ROL_REPRO
                                                       FROM DESARROLLO.DAT_ROL_SEG
@@ -535,6 +538,14 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
                                                        WHERE    ROL_FECHA_FIN IS NOT NULL
                                                              OR (ROL_FECHA_FIN IS NULL AND SEG_ROL_REPRO = 1)
                                                     ORDER BY SEG_ROL_ID DESC, SEG_ROL_REPRO DESC";
+        private static string sqlListaPeriodoRolA = @"  SELECT SEG_ROL_ID,
+                                                             ROL_FECHA_INI,
+                                                             ROL_FECHA_FIN,
+                                                             SEG_ROL_REPRO
+                                                        FROM DESARROLLO.DAT_ROL_SEG
+                                                       WHERE    ROL_FECHA_FIN IS NOT NULL
+                                                              AND SEG_ROL_ESTADO = 1
+                                                    ORDER BY SEG_ROL_ID DESC, SEG_ROL_REPRO DESC";
         private static string sqlListaPeriodoUnico = @"SELECT DISTINCT DAT_ROL_SEG.SEG_ROL_ID,'Mes de: ' || DESARROLLO.F_MES_CALCULADO (DAT_ROL_SEG.SEG_ROL_ID) PERIODO  FROM DESARROLLO.DAT_ROL_SEG ORDER BY 1 DESC";
         private static string sqlListaPeriodoRolReporte = @"
                                                               SELECT DAT_ROL_SEG.SEG_ROL_ID,
@@ -546,6 +557,7 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
                                                                 FROM DESARROLLO.DAT_ROL_SEG
                                                                WHERE SEG_ROL_ESTADO = 1
                                                             ORDER BY 1 DESC";
+        private static string sqlListaPeriodoVacacion = "  SELECT DISTINCT VAC_PER_DADO SEG_ROL_ID,1 SEG_ROL_REPRO FROM DAT_CAB_VAC ORDER BY 2 DESC ";
         private static string sqlListaPeriodo = "SELECT SEG_ROL_ID, ROL_FECHA_INI, ROL_FECHA_FIN, ROUND(TOTAL_ING,5) TOTAL_ING, ROUND(TOTAL_EGR,5) TOTAL_EGR, ROUND(TOTAL_TOTAL,5) TOTAL_TOTAL, ROUND(TOTAL_EMP,5) TOTAL_EMP, SEG_ROL_REPRO, SEG_ROL_OBS, SEG_ROL_REPRO_FECHA, SEG_ROL_ESTADO, SEG_EST_QUIN, 'Mes de: '||desarrollo.F_MES_CALCULADO(dat_rol_seg.seg_rol_id) Periodo FROM DESARROLLO.DAT_ROL_SEG ORDER BY 1 desc, SEG_ROL_REPRO DESC";
         private static string sqlListaPeriodoQuincena = "SELECT SEG_ROL_ID, ROL_FECHA_INI, ROL_FECHA_FIN, ROUND(TOTAL_ING,5) TOTAL_ING, ROUND(TOTAL_EGR,5) TOTAL_EGR, ROUND(TOTAL_TOTAL,5) TOTAL_TOTAL, ROUND(TOTAL_EMP,5) TOTAL_EMP, SEG_ROL_REPRO, SEG_ROL_OBS, SEG_ROL_REPRO_FECHA, SEG_ROL_ESTADO, SEG_EST_QUIN, 'Mes de: '||desarrollo.F_MES_CALCULADO(dat_rol_seg.seg_rol_id) Periodo FROM DESARROLLO.DAT_ROL_SEG WHERE seg_rol_estado=1 ORDER BY 1 DESC";
         private static string sqlAperturaPeriodo = "DESARROLLO.PK_NOMINATCG.P_PERIDOING ";
@@ -666,9 +678,10 @@ AND (R.ROL_ID IN (SELECT rol_id
 
         private static string sqlListarVacacion = @"SELECT EMP_ID, CAB_VAC_ID, EMP_CON_ID, VAC_PER_DADO, CAB_VAC_DIAS, CAB_VAC_DIAS_PAG, 
                                                            CAB_VAC_DIAS_PEN, CAB_VAC_DIAS_ADI,trunc(CAB_VAC_VAL,4)CAB_VAC_VAL, 
-                                                           CAB_VAC_VAL_PAG, trunc(CAB_VAC_VAL_PEN,4)CAB_VAC_VAL_PEN, CAB_VAC_ESTADO, 
+                                                           trunc(CAB_VAC_VAL_PAG,4) CAB_VAC_VAL_PAG, trunc(CAB_VAC_VAL_PEN,4)CAB_VAC_VAL_PEN, CAB_VAC_ESTADO, 
                                                            FECHACREACION, FECHAMODIF, CAB_VAC_OBS, 
-                                                           CAB_VAC_FECINI, CAB_VAC_FECFIN
+                                                           CAB_VAC_FECINI, CAB_VAC_FECFIN,trunc((CAB_VAC_VAL/CAB_VAC_DIAS)*CAB_VAC_DIAS_ADI,4) VALOR_ADI,
+                                                           TRUNC(CAB_VAC_VAL_PEN,4) valor_pend --trunc((CAB_VAC_VAL/CAB_VAC_DIAS)*CAB_VAC_DIAS_PEN,4) valor_pend
                                                     FROM DESARROLLO.DAT_CAB_VAC WHERE EMP_ID=:EMP_ID ORDER BY VAC_PER_DADO";
         private static string sqlListarVacacionDT = @"SELECT 
                                                            EMP_ID, CAB_VAC_ID, EMP_CON_ID, 
@@ -1727,6 +1740,13 @@ AND (R.ROL_ID IN (SELECT rol_id
             return db.GetData(sql);
 
         }
+        public Int32  Reproceso(string tipo)
+        {
+            OracleParameter[] prm = new OracleParameter[]{
+                new OracleParameter(":SEG_ROL_ID",tipo)
+            };
+            return db.GetEntero (sqlReproceso, prm);
+        }
         public DataTable ListaReproceso(string tipo)
         {
             OracleParameter[] prm = new OracleParameter[]{
@@ -1737,6 +1757,9 @@ AND (R.ROL_ID IN (SELECT rol_id
         public DataTable ListarPeriodo(string tipo)
         {
             string sql = string.Empty;
+            if (tipo.Equals("PV"))
+                sql = sqlListaPeriodoVacacion;
+
             if (tipo.Equals("P"))
                 sql = sqlListaPeriodo;
 
@@ -1748,8 +1771,13 @@ AND (R.ROL_ID IN (SELECT rol_id
 
             if (tipo.Equals("PR"))
                 sql = sqlListaPeriodoRol;
+
+            if (tipo.Equals("PRA"))
+                sql = sqlListaPeriodoRolA;
+
             if (tipo.Equals("PREPO"))
                 sql = sqlListaPeriodoRolReporte;
+
             return db.GetData(sql);
 
         }

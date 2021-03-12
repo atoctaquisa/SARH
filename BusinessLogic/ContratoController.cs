@@ -292,6 +292,10 @@ namespace BusinessLogic
         {
             return ContratoAD.ListarPeriodo(tipo);
         }
+        public Int32 Reproceso(string tipo)
+        {
+            return ContratoAD.Reproceso(tipo);
+        }
         public DataTable ListaReproceso(string tipo)
         {
             return ContratoAD.ListaReproceso(tipo);

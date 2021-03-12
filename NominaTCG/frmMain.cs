@@ -359,7 +359,10 @@ namespace NominaTCG
 
         private void mnuProvisiones_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://192.168.1.116:9502/analytics/saw.dll?bipublisherEntry&Action=open&itemType=.xdo&bipPath=%2FInformes%20Recursos%20Humanos%2FProvisiones.xdo&path=%2Fshared%2FInformes%20Recursos%20Humanos%2FProvisiones.xdo");
+            //System.Diagnostics.Process.Start("http://192.168.1.116:9502/analytics/saw.dll?bipublisherEntry&Action=open&itemType=.xdo&bipPath=%2FInformes%20Recursos%20Humanos%2FProvisiones.xdo&path=%2Fshared%2FInformes%20Recursos%20Humanos%2FProvisiones.xdo");
+            var frm = frmProvisiones.Instancia;
+            frm.MdiParent = this;
+            Design.frmShow(frm);
         }
 
         private void mnuPrestamos_Click(object sender, EventArgs e)
@@ -372,7 +375,10 @@ namespace NominaTCG
 
         private void mnuRolNegativo_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://192.168.1.116:9502/analytics/saw.dll?bipublisherEntry&Action=open&itemType=.xdo&bipPath=%2FInformes%20Recursos%20Humanos%2FProvisiones.xdo&path=%2Fshared%2FInformes%20Recursos%20Humanos%2FProvisiones.xdo");
+            //System.Diagnostics.Process.Start("http://192.168.1.116:9502/analytics/saw.dll?bipublisherEntry&Action=open&itemType=.xdo&bipPath=%2FInformes%20Recursos%20Humanos%2FProvisiones.xdo&path=%2Fshared%2FInformes%20Recursos%20Humanos%2FProvisiones.xdo");
+            var frm = frmRolNegativoRep.Instancia;
+            frm.MdiParent = this;
+            Design.frmShow(frm);
         }
 
         private void mnuIngresoEgreso_Click(object sender, EventArgs e)
@@ -388,6 +394,13 @@ namespace NominaTCG
         private void mnuInformacion_Click(object sender, EventArgs e)
         {
             var frm = frmRepEmpleado.Instancia;
+            frm.MdiParent = this;
+            Design.frmShow(frm);
+        }
+
+        private void mnuVacacionRep_Click(object sender, EventArgs e)
+        {
+            var frm = frmVacacionRep.Instancia;
             frm.MdiParent = this;
             Design.frmShow(frm);
         }

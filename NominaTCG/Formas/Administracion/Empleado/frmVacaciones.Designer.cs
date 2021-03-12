@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVacaciones));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,8 +42,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabAdmin = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -80,17 +82,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvVaciones = new System.Windows.Forms.DataGridView();
-            this.EMP_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CAB_VAC_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMP_CON_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Periodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaVac = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaAnt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaPend = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaPag = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorPend = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Obs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnEditCancel = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
@@ -98,6 +89,21 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.dgvVacacionesDT = new System.Windows.Forms.DataGridView();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
+            this.EMP_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CAB_VAC_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMP_CON_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Periodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaVac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaAnt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor_ADI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaPag = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaPend = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorPend = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Obs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaIni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,9 +112,6 @@
             this.FINSEMANA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Autorizado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Observacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
             this.tabAdmin.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -125,7 +128,7 @@
             this.tabAdmin.Location = new System.Drawing.Point(0, 28);
             this.tabAdmin.Name = "tabAdmin";
             this.tabAdmin.SelectedIndex = 0;
-            this.tabAdmin.Size = new System.Drawing.Size(834, 583);
+            this.tabAdmin.Size = new System.Drawing.Size(947, 583);
             this.tabAdmin.TabIndex = 0;
             // 
             // tabPage2
@@ -158,7 +161,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(826, 557);
+            this.tabPage2.Size = new System.Drawing.Size(939, 557);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Administración";
             // 
@@ -177,7 +180,7 @@
             this.label16.ForeColor = System.Drawing.Color.White;
             this.label16.Location = new System.Drawing.Point(36, 127);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(746, 1);
+            this.label16.Size = new System.Drawing.Size(890, 1);
             this.label16.TabIndex = 77;
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -188,7 +191,7 @@
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(14, 319);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(803, 1);
+            this.label14.Size = new System.Drawing.Size(912, 1);
             this.label14.TabIndex = 77;
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -509,6 +512,14 @@
             this.dgvVaciones.AllowUserToAddRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(238)))), ((int)(((byte)(222)))));
             this.dgvVaciones.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVaciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.EMP_ID,
@@ -516,10 +527,11 @@
             this.EMP_CON_ID,
             this.Periodo,
             this.DiaVac,
-            this.DiaAnt,
-            this.DiaPend,
-            this.DiaPag,
             this.Valor,
+            this.DiaAnt,
+            this.Valor_ADI,
+            this.DiaPag,
+            this.DiaPend,
             this.ValorPend,
             this.Obs});
             this.dgvVaciones.Location = new System.Drawing.Point(339, 138);
@@ -527,116 +539,10 @@
             this.dgvVaciones.ReadOnly = true;
             this.dgvVaciones.RowHeadersVisible = false;
             this.dgvVaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVaciones.Size = new System.Drawing.Size(479, 176);
+            this.dgvVaciones.Size = new System.Drawing.Size(587, 176);
             this.dgvVaciones.TabIndex = 19;
             this.dgvVaciones.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVaciones_CellDoubleClick);
             this.dgvVaciones.CurrentCellChanged += new System.EventHandler(this.dgvVaciones_CurrentCellChanged);
-            // 
-            // EMP_ID
-            // 
-            this.EMP_ID.DataPropertyName = "EMP_CON_ID";
-            this.EMP_ID.HeaderText = "EMP_ID";
-            this.EMP_ID.Name = "EMP_ID";
-            this.EMP_ID.ReadOnly = true;
-            this.EMP_ID.Visible = false;
-            // 
-            // CAB_VAC_ID
-            // 
-            this.CAB_VAC_ID.DataPropertyName = "CAB_VAC_ID";
-            this.CAB_VAC_ID.HeaderText = "CAB_VAC_ID";
-            this.CAB_VAC_ID.Name = "CAB_VAC_ID";
-            this.CAB_VAC_ID.ReadOnly = true;
-            this.CAB_VAC_ID.Visible = false;
-            // 
-            // EMP_CON_ID
-            // 
-            this.EMP_CON_ID.DataPropertyName = "EMP_CON_ID";
-            this.EMP_CON_ID.HeaderText = "EMP_CON_ID";
-            this.EMP_CON_ID.Name = "EMP_CON_ID";
-            this.EMP_CON_ID.ReadOnly = true;
-            this.EMP_CON_ID.Visible = false;
-            // 
-            // Periodo
-            // 
-            this.Periodo.DataPropertyName = "VAC_PER_DADO";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.Periodo.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Periodo.HeaderText = "Período";
-            this.Periodo.Name = "Periodo";
-            this.Periodo.ReadOnly = true;
-            this.Periodo.Width = 70;
-            // 
-            // DiaVac
-            // 
-            this.DiaVac.DataPropertyName = "CAB_VAC_DIAS";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.DiaVac.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DiaVac.HeaderText = "Vacación";
-            this.DiaVac.Name = "DiaVac";
-            this.DiaVac.ReadOnly = true;
-            this.DiaVac.Width = 70;
-            // 
-            // DiaAnt
-            // 
-            this.DiaAnt.DataPropertyName = "CAB_VAC_DIAS_ADI";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.DiaAnt.DefaultCellStyle = dataGridViewCellStyle4;
-            this.DiaAnt.HeaderText = "Antiguedad";
-            this.DiaAnt.Name = "DiaAnt";
-            this.DiaAnt.ReadOnly = true;
-            this.DiaAnt.Width = 70;
-            // 
-            // DiaPend
-            // 
-            this.DiaPend.DataPropertyName = "CAB_VAC_DIAS_PEN";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.DiaPend.DefaultCellStyle = dataGridViewCellStyle5;
-            this.DiaPend.HeaderText = "Pendiente";
-            this.DiaPend.Name = "DiaPend";
-            this.DiaPend.ReadOnly = true;
-            this.DiaPend.Width = 70;
-            // 
-            // DiaPag
-            // 
-            this.DiaPag.DataPropertyName = "CAB_VAC_DIAS_PAG";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.DiaPag.DefaultCellStyle = dataGridViewCellStyle6;
-            this.DiaPag.HeaderText = "Tomados";
-            this.DiaPag.Name = "DiaPag";
-            this.DiaPag.ReadOnly = true;
-            this.DiaPag.Width = 70;
-            // 
-            // Valor
-            // 
-            this.Valor.DataPropertyName = "CAB_VAC_VAL";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle7.Format = "C2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Valor.HeaderText = "Total";
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
-            this.Valor.Width = 70;
-            // 
-            // ValorPend
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle8.Format = "C2";
-            dataGridViewCellStyle8.NullValue = null;
-            this.ValorPend.DefaultCellStyle = dataGridViewCellStyle8;
-            this.ValorPend.HeaderText = "Debito";
-            this.ValorPend.Name = "ValorPend";
-            this.ValorPend.ReadOnly = true;
-            this.ValorPend.Visible = false;
-            this.ValorPend.Width = 70;
-            // 
-            // Obs
-            // 
-            this.Obs.DataPropertyName = "CAB_VAC_OBS";
-            this.Obs.HeaderText = "Observación";
-            this.Obs.Name = "Obs";
-            this.Obs.ReadOnly = true;
-            this.Obs.Visible = false;
-            this.Obs.Width = 150;
             // 
             // groupBox1
             // 
@@ -648,7 +554,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Location = new System.Drawing.Point(3, 495);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(820, 59);
+            this.groupBox1.Size = new System.Drawing.Size(933, 59);
             this.groupBox1.TabIndex = 71;
             this.groupBox1.TabStop = false;
             // 
@@ -725,16 +631,16 @@
             // 
             this.dgvVacacionesDT.AllowUserToAddRows = false;
             this.dgvVacacionesDT.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(238)))), ((int)(((byte)(222)))));
-            this.dgvVacacionesDT.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVacacionesDT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(238)))), ((int)(((byte)(222)))));
+            this.dgvVacacionesDT.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVacacionesDT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvVacacionesDT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVacacionesDT.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FechaIni,
@@ -748,8 +654,143 @@
             this.dgvVacacionesDT.Location = new System.Drawing.Point(14, 326);
             this.dgvVacacionesDT.Name = "dgvVacacionesDT";
             this.dgvVacacionesDT.RowHeadersVisible = false;
-            this.dgvVacacionesDT.Size = new System.Drawing.Size(804, 160);
+            this.dgvVacacionesDT.Size = new System.Drawing.Size(912, 160);
             this.dgvVacacionesDT.TabIndex = 20;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.BackColor = System.Drawing.Color.Navy;
+            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(947, 28);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Solicitudes de Vacaciones";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ErrProv
+            // 
+            this.ErrProv.ContainerControl = this;
+            // 
+            // EMP_ID
+            // 
+            this.EMP_ID.DataPropertyName = "EMP_CON_ID";
+            this.EMP_ID.HeaderText = "EMP_ID";
+            this.EMP_ID.Name = "EMP_ID";
+            this.EMP_ID.ReadOnly = true;
+            this.EMP_ID.Visible = false;
+            // 
+            // CAB_VAC_ID
+            // 
+            this.CAB_VAC_ID.DataPropertyName = "CAB_VAC_ID";
+            this.CAB_VAC_ID.HeaderText = "CAB_VAC_ID";
+            this.CAB_VAC_ID.Name = "CAB_VAC_ID";
+            this.CAB_VAC_ID.ReadOnly = true;
+            this.CAB_VAC_ID.Visible = false;
+            // 
+            // EMP_CON_ID
+            // 
+            this.EMP_CON_ID.DataPropertyName = "EMP_CON_ID";
+            this.EMP_CON_ID.HeaderText = "EMP_CON_ID";
+            this.EMP_CON_ID.Name = "EMP_CON_ID";
+            this.EMP_CON_ID.ReadOnly = true;
+            this.EMP_CON_ID.Visible = false;
+            // 
+            // Periodo
+            // 
+            this.Periodo.DataPropertyName = "VAC_PER_DADO";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.Periodo.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Periodo.HeaderText = "Período";
+            this.Periodo.Name = "Periodo";
+            this.Periodo.ReadOnly = true;
+            this.Periodo.Width = 70;
+            // 
+            // DiaVac
+            // 
+            this.DiaVac.DataPropertyName = "CAB_VAC_DIAS";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.DiaVac.DefaultCellStyle = dataGridViewCellStyle4;
+            this.DiaVac.HeaderText = "Día Vacación";
+            this.DiaVac.Name = "DiaVac";
+            this.DiaVac.ReadOnly = true;
+            this.DiaVac.Width = 70;
+            // 
+            // Valor
+            // 
+            this.Valor.DataPropertyName = "CAB_VAC_VAL";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle5.Format = "C2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Valor.HeaderText = "$$ Vacación";
+            this.Valor.Name = "Valor";
+            this.Valor.ReadOnly = true;
+            this.Valor.Width = 70;
+            // 
+            // DiaAnt
+            // 
+            this.DiaAnt.DataPropertyName = "CAB_VAC_DIAS_ADI";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.DiaAnt.DefaultCellStyle = dataGridViewCellStyle6;
+            this.DiaAnt.HeaderText = "Día Antiguedad";
+            this.DiaAnt.Name = "DiaAnt";
+            this.DiaAnt.ReadOnly = true;
+            this.DiaAnt.Width = 70;
+            // 
+            // Valor_ADI
+            // 
+            this.Valor_ADI.DataPropertyName = "VALOR_ADI";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle7.Format = "C2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.Valor_ADI.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Valor_ADI.HeaderText = "$$ Antiguedad";
+            this.Valor_ADI.Name = "Valor_ADI";
+            this.Valor_ADI.ReadOnly = true;
+            this.Valor_ADI.Width = 70;
+            // 
+            // DiaPag
+            // 
+            this.DiaPag.DataPropertyName = "CAB_VAC_DIAS_PAG";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.DiaPag.DefaultCellStyle = dataGridViewCellStyle8;
+            this.DiaPag.HeaderText = "Día Tomado";
+            this.DiaPag.Name = "DiaPag";
+            this.DiaPag.ReadOnly = true;
+            this.DiaPag.Width = 70;
+            // 
+            // DiaPend
+            // 
+            this.DiaPend.DataPropertyName = "CAB_VAC_DIAS_PEN";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.DiaPend.DefaultCellStyle = dataGridViewCellStyle9;
+            this.DiaPend.HeaderText = "Día Pendiente";
+            this.DiaPend.Name = "DiaPend";
+            this.DiaPend.ReadOnly = true;
+            this.DiaPend.Width = 70;
+            // 
+            // ValorPend
+            // 
+            this.ValorPend.DataPropertyName = "valor_pend";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle10.Format = "C2";
+            dataGridViewCellStyle10.NullValue = null;
+            this.ValorPend.DefaultCellStyle = dataGridViewCellStyle10;
+            this.ValorPend.HeaderText = "$$ Pendiente";
+            this.ValorPend.Name = "ValorPend";
+            this.ValorPend.ReadOnly = true;
+            this.ValorPend.Width = 70;
+            // 
+            // Obs
+            // 
+            this.Obs.DataPropertyName = "CAB_VAC_OBS";
+            this.Obs.HeaderText = "Observación";
+            this.Obs.Name = "Obs";
+            this.Obs.ReadOnly = true;
+            this.Obs.Visible = false;
+            this.Obs.Width = 150;
             // 
             // FechaIni
             // 
@@ -775,8 +816,8 @@
             // DiaTom
             // 
             this.DiaTom.DataPropertyName = "DET_DIAS";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.DiaTom.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.DiaTom.DefaultCellStyle = dataGridViewCellStyle13;
             this.DiaTom.HeaderText = "Tomado";
             this.DiaTom.Name = "DiaTom";
             this.DiaTom.Width = 60;
@@ -784,9 +825,11 @@
             // ValorDt
             // 
             this.ValorDt.DataPropertyName = "DET_VALOR";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.ValorDt.DefaultCellStyle = dataGridViewCellStyle12;
-            this.ValorDt.HeaderText = "Valor";
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle14.Format = "C2";
+            dataGridViewCellStyle14.NullValue = null;
+            this.ValorDt.DefaultCellStyle = dataGridViewCellStyle14;
+            this.ValorDt.HeaderText = "$Valor";
             this.ValorDt.Name = "ValorDt";
             this.ValorDt.Width = 70;
             // 
@@ -795,7 +838,7 @@
             this.FINSEMANA.DataPropertyName = "FINSEMANA";
             this.FINSEMANA.HeaderText = "Incluye";
             this.FINSEMANA.Name = "FINSEMANA";
-            this.FINSEMANA.Width = 120;
+            this.FINSEMANA.Width = 150;
             // 
             // Autorizado
             // 
@@ -809,30 +852,13 @@
             this.Observacion.DataPropertyName = "DET_OBSERV";
             this.Observacion.HeaderText = "Observación";
             this.Observacion.Name = "Observacion";
-            this.Observacion.Width = 230;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.BackColor = System.Drawing.Color.Navy;
-            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(834, 28);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Solicitudes de Vacaciones";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ErrProv
-            // 
-            this.ErrProv.ContainerControl = this;
+            this.Observacion.Width = 350;
             // 
             // frmVacaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 611);
+            this.ClientSize = new System.Drawing.Size(947, 611);
             this.Controls.Add(this.tabAdmin);
             this.Controls.Add(this.lblTitulo);
             this.KeyPreview = true;
@@ -908,10 +934,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EMP_CON_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Periodo;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaVac;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaAnt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaPend;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaPag;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiaAnt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor_ADI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiaPag;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiaPend;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorPend;
         private System.Windows.Forms.DataGridViewTextBoxColumn Obs;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaIni;

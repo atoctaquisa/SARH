@@ -20,6 +20,15 @@ namespace BusinessLogic
         #endregion
 
         #region Methods
+
+        public DataSet ActuarialEmpleado()
+        {
+            return EmpleadoAD.ActuarialEmpleado();
+        }
+        public DataSet ActuarialEmpleado(string empID,string empCI)
+        {
+            return EmpleadoAD.ActuarialEmpleado(empID,empCI);
+        }
         public DataTable TransferenciaBancariaDecimo(string proID, string anioINI, string anioFIN, string emprID, string tipoID)
         {
             return EmpleadoAD.TransferenciaBancariaDecimo(proID, anioINI, anioFIN,emprID, tipoID);

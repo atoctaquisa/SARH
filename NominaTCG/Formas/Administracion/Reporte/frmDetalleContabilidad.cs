@@ -44,6 +44,7 @@ namespace NominaTCG
             InitializeComponent();
             ContratoBO = ContratoController.Instancia;
             ReportBO = ReportDataController.Instancia;
+            cboTipo.SelectedIndex = 1;
             
         }        
         #endregion
@@ -60,7 +61,7 @@ namespace NominaTCG
 
         private void btnSearchRol_Click(object sender, EventArgs e)
         {
-            var frm = new frmPeridoRolLista("PeridoRolCompleto");
+            var frm = new frmPeridoRolLista("PeridoRolCompletoA");
             Design.frmDialog(frm, "Lista de Roles");
             txtRol.Text = ContratoBO.RolSeg.segRolId.ToString();
             txtReproceso.Text = ContratoBO.RolSeg.segRolRepro.ToString();
@@ -76,20 +77,17 @@ namespace NominaTCG
         private void btnNewSave_Click(object sender, EventArgs e)
         {
             string path;
-            //path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Reportes\Contabilidad.rdlc";
-            //path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + @"\Contabilidad.rdlc";
-            path=Catalogo.PathReport;
-            //path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)+ @"\Contabilidad.rdlc";
-            LocalReport report = new LocalReport();
-            //report.ReportPath = path + @"\RolIndividual.rdlc";
+            path = Catalogo.PathReport;
+            //path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Reportes\Contabilidad.rdlc";
+            //path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + @"\Contabilidad.rdlc";           
+           
             ReportBO = ReportDataController.Instancia;
-            //ReportParameter[] param = new ReportParameter[1];
-            if(cboTipo.Text.Equals("Detallado"))
-                path+= "Contabilidad.rdlc";
+            if (cboTipo.Text.Equals("Detallado"))
+                path += "Contabilidad.rdlc";
             else
                 path += "ContabilidadC.rdlc";
             DataTable dtConsulta = ReportBO.DetalleContabilidad(txtRol.Text, txtReproceso.Text,cboTipo.Text );
-            frmViewReport frm = new frmViewReport(new ReportDataSource("DataSet1", dtConsulta), path, null );
+            frmViewReport frm = new frmViewReport(new ReportDataSource("DataSet1", dtConsulta), path, null , string.Empty);
             frm.Show();
             ClearControl();
         }

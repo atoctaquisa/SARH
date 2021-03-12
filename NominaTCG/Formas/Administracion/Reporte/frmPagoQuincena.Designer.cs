@@ -50,8 +50,13 @@
             this.txtPerido = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cboPatrono = new System.Windows.Forms.ComboBox();
+            this.dgvData = new System.Windows.Forms.DataGridView();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
             // txtLocal
@@ -138,7 +143,7 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(457, 28);
+            this.lblTitulo.Size = new System.Drawing.Size(492, 28);
             this.lblTitulo.TabIndex = 58;
             this.lblTitulo.Text = "Pago Quincenas";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -148,7 +153,7 @@
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnExit.ImageIndex = 11;
             this.btnExit.ImageList = this.imgList;
-            this.btnExit.Location = new System.Drawing.Point(403, 16);
+            this.btnExit.Location = new System.Drawing.Point(441, 16);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(39, 29);
             this.btnExit.TabIndex = 55;
@@ -161,7 +166,7 @@
             // 
             this.btnImprimir.ImageIndex = 6;
             this.btnImprimir.ImageList = this.imgList;
-            this.btnImprimir.Location = new System.Drawing.Point(143, 16);
+            this.btnImprimir.Location = new System.Drawing.Point(201, 16);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(89, 29);
             this.btnImprimir.TabIndex = 54;
@@ -175,7 +180,7 @@
             // 
             this.btnCancel.ImageKey = "btnCancel.png";
             this.btnCancel.ImageList = this.imgList;
-            this.btnCancel.Location = new System.Drawing.Point(232, 16);
+            this.btnCancel.Location = new System.Drawing.Point(290, 16);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 29);
             this.btnCancel.TabIndex = 32;
@@ -210,12 +215,13 @@
             // 
             this.groupBox1.Controls.Add(this.btnBack);
             this.groupBox1.Controls.Add(this.btnExit);
+            this.groupBox1.Controls.Add(this.btnBuscar);
             this.groupBox1.Controls.Add(this.btnImprimir);
             this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 153);
+            this.groupBox1.Location = new System.Drawing.Point(0, 399);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(457, 57);
+            this.groupBox1.Size = new System.Drawing.Size(492, 57);
             this.groupBox1.TabIndex = 59;
             this.groupBox1.TabStop = false;
             // 
@@ -264,12 +270,53 @@
             this.cboPatrono.Size = new System.Drawing.Size(222, 21);
             this.cboPatrono.TabIndex = 68;
             // 
+            // dgvData
+            // 
+            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvData.Location = new System.Drawing.Point(12, 145);
+            this.dgvData.Name = "dgvData";
+            this.dgvData.Size = new System.Drawing.Size(468, 232);
+            this.dgvData.TabIndex = 69;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.ImageIndex = 5;
+            this.btnBuscar.ImageList = this.imgList;
+            this.btnBuscar.Location = new System.Drawing.Point(112, 16);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(89, 29);
+            this.btnBuscar.TabIndex = 54;
+            this.btnBuscar.Text = "&Buscar";
+            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(363, 381);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.TabIndex = 66;
+            this.label4.Text = "Total:";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Location = new System.Drawing.Point(403, 378);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(77, 20);
+            this.txtTotal.TabIndex = 65;
+            // 
             // frmPagoQuincena
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(457, 210);
+            this.ClientSize = new System.Drawing.Size(492, 456);
+            this.Controls.Add(this.dgvData);
             this.Controls.Add(this.cboPatrono);
+            this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.txtPerido);
             this.Controls.Add(this.btnPerido);
             this.Controls.Add(this.txtLocal);
@@ -277,6 +324,7 @@
             this.Controls.Add(this.txtEmpleado);
             this.Controls.Add(this.btnEmpleado);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTitulo);
@@ -284,10 +332,10 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmPagoQuincena";
             this.Text = "Pago de Quincena";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPagoQuincena_FormClosing);
-            this.Load += new System.EventHandler(this.frmPagoQuincena_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPagoQuincena_FormClosing);            
             ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,5 +363,9 @@
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ToolTip ttMessage;
+        private System.Windows.Forms.DataGridView dgvData;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.Label label4;
     }
 }

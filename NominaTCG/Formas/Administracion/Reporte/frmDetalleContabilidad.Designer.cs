@@ -55,6 +55,7 @@
             this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
             this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
             this.imgList = new System.Windows.Forms.ImageList(this.components);
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -220,6 +221,7 @@
             this.groupBox3.Controls.Add(this.txtRol);
             this.groupBox3.Controls.Add(this.txtFechaFin);
             this.groupBox3.Controls.Add(this.btnSearchRol);
+            this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.Label4);
             this.groupBox3.Controls.Add(this.txtFechaIni);
             this.groupBox3.Controls.Add(this.Label3);
@@ -330,6 +332,15 @@
             this.imgList.Images.SetKeyName(16, "btnNext.png");
             this.imgList.Images.SetKeyName(17, "btnPrevious.png");
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(88, 116);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(45, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Reporte";
+            // 
             // frmDetalleContabilidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,5 +389,6 @@
         private System.Windows.Forms.ErrorProvider ErrProv;
         private System.Windows.Forms.ImageList imgList;
         private System.Windows.Forms.ComboBox cboTipo;
+        internal System.Windows.Forms.Label label5;
     }
 }

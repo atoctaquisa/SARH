@@ -23,6 +23,7 @@ namespace NominaTCG
             cboUsuario.DataSource= SistemaBO.Usuario();
             cboUsuario.DisplayMember = SistemaBO.Usuario().Columns["NOMBRE"].ColumnName;
             cboUsuario.ValueMember = SistemaBO.Usuario().Columns["CODIGO"].ColumnName;
+            
         }
 
         private void btnSingIn_Click(object sender, EventArgs e)

@@ -87,7 +87,7 @@ namespace NominaTCG
             ReportDataSource data = new ReportDataSource("DataSet1", dtConsulta);
             //ReportDataSource dataSub = new ReportDataSource("DataSet1", dtConsultaSub);
             //ReportParameter[] param = new ReportParameter[1];
-            frmViewReport frm = new frmViewReport(data, path,null);
+            frmViewReport frm = new frmViewReport(data, path,null,string.Empty);
             frm.Show();
             ClearControl();
 

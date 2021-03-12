@@ -373,3 +373,7 @@ C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\De
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmViewReportSub.resources
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmRepPrestamo.resources
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmClienteLista.resources
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmAsistenciaPersonal.resources
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmVacacionRep.resources
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmProvisiones.resources
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmRolNegativoRep.resources

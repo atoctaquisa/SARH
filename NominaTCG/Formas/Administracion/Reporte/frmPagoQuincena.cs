@@ -19,6 +19,7 @@ namespace NominaTCG
 {
     public partial class frmPagoQuincena : Form
     {
+        DataTable _dtConsulta;
         private LocalController LocalBO { get; set; }
         private EmpleadoController EmpleadoBO { get; set; }
         private ReportDataController ReportBO { get; set; }
@@ -64,6 +65,8 @@ namespace NominaTCG
             txtLocal.Text = string.Empty;
             txtPerido.Text = string.Empty;
             cboPatrono.SelectedIndex = -1;
+            dgvData.DataSource = null;
+            txtTotal.Text = string.Empty;
         }
 
         private void frmPagoQuincena_FormClosing(object sender, FormClosingEventArgs e)
@@ -73,23 +76,27 @@ namespace NominaTCG
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            string path;
-            //path = //@"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Reportes\PagoQuincena.rdlc";
-            //System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)+ @"\PagoQuincena.rdlc";
-            path = Catalogo.PathReport + "PagoQuincena.rdlc";
-            LocalReport report = new LocalReport();
-            //report.ReportPath = path + @"\RolIndividual.rdlc";
-            ReportBO = ReportDataController.Instancia;
 
-            DataTable dtConsulta = ReportBO.PagoQuincena(ContratoBO.RolSeg.segRolId.ToString(),
-                ContratoBO.RolSeg.segRolRepro.ToString(),
-                cboPatrono.SelectedValue == null ? "" : cboPatrono.SelectedValue.ToString(),
-                LocalBO.Local.LocalID == 0 ? "" : LocalBO.Local.LocalID.ToString(),
-                EmpleadoBO.Empleado.empId == 0 ? "" : EmpleadoBO.Empleado.empId.ToString());
-            //ReportParameter[] param = new ReportParameter[1];
-            frmViewReport frm = new frmViewReport(new ReportDataSource("PagoQuincena", dtConsulta), path, null);
-            frm.Show();
-            ClearControl();
+            if (_dtConsulta.Rows.Count > 0)
+            {
+                string path;
+                //path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Reportes\PagoQuincena.rdlc";
+                //path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)+ @"\PagoQuincena.rdlc";
+                path = Catalogo.PathReport + "PagoQuincena.rdlc";
+                LocalReport report = new LocalReport();
+                //report.ReportPath = path + @"\RolIndividual.rdlc";
+                ReportBO = ReportDataController.Instancia;
+
+                //DataTable dtConsulta = ReportBO.PagoQuincena(ContratoBO.RolSeg.segRolId.ToString(),
+                //    ContratoBO.RolSeg.segRolRepro.ToString(),
+                //    cboPatrono.SelectedValue == null ? "" : cboPatrono.SelectedValue.ToString(),
+                //    LocalBO.Local.LocalID == 0 ? "" : LocalBO.Local.LocalID.ToString(),
+                //    EmpleadoBO.Empleado.empId == 0 ? "" : EmpleadoBO.Empleado.empId.ToString());            
+                frmViewReport frm = new frmViewReport(new ReportDataSource("PagoQuincena", _dtConsulta), path, null, string.Empty);
+                frm.Show();               
+            }
+            else
+                Utility.MensajeInfo("No se encontró información para presentar..!!");
         }
 
         private void btnPerido_Click(object sender, EventArgs e)
@@ -119,28 +126,41 @@ namespace NominaTCG
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            txtEmpleado.Text = string.Empty;
-            txtLocal.Text = string.Empty;
-            txtPerido.Text = string.Empty;
-            cboPatrono.SelectedIndex = -1;
-            EmpleadoBO.Empleado = new DatEmp();
-            ContratoBO.RolSeg = new DatRolSeg();
-            LocalBO.Local = new LocalEntity();
-
+            ClearControl();
         }
-
-        private void frmPagoQuincena_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             _instancia = null;
             this.Close();
         }
 
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            _dtConsulta = new DataTable();
+            _dtConsulta = ReportBO.PagoQuincena(ContratoBO.RolSeg.segRolId.ToString(),
+                                               ContratoBO.RolSeg.segRolRepro.ToString(),
+                                               cboPatrono.SelectedValue == null ? "" : cboPatrono.SelectedValue.ToString(),
+                                               LocalBO.Local.LocalID == 0 ? "" : LocalBO.Local.LocalID.ToString(),
+                                               EmpleadoBO.Empleado.empId == 0 ? "" : EmpleadoBO.Empleado.empId.ToString());
+            ClearControl();
+            dgvData.DataSource = _dtConsulta;
+            Design.vPagoQuincena(dgvData);
+            Totales();
+            
+        }
 
+        private void Totales()
+        {
+            double ingreso = 0;
+            foreach (DataGridViewRow row in dgvData.Rows)
+            {
+                if (row.Cells["NOMBRE"].Value != null)
+                {
+                    ingreso += Convert.ToDouble(row.Cells["CUENTA_VALOR"].Value);
+                }
+            }
+            txtTotal.Text = ingreso.ToString();
+        }
 
     }
 }

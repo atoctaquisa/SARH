@@ -586,8 +586,9 @@ namespace NominaTCG
         private void dgvData_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             string nameColumn = dgvData.Columns[e.ColumnIndex].Name;
-            if (nameColumn == "Valor" | nameColumn == "Cuenta")
+            if (nameColumn == "Valor" )//| nameColumn == "Cuenta")
             {
+                dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
                 TotalSalary();
             }
             dgvData.Rows[e.RowIndex].ErrorText = String.Empty;
@@ -605,22 +606,31 @@ namespace NominaTCG
         {
             e.Cancel = true;
         }
-
+        DataGridViewTextBoxEditingControl dText;
         private void dgvData_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            int index = dgvData.CurrentCell.ColumnIndex;
-            if (dgvData.Columns[index].Name == "Valor")
+            //int index = dgvData.CurrentCell.ColumnIndex;
+            //if (dgvData.Columns[index].Name == "Valor")
+            //{
+            //    DataGridViewTextBoxEditingControl dText = (DataGridViewTextBoxEditingControl)e.Control;
+            //    dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
+            //    dText.KeyPress += new KeyPressEventHandler(dText_KeyPress);
+            //}
+            if (e.Control.GetType().Name.Equals("DataGridViewTextBoxEditingControl"))
             {
-                DataGridViewTextBoxEditingControl dText = (DataGridViewTextBoxEditingControl)e.Control;
-                dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
+                dText = (DataGridViewTextBoxEditingControl)e.Control;
                 dText.KeyPress += new KeyPressEventHandler(dText_KeyPress);
             }
         }
 
         void dText_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox txt = (TextBox)sender;
-            Utility.OnlyDigit(e);
+            int index = dgvData.CurrentCell.ColumnIndex;
+            if (dgvData.Columns[index].Name == "Valor" )
+            {
+                TextBox txt = (TextBox)sender;
+            Utility.OnlyQuantity(txt, e);
+        }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)

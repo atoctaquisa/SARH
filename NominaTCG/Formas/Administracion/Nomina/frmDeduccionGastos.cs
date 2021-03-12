@@ -31,7 +31,7 @@ namespace NominaTCG
                         decimal valorMax = Convert.ToDecimal(item.Cells["PROY_LIM"].Value);
                         decimal valorMin = Convert.ToDecimal(item.Cells["MAXLIM"].Value);
 
-                        if (valor > valorMax)
+                        if (valor > valorMax & valorMax>0)
                             item.Cells["PROY_VALOR"].ErrorText = (ban++).ToString() + " :El valor no debe ser superior al valor máximo";
                         else
                             item.Cells["PROY_VALOR"].ErrorText = string.Empty;

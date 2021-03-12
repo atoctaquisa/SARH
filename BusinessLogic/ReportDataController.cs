@@ -35,6 +35,24 @@ namespace BusinessLogic
         }
         #endregion
 
+        public DataTable VacacionSub(string empID, string vacID)
+        {
+            return ReportDataDA.VacacionSub(empID, vacID);
+        }
+
+        public DataTable Vacacion(string subQuery)
+        {
+            return ReportDataDA.Vacacion(subQuery);
+        }
+        public DataTable ActurialEmpresa(string subQuery)
+        {
+            return ReportDataDA.ActuarialEmpresa(subQuery);
+        }
+        public DataTable ActurialEmpresaSalida(string subQuery)
+        {
+            return ReportDataDA.ActuarialEmpresaSalida(subQuery);
+        }
+
         public DataTable DetalleEmpleado(string subQuery)
         {
             return ReportDataDA.DetalleEmpleado(subQuery);
@@ -83,6 +101,14 @@ namespace BusinessLogic
         public DataTable DetalleContabilidad(string rolID, string reproID, string tipoRep)
         {
             return ReportDataDA.DetalleContabilidad(rolID, reproID, tipoRep);
+        }
+        public DataTable RolNegativo(string rolID, string reproID)
+        {
+            return ReportDataDA.RolNegativo(rolID, reproID);
+        }
+        public DataTable Provision(string fechaIni, string fechaFin, string patrono, string local, string empID)
+        {
+            return ReportDataDA.Provision(fechaIni, fechaFin, patrono, local, empID);
         }
     }
 }

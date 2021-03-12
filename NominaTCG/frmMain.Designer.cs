@@ -92,7 +92,8 @@
             this.mnuIngresoEgreso = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuInformacion = new System.Windows.Forms.ToolStripMenuItem();
-            this.vacacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuVacacionRep = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAsistencia = new System.Windows.Forms.ToolStripMenuItem();
             this.empresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuActuarial = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -312,7 +313,7 @@
             this.mnuJornada,
             this.mnuSolicitud});
             this.personalToolStripMenuItem.Name = "personalToolStripMenuItem";
-            this.personalToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.personalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.personalToolStripMenuItem.Tag = "31";
             this.personalToolStripMenuItem.Text = "Empleado";
             // 
@@ -395,7 +396,7 @@
             this.mnuRolIndividual,
             this.mnuCalculo});
             this.permisosToolStripMenuItem.Name = "permisosToolStripMenuItem";
-            this.permisosToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.permisosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.permisosToolStripMenuItem.Tag = "32";
             this.permisosToolStripMenuItem.Text = "Nomina";
             // 
@@ -504,44 +505,44 @@
             this.mnuCalculo.Name = "mnuCalculo";
             this.mnuCalculo.Size = new System.Drawing.Size(251, 22);
             this.mnuCalculo.Tag = "3212";
-            this.mnuCalculo.Text = "Cálculos";
+            this.mnuCalculo.Text = "Calcular";
             // 
             // mnuCalculoDT
             // 
             this.mnuCalculoDT.Name = "mnuCalculoDT";
-            this.mnuCalculoDT.Size = new System.Drawing.Size(202, 22);
+            this.mnuCalculoDT.Size = new System.Drawing.Size(171, 22);
             this.mnuCalculoDT.Tag = "32121";
-            this.mnuCalculoDT.Text = "Calcular Décimo Tercero";
+            this.mnuCalculoDT.Text = "Décimo Tercero";
             this.mnuCalculoDT.Click += new System.EventHandler(this.mnuCalculoDT_Click);
             // 
             // mnuCalculoDC
             // 
             this.mnuCalculoDC.Name = "mnuCalculoDC";
-            this.mnuCalculoDC.Size = new System.Drawing.Size(202, 22);
+            this.mnuCalculoDC.Size = new System.Drawing.Size(171, 22);
             this.mnuCalculoDC.Tag = "32122";
-            this.mnuCalculoDC.Text = "Calcular Décimo Cuarto";
+            this.mnuCalculoDC.Text = "Décimo Cuarto";
             this.mnuCalculoDC.Click += new System.EventHandler(this.mnuCalculoDC_Click);
             // 
             // mnuCalculoLiquidacion
             // 
             this.mnuCalculoLiquidacion.Name = "mnuCalculoLiquidacion";
-            this.mnuCalculoLiquidacion.Size = new System.Drawing.Size(202, 22);
+            this.mnuCalculoLiquidacion.Size = new System.Drawing.Size(171, 22);
             this.mnuCalculoLiquidacion.Tag = "32123";
-            this.mnuCalculoLiquidacion.Text = "Calcular Liquidaciones";
+            this.mnuCalculoLiquidacion.Text = "Liquidación";
             this.mnuCalculoLiquidacion.Click += new System.EventHandler(this.mnuCalculoLiquidacion_Click);
             // 
             // mnuCalculoUtilidad
             // 
             this.mnuCalculoUtilidad.Name = "mnuCalculoUtilidad";
-            this.mnuCalculoUtilidad.Size = new System.Drawing.Size(202, 22);
+            this.mnuCalculoUtilidad.Size = new System.Drawing.Size(171, 22);
             this.mnuCalculoUtilidad.Tag = "32124";
-            this.mnuCalculoUtilidad.Text = "Calcular Utilidades";
+            this.mnuCalculoUtilidad.Text = "Utilidades";
             this.mnuCalculoUtilidad.Click += new System.EventHandler(this.mnuCalculoUtilidad_Click);
             // 
             // mnuValorUtilidad
             // 
             this.mnuValorUtilidad.Name = "mnuValorUtilidad";
-            this.mnuValorUtilidad.Size = new System.Drawing.Size(202, 22);
+            this.mnuValorUtilidad.Size = new System.Drawing.Size(171, 22);
             this.mnuValorUtilidad.Tag = "32125";
             this.mnuValorUtilidad.Text = "Valor de Utilidades";
             this.mnuValorUtilidad.Click += new System.EventHandler(this.mnuValorUtilidad_Click);
@@ -552,7 +553,7 @@
             this.mnuMaternidad,
             this.mnuDatosIESS});
             this.mnuIESS.Name = "mnuIESS";
-            this.mnuIESS.Size = new System.Drawing.Size(127, 22);
+            this.mnuIESS.Size = new System.Drawing.Size(180, 22);
             this.mnuIESS.Tag = "33";
             this.mnuIESS.Text = "IESS";
             // 
@@ -657,7 +658,8 @@
             // 
             this.empleadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuInformacion,
-            this.vacacionesToolStripMenuItem});
+            this.mnuVacacionRep,
+            this.mnuAsistencia});
             this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
             this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.empleadosToolStripMenuItem.Tag = "43";
@@ -671,12 +673,20 @@
             this.mnuInformacion.Text = "Información";
             this.mnuInformacion.Click += new System.EventHandler(this.mnuInformacion_Click);
             // 
-            // vacacionesToolStripMenuItem
+            // mnuVacacionRep
             // 
-            this.vacacionesToolStripMenuItem.Name = "vacacionesToolStripMenuItem";
-            this.vacacionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.vacacionesToolStripMenuItem.Tag = "432";
-            this.vacacionesToolStripMenuItem.Text = "Vacaciones";
+            this.mnuVacacionRep.Name = "mnuVacacionRep";
+            this.mnuVacacionRep.Size = new System.Drawing.Size(180, 22);
+            this.mnuVacacionRep.Tag = "432";
+            this.mnuVacacionRep.Text = "Vacaciones";
+            this.mnuVacacionRep.Click += new System.EventHandler(this.mnuVacacionRep_Click);
+            // 
+            // mnuAsistencia
+            // 
+            this.mnuAsistencia.Name = "mnuAsistencia";
+            this.mnuAsistencia.Size = new System.Drawing.Size(180, 22);
+            this.mnuAsistencia.Tag = "433";
+            this.mnuAsistencia.Text = "&Asistencia";
             // 
             // empresaToolStripMenuItem
             // 
@@ -690,7 +700,7 @@
             // mnuActuarial
             // 
             this.mnuActuarial.Name = "mnuActuarial";
-            this.mnuActuarial.Size = new System.Drawing.Size(180, 22);
+            this.mnuActuarial.Size = new System.Drawing.Size(121, 22);
             this.mnuActuarial.Tag = "441";
             this.mnuActuarial.Text = "&Actuarial";
             this.mnuActuarial.Click += new System.EventHandler(this.mnuActuarial_Click);
@@ -798,7 +808,7 @@
         private System.Windows.Forms.ToolStripMenuItem rolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuInformacion;
-        private System.Windows.Forms.ToolStripMenuItem vacacionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuVacacionRep;
         private System.Windows.Forms.ToolStripMenuItem mnuSubirConsumo;
         private System.Windows.Forms.ToolStripMenuItem mnuSubirQuincena;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -843,5 +853,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolVs;
         private System.Windows.Forms.ToolStripStatusLabel tssPerfil;
         private System.Windows.Forms.ToolStripStatusLabel toolServer;
+        private System.Windows.Forms.ToolStripMenuItem mnuAsistencia;
     }
 }

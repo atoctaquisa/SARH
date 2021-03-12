@@ -100,6 +100,40 @@ namespace NominaTCG
             datos.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8);
         }
 
+        public static void vPagoQuincena(DataGridView datos)
+        {
+            datos.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8);
+            foreach (DataGridViewColumn item in datos.Columns)
+            {
+                item.Visible = false;
+
+                if (item.Name.Equals("PATRONO"))
+                {
+                    item.Visible = true;
+                    item.HeaderText = "Patrono";
+                    item.DisplayIndex =0;
+                }
+                if (item.Name.Equals("CUENTA_VALOR"))
+                {
+                    item.Visible = true;
+                    item.HeaderText = "A recibir";
+                    item.DisplayIndex = 3;
+                }
+                if (item.Name.Equals("NOMBRE"))
+                {
+                    item.Visible = true;
+                    item.HeaderText = "Empleado";
+                    item.DisplayIndex = 1;
+                }
+                if (item.Name.Equals("LOC_NOMB"))
+                {
+                    item.Visible = true;
+                    item.HeaderText = "Local";
+                    item.DisplayIndex = 2;
+                }
+            }
+        }
+
         public static void vContratoFin(DataGridView datos)
         {
             datos.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8);
@@ -284,7 +318,7 @@ namespace NominaTCG
                 }
             }
         }
-                public static void vLocales(DataGridView datos)
+        public static void vLocales(DataGridView datos)
         {
             StyleGridDialog(datos);
             filterData = new DataTable();
@@ -449,12 +483,12 @@ namespace NominaTCG
                 if (item.Name.Equals("SEG_ROL_ID"))
                 {
                     item.HeaderText = "ID Rol";
-                    item.Visible = true;                    
+                    item.Visible = true;
                 }
                 if (item.Name.Equals("PERIODO"))
                 {
                     item.HeaderText = "Período";
-                    item.Visible = true;                    
+                    item.Visible = true;
                 }
             }
         }
@@ -462,7 +496,7 @@ namespace NominaTCG
         {
             foreach (DataGridViewColumn item in datos.Columns)
             {
-                item.Visible = false;                
+                item.Visible = false;
                 if (item.Name.Equals("CUE_ID"))
                 {
                     item.HeaderText = "Cuentas";
@@ -535,27 +569,60 @@ namespace NominaTCG
                 if (item.Name.Equals("ROL_FECHA_INI"))
                 {
                     item.HeaderText = "Fecha Inicia";
-                    item.Visible = true;                    
+                    item.Visible = true;
                 }
                 if (item.Name.Equals("ROL_FECHA_FIN"))
                 {
                     item.HeaderText = "Fecha Fin";
-                    item.Visible = true;                    
+                    item.Visible = true;
                 }
                 if (item.Name.Equals("SEG_ROL_REPRO"))
                 {
                     item.HeaderText = "Reproceso";
                     item.Visible = true;
-                    item.DisplayIndex = 1;                    
+                    item.DisplayIndex = 1;
                 }
                 if (item.Name.Equals("PERIODO"))
                 {
                     item.HeaderText = "Período";
-                    item.Visible = true;                    
+                    item.Visible = true;
                 }
             }
         }
 
+        public static void vPeridoVacaciones(DataGridView datos)
+        {
+
+            filterData = new DataTable();
+            filterData.Columns.Add("ID");
+            filterData.Columns.Add("Nombre");
+            foreach (DataGridViewColumn item in datos.Columns)
+            {
+                item.Visible = false;
+                if (item.Name.Equals("SEG_ROL_ID"))
+                {
+                    item.HeaderText = "Períodos";
+                    item.Visible = true;
+                    filterData.Rows.Add(item.Name, item.HeaderText);
+                }
+
+                //if (item.Name.Equals("SEG_ROL_REPRO"))
+                //{
+                //    item.HeaderText = "Reproceso";
+                //    item.Visible = true;
+                //    filterData.Rows.Add(item.Name, item.HeaderText);
+                //}
+                //if (item.Name.Equals("PERIODO"))
+                //{
+                //    item.HeaderText = "Período";
+                //    item.Visible = true;
+                //    filterData.Rows.Add(item.Name, item.HeaderText);
+                //}
+            }
+            //DataGridViewRow row = datos.Rows[2];
+            ////dgvData.Columns[0].Width = 100;
+            //row. = 200;
+        }
         public static void vPeridoRolCorto(DataGridView datos)
         {
             filterData = new DataTable();
@@ -570,7 +637,7 @@ namespace NominaTCG
                     item.Visible = true;
                     filterData.Rows.Add(item.Name, item.HeaderText);
                 }
-                
+
                 if (item.Name.Equals("SEG_ROL_REPRO"))
                 {
                     item.HeaderText = "Reproceso";
@@ -651,10 +718,10 @@ namespace NominaTCG
             filterData = new DataTable();
             filterData.Columns.Add("ID");
             filterData.Columns.Add("Nombre");
-            
+
             foreach (DataGridViewColumn item in datos.Columns)
             {
-                item.Visible = false;               
+                item.Visible = false;
 
                 if (item.Name.Equals("EMP_ID"))
                 {
@@ -679,7 +746,7 @@ namespace NominaTCG
                 if (item.Name.Equals("CUENTA"))
                 {
                     item.HeaderText = "Cuenta";
-                    item.Visible = true;                    
+                    item.Visible = true;
                 }
 
                 if (item.Name.Equals("PRES_PLAZO"))
@@ -701,13 +768,13 @@ namespace NominaTCG
                     item.HeaderText = "Descripción";
                     item.Visible = true;
                     item.DisplayIndex = 5;
-                    
+
                 }
                 if (item.Name.Equals("FECHAREGISTRO"))
                 {
                     item.HeaderText = "Fecha Registro";
                     item.Visible = true;
-                    
+
                 }
                 if (item.Name.Equals("ESTADO"))
                 {
@@ -725,7 +792,7 @@ namespace NominaTCG
             filterData.Columns.Add("Nombre");
             foreach (DataGridViewColumn item in datos.Columns)
             {
-                item.Visible = false;               
+                item.Visible = false;
 
                 if (item.Name.Equals("EMP_ID"))
                 {
@@ -779,7 +846,7 @@ namespace NominaTCG
                 if (item.Name.Equals("EMP_ID"))
                 {
                     item.HeaderText = "Código";
-                    item.Visible = true;                    
+                    item.Visible = true;
                 }
                 if (item.Name.Equals("EMP_CI"))
                 {
@@ -796,7 +863,7 @@ namespace NominaTCG
                 if (item.Name.Equals("LAB_FEC_INGRESO"))
                 {
                     item.HeaderText = "Fecha Ingreso";
-                    item.Visible = true;                    
+                    item.Visible = true;
                 }
                 if (item.Name.Equals("ESC_CARGOMB"))
                 {
@@ -892,17 +959,17 @@ namespace NominaTCG
                 frm.WindowState = FormWindowState.Normal;
             }
         }
-        public static void frmDialog(Form frm, string titulo)        
+        public static void frmDialog(Form frm, string titulo)
         {
             frm.FormBorderStyle = FormBorderStyle.FixedSingle;
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.KeyPreview = true;
             frm.Text = titulo;
             frm.MaximizeBox = false;
-            frm.MinimizeBox = false;            
+            frm.MinimizeBox = false;
             frm.ShowDialog();
             //frm.Select();      
-        }       
+        }
 
     }
 

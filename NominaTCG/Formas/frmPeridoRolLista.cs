@@ -28,25 +28,42 @@ namespace NominaTCG
         }
         private void AssignControl(int index)
         {
-            ContratoBO.RolSeg.segRolId = Convert.ToInt64(dgvData.Rows[index].Cells["SEG_ROL_ID"].Value.ToString());
-            ContratoBO.RolSeg.segRolRepro = Convert.ToInt64(dgvData.Rows[index].Cells["SEG_ROL_REPRO"].Value.ToString());
-            ContratoBO.RolSeg.rolFechaIni = Convert.ToDateTime(dgvData.Rows[index].Cells["ROL_FECHA_INI"].Value.ToString());
-            ContratoBO.RolSeg.rolFechaFin =dgvData.Rows[index].Cells["ROL_FECHA_FIN"].Value==DBNull.Value ? DateTime.Now: Convert.ToDateTime(dgvData.Rows[index].Cells["ROL_FECHA_FIN"].Value.ToString());
+            if (tipoRol.Equals("PeridoVacacion"))
+            {
+                ContratoBO.RolSeg.segRolObs = dgvData.Rows[index].Cells["SEG_ROL_ID"].Value.ToString();
+                ContratoBO.RolSeg.segRolRepro = Convert.ToInt64(dgvData.Rows[index].Cells["SEG_ROL_REPRO"].Value.ToString());
+            }
+            else
+            {
+                ContratoBO.RolSeg.segRolId = Convert.ToInt64(dgvData.Rows[index].Cells["SEG_ROL_ID"].Value.ToString());
+                ContratoBO.RolSeg.segRolRepro = Convert.ToInt64(dgvData.Rows[index].Cells["SEG_ROL_REPRO"].Value.ToString());
+                ContratoBO.RolSeg.rolFechaIni = Convert.ToDateTime(dgvData.Rows[index].Cells["ROL_FECHA_INI"].Value.ToString());
+                ContratoBO.RolSeg.rolFechaFin = dgvData.Rows[index].Cells["ROL_FECHA_FIN"].Value == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dgvData.Rows[index].Cells["ROL_FECHA_FIN"].Value.ToString());
+            }
         }
         private void LoadData()
         {
-            if(tipoRol.Equals("PeridoRolCorto"))
+            if (tipoRol.Equals("PeridoVacacion"))
+            {
+                dgvData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                peridoRolView = new DataView(ContratoBO.ListaPeriodo("PV"));
+            }
+            if (tipoRol.Equals("PeridoRolCorto"))
                 peridoRolView = new DataView(ContratoBO.ListaPeriodo("PQ"));
             if (tipoRol.Equals("PeridoRolCompleto"))
                 peridoRolView = new DataView(ContratoBO.ListaPeriodo("PR"));
+            if (tipoRol.Equals("PeridoRolCompletoA"))
+                peridoRolView = new DataView(ContratoBO.ListaPeriodo("PRA"));
             if (peridoRolView.Table != null)
             {
                 peridoRolView.Sort = "SEG_ROL_ID DESC";
                 dgvData.DataSource = peridoRolView;
                 if (tipoRol.Equals("PeridoRolCorto"))
                     Design.vPeridoRolCorto(dgvData);
-                if (tipoRol.Equals("PeridoRolCompleto"))
+                if (tipoRol.Equals("PeridoRolCompleto") | tipoRol.Equals("PeridoRolCompletoA"))
                     Design.vPeridoRol(dgvData);
+                if (tipoRol.Equals("PeridoVacacion"))
+                    Design.vPeridoVacaciones(dgvData);
                 //DataGridViewRow row = dgvData.Rows[1];                
                 //row.Height = 150;
                 cboFilter.DataSource = Design.filterData;

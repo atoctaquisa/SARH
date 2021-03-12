@@ -113,6 +113,8 @@ namespace NominaTCG
                         if (Utility.MensajeQuestion("¿Está seguro de querer procesar?") == DialogResult.Yes)
                         {
                             ContratoBO.ProcesaDiario(_percID, _diaID);
+                            LoadData();
+                            Utility.MensajeInfo("Proceso finalizado..!!");                                                   
                         }
                     }
                     else

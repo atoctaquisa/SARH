@@ -48,7 +48,7 @@
             this.cboUsuario.Location = new System.Drawing.Point(100, 74);
             this.cboUsuario.Name = "cboUsuario";
             this.cboUsuario.Size = new System.Drawing.Size(172, 21);
-            this.cboUsuario.TabIndex = 4;
+            this.cboUsuario.TabIndex = 1;
             // 
             // txtPass
             // 
@@ -56,7 +56,7 @@
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(172, 20);
-            this.txtPass.TabIndex = 5;
+            this.txtPass.TabIndex = 2;
             this.txtPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPass_KeyPress);
             // 
             // groupBox1

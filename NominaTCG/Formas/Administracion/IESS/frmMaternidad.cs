@@ -15,6 +15,8 @@ namespace NominaTCG
 {
     public partial class frmMaternidad : Form
     {
+        string _periodoActivo;
+        int _reproceso;
         #region Properties
         private SolicitudController SolicitudBO { get; set; }
         private EmpleadoController EmpleadoBO { get; set; }
@@ -81,13 +83,15 @@ namespace NominaTCG
             }
 
             DataTable periodo = ContratoBO.ListaPeriodo("PREPO");
-            string periodoActivo = periodo.Rows[0][0].ToString();
+            _periodoActivo = periodo.Rows[0][0].ToString();
+            _reproceso = ContratoBO.Reproceso(_periodoActivo);
+            
 
             foreach (DataGridViewRow item in dgvData.Rows)
             {
                 if (!item.IsNewRow)
                 {
-                    if (!item.Cells["ROL_ID_GEN"].Value.ToString().Equals(periodoActivo))
+                    if (!item.Cells["ROL_ID_GEN"].Value.ToString().Equals(_periodoActivo))
                         item.ReadOnly = true;
                     else
                         item.ReadOnly = false;
@@ -197,8 +201,8 @@ namespace NominaTCG
                     notifica.rolRepro = Convert.ToUInt32(periodo.Rows[0][1]);
                     notifica.iessFechainicio = row["IESS_FECHAINICIO"].ToString();
                     notifica.iessFechafin = row["IESS_FECHAFIN"].ToString();
-                    notifica.rolIdGen_  = Convert.ToUInt32(row["ROL_ID_GEN"].ToString());
-                    notifica.rolRepro_  = Convert.ToUInt32(row["ROL_REPRO"].ToString());
+                    notifica.rolIdGen_ = Convert.ToInt32(_periodoActivo);//Convert.ToUInt32(row["ROL_ID_GEN"].ToString());
+                    notifica.rolRepro_ = _reproceso;//Convert.ToUInt32(row["ROL_REPRO"].ToString());
                     notifica.iessTipo = Convert.ToUInt32(row["IESS_TIPO"]);
                     notifica.iessObservacion = row["IESS_OBSERVACION"].ToString();
                     iess.Add(notifica);
@@ -212,8 +216,8 @@ namespace NominaTCG
                     dias.empId = txtCodigo.Text;
                     dias.rolIdGen = Convert.ToUInt32(periodo.Rows[0][0]);
                     dias.rolRepro = Convert.ToUInt32(periodo.Rows[0][1]);
-                    dias.rolIdGen_ = Convert.ToUInt32(row["ROL_ID_GEN"]);
-                    dias.rolRepro_ = Convert.ToUInt32(row["ROL_REPRO"]);
+                    dias.rolIdGen_ = Convert.ToInt32(_periodoActivo);//Convert.ToUInt32(row["ROL_ID_GEN"]);
+                    dias.rolRepro_ = _reproceso;//Convert.ToUInt32(row["ROL_REPRO"]);
                     dias.diaNum = Convert.ToUInt32(row["DIA_NUM"]);
                     dias.diaPorc = Convert.ToUInt32(row["DIA_PORC"]);
                     dias.diaId = row["DIA_ID"]==DBNull.Value?0: Convert.ToUInt32(row["DIA_ID"]);
@@ -221,15 +225,16 @@ namespace NominaTCG
                 }
             }
 
-            try
-            {
+            SolicitudBO.RegistraSolicitudAccMatEnf(iess, iessDia, tipoID);
+            //try
+            //{
 
-                SolicitudBO.RegistraSolicitudAccMatEnf(iess, iessDia, tipoID);
-            }
-            catch (Exception e)
-            {
-                Logger.ErrorLog.ErrorRoutine(false, e);
-            }
+            //    SolicitudBO.RegistraSolicitudAccMatEnf(iess, iessDia, tipoID);
+            //}
+            //catch (Exception e)
+            //{
+            //    Logger.ErrorLog.ErrorRoutine(false, e);
+            //}
 
         }
 

@@ -402,7 +402,7 @@ namespace DataAccess
                                                                  WHERE ADI_REN_POR > 0)      MAXLIM,
                                                                  FECHACRE, FECHAMOD
                                                           FROM DESARROLLO.DAT_GASTOS_PROY_EMP P
-                                                         WHERE EMP_ID = :EMP_ID AND ANIO = :ANIO AND PAT_ID = :PAT_ID";
+                                                         WHERE EMP_ID = :EMP_ID AND ANIO = :ANIO AND PAT_ID = :PAT_ID ORDER BY 1";
         private static string sqlGeneraProyeccionGasto = "DESARROLLO.P_INI_GASTOS_ANIO";
         private static string sqlActualizaProyeccionGasto = @"UPDATE DESARROLLO.DAT_GASTOS_PROY_EMP SET PROY_VALOR=:PROY_VALOR
                                                            WHERE EMP_ID = :EMP_ID AND ANIO = :ANIO AND PAT_ID = :PAT_ID AND GAS_ID=:GAS_ID";
@@ -416,6 +416,11 @@ namespace DataAccess
         private static string sqlTransferenciaBancariaDecimoT = "DESARROLLO.TRANFERENCIA_DECIMOT";
         private static string sqlTransferenciaBancariaDecimoC = "DESARROLLO.TRANFERENCIA_DECIMOC";
         private static string sqlTranferenciaDecimo = "SELECT  TRNID, BANID, BANCO, EMPID, EMPRE, DATOS FROM TRANS_BANCO_TMP WHERE EMPID=:emprID and BANCO=:bancoID";
+        private static string sqlActuarial = "P_ACTUARIAL";
+        private static string sqlActuarialData = "SELECT * FROM ACTUARIAL_TMP";
+        //EMPID, TIPOID, CEDULA, TIPOEMP, APELLIDO, NOMBRE, CARGO, CENTROCOSTO, SEXO, RUCEMPRESA, NACIMIENTO, EDADEMP, SUELDOMES
+        private static string sqlActuarialSalario = "SELECT * FROM ACTUARIAL_ANIO_TMP WHERE EMPID=:empID";
+        private static string sqlActuarialIngreso = "SELECT * FROM ACTUARIAL_INGRESO_TMP WHERE CEDULA=:empID";
         #endregion
 
         #region Propiedades
@@ -423,7 +428,43 @@ namespace DataAccess
         #endregion
 
         #region Methods
-        public DataTable TransferenciaBancariaDecimo(string proID, string anioINI, string anioFIN,string emprID, string tipoID)
+        public DataSet ActuarialEmpleado()
+        {
+            db.ExecProcedure(sqlActuarial);
+
+            DataSet content = new DataSet();
+            DataTable data = new DataTable();
+
+            data = db.GetData(sqlActuarialData).Copy();
+            data.TableName = "Empleados";
+            content.Tables.Add(data);            
+            return content;
+
+        }
+        public DataSet ActuarialEmpleado(string empID, string empCI)
+        {
+
+            DataSet content = new DataSet();
+            DataTable data = new DataTable();
+
+            OracleParameter[] prm = new OracleParameter[]
+            {
+                new OracleParameter(":empID",empID)
+            };
+            data = db.GetData(sqlActuarialSalario, prm).Copy();
+            data.TableName = "Salario";
+            content.Tables.Add(data);
+            prm = new OracleParameter[]
+           {
+                new OracleParameter(":empID",empCI)
+           };
+            data = db.GetData(sqlActuarialIngreso, prm).Copy();
+            data.TableName = "Ingreso";
+            content.Tables.Add(data);
+            return content;
+
+        }
+        public DataTable TransferenciaBancariaDecimo(string proID, string anioINI, string anioFIN, string emprID, string tipoID)
         {
             OracleParameter[] prm = new OracleParameter[]
             {
@@ -433,24 +474,24 @@ namespace DataAccess
             };
             string sql;
             if (tipoID == "3")
-            {               
-                db.ExecProcedure(sqlTransferenciaBancariaDecimoT,prm);
+            {
+                db.ExecProcedure(sqlTransferenciaBancariaDecimoT, prm);
                 sql = "DECIMO TERCERO";
             }
-                
+
             else
-            {                
-                db.ExecProcedure(sqlTransferenciaBancariaDecimoC,prm);
+            {
+                db.ExecProcedure(sqlTransferenciaBancariaDecimoC, prm);
                 sql = "DECIMO CUARTO";
             }
 
-           prm = new OracleParameter[]
-            {
+            prm = new OracleParameter[]
+             {
                 new OracleParameter(":emprID",emprID),
                 new OracleParameter(":bancoID",sql)
-            };
+             };
 
-           return db.GetData(sqlTranferenciaDecimo, prm);
+            return db.GetData(sqlTranferenciaDecimo, prm);
         }
         public DataTable TransferenciaBancaria(string emprID)
         {
@@ -458,20 +499,20 @@ namespace DataAccess
             {
                 new OracleParameter(":emprID",emprID)
             };
-            return db.GetData(sqlTransferenciaBancariaData,prm);
+            return db.GetData(sqlTransferenciaBancariaData, prm);
         }
 
         public DataTable TransferenciaBancaria(string perID, string reproID, string empID, string tipoID)
         {
             OracleParameter[] prm = new OracleParameter[]
             {
-                new OracleParameter(":perID",perID),                
+                new OracleParameter(":perID",perID),
                 new OracleParameter(":reproID",reproID),
                 new OracleParameter(":empID",empID),
-                new OracleParameter(":tipoID",tipoID)                
-            };            
+                new OracleParameter(":tipoID",tipoID)
+            };
             db.ExecProcedure(sqlTransferenciaBancaria, prm);
-            return db.GetData(sqlTransferenciaBAncariaEmpresa);            
+            return db.GetData(sqlTransferenciaBAncariaEmpresa);
         }
 
         public int ActualizaProyeccionGasto(DataTable data)
@@ -481,8 +522,8 @@ namespace DataAccess
                 OracleParameter[] prm = new OracleParameter[]
                 {
                     new OracleParameter(":PROY_VALOR",Convert.ToInt32(row["PROY_VALOR"])),
-                    new OracleParameter(":EMP_ID",Convert.ToInt64(row["EMP_ID"])),                
-                    new OracleParameter(":ANIO",Convert.ToInt32(row["ANIO"])),                    
+                    new OracleParameter(":EMP_ID",Convert.ToInt64(row["EMP_ID"])),
+                    new OracleParameter(":ANIO",Convert.ToInt32(row["ANIO"])),
                     new OracleParameter(":PAT_ID",Convert.ToInt32(row["PAT_ID"])),
                     new OracleParameter(":GAS_ID",Convert.ToInt32(row["GAS_ID"]))
                 };
@@ -496,7 +537,7 @@ namespace DataAccess
         {
             OracleParameter[] prm = new OracleParameter[]
             {
-                new OracleParameter(":EMP_ID",empID),                
+                new OracleParameter(":EMP_ID",empID),
                 new OracleParameter(":ANIO",anio),
                 new OracleParameter(":PAT_ID",patID),
             };
@@ -515,7 +556,7 @@ namespace DataAccess
         {
             OracleParameter[] prm1 = new OracleParameter[]
                 {
-                    new OracleParameter(":EMP_ID",empID),                
+                    new OracleParameter(":EMP_ID",empID),
                     new OracleParameter(":ANIO",anio),
                     new OracleParameter(":PAT_ID",patID)
                 };
@@ -529,8 +570,8 @@ namespace DataAccess
             pres.rolRepro = db.GetEntero(sqlPeriodIDMax + pres.rolIdGen);
             OracleParameter[] prm = new OracleParameter[]
             {
-                new OracleParameter(":EMP_ID",pres.empID ),                
-                new OracleParameter(":ROL_ID_GEN",pres.rolIdGen ),  
+                new OracleParameter(":EMP_ID",pres.empID ),
+                new OracleParameter(":ROL_ID_GEN",pres.rolIdGen ),
                 new OracleParameter(":ROL_REPRO",pres.rolRepro)
             };
             return db.GetEntero(sqlExisteRol, prm);
@@ -542,8 +583,8 @@ namespace DataAccess
             pres.rolRepro = db.GetEntero(sqlPeriodIDMax + pres.rolIdGen);
             OracleParameter[] prm = new OracleParameter[]
             {
-                new OracleParameter(":EMP_ID",pres.empID ),                
-                new OracleParameter(":ROL_ID_GEN",pres.rolIdGen ),  
+                new OracleParameter(":EMP_ID",pres.empID ),
+                new OracleParameter(":ROL_ID_GEN",pres.rolIdGen ),
                 new OracleParameter(":ROL_REPRO",pres.rolRepro)
             };
             return db.GetEntero(sqlExistePrestamo, prm);
@@ -556,28 +597,28 @@ namespace DataAccess
             pres.rolRepro = db.GetEntero(sqlPeriodIDMax + pres.rolIdGen);
             OracleParameter[] prm = new OracleParameter[]
             {
-                new OracleParameter(":EMP_ID",pres.empID ),                
-                new OracleParameter(":ROL_ID_GEN",pres.rolIdGen ),  
-                new OracleParameter(":ROL_REPRO",pres.rolRepro),  
+                new OracleParameter(":EMP_ID",pres.empID ),
+                new OracleParameter(":ROL_ID_GEN",pres.rolIdGen ),
+                new OracleParameter(":ROL_REPRO",pres.rolRepro),
                 new OracleParameter(":ROL_ID",pres.rolId),
                 new OracleParameter(":PRES_PLAZO",pres.presPlazo),
                 new OracleParameter(":PRES_VALOR",pres.presValor),
-                new OracleParameter(":PRES_OBSERVACION",pres.presObservacion)                
+                new OracleParameter(":PRES_OBSERVACION",pres.presObservacion)
             };
-                db.ExecQuery(sqlRegistraPrestamoEmpleado, prm);
+            db.ExecQuery(sqlRegistraPrestamoEmpleado, prm);
 
-                prm = new OracleParameter[]
-            {
-                new OracleParameter(":EMP_ID",pres.empID ),                
-                new OracleParameter(":ROL_ID_GEN",pres.rolIdGen ),  
-                new OracleParameter(":ROL_REPRO",pres.rolRepro),  
+            prm = new OracleParameter[]
+        {
+                new OracleParameter(":EMP_ID",pres.empID ),
+                new OracleParameter(":ROL_ID_GEN",pres.rolIdGen ),
+                new OracleParameter(":ROL_REPRO",pres.rolRepro),
                 new OracleParameter(":ROL_ID",pres.rolId),
                 new OracleParameter(":PRES_PLAZO",pres.presPlazo),
                 new OracleParameter(":PRES_VALOR",pres.presValor)
-                
-            };
-                db.ExecProcedure(sqlGeneraTablaAmortizacion, prm);
-            
+
+        };
+            db.ExecProcedure(sqlGeneraTablaAmortizacion, prm);
+
             return 0;
         }
 
@@ -585,14 +626,14 @@ namespace DataAccess
         {
             OracleParameter[] prm = new OracleParameter[]
             {
-                new OracleParameter(":EMP_ID",pres.empID ),                
-                new OracleParameter(":ROL_ID_GEN",pres.rolIdGen ),  
-                new OracleParameter(":ROL_REPRO",pres.rolRepro),  
+                new OracleParameter(":EMP_ID",pres.empID ),
+                new OracleParameter(":ROL_ID_GEN",pres.rolIdGen ),
+                new OracleParameter(":ROL_REPRO",pres.rolRepro),
                 new OracleParameter(":ROL_ID",pres.rolId),
                 new OracleParameter(":PRES_PLAZO",pres.presPlazo),
                 new OracleParameter(":PRES_VALOR",pres.presValor),
                 new OracleParameter(":PRES_OBSERVACION",pres.presObservacion)
-                
+
             };
             return db.ExecQuery(sqlRegistraPrestamoEmpleado, prm);
         }
@@ -600,13 +641,13 @@ namespace DataAccess
         {
             OracleParameter[] prm = new OracleParameter[]
             {
-                new OracleParameter(":EMP_ID",pres.empID ),                
-                new OracleParameter(":ROL_ID_GEN",pres.rolIdGen ),  
-                new OracleParameter(":ROL_REPRO",pres.rolRepro),  
+                new OracleParameter(":EMP_ID",pres.empID ),
+                new OracleParameter(":ROL_ID_GEN",pres.rolIdGen ),
+                new OracleParameter(":ROL_REPRO",pres.rolRepro),
                 new OracleParameter(":ROL_ID",pres.rolId),
                 new OracleParameter(":PRES_PLAZO",pres.presPlazo),
                 new OracleParameter(":PRES_VALOR",pres.presValor)
-                
+
             };
             return db.ExecProcedure(sqlGeneraTablaAmortizacion, prm);
         }
@@ -614,9 +655,9 @@ namespace DataAccess
         {
             OracleParameter[] prm = new OracleParameter[]
             {
-                new OracleParameter(":EMP_ID",pres.empID ),                
-                new OracleParameter(":ROL_ID_GEN",pres.rolIdGen ),  
-                new OracleParameter(":ROL_REPRO",pres.rolRepro),  
+                new OracleParameter(":EMP_ID",pres.empID ),
+                new OracleParameter(":ROL_ID_GEN",pres.rolIdGen ),
+                new OracleParameter(":ROL_REPRO",pres.rolRepro),
                 new OracleParameter(":ROL_ID",pres.rolId)
             };
             return db.GetData(sqlTablaAmortizacion, prm);
@@ -630,7 +671,7 @@ namespace DataAccess
         {
             OracleParameter[] prm = new OracleParameter[]
             {
-                new OracleParameter(":EMP_CI",empCI),                
+                new OracleParameter(":EMP_CI",empCI),
                 new OracleParameter(":PAT_ID",emprID)
             };
             return db.GetEntero(sqlValidaSalidaEmpleado, prm);
@@ -649,7 +690,7 @@ namespace DataAccess
         {
             OracleParameter[] prm = new OracleParameter[]
             {
-                new OracleParameter(":EMP_CI",empCI)                
+                new OracleParameter(":EMP_CI",empCI)
             };
             return db.GetEntero(sqlValidaEmpleadoCI, prm);
         }
@@ -657,7 +698,7 @@ namespace DataAccess
         {
             OracleParameter[] prm = new OracleParameter[]
             {
-                new OracleParameter(":EMP_CI",empCI),                
+                new OracleParameter(":EMP_CI",empCI),
                 new OracleParameter(":PAT_ID",emprID)
             };
             return db.GetEntero(sqlValidaEmpleado, prm);
@@ -696,7 +737,7 @@ namespace DataAccess
         public int CargaConsumoLocal(string perID)
         {
             OracleParameter[] prm = new OracleParameter[]{
-                new OracleParameter(":PER_ID",perID )                
+                new OracleParameter(":PER_ID",perID )
             };
             return db.ExecProcedure(sqlCargarConsumoLocal, prm);
         }
@@ -714,7 +755,7 @@ namespace DataAccess
         {
             OracleParameter[] prm = new OracleParameter[]
             {
-                new OracleParameter(":empCI", empID)                
+                new OracleParameter(":empCI", empID)
             };
             return db.GetEntero(sqlValidaCedula, prm);
         }
@@ -722,8 +763,8 @@ namespace DataAccess
         {
             OracleParameter[] prm = new OracleParameter[]
             {
-                new OracleParameter(":EMP_ID", empID)                
-            };            
+                new OracleParameter(":EMP_ID", empID)
+            };
             return db.ExecProcedure(sqlDeleteEmpleado, prm);
         }
         public int EliminaFamiliar(string empID, string famID)
@@ -738,7 +779,7 @@ namespace DataAccess
 
         public int ActualizarFamiliar(DatEmpFam emp)
         {
-            OracleParameter[] prm = new OracleParameter[]{            
+            OracleParameter[] prm = new OracleParameter[]{
             new OracleParameter(":EMP_FAM_NOMBRE",emp.empFamNombre),
             new OracleParameter(":EMP_FAM_FEC_NAC",emp.empFamFecNac),
             new OracleParameter(":EMP_FAM_PARENT",emp.empFamParent),
@@ -845,7 +886,7 @@ namespace DataAccess
             else
             {
                 OracleParameter[] prm = new OracleParameter[]{
-                 
+
                  new OracleParameter(":EMP_NOMBRE",emp.empNombre),
                  new OracleParameter(":EMP_DIREC",emp.empDirec),
                  new OracleParameter(":EMP_TELEFONO",emp.empTelefono),
@@ -989,7 +1030,7 @@ namespace DataAccess
                  new OracleParameter(":DSCP_NUM",dsc.DSCP_NUM),
                  new OracleParameter(":DSCP_PRCT",dsc.DSCP_PRCT),
                  new OracleParameter(":DSCP_DSC",dsc.DSCP_DSC)
-                 
+
                  };
                     query = sqlRegistrarDiscapacidad;
                     break;
@@ -1007,7 +1048,7 @@ namespace DataAccess
                 default:
                     prm = new OracleParameter[]{
                  new OracleParameter(":DSCP_ID",dsc.DSCP_ID),
-                 new OracleParameter(":EMP_ID",dsc.EMP_ID)                 
+                 new OracleParameter(":EMP_ID",dsc.EMP_ID)
                 };
                     query = sqlEliminarDiscapacidad;
                     break;
@@ -1041,12 +1082,12 @@ namespace DataAccess
         }
         public DataTable ListaEmpleadoDetalle(string prm)
         {
-            return db.GetData(sqlListarEmpleadoDetallePRM+prm);
+            return db.GetData(sqlListarEmpleadoDetallePRM + prm);
             //return datos;
         }
         public DataSet PaginaEmpleadoDetalle(int recordIni, int recordMax)
         {
-            return db.paginacionData(sqlPaginaEmpleadoDetalle, recordIni,recordMax);
+            return db.paginacionData(sqlPaginaEmpleadoDetalle, recordIni, recordMax);
             //return datos;
         }
         public DataTable ListaEmpleado()

@@ -356,5 +356,6 @@ namespace NominaTCG
             if (e.KeyValue == Convert.ToChar(Keys.F5))
                 AssignControls();
         }
+
     }
 }

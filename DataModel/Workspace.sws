@@ -4,7 +4,8 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{DAFCC565-6502-47D2-8632-AA247186C6FF}" Loaded="No" Name="NominaTCG" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="NominaTCG/NominaTCG.prj"/>
+		<Model Expanded="Yes" ID="{DAFCC565-6502-47D2-8632-AA247186C6FF}" Name="NominaTCG" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="NominaTCG/NominaTCG.prj"/>
+		<Model Expanded="Yes" ID="{6F5F1E73-C5BB-4AE8-9310-0A142F8B629B}" Name="Activos" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Activos/Activos.prj"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
