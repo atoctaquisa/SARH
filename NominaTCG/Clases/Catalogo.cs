@@ -17,6 +17,19 @@ namespace NominaTCG
         public static string ServerData { get; set; }
         public static string PathReport { get; set; }
 
+
+        public static DataTable TipoCertificado()
+        {
+            DataTable datos = new DataTable();
+            datos.Columns.Add("ID");
+            datos.Columns.Add("Nombre");
+            datos.Rows.Add(1, "Personal");
+            datos.Rows.Add(0, "Cesado");
+            datos.Rows.Add(2, "Crédito");            
+            return datos;
+
+        }
+
         public static DataTable NovedadTipo()
         {
             DataTable datos = new DataTable();

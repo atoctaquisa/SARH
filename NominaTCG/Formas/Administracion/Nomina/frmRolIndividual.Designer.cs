@@ -169,6 +169,7 @@
             this.txtEmpleado.ReadOnly = true;
             this.txtEmpleado.Size = new System.Drawing.Size(178, 20);
             this.txtEmpleado.TabIndex = 47;
+            this.txtEmpleado.TextChanged += new System.EventHandler(this.txtEmpleado_TextChanged);
             // 
             // btnEmpleado
             // 
@@ -189,6 +190,7 @@
             this.label12.Size = new System.Drawing.Size(54, 13);
             this.label12.TabIndex = 48;
             this.label12.Text = "Empleado";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label1
             // 
@@ -216,6 +218,7 @@
             this.txtLocal.ReadOnly = true;
             this.txtLocal.Size = new System.Drawing.Size(178, 20);
             this.txtLocal.TabIndex = 54;
+            this.txtLocal.TextChanged += new System.EventHandler(this.txtLocal_TextChanged);
             // 
             // btnLocal
             // 
@@ -236,6 +239,7 @@
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 55;
             this.label2.Text = "Local";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // cboCadena
             // 

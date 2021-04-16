@@ -82,6 +82,10 @@ namespace BusinessLogic
         {
             return ReportDataDA.LiquidacionDT(empID, vacID);
         }
+        public DataTable Certificado(string empID, string tipo)
+        {
+            return ReportDataDA.Certificado(empID, tipo);
+        }
         public DataTable RolIndividual(string rolID, string reproID, string empID, string localID, string cadenaID)
         {
             return ReportDataDA.RolIndividual(rolID, reproID, empID, localID, cadenaID);
@@ -101,6 +105,10 @@ namespace BusinessLogic
         public DataTable DetalleContabilidad(string rolID, string reproID, string tipoRep)
         {
             return ReportDataDA.DetalleContabilidad(rolID, reproID, tipoRep);
+        }
+        public DataTable DetalleContabilidad(string fechaIni, string fechaFin, string emprID,string locID)
+        {
+            return ReportDataDA.DetalleContabilidad(fechaIni, fechaFin, emprID, locID);
         }
         public DataTable RolNegativo(string rolID, string reproID)
         {

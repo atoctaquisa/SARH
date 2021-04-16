@@ -233,7 +233,7 @@ namespace NominaTCG
                         valor.empID = Convert.ToInt64(row["EMP_ID"]);
                         valor.localID = Convert.ToInt32(row["LOC_ID"]);
                         //valor.cantidad = Convert.ToInt32(row["CANTIDAD"]);
-                        valor.valor = Convert.ToInt32(row["VALOR"]);
+                        valor.valor = Convert.ToDecimal(row["VALOR"]);
                         valor.cuentaID = valGrupo.cuentaID;
                         try
                         {

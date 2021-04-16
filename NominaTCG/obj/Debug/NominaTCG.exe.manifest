@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="NominaTCG.exe" version="1.0.0.41" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
+  <asmv1:assemblyIdentity name="NominaTCG.exe" version="1.0.0.48" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
   <description asmv2:iconFile="SARH.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccesoDato.dll" size="437248">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AccesoDato.dll" size="443904">
       <assemblyIdentity name="AccesoDato" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>r3w1DOCYz+YuzkNB8PfzA9URkj6rkg4NkcKJ/iZhXTs=</dsig:DigestValue>
+        <dsig:DigestValue>K+ScRlSd9xRBkV0X6zN5z8HoBGKVzkRk3/QZgLbmM5k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BusinessLogic.dll" size="37888">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BusinessLogic.dll" size="38400">
       <assemblyIdentity name="BusinessLogic" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>GdSytDclMBh/juOcdF4Pe+V9RlyQh7x+5caHStLU45g=</dsig:DigestValue>
+        <dsig:DigestValue>KtrNWxwtWd/glPHtxNmSRD0YIsKDWVFIxznKsIcN/EE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -271,14 +271,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Entidades.dll" size="70144">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Entidades.dll" size="70656">
       <assemblyIdentity name="Entidades" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>D7ZWxRcin/nmi/TVKh13YfbklxnvTUuyvUoRghqcMJM=</dsig:DigestValue>
+        <dsig:DigestValue>4Zyz4GcSO8nWsVwC23j3eUTuVnzteoEbV+niHLT06l8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1195,14 +1195,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NominaTCG.exe" size="3263912">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NominaTCG.exe" size="3524520">
       <assemblyIdentity name="NominaTCG" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>3OsOF8r+nC56yLeKFjy5hcOEjoWhp7I0oqYv+bcLNo8=</dsig:DigestValue>
+        <dsig:DigestValue>hMXWsclteRkC3iIoObK2QUj8LpXqWrfA1O0C2nFNM4U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

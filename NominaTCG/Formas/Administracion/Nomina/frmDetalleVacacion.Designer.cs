@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetalleVacacion));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
             this.tabAdmin = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -46,10 +46,6 @@
             this.btnNewSave = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.VAC_PER_VAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VAC_PER_FEC_INI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VAC_PER_FEC_FIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VAC_DIAS_CAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvDataDT = new System.Windows.Forms.DataGridView();
             this.NUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MES = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +55,12 @@
             this.VAC_VAL_VALOR_VAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
+            this.VAC_PER_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CAL_VAC_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VAC_PER_VAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VAC_PER_FEC_INI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VAC_PER_FEC_FIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VAC_DIAS_CAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabAdmin.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -225,6 +227,8 @@
             this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.VAC_PER_ID,
+            this.CAL_VAC_ID,
             this.VAC_PER_VAC,
             this.VAC_PER_FEC_INI,
             this.VAC_PER_FEC_FIN,
@@ -233,30 +237,7 @@
             this.dgvData.Name = "dgvData";
             this.dgvData.Size = new System.Drawing.Size(523, 95);
             this.dgvData.TabIndex = 1;
-            // 
-            // VAC_PER_VAC
-            // 
-            this.VAC_PER_VAC.DataPropertyName = "VAC_PER_VAC";
-            this.VAC_PER_VAC.HeaderText = "Período";
-            this.VAC_PER_VAC.Name = "VAC_PER_VAC";
-            // 
-            // VAC_PER_FEC_INI
-            // 
-            this.VAC_PER_FEC_INI.DataPropertyName = "VAC_PER_FEC_INI";
-            this.VAC_PER_FEC_INI.HeaderText = "Fecha Inicio";
-            this.VAC_PER_FEC_INI.Name = "VAC_PER_FEC_INI";
-            // 
-            // VAC_PER_FEC_FIN
-            // 
-            this.VAC_PER_FEC_FIN.DataPropertyName = "VAC_PER_FEC_FIN";
-            this.VAC_PER_FEC_FIN.HeaderText = "Fecha Fin";
-            this.VAC_PER_FEC_FIN.Name = "VAC_PER_FEC_FIN";
-            // 
-            // VAC_DIAS_CAL
-            // 
-            this.VAC_DIAS_CAL.DataPropertyName = "VAC_DIAS_CAL";
-            this.VAC_DIAS_CAL.HeaderText = "Día Calculado";
-            this.VAC_DIAS_CAL.Name = "VAC_DIAS_CAL";
+            this.dgvData.CurrentCellChanged += new System.EventHandler(this.dgvData_CurrentCellChanged);
             // 
             // dgvDataDT
             // 
@@ -301,16 +282,16 @@
             // VAC_VAL_VALOR
             // 
             this.VAC_VAL_VALOR.DataPropertyName = "VAC_VAL_VALOR";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.VAC_VAL_VALOR.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.VAC_VAL_VALOR.DefaultCellStyle = dataGridViewCellStyle5;
             this.VAC_VAL_VALOR.HeaderText = "Sueldo";
             this.VAC_VAL_VALOR.Name = "VAC_VAL_VALOR";
             // 
             // VAC_VAL_VALOR_VAC
             // 
             this.VAC_VAL_VALOR_VAC.DataPropertyName = "VAC_VAL_VALOR_VAC";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.VAC_VAL_VALOR_VAC.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.VAC_VAL_VALOR_VAC.DefaultCellStyle = dataGridViewCellStyle6;
             this.VAC_VAL_VALOR_VAC.HeaderText = "Valor";
             this.VAC_VAL_VALOR_VAC.Name = "VAC_VAL_VALOR_VAC";
             // 
@@ -330,6 +311,44 @@
             // ErrProv
             // 
             this.ErrProv.ContainerControl = this;
+            // 
+            // VAC_PER_ID
+            // 
+            this.VAC_PER_ID.DataPropertyName = "VAC_PER_ID";
+            this.VAC_PER_ID.HeaderText = "VAC_PER_ID";
+            this.VAC_PER_ID.Name = "VAC_PER_ID";
+            this.VAC_PER_ID.Visible = false;
+            // 
+            // CAL_VAC_ID
+            // 
+            this.CAL_VAC_ID.DataPropertyName = "CAL_VAC_ID";
+            this.CAL_VAC_ID.HeaderText = "CAL_VAC_ID";
+            this.CAL_VAC_ID.Name = "CAL_VAC_ID";
+            this.CAL_VAC_ID.Visible = false;
+            // 
+            // VAC_PER_VAC
+            // 
+            this.VAC_PER_VAC.DataPropertyName = "VAC_PER_VAC";
+            this.VAC_PER_VAC.HeaderText = "Período";
+            this.VAC_PER_VAC.Name = "VAC_PER_VAC";
+            // 
+            // VAC_PER_FEC_INI
+            // 
+            this.VAC_PER_FEC_INI.DataPropertyName = "VAC_PER_FEC_INI";
+            this.VAC_PER_FEC_INI.HeaderText = "Fecha Inicio";
+            this.VAC_PER_FEC_INI.Name = "VAC_PER_FEC_INI";
+            // 
+            // VAC_PER_FEC_FIN
+            // 
+            this.VAC_PER_FEC_FIN.DataPropertyName = "VAC_PER_FEC_FIN";
+            this.VAC_PER_FEC_FIN.HeaderText = "Fecha Fin";
+            this.VAC_PER_FEC_FIN.Name = "VAC_PER_FEC_FIN";
+            // 
+            // VAC_DIAS_CAL
+            // 
+            this.VAC_DIAS_CAL.DataPropertyName = "VAC_DIAS_CAL";
+            this.VAC_DIAS_CAL.HeaderText = "Día Calculado";
+            this.VAC_DIAS_CAL.Name = "VAC_DIAS_CAL";
             // 
             // frmDetalleVacacion
             // 
@@ -367,10 +386,6 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.ErrorProvider ErrProv;
         private System.Windows.Forms.DataGridView dgvData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VAC_PER_VAC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VAC_PER_FEC_INI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VAC_PER_FEC_FIN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VAC_DIAS_CAL;
         private System.Windows.Forms.TextBox txtSueldo;
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label label1;
@@ -380,5 +395,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VAC_VAL_DIAS;
         private System.Windows.Forms.DataGridViewTextBoxColumn VAC_VAL_VALOR;
         private System.Windows.Forms.DataGridViewTextBoxColumn VAC_VAL_VALOR_VAC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VAC_PER_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CAL_VAC_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VAC_PER_VAC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VAC_PER_FEC_INI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VAC_PER_FEC_FIN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VAC_DIAS_CAL;
     }
 }

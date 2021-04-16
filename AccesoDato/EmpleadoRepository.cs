@@ -44,6 +44,8 @@ namespace DataAccess
         private static string sqlValidaCedula = "SELECT F_VALIDA_DOCUMENTO(:empCI) FROM DUAL";
         private static string sqlDiscapacidad = "SELECT DSCP_TIP_ID, DSCP_TIP_DSC FROM DESARROLLO.DAT_DSCP_TIP ";
         private static string sqlEmpleadoDiscapacidad = "SELECT DSCP_ID, EMP_ID, DSCP_TIP_ID, DSCP_NUM, DSCP_PRCT, DSCP_DSC FROM DESARROLLO.DAT_DSCP WHERE EMP_ID=:EMP_ID";
+        private static string sqlDiscapacidadEmp = @"SELECT LISTAGG (DSCP_PRCT || '% ' || DSCP_TIP_DSC, '; ')  WITHIN GROUP(ORDER BY DSCP_TIP_DSC) DISCAPACIDAD    
+                                                    FROM DESARROLLO.DAT_DSCP  D JOIN DAT_DSCP_TIP T ON (D.DSCP_TIP_ID = T.DSCP_TIP_ID) WHERE EMP_ID=:EMP_ID";
         private static string sqlCargoEmpleadoRol = "SELECT PK_NOMINATCG.F_CARGOEMPROL(:EMP_ID, :PER_ID, :REPRO_ID) FROM DUAL ";
         private static string sqlListarEmpleado = @"SELECT EMP_ID,EMP_APELLIDO,EMP_NOMBRE,EMP_CI,EMP_NUM_IESS,EMP_CUENTA,EMP_DISCAPACIDAD,
                                                            EMP_MAIL,EMP_PASAPORTE,EMP_PAG_FON_RES,EMP_TIPO_CNTA,EMP_NUM_CONADIS,
@@ -1111,12 +1113,18 @@ namespace DataAccess
             return db.GetData(sqlDiscapacidad);
             //return datos;
         }
-        public DataTable ListaEmpleadoDiscapacidad(string empID)
+        public DataTable ListaEmpleadoDiscapacidad(string empID,string tipo)
         {
+            string sql;
             OracleParameter[] prm = new OracleParameter[]{
             new OracleParameter(":empID",empID)
             };
-            return db.GetData(sqlEmpleadoDiscapacidad, prm);
+            if (tipo.Equals("V"))
+                sql = sqlDiscapacidadEmp;
+            else
+                sql = sqlEmpleadoDiscapacidad;
+
+            return db.GetData(sql, prm);
         }
 
         public DataTable ListaEmpleadoDT(string empID)

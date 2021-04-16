@@ -18,6 +18,25 @@ namespace Entity
             datos.Rows.Add("E", "Conyugue");
             return datos;
         }
+        public static DataTable MesAnio()
+        {
+            DataTable datos = new DataTable();
+            datos.Columns.Add("ID");
+            datos.Columns.Add("Nombre");
+            datos.Rows.Add(1, "Enero");
+            datos.Rows.Add(2, "Febrero");
+            datos.Rows.Add(3, "Marzo");
+            datos.Rows.Add(4, "Abril");
+            datos.Rows.Add(5, "Mayo");
+            datos.Rows.Add(6, "Junio");
+            datos.Rows.Add(7, "Julio");
+            datos.Rows.Add(8, "Agosto");
+            datos.Rows.Add(9, "Septiembre");
+            datos.Rows.Add(10, "Octubre");
+            datos.Rows.Add(11, "Noviembre");
+            datos.Rows.Add(12, "Diciembre");
+            return datos;
+        }
         public static DataTable PagoServicio()
         {
             DataTable datos = new DataTable();

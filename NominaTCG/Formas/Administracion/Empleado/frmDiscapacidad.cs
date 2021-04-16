@@ -36,7 +36,7 @@ namespace NominaTCG
             EmpleadoBO = EmpleadoController.Instancia;
             dgvDatos.AutoGenerateColumns = false;
             EmpID = empID;//201908004
-            dgvDatos.DataSource = EmpleadoBO.ListaEmpleadoDiscapacidad(EmpID);
+            dgvDatos.DataSource = EmpleadoBO.ListaEmpleadoDiscapacidad(EmpID,"");
             TIP_ID.DataSource = EmpleadoBO.ListaDiscapacidad();
             TIP_ID.DisplayMember = "DSCP_TIP_DSC";
             TIP_ID.ValueMember = "DSCP_TIP_ID";
@@ -118,7 +118,8 @@ namespace NominaTCG
                 }
             }
 
-            dgvDatos.DataSource = EmpleadoBO.ListaEmpleadoDiscapacidad(EmpID);
+            dgvDatos.DataSource = EmpleadoBO.ListaEmpleadoDiscapacidad(EmpID,"");
+            Utility.MensajeInfo("Datos Actualizados");
 
         }
         #endregion

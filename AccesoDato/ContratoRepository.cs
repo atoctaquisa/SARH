@@ -146,7 +146,8 @@ namespace DataAccess
                                                                        AND V.CAL_VAC_ID = C.CAL_VAC_ID
                                                                        AND V.VAC_PER_ID = C.VAC_PER_ID)
                                                          WHERE     C.EMP_ID = :EMP_ID
-                                                               AND C.CAL_VAC_ID = :CAL_VAC_ID ";
+                                                               AND C.CAL_VAC_ID = :CAL_VAC_ID 
+                                                               AND C.VAC_PER_ID = :VAC_PER_ID";
         private static string sqlDetalleVacacion = @"SELECT ROWNUM NUM,
                                                            EMP_ID,
                                                            CAL_VAC_ID,
@@ -351,6 +352,8 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
 
 
         private static string sqlRubroAdicional = "SELECT EMP_ID, ROL_ID, FIJ_VALOR, FIJ_ESTADO, FECHACREA, FECHAMODI FROM DESARROLLO.DAT_EMP_VAL_FIJO WHERE EMP_ID =:empID";
+        private static string sqlUpdateEmpFec = "UPDATE DAT_EMP   SET LAB_FEC_INGRESO = :P_FECHA WHERE EMP_ID = :EMP_ID";
+        private static string sqlUpdateEmpFecIng = "UPDATE DAT_DET_ING_EMP   SET ING_FEC_ING = :P_FECHA WHERE EMP_ID = :EMP_ID";
         private static string sqlRegistraContrato = @"
                                 INSERT INTO DESARROLLO.DAT_EMP_CON (EMP_ID,
                                                                     EMP_CON_ID,
@@ -406,7 +409,7 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
                                                                     EMP_CON_FEC_LEG_SA=:EMP_CON_FEC_LEG_SA,
                                                                     --EMP_CON_FIRM_SALIDA,
                                                                     --EMP_CON_FEC_MIN_TR,
-                                                                    EMP_CON_FEC_CONTRATO=:EMP_CON_FEC_CONTRATO,
+                                                                    --EMP_CON_FEC_CONTRATO=:EMP_CON_FEC_CONTRATO,
                                                                     EMP_CON_OBS=:EMP_CON_OBS,
                                                                     --EMP_CON_FEC_REG,
                                                                     EMP_CON_FEC_MOD=SYSDATE,
@@ -676,13 +679,13 @@ AND (R.ROL_ID IN (SELECT rol_id
                                                      :PER_HOR_FIN )";
         private static string sqlPermisoCodigo = "SELECT COUNT(PER_ID)+1 FROM DESARROLLO.DAT_PER WHERE EMP_ID=:EMP_ID";
 
-        private static string sqlListarVacacion = @"SELECT EMP_ID, CAB_VAC_ID, EMP_CON_ID, VAC_PER_DADO, CAB_VAC_DIAS, CAB_VAC_DIAS_PAG, 
-                                                           CAB_VAC_DIAS_PEN, CAB_VAC_DIAS_ADI,trunc(CAB_VAC_VAL,4)CAB_VAC_VAL, 
+        private static string sqlListarVacacion = @"SELECT EMP_ID, CAB_VAC_ID, EMP_CON_ID, VAC_PER_DADO, TRUNC(CAB_VAC_DIAS,2) CAB_VAC_DIAS, CAB_VAC_DIAS_PAG, 
+                                                           TRUNC(CAB_VAC_DIAS_PEN,2 )CAB_VAC_DIAS_PEN, CAB_VAC_DIAS_ADI,trunc(CAB_VAC_VAL,4)CAB_VAC_VAL, 
                                                            trunc(CAB_VAC_VAL_PAG,4) CAB_VAC_VAL_PAG, trunc(CAB_VAC_VAL_PEN,4)CAB_VAC_VAL_PEN, CAB_VAC_ESTADO, 
                                                            FECHACREACION, FECHAMODIF, CAB_VAC_OBS, 
                                                            CAB_VAC_FECINI, CAB_VAC_FECFIN,trunc((CAB_VAC_VAL/CAB_VAC_DIAS)*CAB_VAC_DIAS_ADI,4) VALOR_ADI,
                                                            TRUNC(CAB_VAC_VAL_PEN,4) valor_pend --trunc((CAB_VAC_VAL/CAB_VAC_DIAS)*CAB_VAC_DIAS_PEN,4) valor_pend
-                                                    FROM DESARROLLO.DAT_CAB_VAC WHERE EMP_ID=:EMP_ID ORDER BY VAC_PER_DADO";
+                                                    FROM DESARROLLO.DAT_CAB_VAC WHERE EMP_ID=:EMP_ID ORDER BY VAC_PER_DADO DESC";
         private static string sqlListarVacacionDT = @"SELECT 
                                                            EMP_ID, CAB_VAC_ID, EMP_CON_ID, 
                                                            DET_VAC_ID, ESC_ID, LOC_ID, 
@@ -1879,7 +1882,12 @@ AND (R.ROL_ID IN (SELECT rol_id
                 new OracleParameter(":EMP_CON_OBS",emp.empConObs),
                 new OracleParameter(":CON_CAU_ID",emp.conCauId)
                 };
-
+                OracleParameter[] prm2 = new OracleParameter[]{
+                    new OracleParameter(":P_FECHA",emp.empConFecContrato),
+                new OracleParameter(":EMP_ID",emp.empId)
+                };
+                db.ExecQuery(sqlUpdateEmpFec, prm2);
+                db.ExecQuery(sqlUpdateEmpFecIng, prm2);
                 return (db.ExecQuery(sqlRegistraContrato, prm).Equals(1) ? Convert.ToInt64(emp.empId) : 0);
             }
             else
@@ -1892,12 +1900,18 @@ AND (R.ROL_ID IN (SELECT rol_id
                 new OracleParameter(":EMP_CON_FEC_LIQUI",emp.empConFecLiqui),
                 new OracleParameter(":EMP_CON_FIRM_LIQUI",emp.empConFirmLiqui),
                 new OracleParameter(":EMP_CON_FEC_LEG_SA",emp.empConFecLiqui),
-                new OracleParameter(":EMP_CON_FEC_CONTRATO",emp.empConFecContrato),
+                //new OracleParameter(":EMP_CON_FEC_CONTRATO",emp.empConFecContrato),
                 new OracleParameter(":EMP_CON_OBS",emp.empConObs),
                 new OracleParameter(":CON_CAU_ID",emp.conCauId),
                 new OracleParameter(":EMP_ID",emp.empId),
                 new OracleParameter(":EMP_CON_ID",emp.empConId)
                 };
+                //OracleParameter[] prm2 = new OracleParameter[]{
+                //    new OracleParameter(":P_FECHA",emp.empConFecContrato),
+                //new OracleParameter(":EMP_ID",emp.empId)
+                //};
+                //db.ExecQuery(sqlUpdateEmpFec, prm2);
+                //db.ExecQuery(sqlUpdateEmpFecIng, prm2);
 
                 if (db.ExecQuery(sqlActualizaContrato, prm).Equals(1))
                 {
@@ -2109,6 +2123,32 @@ AND (R.ROL_ID IN (SELECT rol_id
             data.TableName = "Detail";
             content.Tables.Add(data);
             return content;
+
+        }
+        public DataTable DetalleVacacionCab(string empID, string vacID)
+        {
+            DataSet content = new DataSet();
+            DataTable data = new DataTable();
+            OracleParameter[] prm = new OracleParameter[]
+                {
+                    new OracleParameter(":EMP_ID", empID),
+                    new OracleParameter(":CAL_VAC_ID", vacID)                   
+                };
+            return db.GetData(sqlDetalleVacacion, prm);
+
+        }
+        public DataTable DetalleVacacionDT(string empID, string vacID, string perID)
+        {
+            DataSet content = new DataSet();
+            DataTable data = new DataTable();
+            OracleParameter[] prm = new OracleParameter[]
+                {
+                    new OracleParameter(":EMP_ID", empID),
+                    new OracleParameter(":CAL_VAC_ID", vacID),
+                    new OracleParameter(":VAC_PER_ID", perID)
+                };
+           
+            return db.GetData(sqlDetalleVacacionDT, prm);            
 
         }
         public DataTable DetalleEgreso()

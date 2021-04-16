@@ -377,3 +377,5 @@ C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\De
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmVacacionRep.resources
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmProvisiones.resources
 C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmRolNegativoRep.resources
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmCertificado.resources
+C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\obj\Debug\NominaTCG.frmCertificadoRep.resources

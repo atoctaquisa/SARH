@@ -404,5 +404,12 @@ namespace NominaTCG
             frm.MdiParent = this;
             Design.frmShow(frm);
         }
+
+        private void mnuCertificado_Click(object sender, EventArgs e)
+        {
+            var frm = frmCertificado.Instancia;
+            frm.MdiParent = this;
+            Design.frmShow(frm);
+        }
     }
 }

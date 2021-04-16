@@ -94,6 +94,7 @@
             this.mnuInformacion = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuVacacionRep = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAsistencia = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCertificado = new System.Windows.Forms.ToolStripMenuItem();
             this.empresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuActuarial = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -313,7 +314,7 @@
             this.mnuJornada,
             this.mnuSolicitud});
             this.personalToolStripMenuItem.Name = "personalToolStripMenuItem";
-            this.personalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.personalToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.personalToolStripMenuItem.Tag = "31";
             this.personalToolStripMenuItem.Text = "Empleado";
             // 
@@ -396,7 +397,7 @@
             this.mnuRolIndividual,
             this.mnuCalculo});
             this.permisosToolStripMenuItem.Name = "permisosToolStripMenuItem";
-            this.permisosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.permisosToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.permisosToolStripMenuItem.Tag = "32";
             this.permisosToolStripMenuItem.Text = "Nomina";
             // 
@@ -553,7 +554,7 @@
             this.mnuMaternidad,
             this.mnuDatosIESS});
             this.mnuIESS.Name = "mnuIESS";
-            this.mnuIESS.Size = new System.Drawing.Size(180, 22);
+            this.mnuIESS.Size = new System.Drawing.Size(127, 22);
             this.mnuIESS.Tag = "33";
             this.mnuIESS.Text = "IESS";
             // 
@@ -659,7 +660,8 @@
             this.empleadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuInformacion,
             this.mnuVacacionRep,
-            this.mnuAsistencia});
+            this.mnuAsistencia,
+            this.mnuCertificado});
             this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
             this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.empleadosToolStripMenuItem.Tag = "43";
@@ -687,6 +689,14 @@
             this.mnuAsistencia.Size = new System.Drawing.Size(180, 22);
             this.mnuAsistencia.Tag = "433";
             this.mnuAsistencia.Text = "&Asistencia";
+            // 
+            // mnuCertificado
+            // 
+            this.mnuCertificado.Name = "mnuCertificado";
+            this.mnuCertificado.Size = new System.Drawing.Size(180, 22);
+            this.mnuCertificado.Tag = "434";
+            this.mnuCertificado.Text = "Certificados";
+            this.mnuCertificado.Click += new System.EventHandler(this.mnuCertificado_Click);
             // 
             // empresaToolStripMenuItem
             // 
@@ -854,5 +864,6 @@
         private System.Windows.Forms.ToolStripStatusLabel tssPerfil;
         private System.Windows.Forms.ToolStripStatusLabel toolServer;
         private System.Windows.Forms.ToolStripMenuItem mnuAsistencia;
+        private System.Windows.Forms.ToolStripMenuItem mnuCertificado;
     }
 }

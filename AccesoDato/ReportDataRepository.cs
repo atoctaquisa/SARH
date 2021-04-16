@@ -37,7 +37,7 @@ namespace DataAccess
             db = ConnectionDDBB.Instancia;
         }
         #endregion
-
+        private string sqlCertificado = "SELECT PATRONO, EMP_CI, NOMBRE,ESC_CARGOMB,LAB_FEC_INGRESO, LAB_RBU,0 RBU_VAR,'' MARCA, SYSDATE FECHA  FROM V_DETALLE_EMP WHERE EMP_ID=:EMP_ID";
         private string sqlLiquidacion = @"SELECT e.emp_id, ESC_CARGOMB,
                                                    NOMBRE,
                                                    EMP_CI,
@@ -296,6 +296,31 @@ SELECT PRESTAMO,
                                                                                     '/MM/RRRR'),
                                                                              'DD/MM/RRRR')
                                                                                          ";
+        private string sqlDetalleContabilidadFecha = @"SELECT PAT_NOMBRE,
+                                                               TO_CHAR (ROL_FECHA_INI, 'RRRR')
+                                                                   anio,
+                                                               TO_CHAR (ROL_FECHA_INI, 'Month', 'nls_date_language=spanish')
+                                                                   MES,
+                                                               CONS_LOCAL,
+                                                               CONS_NOMBRE,
+                                                               CONS_CARGO,
+                                                               TIPO_CONTRATO,
+                                                               CONS_DIA,
+                                                               ESTADO,
+                                                               ROL_CUENTA,
+                                                               CONS_CUENTA,
+                                                               TRUNC (CONS_VALOR, 2)
+                                                                   CONS_VALOR,
+                                                               CONS_ORD_IMP,
+                                                               ROL_ID,
+                                                               EMP_ID,
+                                                               ESC_ID,
+                                                               LOC_ID,
+                                                               PAT_ID,
+                                                               ROL_PAGADO
+                                                          FROM DESARROLLO.DAT_IMP_SUELDO_CONS
+                                                               JOIN DAT_ROL_SEG ON (SEG_ROL_ID = ROL_ID_GEN AND SEG_ROL_ESTADO = 1)
+                                                         WHERE ROL_ID!=20467 ";
         private string sqlDetalleContabilidad = @"SELECT R.ROL_LOCAL,
        R.ROL_DIAS,
        R.ROL_NOMBRE,
@@ -333,6 +358,8 @@ SELECT PRESTAMO,
         private string sqlReporteDetalleSueldo = "DESARROLLO.P_IMP_SUELDO_CONS_CONTA_DET";
         private string sqlReporteDetalleSueldoExel = "DESARROLLO.P_IMP_ROL_EXCEL";
 
+        private string sqlReporteDetalleSueldoFecha = "DESARROLLO.P_GEN_REP_DET_ROL";
+
         private string sqlSueldoQuincena = "DESARROLLO.P_GEN_CUEN_SUELDO";
         private string sqlSueldoQuincenaTotal = "DESARROLLO.P_GEN_CUEN_SUELDO_TOT";
         private string sqlSueldoQuincenaGlobal = "DESARROLLO.P_GEN_CUEN_SUELDO_GT";
@@ -355,13 +382,13 @@ SELECT PRESTAMO,
                                                       FROM DESARROLLO.DAT_EMP_SEC
                                                      WHERE EMP_SEC_ID = V.EMP_SEC)    SECTOR,
                                                    EMP_TELEFONO TELEFONO,
-                                                   DECODE(EMP_EST_CIVIL,'S','Soltero','C','Casado','U','Unión Libre','Se', 'Separado', 'D', 'Divorciado','V','Viudo') ESTADO_CIVIL,
+                                                   DECODE(TRIM(EMP_EST_CIVIL),'S','Soltero','C','Casado','U','Unión Libre','Se', 'Separado', 'D', 'Divorciado','V','Viudo') ESTADO_CIVIL,
                                                    DECODE(EMP_SEXO,1,'Hombre',0,'Mujer') SEXO,
                                                    EMP_CUENTA CUENTA,
                                                    DECODE(EMP_DISCAPACIDAD,0,'No',1,'Si') DISCAPACIDAD,
                                                    EMP_MAIL_PER CORREO_PERSONAL,
                                                    EMP_MAIL CORREO_EMPRESARIAL
-                                              FROM DESARROLLO.V_DETALLE_EMP V";
+                                              FROM DESARROLLO.V_DETALLE_EMP V WHERE EMP_ID >0 ";
         private string sqlActuarialEmpresa = @"SELECT 
                                                EMPID, TIPOID TIPO, CEDULA, 
                                                TIPOEMP, APELLIDO, NOMBRE, 
@@ -494,7 +521,7 @@ SELECT PRESTAMO,
 
             };
             //return db.GetData(sqlSolicitudVacacion, prm);
-            return db.GetData(sqlDetalleEmpleado, prm);
+            return db.GetData(sqlDetalleEmpleado + query, prm);
         }
 
         public DataTable Actuarial(string nAnio)
@@ -563,6 +590,15 @@ SELECT PRESTAMO,
             //content.Tables.Add(data);
             return content;
         }
+        public DataTable Certificado(string empID, string tipo)
+        {
+            OracleParameter[] prm = new OracleParameter[]
+            {
+                new OracleParameter(":EMP_ID",empID )
+                //new OracleParameter(":DIAR_ID",tipo)
+            };            
+            return db.GetData(sqlCertificado,prm);
+        }
         public DataTable LiquidacionDT(string empID, string vacID)
         {
             OracleParameter[] prm = new OracleParameter[]
@@ -573,31 +609,54 @@ SELECT PRESTAMO,
             db.ExecProcedure(sqlLiquidacionReport, prm);
             return db.GetData(sqlLiquidacionDT);
         }
+        public DataTable DetalleContabilidad(string fechaIni, string fechaFin, string emprID, string locID)
+        {
+            DataTable data = new DataTable();
+            string sqlWhere = string.Empty ;
+            OracleParameter[] prm = new OracleParameter[]
+            {
+                new OracleParameter(":PFECHA1",Convert.ToDateTime(fechaIni).ToString("dd-MMM-yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))),
+                new OracleParameter(":PFECHA2",Convert.ToDateTime(fechaFin).ToString("dd-MMM-yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))),
+                new OracleParameter(":DIAR_ID","")
+            };
+            db.ExecProcedure(sqlReporteDetalleSueldoFecha, prm);
+
+            if (!string.IsNullOrEmpty(emprID))
+                sqlWhere += " AND PAT_ID="+emprID;
+            //if (string.IsNullOrEmpty(locID))
+            //    sqlWhere += "";
+
+            data = db.GetData(sqlDetalleContabilidadFecha + sqlWhere + " ORDER BY ANIO, PAT_NOMBRE, CONS_LOCAL, CONS_NOMBRE, CONS_ORD_IMP ASC");
+            return data;
+        }
         public DataTable DetalleContabilidad(string rolID, string reproID, string tipoRep)
         {
+            DataTable data;
+
             OracleParameter[] prm = new OracleParameter[]
-         {
+            {
                 new OracleParameter(":ROL_ID_GEN",rolID ),
                 new OracleParameter(":ROL_REPRO",reproID ),
                 new OracleParameter(":OP",1 )
-         };
+            };
 
             db.ExecProcedure(sqlReporteDetalleSueldo, prm);
             db.ExecProcedure(sqlReporteDetalleSueldoExel, prm);
 
             prm = new OracleParameter[]
-           {
+            {
                 new OracleParameter(":ROL_ID_GEN",rolID ),
                 new OracleParameter(":ROL_REPRO",reproID )
-           };
+            };
+
             string sql;
             if (tipoRep.Equals("Consolidado"))
                 sql = sqlDetalleContabilidadC;
             else
                 sql = sqlDetalleContabilidadD;
 
-
-            return db.GetData(sqlDetalleContabilidad, prm);
+            data = db.GetData(sqlDetalleContabilidad, prm);
+            return data;
         }
         public DataTable RolNegativo(string rolID, string reproID)
         {

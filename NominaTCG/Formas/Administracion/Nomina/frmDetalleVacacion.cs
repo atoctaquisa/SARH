@@ -17,6 +17,8 @@ namespace NominaTCG
     public partial class frmDetalleVacacion : Form
     {
         private ContratoController ContratoBO { get; set; }
+        string _EMPID;
+        string _REF;
         public frmDetalleVacacion(string empID, string codRef)
         {
             InitializeComponent();
@@ -25,10 +27,14 @@ namespace NominaTCG
             dgvData.AllowUserToAddRows = false;
             dgvDataDT.AllowUserToAddRows = false;
             ContratoBO = ContratoController.Instancia;
+            _EMPID = empID;
+            _REF = codRef;
             //dgvData.DataSource = ContratoBO.DetalleDecimoTercero(empID, perID);
-            dgvData.DataSource = ContratoBO.DetalleVacacion(empID, codRef).Tables[0];
-            dgvDataDT.DataSource = ContratoBO.DetalleVacacion(empID, codRef).Tables[1];
-            TotalSalary();
+            //DataSet data = ContratoBO.DetalleVacacion(empID, codRef);
+            dgvData.DataSource = ContratoBO.DetalleVacacionCab(empID, codRef);//data.Tables[0];
+            ListarDetalle();
+            //dgvDataDT.DataSource = ContratoBO.DetalleVacacion(empID, codRef).Tables[1];
+            
         }
 
         private void TotalSalary()
@@ -59,6 +65,24 @@ namespace NominaTCG
         {
             //_instancia = null;
             this.Close();
+        }
+
+        private void dgvData_CurrentCellChanged(object sender, EventArgs e)
+        {
+            ListarDetalle();
+        }
+
+        private void ListarDetalle()
+        {
+            foreach (DataGridViewCell item in dgvData.SelectedCells)
+            {
+                if (item.Selected)
+                {
+                    dgvDataDT.DataSource = ContratoBO.DetalleVacacionDT(_EMPID, _REF, dgvData.Rows[item.RowIndex].Cells["VAC_PER_ID"].Value.ToString());
+
+                }
+            }
+            TotalSalary();
         }
     }
 }

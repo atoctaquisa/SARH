@@ -245,7 +245,7 @@ namespace NominaTCG
             txtPerTelefonoSeg.ReadOnly = !stateControl;
             txtPerLugarNac.ReadOnly = !stateControl;
             pPerFechaNac.Enabled = stateControl;
-            pPerFechaIngreso.Enabled = stateControl;
+            //pPerFechaIngreso.Enabled = stateControl;
             cboPerEstadoCivil.Enabled = stateControl;
             cboPerSexo.Enabled = stateControl;
             txtPerTipoSangre.ReadOnly = !stateControl;
@@ -352,6 +352,7 @@ namespace NominaTCG
         private void ClearControls(int tabID)
         {
             //Info. Principal
+            lblDiscapacidad.Text = string.Empty;
             txtCodigo.Text = string.Empty;
             txtNombre.Text = string.Empty;
             txtApellido.Text = string.Empty;
@@ -1328,6 +1329,11 @@ namespace NominaTCG
                 EmpleadoBO.Empleado.empFecReg = DateTime.TryParse(data.Rows[0]["EMP_FEC_REG"].ToString(), out dateResult) ? dateResult : Convert.ToDateTime("01/01/9999");
                 EmpleadoBO.Empleado.empFecMod = DateTime.TryParse(data.Rows[0]["EMP_FEC_MOD"].ToString(), out dateResult) ? dateResult : Convert.ToDateTime("01/01/9999");
                 EmpleadoBO.Empleado.empDiscapacidad = Convert.ToInt32(data.Rows[0]["EMP_DISCAPACIDAD"].ToString());
+                if (EmpleadoBO.Empleado.empDiscapacidad == 1)
+                    lblDiscapacidad.Text = ""+ ((DataTable)EmpleadoBO.ListaEmpleadoDiscapacidad(idRecord,"V")).Rows[0]["DISCAPACIDAD"].ToString();
+                else
+                    lblDiscapacidad.Text = "";
+
                 EmpleadoBO.Empleado.empMail = data.Rows[0]["EMP_MAIL"].ToString();
                 EmpleadoBO.Empleado.empMailPer = data.Rows[0]["EMP_MAIL_PER"].ToString();
             }
@@ -1395,6 +1401,11 @@ namespace NominaTCG
             ClearControls(tabInformacion.SelectedIndex);
             ActiveControls(false, tabInformacion.SelectedIndex);
             Design.Controls(this.btnNewSave, this.btnEditCancel, this.btnDelete);
+            if (Catalogo.UserRole.Equals("V"))
+            {
+                txtLabRBU.Visible = true;
+            }           
+
         }
 
         private void frmEmpleado_FormClosing(object sender, FormClosingEventArgs e)
@@ -1433,6 +1444,8 @@ namespace NominaTCG
 
         private void btnNewSave_Click(object sender, EventArgs e)
         {
+            if (Catalogo.UserSystem.Equals("V"))
+                return;
 
             if (this.btnNewSave.Text == "&Nuevo")
             {
@@ -1538,17 +1551,23 @@ namespace NominaTCG
 
         private void btnEditCancel_Click(object sender, EventArgs e)
         {
+            if (Catalogo.UserRole.Equals("V"))
+                return;
+
             if (this.btnEditCancel.Text == "&Editar")
             {
                 StateButton = Acction.Edit;
                 ActiveControls(true, tabInformacion.SelectedIndex);
                 pPerFechaIngreso.Enabled = false;
+                btnReingreso.Enabled = false;
+
             }
             else
             {
                 StateButton = Acction.Cancel;
                 ClearControls(tabInformacion.SelectedIndex);
                 ActiveControls(false, tabInformacion.SelectedIndex);
+                btnReingreso.Enabled = true;
             }
             Design.Controls(this.btnNewSave, this.btnEditCancel, this.btnDelete);
         }
@@ -1594,6 +1613,9 @@ namespace NominaTCG
 
         private void btnReingreso_Click(object sender, EventArgs e)
         {
+            if(Catalogo.UserSystem.Equals("V"))
+                return;
+
             if (!txtCodigo.Text.Equals(string.Empty))
             {
                 DataTable data = new DataTable();
@@ -1950,6 +1972,19 @@ namespace NominaTCG
         {
             if (e.KeyValue == Convert.ToChar(Keys.F5))
                 AssignData(EmpleadoBO.Empleado.empId.ToString());
+            if (e.KeyValue == Convert.ToChar(Keys.Escape))
+            {
+                //StateButton = Acction.Cancel;
+                //ClearControls(tabInformacion.SelectedIndex);
+                //ActiveControls(false, tabInformacion.SelectedIndex);
+                //btnReingreso.Enabled = true;
+
+                btnReingreso.Text = "&Reingreso";
+                this.btnReingreso.ImageIndex = 18;
+                ActiveControls(false, tabInformacion.SelectedIndex);
+                btnNewSave.Visible = true;
+                btnEditCancel.Visible = true;
+            }
         }      
 
         private void txtPerCedula_Validating(object sender, CancelEventArgs e)
@@ -1998,6 +2033,11 @@ namespace NominaTCG
             //    txtPerCedula.Enabled = true ;
             //    txtPerPasaporte.Enabled = false;
             //}
+        }
+
+        private void tabPersonal_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1309,3 +1309,307 @@ Stack Trace	: at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullP
    at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
    at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
 ^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetValues
+Date		: 16:42:23
+Time		: 16/3/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 120
+   at DataAccess.ReportDataRepository.DetalleContabilidad(String fechaIni, String fechaFin, String emprID, String locID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ReportDataRepository.cs:line 595
+   at BusinessLogic.ReportDataController.DetalleContabilidad(String fechaIni, String fechaFin, String emprID, String locID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ReportDataController.cs:line 107
+   at NominaTCG.frmDetalleContabilidad.btnNewSave_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Reporte\frmDetalleContabilidad.cs:line 114
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetValues
+Date		: 16:42:52
+Time		: 16/3/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 120
+   at DataAccess.ReportDataRepository.DetalleContabilidad(String fechaIni, String fechaFin, String emprID, String locID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ReportDataRepository.cs:line 595
+   at BusinessLogic.ReportDataController.DetalleContabilidad(String fechaIni, String fechaFin, String emprID, String locID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ReportDataController.cs:line 107
+   at NominaTCG.frmDetalleContabilidad.btnNewSave_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Reporte\frmDetalleContabilidad.cs:line 114
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: System.Data
+Method		: SetCapacity
+Date		: 11:42:41
+Time		: 17/3/2021
+Computer	: ALTR
+Error		: Exception of type 'System.OutOfMemoryException' was thrown.
+Stack Trace	: at System.Data.Common.DecimalStorage.SetCapacity(Int32 capacity)
+   at System.Data.RecordManager.set_RecordCapacity(Int32 value)
+   at System.Data.RecordManager.GrowRecordCapacity()
+   at System.Data.RecordManager.NewRecordBase()
+   at System.Data.DataTable.NewRecordFromArray(Object[] value)
+   at System.Data.DataTable.LoadDataRow(Object[] values, Boolean fAcceptChanges)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 120
+   at DataAccess.ReportDataRepository.DetalleContabilidad(String fechaIni, String fechaFin, String emprID, String locID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ReportDataRepository.cs:line 602
+   at BusinessLogic.ReportDataController.DetalleContabilidad(String fechaIni, String fechaFin, String emprID, String locID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ReportDataController.cs:line 107
+   at NominaTCG.frmDetalleContabilidad.btnNewSave_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Reporte\frmDetalleContabilidad.cs:line 114
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 11:21:10
+Time		: 12/4/2021
+Computer	: ALTR
+Error		: ORA-01476: divisor is equal to zero
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.ListarVacacion(String empID, String rolID, String reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1491
+   at BusinessLogic.ContratoController.ListarVacacion(String empID, String rolID, String reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 172
+   at NominaTCG.frmVacaciones.AssignControls() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Empleado\frmVacaciones.cs:line 71
+   at NominaTCG.frmVacaciones.btnSearch_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Empleado\frmVacaciones.cs:line 292
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 12:10:43
+Time		: 12/4/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.ListarVacacion(String empID, String rolID, String reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1491
+   at BusinessLogic.ContratoController.ListarVacacion(String empID, String rolID, String reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 172
+   at NominaTCG.frmVacaciones.AssignControls() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Empleado\frmVacaciones.cs:line 71
+   at NominaTCG.frmVacaciones.btnSearch_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Empleado\frmVacaciones.cs:line 292
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 12:10:52
+Time		: 12/4/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.ListarVacacion(String empID, String rolID, String reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1491
+   at BusinessLogic.ContratoController.ListarVacacion(String empID, String rolID, String reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 172
+   at NominaTCG.frmVacaciones.AssignControls() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Empleado\frmVacaciones.cs:line 71
+   at NominaTCG.frmVacaciones.frmVacaciones_KeyDown(Object sender, KeyEventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Empleado\frmVacaciones.cs:line 357
+   at System.Windows.Forms.Control.OnKeyDown(KeyEventArgs e)
+   at System.Windows.Forms.Control.ProcessKeyEventArgs(Message& m)
+   at System.Windows.Forms.Form.ProcessKeyPreview(Message& m)
+   at System.Windows.Forms.TabControl.ProcessKeyPreview(Message& m)
+   at System.Windows.Forms.Control.ProcessKeyPreview(Message& m)
+   at System.Windows.Forms.Control.ProcessKeyMessage(Message& m)
+   at System.Windows.Forms.Control.WmKeyChar(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 12:12:02
+Time		: 12/4/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.ListarVacacion(String empID, String rolID, String reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1491
+   at BusinessLogic.ContratoController.ListarVacacion(String empID, String rolID, String reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 172
+   at NominaTCG.frmVacaciones.AssignControls() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Empleado\frmVacaciones.cs:line 71
+   at NominaTCG.frmVacaciones.frmVacaciones_KeyDown(Object sender, KeyEventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Empleado\frmVacaciones.cs:line 357
+   at System.Windows.Forms.Control.OnKeyDown(KeyEventArgs e)
+   at System.Windows.Forms.Control.ProcessKeyEventArgs(Message& m)
+   at System.Windows.Forms.Form.ProcessKeyPreview(Message& m)
+   at System.Windows.Forms.TabControl.ProcessKeyPreview(Message& m)
+   at System.Windows.Forms.Control.ProcessKeyPreview(Message& m)
+   at System.Windows.Forms.Control.ProcessKeyMessage(Message& m)
+   at System.Windows.Forms.Control.WmKeyChar(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 12:14:24
+Time		: 12/4/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.ListarVacacion(String empID, String rolID, String reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1491
+   at BusinessLogic.ContratoController.ListarVacacion(String empID, String rolID, String reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 172
+   at NominaTCG.frmVacaciones.AssignControls() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Empleado\frmVacaciones.cs:line 71
+   at NominaTCG.frmVacaciones.frmVacaciones_KeyDown(Object sender, KeyEventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Empleado\frmVacaciones.cs:line 357
+   at System.Windows.Forms.Control.OnKeyDown(KeyEventArgs e)
+   at System.Windows.Forms.Control.ProcessKeyEventArgs(Message& m)
+   at System.Windows.Forms.Form.ProcessKeyPreview(Message& m)
+   at System.Windows.Forms.TabControl.ProcessKeyPreview(Message& m)
+   at System.Windows.Forms.Control.ProcessKeyPreview(Message& m)
+   at System.Windows.Forms.Control.ProcessKeyMessage(Message& m)
+   at System.Windows.Forms.Control.WmKeyChar(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: System.Windows.Forms
+Method		: get_Item
+Date		: 13:38:19
+Time		: 13/4/2021
+Computer	: ALTR
+Error		: Column named VAC_PER_ID cannot be found.
+Parameter name: columnName
+Stack Trace	: at System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   at NominaTCG.frmDetalleVacacion.dgvData_CurrentCellChanged(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleVacacion.cs:line 76
+   at System.Windows.Forms.DataGridView.OnCurrentCellChanged(EventArgs e)
+   at System.Windows.Forms.DataGridView.SetCurrentCellAddressCore(Int32 columnIndex, Int32 rowIndex, Boolean setAnchorCellAddress, Boolean validateCurrentCell, Boolean throughMouseClick)
+   at System.Windows.Forms.DataGridView.OnCellMouseDown(HitTestInfo hti, Boolean isShiftDown, Boolean isControlDown)
+   at System.Windows.Forms.DataGridView.OnCellMouseDown(DataGridViewCellMouseEventArgs e)
+   at System.Windows.Forms.DataGridView.OnMouseDown(MouseEventArgs e)
+   at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.DataGridView.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: mscorlib
+Method		: get_Item
+Date		: 16:49:51
+Time		: 14/4/2021
+Computer	: ALTR
+Error		: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+Stack Trace	: at System.Collections.ArrayList.get_Item(Int32 index)
+   at System.Windows.Forms.DataGridViewRowCollection.SharedRow(Int32 rowIndex)
+   at System.Windows.Forms.DataGridViewRowCollection.get_Item(Int32 index)
+   at NominaTCG.frmCalcularLiquidacion.txtAsiento_DoubleClick(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 347
+   at System.Windows.Forms.Control.OnDoubleClick(EventArgs e)
+   at System.Windows.Forms.TextBoxBase.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.TextBoxBase.WndProc(Message& m)
+   at System.Windows.Forms.TextBox.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^

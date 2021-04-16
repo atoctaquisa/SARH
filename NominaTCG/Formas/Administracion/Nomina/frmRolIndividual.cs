@@ -13,6 +13,8 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using Microsoft.Reporting.WinForms;
+using System.Security;
+using System.Security.Permissions;
 
 namespace NominaTCG
 {
@@ -23,6 +25,10 @@ namespace NominaTCG
         private SolicitudController SolicitudBO { get; set; }
         private ReportDataController ReportBO { get; set; }
         private ContratoController ContratoBO { get; set; }
+
+        private Microsoft.Reporting.WinForms.ReportViewer RptViewer;
+        private static PermissionSet permissions;
+        private static string pdfPath = @"c:\" ;//Properties.Settings.Default.pathPDF;
 
         #region Instancia / Constructor
         private static frmRolIndividual _instancia;
@@ -92,6 +98,49 @@ namespace NominaTCG
             ClearControl();
 
 
+            //--------------------------------------
+            permissions = new PermissionSet(PermissionState.Unrestricted);
+            RptViewer = new ReportViewer();
+            RptViewer.LocalReport.SetBasePermissionsForSandboxAppDomain(permissions);
+            RptViewer.LocalReport.DataSources.Clear();
+            string pdfName = "C:\\Test.pdf";//codigoDocumento + ".pdf";
+            string rptName = "1791997891001Retencion.rdlc";
+
+
+            try
+            {
+                //Save on local path
+                RptViewer.LocalReport.ReportPath = path;
+                string dominio = AppDomain.CurrentDomain.DynamicDirectory;
+
+                RptViewer.LocalReport.Refresh();
+                Byte[] reportE = RptViewer.LocalReport.Render("PDF");
+                System.IO.FileStream fs = System.IO.File.Create(pdfPath + "\\" + pdfName);
+                fs.Write(reportE, 0, reportE.Length);
+                fs.Close();
+                //response.pathArchivoPDF = pdfName;
+                //create = false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" XXXXXXXXXXXXXXXXXXXXXXXXXXXXX ");
+                Console.WriteLine(ex.HResult);
+                Console.WriteLine(" XXXXXXXXXXXXXXXXXXXXXXXXXXXXX ");
+                string error = ex.Message;
+                string trace = ex.StackTrace;
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                    error = error + " --- " + ex.Message;
+                    trace = trace + " --- " + ex.StackTrace;
+                }
+
+                //response.result = "ERROR";
+                //response.resultData = "CREACION DEL PDF --- " + error + " --- " + trace;
+                //Console.WriteLine(response.resultData);
+                //count += 1;
+            }
+
             //_reportViewer.LocalReport.DataSources.Clear();
             //var departmentsModels = new ReportDataSource() { Name = "Department_DS", Value = departments };
             //_reportViewer.LocalReport.DataSources.Add(departmentsModels);
@@ -153,8 +202,26 @@ namespace NominaTCG
         {
             _instancia = null;
             this.Close();
-        }            
+        }
 
-       
+        private void txtLocal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmpleado_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

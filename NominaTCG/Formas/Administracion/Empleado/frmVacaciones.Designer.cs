@@ -128,7 +128,7 @@
             this.tabAdmin.Location = new System.Drawing.Point(0, 28);
             this.tabAdmin.Name = "tabAdmin";
             this.tabAdmin.SelectedIndex = 0;
-            this.tabAdmin.Size = new System.Drawing.Size(947, 583);
+            this.tabAdmin.Size = new System.Drawing.Size(767, 583);
             this.tabAdmin.TabIndex = 0;
             // 
             // tabPage2
@@ -161,7 +161,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(939, 557);
+            this.tabPage2.Size = new System.Drawing.Size(759, 557);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Administración";
             // 
@@ -539,7 +539,7 @@
             this.dgvVaciones.ReadOnly = true;
             this.dgvVaciones.RowHeadersVisible = false;
             this.dgvVaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVaciones.Size = new System.Drawing.Size(587, 176);
+            this.dgvVaciones.Size = new System.Drawing.Size(399, 176);
             this.dgvVaciones.TabIndex = 19;
             this.dgvVaciones.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVaciones_CellDoubleClick);
             this.dgvVaciones.CurrentCellChanged += new System.EventHandler(this.dgvVaciones_CurrentCellChanged);
@@ -554,7 +554,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Location = new System.Drawing.Point(3, 495);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(933, 59);
+            this.groupBox1.Size = new System.Drawing.Size(753, 59);
             this.groupBox1.TabIndex = 71;
             this.groupBox1.TabStop = false;
             // 
@@ -577,7 +577,7 @@
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnExit.ImageIndex = 10;
             this.btnExit.ImageList = this.imgList;
-            this.btnExit.Location = new System.Drawing.Point(775, 19);
+            this.btnExit.Location = new System.Drawing.Point(696, 19);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(39, 29);
             this.btnExit.TabIndex = 1;
@@ -654,7 +654,7 @@
             this.dgvVacacionesDT.Location = new System.Drawing.Point(14, 326);
             this.dgvVacacionesDT.Name = "dgvVacacionesDT";
             this.dgvVacacionesDT.RowHeadersVisible = false;
-            this.dgvVacacionesDT.Size = new System.Drawing.Size(912, 160);
+            this.dgvVacacionesDT.Size = new System.Drawing.Size(724, 160);
             this.dgvVacacionesDT.TabIndex = 20;
             // 
             // lblTitulo
@@ -665,7 +665,7 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(947, 28);
+            this.lblTitulo.Size = new System.Drawing.Size(767, 28);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Solicitudes de Vacaciones";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -727,6 +727,7 @@
             this.Valor.HeaderText = "$$ Vacación";
             this.Valor.Name = "Valor";
             this.Valor.ReadOnly = true;
+            this.Valor.Visible = false;
             this.Valor.Width = 70;
             // 
             // DiaAnt
@@ -749,6 +750,7 @@
             this.Valor_ADI.HeaderText = "$$ Antiguedad";
             this.Valor_ADI.Name = "Valor_ADI";
             this.Valor_ADI.ReadOnly = true;
+            this.Valor_ADI.Visible = false;
             this.Valor_ADI.Width = 70;
             // 
             // DiaPag
@@ -781,6 +783,7 @@
             this.ValorPend.HeaderText = "$$ Pendiente";
             this.ValorPend.Name = "ValorPend";
             this.ValorPend.ReadOnly = true;
+            this.ValorPend.Visible = false;
             this.ValorPend.Width = 70;
             // 
             // Obs
@@ -831,6 +834,7 @@
             this.ValorDt.DefaultCellStyle = dataGridViewCellStyle14;
             this.ValorDt.HeaderText = "$Valor";
             this.ValorDt.Name = "ValorDt";
+            this.ValorDt.Visible = false;
             this.ValorDt.Width = 70;
             // 
             // FINSEMANA
@@ -858,7 +862,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 611);
+            this.ClientSize = new System.Drawing.Size(767, 611);
             this.Controls.Add(this.tabAdmin);
             this.Controls.Add(this.lblTitulo);
             this.KeyPreview = true;

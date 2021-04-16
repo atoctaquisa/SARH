@@ -15,7 +15,7 @@
     <TargetFrameworkProfile />
     <PublishUrl>\\192.168.1.91\publico\SARH\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
+    <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -23,10 +23,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>\\192.168.1.91\publico\SARH\</InstallUrl>
     <UpdateUrl>\\192.168.1.91\publico\SARH\</UpdateUrl>
     <WebPage>publish.htm</WebPage>
-    <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>41</ApplicationRevision>
+    <ApplicationRevision>48</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -131,6 +131,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formas\Reportes\CertificadoAct.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CertificadoAct.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Formas\Administracion\Reporte\frmProvisiones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -487,6 +493,18 @@
     <Compile Include="Formas\frmListaCuentaAsiento.Designer.cs">
       <DependentUpon>frmListaCuentaAsiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCertificado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCertificado.Designer.cs">
+      <DependentUpon>frmCertificado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCertificadoRep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCertificadoRep.Designer.cs">
+      <DependentUpon>frmCertificadoRep.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -602,6 +620,11 @@
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="CertificadoAct.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\CertificadoAct.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CertificadoAct.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formas\Reportes\AsistenciaEmpleado.rdlc" />
     <EmbeddedResource Include="Formas\Administracion\Reporte\frmProvisiones.resx">
       <DependentUpon>frmProvisiones.cs</DependentUpon>
@@ -712,6 +735,8 @@
       <DependentUpon>frmView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formas\Reportes\Contabilidad.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\ContabilidadF.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\Empleado.rdlc" />
     <EmbeddedResource Include="Formas\Reportes\PagoQuincena - Copy.rdlc" />
     <EmbeddedResource Include="Formas\Administracion\Reporte\frmActuarial.resx">
       <DependentUpon>frmActuarial.cs</DependentUpon>
@@ -793,6 +818,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formas\frmListaCuentaAsiento.resx">
       <DependentUpon>frmListaCuentaAsiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCertificado.resx">
+      <DependentUpon>frmCertificado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCertificadoRep.resx">
+      <DependentUpon>frmCertificadoRep.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

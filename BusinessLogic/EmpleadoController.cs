@@ -197,9 +197,9 @@ namespace BusinessLogic
             return EmpleadoAD.ListaDiscapacidad();
         }
 
-        public DataTable ListaEmpleadoDiscapacidad(string empID)
+        public DataTable ListaEmpleadoDiscapacidad(string empID, string tipo)
         {
-            return EmpleadoAD.ListaEmpleadoDiscapacidad(empID);
+            return EmpleadoAD.ListaEmpleadoDiscapacidad(empID, tipo);
         }
         public Int64 RegistarDiscapacidad(db.DiscapacidaEmpleadodEntity emp, string prmScript)
         {

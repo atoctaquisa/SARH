@@ -56,7 +56,7 @@
             this.dgvData.Name = "dgvData";
             this.dgvData.RowHeadersVisible = false;
             this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvData.Size = new System.Drawing.Size(717, 252);
+            this.dgvData.Size = new System.Drawing.Size(764, 252);
             this.dgvData.TabIndex = 2;
             this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellDoubleClick);
             this.dgvData.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvData_KeyDown);
@@ -69,7 +69,7 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(717, 28);
+            this.lblTitulo.Size = new System.Drawing.Size(764, 28);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Lista de Empleados";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -79,7 +79,7 @@
             this.txtSearch.Location = new System.Drawing.Point(173, 23);
             this.txtSearch.MaxLength = 50;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(525, 20);
+            this.txtSearch.Size = new System.Drawing.Size(571, 20);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
@@ -88,9 +88,9 @@
             // cboFilter
             // 
             this.cboFilter.FormattingEnabled = true;
-            this.cboFilter.Location = new System.Drawing.Point(20, 22);
+            this.cboFilter.Location = new System.Drawing.Point(11, 22);
             this.cboFilter.Name = "cboFilter";
-            this.cboFilter.Size = new System.Drawing.Size(142, 21);
+            this.cboFilter.Size = new System.Drawing.Size(151, 21);
             this.cboFilter.TabIndex = 0;
             // 
             // groupBox2
@@ -99,14 +99,14 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox2.Location = new System.Drawing.Point(0, 347);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(717, 32);
+            this.groupBox2.Size = new System.Drawing.Size(764, 32);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             // 
             // lblTotalRecord
             // 
             this.lblTotalRecord.AutoSize = true;
-            this.lblTotalRecord.Location = new System.Drawing.Point(592, 10);
+            this.lblTotalRecord.Location = new System.Drawing.Point(649, 10);
             this.lblTotalRecord.Name = "lblTotalRecord";
             this.lblTotalRecord.Size = new System.Drawing.Size(81, 13);
             this.lblTotalRecord.TabIndex = 4;
@@ -118,7 +118,7 @@
             this.groupBox1.Controls.Add(this.cboFilter);
             this.groupBox1.Location = new System.Drawing.Point(13, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(704, 56);
+            this.groupBox1.Size = new System.Drawing.Size(750, 56);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar por:";
@@ -127,7 +127,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 379);
+            this.ClientSize = new System.Drawing.Size(764, 379);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvData);
             this.Controls.Add(this.lblTitulo);

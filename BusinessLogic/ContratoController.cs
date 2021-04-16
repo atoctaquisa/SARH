@@ -398,6 +398,14 @@ namespace BusinessLogic
         {
             return ContratoAD.DetalleVacacion(empID ,perID);
         }
+        public DataTable DetalleVacacionCab(string empID, string vacID)
+        {
+            return ContratoAD.DetalleVacacionCab(empID, vacID);
+        }
+        public DataTable DetalleVacacionDT(string empID, string vacID, string perID)
+        {
+            return ContratoAD.DetalleVacacionDT(empID,vacID, perID);
+        }
         public DataTable DetalleEgreso()
         {
             return ContratoAD.DetalleEgreso();
