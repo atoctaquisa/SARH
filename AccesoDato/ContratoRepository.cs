@@ -40,8 +40,8 @@ namespace DataAccess
                                                                PERC_ID,
                                                                DIA_ID,
                                                                CLI_ID,
-                                                               DET_DIA_DB,
-                                                               DET_DIA_HB,
+                                                               ROUND(DET_DIA_DB,2)DET_DIA_DB,
+                                                               ROUND(DET_DIA_HB,2)DET_DIA_HB,
                                                                DET_DIA_FEC_REG,
                                                                DET_DIA_FEC_MOD,
                                                                DET_DIA_CLI_SEG,
@@ -210,6 +210,7 @@ AND SEG_ROL_REPRO=:SEG_ROL_REPRO
 AND EMP_ID=:EMP_ID 
 AND ROL_ID=:ROL_ID
 AND ROL_LIQ_ID=:ROL_LIQ_ID";
+        private static string sqlRevDetalleIngreso = @"P_RECAL_ROL_LIQ";
         private static string sqlRegistraDetalleIngreso = @"INSERT INTO DESARROLLO.DAT_DET_ROL_LIQ (SEG_ROL_ID,
                                         SEG_ROL_REPRO,
                                         EMP_ID,
@@ -317,7 +318,43 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
                                                                    AND SEG_ROL_REPRO = :SEG_ROL_REPRO
                                                                    AND EMP_ID = :EMP_ID
                                                                    AND ROL_ID = :ROL_ID
-                                                                   AND ROL_LIQ_ID = :ROL_LIQ_ID";
+																   AND ROL_LIQ_ID = :ROL_LIQ_ID";
+        private static string sqlActualizaRolLiquidacion = @"
+SELECT COUNT (1)
+  FROM DAT_DET_ROL
+ WHERE     EMP_ID = :EMP_ID
+	   AND ROL_ID = :ROL_ID
+	   AND ROL_ID_GEN = :ROL_ID_GEN
+	   AND ROL_REPRO = ROL_REPRO ";
+
+        private static string sqlDetalleIng = @"
+                                                SELECT R.SEG_ROL_ID,
+                                                       R.SEG_ROL_REPRO,
+                                                       R.EMP_ID,
+                                                       R.ROL_ID,
+                                                       (ROL_CUENTA || ' - ' || ROL_SUBCUENTA)     CUENTA,
+                                                       R.ROL_LIQ_ID,
+                                                       R.ROL_LIQ_VALOR,
+                                                       R.ROL_LIQ_FEC_REG
+                                                  FROM DESARROLLO.DAT_DET_ROL_LIQ R JOIN VAR_ROL V ON (V.ROL_ID = R.ROL_ID)
+                                                 WHERE     R.EMP_ID = :EMP_ID
+                                                       AND R.SEG_ROL_ID = :SEG_ROL_ID
+                                                       AND R.SEG_ROL_REPRO = :SEG_ROL_REPRO
+                                                       AND ROL_CUENTA in( 'Ingreso', 'Otros') ";
+        private static string sqlDetalleEgr = @"
+                                                SELECT R.SEG_ROL_ID,
+                                                       R.SEG_ROL_REPRO,
+                                                       R.EMP_ID,
+                                                       R.ROL_ID,
+                                                       (ROL_CUENTA || ' - ' || ROL_SUBCUENTA)     CUENTA,
+                                                       R.ROL_LIQ_ID,
+                                                       ROUND(R.ROL_LIQ_VALOR,2) ROL_LIQ_VALOR,
+                                                       R.ROL_LIQ_FEC_REG
+                                                  FROM DESARROLLO.DAT_DET_ROL_LIQ R JOIN VAR_ROL V ON (V.ROL_ID = R.ROL_ID)
+                                                 WHERE     R.EMP_ID = :EMP_ID
+                                                       AND R.SEG_ROL_ID = :SEG_ROL_ID
+                                                       AND R.SEG_ROL_REPRO = :SEG_ROL_REPRO
+                                                       AND ROL_CUENTA = 'Egreso' ";
         private static string sqlDetalleIngreso = @"
                                                     SELECT SEG_ROL_ID,
                                                            SEG_ROL_REPRO,
@@ -334,6 +371,7 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
                                                            AND SEG_ROL_ID = :SEG_ROL_ID
                                                            AND SEG_ROL_REPRO = :SEG_ROL_REPRO";
         private static string sqlGetReproceso = "SELECT DESARROLLO.PK_NOMINATCG.GET_REPROCESO ( :EMP_ID, :PER_ID) FROM DUAL";
+        private static string sqlRevLiquidacion = "DESARROLLO.P_REV_ROL_LIQ";
         private static string sqlReproceso = @"SELECT MAX(SEG_ROL_REPRO) REPRO_ID
                                                       FROM DESARROLLO.DAT_ROL_SEG
                                                      WHERE     SEG_ROL_ID = :SEG_ROL_ID";
@@ -352,6 +390,7 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
 
 
         private static string sqlRubroAdicional = "SELECT EMP_ID, ROL_ID, FIJ_VALOR, FIJ_ESTADO, FECHACREA, FECHAMODI FROM DESARROLLO.DAT_EMP_VAL_FIJO WHERE EMP_ID =:empID";
+        private static string sqlRubroAdicionalGen = "SELECT EMP_CI,NOMBRE ,V.EMP_ID, ROL_ID, FIJ_VALOR, FIJ_ESTADO, FECHACREA, FECHAMODI FROM DESARROLLO.DAT_EMP_VAL_FIJO V JOIN V_DETALLE_EMP E ON(V.EMP_ID=E.EMP_ID) WHERE LAB_ESTADO=1 AND ROL_ID =:ROL_ID";
         private static string sqlUpdateEmpFec = "UPDATE DAT_EMP   SET LAB_FEC_INGRESO = :P_FECHA WHERE EMP_ID = :EMP_ID";
         private static string sqlUpdateEmpFecIng = "UPDATE DAT_DET_ING_EMP   SET ING_FEC_ING = :P_FECHA WHERE EMP_ID = :EMP_ID";
         private static string sqlRegistraContrato = @"
@@ -458,7 +497,7 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
                     UPDATE DESARROLLO.DAT_LAB SET                                                    
                                                     LOC_ID=:LOC_ID,
                                                     ESC_ID=:ESC_ID,
-                                                    --LAB_FEC_CAMB_ESC,
+                                                    LAB_FEC_CAMB_ESC=:LAB_FEC_CAMB_ESC,
                                                     LAB_SUELDO_BONO=:LAB_SUELDO_BONO,
                                                     LAB_OBS=:LAB_OBS,
                                                     --LAB_FEC_REG,
@@ -573,10 +612,10 @@ AND ROL_LIQ_ID=:ROL_LIQ_ID";
         private static string sqlNumeroProcesoRol = "SELECT MAX(ROL_REPRO) FROM DESARROLLO.DAT_ROL WHERE ROL_ID_GEN=:idPeriodo";
         private static string sqlNumeroProcesoRolEmp = "SELECT NVL(MAX(ROL_REPRO),0) FROM DESARROLLO.DAT_ROL WHERE ROL_ID_GEN=:idPeriodo AND EMP_ID=:empID";
         private static string sqlHabilitaQuincena = "UPDATE DESARROLLO.DAT_ROL_SEG SET SEG_EST_QUIN=:estado WHERE SEG_ROL_ID=:idPeriodo AND SEG_ROL_REPRO=:numProc ";
-        private static string sqlListaRol = "SELECT EMP_ID, ROL_ID_GEN, ROL_TOT_ING, ROL_TOT_EGR, ROL_TOTAL, ROL_DIA_TRA, ROL_RETENIDO, ROL_DIA_DESC, ROL_REPRO, ROL_PAGADO, ROL_PAG_QUIN, FECHACREACION, FECHAMODIF FROM DESARROLLO.DAT_ROL WHERE EMP_ID=:EMP_ID AND ROL_ID_GEN=:ROL_ID_GEN AND ROL_REPRO=:ROL_REPRO";
+        private static string sqlListaRol = "SELECT EMP_ID, ROL_ID_GEN, ROL_TOT_ING, ROUND(ROL_TOT_EGR,2)ROL_TOT_EGR, ROUND(ROL_TOTAL,2)ROL_TOTAL, ROL_DIA_TRA, ROL_RETENIDO, ROL_DIA_DESC, ROL_REPRO, ROL_PAGADO, ROL_PAG_QUIN, FECHACREACION, FECHAMODIF FROM DESARROLLO.DAT_ROL WHERE EMP_ID=:EMP_ID AND ROL_ID_GEN=:ROL_ID_GEN AND ROL_REPRO=:ROL_REPRO";
         private static string sqlListaRolTipo = "SELECT EMP_ID, ROL_ID_GEN, ROL_TOT_ING, ROL_TOT_EGR, ROL_TOTAL, ROL_DIA_TRA, ROL_RETENIDO, ROL_DIA_DESC, ROL_REPRO, ROL_PAGADO, ROL_PAG_QUIN, FECHACREACION, FECHAMODIF FROM DESARROLLO.DAT_ROL WHERE EMP_ID=:EMP_ID AND ROL_ID_GEN=:ROL_ID_GEN AND ROL_REPRO=:ROL_REPRO and (dat_det_rol.ROL_ID IN (SELECT rol_id FROM desarrollo.var_rol WHERE ROL_TIPO_CUENTA=1)) ";
         private static string sqlListaRolDetalle = @"SELECT ROL_ID, (SELECT TRIM(ROL_CUENTA)||' - '||ROL_SUBCUENTA FROM DESARROLLO.VAR_ROL WHERE ROL_ID=R.ROL_ID)CUENTA,
-                                                     EMP_ID, ROL_ID_GEN, DET_ROL_ID, DET_ROL_VALOR, DET_ROL_FECHA, ROL_REPRO, DET_ROL_AUDIT, DET_ROL_AUDIT2 
+                                                     EMP_ID, ROL_ID_GEN, DET_ROL_ID, ROUND(DET_ROL_VALOR,2) DET_ROL_VALOR, DET_ROL_FECHA, ROL_REPRO, DET_ROL_AUDIT, DET_ROL_AUDIT2 
                                                      FROM DESARROLLO.DAT_DET_ROL R WHERE EMP_ID=:EMP_ID AND ROL_ID_GEN=:ROL_ID_GEN AND ROL_REPRO=:ROL_REPRO";
         private static string sqlListaRolDetalleTipo = @"SELECT ROL_ID, (SELECT TRIM(ROL_CUENTA)||' - '||ROL_SUBCUENTA FROM DESARROLLO.VAR_ROL WHERE ROL_ID=R.ROL_ID)CUENTA,
                                                      EMP_ID, ROL_ID_GEN, DET_ROL_ID, DET_ROL_VALOR, DET_ROL_FECHA, ROL_REPRO, DET_ROL_AUDIT, DET_ROL_AUDIT2 
@@ -868,7 +907,7 @@ AND (R.ROL_ID IN (SELECT rol_id
         private static string sqlRegistraValorGrupoRol = "DESARROLLO.P_CARGA_VALOR_ROL_ESP";
         private static string sqlProcesaDatoIESS = "P_PROCESA_DATO_IESS";
         private static string sqlGeneraDatoIESS = "P_GENERA_DATO_IESS";
-        private static string sqlListoDatoIESS = "SELECT IND_ID, DETALLE, IND_COL FROM DESARROLLO.DAT_ROL_IND ";
+        private static string sqlListoDatoIESS = "SELECT distinct DETALLE FROM DESARROLLO.DAT_ROL_IND";//"SELECT IND_ID, DETALLE, IND_COL FROM DESARROLLO.DAT_ROL_IND ";
         private static string sqlFinContratoEmpleadoU = @"UPDATE DESARROLLO.DAT_EMP_CON
                                                            SET EMP_CON_OBS = :EMP_OBS
                                                          WHERE EMP_ID = :EMP_ID AND EMP_CON_ID = :EMP_CON_ID";
@@ -920,7 +959,7 @@ AND (R.ROL_ID IN (SELECT rol_id
                                                                    LIQ_ID,
                                                                    RUB_LIQ_ID,(SELECT RUB_LIQ_DES FROM desarrollo.dat_rub_liq WHERE RUB_LIQ_ID=D.RUB_LIQ_ID) RUBRO,
                                                                    DET_LIQ_REF,
-                                                                   TRUNC (DET_LIQ_VALOR, 2)DET_LIQ_VALOR,
+                                                                   ROUND (DET_LIQ_VALOR, 2)DET_LIQ_VALOR,
                                                                    DET_LIQ_OBS
                                                               FROM DESARROLLO.DAT_DET_LIQ D
                                                             Where EMP_ID = :EMP_ID
@@ -1191,6 +1230,7 @@ AND (R.ROL_ID IN (SELECT rol_id
             };
             return db.ExecQuery(sqlDeleteDetalleRol_ES, prm);
         }
+
         public int EliminaDetalleIngreso(List<DatDetRolLiq> datosIngreso)
         {
             foreach (var datos in datosIngreso)
@@ -1205,6 +1245,20 @@ AND (R.ROL_ID IN (SELECT rol_id
                 db.ExecQuery(sqlEliminaDetalleIngreso, prm);
             }
             return 1;
+        }
+        public int RevDetalleIngreso(DatDetRolLiq datos)
+        {
+
+            OracleParameter[] prm = new OracleParameter[]{
+               //new OracleParameter(":SEG_ROL_ID",datos.segRolId ),
+               //new OracleParameter(":SEG_ROL_REPRO",datos.segRolRepro ),
+               new OracleParameter(":EMP_ID",datos.empId )
+               //new OracleParameter(":ROL_ID",datos.rolId ),
+               //new OracleParameter(":ROL_LIQ_ID",datos.rolLiqId)
+            };
+
+
+            return db.ExecProcedure(sqlRevDetalleIngreso, prm);
         }
         public int RegistraDetalleIngreso(List<DatDetRolLiq> datosIngreso)
         {
@@ -1314,18 +1368,19 @@ AND (R.ROL_ID IN (SELECT rol_id
 
             return resp;
         }
+
         public int ActualizaDetalleIngreso(List<DatDetRolLiq> datosIngreso)
         {
             foreach (var datos in datosIngreso)
             {
                 OracleParameter[] prm = new OracleParameter[]{
                 new OracleParameter(":ROL_ID",  datos.rolId),
-               new OracleParameter(":ROL_LIQ_ID",  datos.segRolId.ToString()+datos.empId.ToString() ),
+               new OracleParameter(":ROL_LIQ_ID",  datos.empId.ToString()+datos.segRolId.ToString() ),
                new OracleParameter(":ROL_LIQ_VALOR", datos.rolLiqValor ),
                new OracleParameter(":SEG_ROL_ID",datos.segRolId ),
                new OracleParameter(":SEG_ROL_REPRO",datos.segRolRepro ),
                new OracleParameter(":EMP_ID",datos.empId ),
-               new OracleParameter(":ROL_ID",datos.rolId ),
+               new OracleParameter(":ROL_ID",datos.rolIdOrg ),
                new OracleParameter(":ROL_LIQ_ID",datos.rolLiqId)
             };
                 db.ExecQuery(sqlActualizaDetalleingreso, prm);
@@ -1333,23 +1388,68 @@ AND (R.ROL_ID IN (SELECT rol_id
 
             return 1;
         }
-
-        public int ActualizaDetalleIngreso(string empID, string liqID, decimal ingreso, decimal egreso)
+        public int ActualizaRolLiquidacion(List<DatDetRolLiq> datosIngreso)
         {
-            OracleParameter[] prm = new OracleParameter[]{
-                new OracleParameter(":VALOR",ingreso),
-               new OracleParameter(":EMP_ID",empID ),
-               new OracleParameter(":LIQ_ID",liqID ),
-               new OracleParameter(":RUB_LIQ_ID",1 )
-            };
-            db.ExecQuery(sqlActualizaDetalleingresoCb, prm);
+            foreach (var datos in datosIngreso)
+            {
+                OracleParameter[] prm =
+                    new OracleParameter[]{
+                        new OracleParameter(":EMP_ID",datos.empId ),
+                        new OracleParameter(":ROL_ID",  datos.rolId),
+                        new OracleParameter(":SEG_ROL_ID",datos.segRolId ),
+                        new OracleParameter(":SEG_ROL_REPRO",datos.segRolRepro )
+                    };
+                if (db.GetEntero(sqlActualizaRolLiquidacion, prm).Equals(0))
+                {
 
-            prm = new OracleParameter[]{
+                    prm =
+                        new OracleParameter[]{
+                       new OracleParameter(":ROL_ID",  datos.rolId),
+                       new OracleParameter(":ROL_LIQ_ID",  datos.empId.ToString()+datos.segRolId.ToString()),
+                       new OracleParameter(":ROL_LIQ_VALOR", datos.rolLiqValor ),
+                       new OracleParameter(":SEG_ROL_ID",datos.segRolId ),
+                       new OracleParameter(":SEG_ROL_REPRO",datos.segRolRepro ),
+                       new OracleParameter(":EMP_ID",datos.empId ),
+                       new OracleParameter(":ROL_ID",datos.rolId ),
+                       new OracleParameter(":ROL_LIQ_ID",datos.rolLiqId)
+                        };
+                    db.ExecQuery(sqlActualizaDetalleingreso, prm);
+                }
+                else
+                {
+                }
+
+            }
+
+            return 1;
+        }
+
+        public int ActualizaDetalleIngreso(string empID, string liqID, decimal ingreso, decimal egreso, int tipo)
+        {
+            OracleParameter[] prm;
+
+            if (tipo == 1)
+            {
+                prm = new OracleParameter[]{
+                    new OracleParameter(":VALOR",ingreso),
+                   new OracleParameter(":EMP_ID",empID ),
+                   new OracleParameter(":LIQ_ID",liqID ),
+                   new OracleParameter(":RUB_LIQ_ID",1 )
+                };
+                db.ExecQuery(sqlActualizaDetalleingresoCb, prm);
+            }
+            else
+            {
+
+
+                prm = new OracleParameter[]{
                 new OracleParameter(":VALOR",egreso ),
                new OracleParameter(":EMP_ID",empID ),
                new OracleParameter(":LIQ_ID",liqID ),
                new OracleParameter(":RUB_LIQ_ID",5 )
             };
+
+            }
             return db.ExecQuery(sqlActualizaDetalleingresoCb, prm);
         }
 
@@ -1743,12 +1843,12 @@ AND (R.ROL_ID IN (SELECT rol_id
             return db.GetData(sql);
 
         }
-        public Int32  Reproceso(string tipo)
+        public Int32 Reproceso(string tipo)
         {
             OracleParameter[] prm = new OracleParameter[]{
                 new OracleParameter(":SEG_ROL_ID",tipo)
             };
-            return db.GetEntero (sqlReproceso, prm);
+            return db.GetEntero(sqlReproceso, prm);
         }
         public DataTable ListaReproceso(string tipo)
         {
@@ -1844,10 +1944,10 @@ AND (R.ROL_ID IN (SELECT rol_id
 
             else
             {
-                OracleParameter[] prm = new OracleParameter[]{                    
+                OracleParameter[] prm = new OracleParameter[]{
                     new OracleParameter(":LOC_ID",lab.locId),
                     new OracleParameter(":ESC_ID",lab.escId),
-                    //new OracleParameter(":LAB_FEC_CAMB_ESC",lab.labFecCambEsc ),
+                    new OracleParameter(":LAB_FEC_CAMB_ESC",lab.labFecCambEsc ),
                     new OracleParameter(":LAB_SUELDO_BONO",lab.labSueldoBono),
                     new OracleParameter(":LAB_OBS",lab.labObs ),
                     new OracleParameter(":LAB_ESTADO",lab.labEstado),
@@ -1892,7 +1992,7 @@ AND (R.ROL_ID IN (SELECT rol_id
             }
             else
             {
-                OracleParameter[] prm = new OracleParameter[]{                
+                OracleParameter[] prm = new OracleParameter[]{
                 new OracleParameter(":CON_ID",emp.conId),
                 new OracleParameter(":PAT_ID",emp.patId),
                 new OracleParameter(":EMP_CON_RAZON_SALE",emp.empConRazonSale),
@@ -1945,7 +2045,14 @@ AND (R.ROL_ID IN (SELECT rol_id
                     return 0;
             }
         }
-
+        public DataTable RubroAdicionalGen(string rolID)
+        {
+            OracleParameter[] prm = new OracleParameter[]
+                {
+                    new OracleParameter(":ROL_ID", rolID)
+                };
+            return db.GetData(sqlRubroAdicionalGen, prm);
+        }
         public DataTable RubroAdicional(string empID)
         {
             OracleParameter[] prm = new OracleParameter[]
@@ -2073,11 +2180,20 @@ AND (R.ROL_ID IN (SELECT rol_id
                 };
             return db.GetEntero(sqlGetReproceso, prm);
         }
+        public int RevLiquidacion(string empID)
+        {
+            OracleParameter[] prm = new OracleParameter[]
+                {
+                    new OracleParameter("P_EMP_ID", empID)
+                    //new OracleParameter(":PER_ID", perID)
+                };
+            return db.ExecProcedure(sqlRevLiquidacion, prm);
+        }
         public DataTable ListarContrato()
         {
             return db.GetData(sqlListaContrato);
         }
-        public DataTable DetalleIngreso(string empID, string perID, string reproID)
+        public DataTable DetalleIngreso(string empID, string perID, string reproID, int tipo)
         {
             OracleParameter[] prm = new OracleParameter[]
                 {
@@ -2085,7 +2201,13 @@ AND (R.ROL_ID IN (SELECT rol_id
                     new OracleParameter(":SEG_ROL_ID", perID),
                     new OracleParameter(":SEG_ROL_REPRO", reproID)
                 };
-            return db.GetData(sqlDetalleIngreso, prm);
+            string sql = string.Empty; //sqlDetalleIngreso
+            if (tipo.Equals(1))
+                sql = sqlDetalleIng;
+            else
+                sql = sqlDetalleEgr;
+
+            return db.GetData(sql, prm);
         }
         public DataSet DetalleDecimoTercero(string empID, string perID)
         {
@@ -2132,7 +2254,7 @@ AND (R.ROL_ID IN (SELECT rol_id
             OracleParameter[] prm = new OracleParameter[]
                 {
                     new OracleParameter(":EMP_ID", empID),
-                    new OracleParameter(":CAL_VAC_ID", vacID)                   
+                    new OracleParameter(":CAL_VAC_ID", vacID)
                 };
             return db.GetData(sqlDetalleVacacion, prm);
 
@@ -2147,8 +2269,8 @@ AND (R.ROL_ID IN (SELECT rol_id
                     new OracleParameter(":CAL_VAC_ID", vacID),
                     new OracleParameter(":VAC_PER_ID", perID)
                 };
-           
-            return db.GetData(sqlDetalleVacacionDT, prm);            
+
+            return db.GetData(sqlDetalleVacacionDT, prm);
 
         }
         public DataTable DetalleEgreso()
@@ -2222,7 +2344,7 @@ AND (R.ROL_ID IN (SELECT rol_id
                {
                     new OracleParameter(":EMP_ID", empID)
                };
-            db.ExecProcedure(sqlCalculaVacaciones, prm);
+            //db.ExecProcedure(sqlCalculaVacaciones, prm);
             int esEmpleado = db.GetEntero(sqlEsEmpleado, prm);
             int esMotorista = db.GetEntero(sqlEsMotorista, prm);
             prm = new OracleParameter[]

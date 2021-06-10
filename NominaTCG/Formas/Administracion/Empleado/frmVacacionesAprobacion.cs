@@ -83,8 +83,8 @@ namespace NominaTCG
                                                   { "[@estado]" , estado },
                                                   { "[@razonSocial]" , empleado },
                                                 };
-            SistemaBO.sendEmail(email.Equals("") ? "sistemas@grupotcg.com" : email, "Solicitud de Vacaciones", SistemaBO.emailMessage("SOLICITUD DE VACACION", emailVars));
-            SistemaBO.sendEmail("lvillareal@grupotcg.com", "Solicitud de Vacaciones", SistemaBO.emailMessage("SOLICITUD DE VACACION", emailVars));
+            SistemaBO.SendEmail(email.Equals("") ? "sistemas@grupotcg.com" : email, "Solicitud de Vacaciones", SistemaBO.EmailMessage("SOLICITUD DE VACACION", emailVars));
+            SistemaBO.SendEmail("lvillareal@grupotcg.com", "Solicitud de Vacaciones", SistemaBO.EmailMessage("SOLICITUD DE VACACION", emailVars));
         }
         #endregion
 
@@ -195,11 +195,18 @@ namespace NominaTCG
         private void btnFind_Click(object sender, EventArgs e)
         {
             dgvVaciones.DataSource = null;
-            dgvVaciones.DataSource = SolicitudBO.ListaSolicitudVacacion(txtCodigo.Text, Convert.ToInt16(cboEstado.SelectedValue), 
+            dgvVaciones.DataSource = SolicitudBO.ListaSolicitudVacacion(txtCodigo.Text, Convert.ToInt16(cboEstado.SelectedValue),
                 (txtEmpleado.Text == string.Empty ? "0" : EmpleadoBO.Empleado.empId.ToString()),
-                _fechaD.ToString(), _fechaH.ToString(), 
+                _fechaD.ToString(), _fechaH.ToString(),
                 txtLocal.Text == string.Empty ? "0" : LocalBO.Local.LocalID.ToString());
-            btnCancel_Click(sender, e);
+            if (((DataTable)(dgvVaciones.DataSource)).Rows.Count > 0)
+                btnCancel_Click(sender, e);
+            else
+            {
+                Utility.MensajeInfo("No se encontraron registro.!!");
+                btnCancel_Click(sender, e);
+            }
+                
         }
 
         private void pDesde_ValueChanged(object sender, EventArgs e)
@@ -252,6 +259,12 @@ namespace NominaTCG
         private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
         {
             Utility.OnlyDigit(e);
+        }
+
+        private void frmVacacionesAprobacion_Load(object sender, EventArgs e)
+        {
+            //_fechaD =  pDesde.Value = DateTime.Now;
+            //_fechaH = pHasta.Value = DateTime.Now;            
         }
     }
 }

@@ -56,9 +56,13 @@ namespace BusinessLogic
         {
             return cuentaAD.ListaCuentaDiario();
         }
-        public DataTable ListaCuenta()
+        public DataTable ListaCuenta(int tipo)
         {
-            return cuentaAD.ListaCuenta();
+            return cuentaAD.ListaCuenta(tipo);
+        }
+        public DataTable ListaCuentasGen()
+        {
+            return cuentaAD.ListaCuentasGen();
         }
         public DataTable ListaCuentas()
         {

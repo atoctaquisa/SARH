@@ -31,9 +31,12 @@ namespace NominaTCG
             _REF = codRef;
             //dgvData.DataSource = ContratoBO.DetalleDecimoTercero(empID, perID);
             //DataSet data = ContratoBO.DetalleVacacion(empID, codRef);
-            dgvData.DataSource = ContratoBO.DetalleVacacionCab(empID, codRef);//data.Tables[0];
-            ListarDetalle();
+            //dgvData.DataSource = data.Tables[0];
             //dgvDataDT.DataSource = ContratoBO.DetalleVacacion(empID, codRef).Tables[1];
+            dgvData.DataSource = ContratoBO.DetalleVacacionCab(empID, codRef);
+            dgvData.CurrentCell = dgvData.Rows[0].Cells[2];
+            
+            
             
         }
 
@@ -59,6 +62,7 @@ namespace NominaTCG
             }
             txtSueldo.Text = ingreso.ToString();
             txtValor.Text = egreso.ToString();
+            dgvData.Focus();
         }
 
         private void btnExit_Click(object sender, EventArgs e)

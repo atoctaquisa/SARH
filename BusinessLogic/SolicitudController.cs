@@ -77,7 +77,7 @@ namespace BusinessLogic
         {
             return SolicitudAD.VerificaSolicitud(empID, perID);
         }
-        public int VerificaDiasVacacion(string empID, int perID)
+        public double VerificaDiasVacacion(string empID, int perID)
         {
             return SolicitudAD.VerificaDiasVacacion(empID,perID);
         }

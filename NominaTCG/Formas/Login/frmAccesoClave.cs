@@ -23,7 +23,12 @@ namespace NominaTCG
             cboUsuario.DataSource= SistemaBO.Usuario();
             cboUsuario.DisplayMember = SistemaBO.Usuario().Columns["NOMBRE"].ColumnName;
             cboUsuario.ValueMember = SistemaBO.Usuario().Columns["CODIGO"].ColumnName;
+            Catalogo.ServerData = SistemaBO.ServerData();
+            if (Catalogo.ServerData.Equals("TEST"))               
+                lblTitulo.BackColor = System.Drawing.Color.Black;
             
+
+
         }
 
         private void btnSingIn_Click(object sender, EventArgs e)
@@ -35,8 +40,9 @@ namespace NominaTCG
                 Catalogo.UserName = SistemaBO.Usuario().Rows[cboUsuario.SelectedIndex]["NOMBRE"].ToString();
                 Catalogo.UserRole = SistemaBO.Usuario().Rows[cboUsuario.SelectedIndex]["TPUSCDGO"].ToString();
                 Catalogo.UserProfile = SistemaBO.Usuario().Rows[cboUsuario.SelectedIndex]["TPUSDSCR"].ToString();
-                Catalogo.ServerData = SistemaBO.ServerData();
+                //Catalogo.ServerData = SistemaBO.ServerData();
                 Catalogo.PathReport = SistemaBO.Path("80");
+                Catalogo.PathDirReportPDF = SistemaBO.Path("83");
                 this.Close();
 
             }

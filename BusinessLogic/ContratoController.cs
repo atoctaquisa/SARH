@@ -113,6 +113,10 @@ namespace BusinessLogic
         {
             return ContratoAD.EliminaDetalleIngreso(datos);
         }
+        public int RevDetalleIngreso(db.DatDetRolLiq datos)
+        {
+            return ContratoAD.RevDetalleIngreso(datos);
+        }
         public int RegistraDetalleIngreso(List<db.DatDetRolLiq> datos)
         {
             return ContratoAD.RegistraDetalleIngreso(datos);
@@ -121,13 +125,17 @@ namespace BusinessLogic
         {
             return ContratoAD.ActualizaDetalleDiario(datos, tipo);
         }
+        public int ActualizaRolLiquidacion(List<db.DatDetRolLiq> datos)
+        {
+            return ContratoAD.ActualizaRolLiquidacion(datos);
+        }
         public int ActualizaDetalleIngreso(List<db.DatDetRolLiq> datos)
         {
             return ContratoAD.ActualizaDetalleIngreso(datos);
         }
-        public int ActualizaDetalleIngreso(string empID, string liqID, decimal ingreso, decimal egreso)
+        public int ActualizaDetalleIngreso(string empID, string liqID, decimal ingreso, decimal egreso, int tipo)
         {
-            return ContratoAD.ActualizaDetalleIngreso(empID ,liqID,ingreso,egreso);
+            return ContratoAD.ActualizaDetalleIngreso(empID ,liqID,ingreso,egreso, tipo);
         }
         public int ActualizaDetalleRol(db.DetRolEntity datos)
         {
@@ -324,8 +332,12 @@ namespace BusinessLogic
         public Int64 RegistraContrato(db.DatEmpCon emp, string prmScript)
         {
             return ContratoAD.RegistraContrato(emp, prmScript);
-        }        
+        }
 
+        public DataTable RubroAdicionalGen(string rolID)
+        {
+            return ContratoAD.RubroAdicionalGen(rolID);
+        }
         public DataTable RubroAdicional(string empID)
         {            
             return ContratoAD.RubroAdicional(empID);
@@ -386,9 +398,13 @@ namespace BusinessLogic
         {
             return ContratoAD.GetReproceso(empID,perID);
         }
-        public DataTable DetalleIngreso(string empID, string perID, string reproID)
+        public int RevLiquidacion(string empID)
         {
-            return ContratoAD.DetalleIngreso(empID ,perID,reproID);
+            return ContratoAD.RevLiquidacion(empID);
+        }
+        public DataTable DetalleIngreso(string empID, string perID, string reproID,int tipo)
+        {
+            return ContratoAD.DetalleIngreso(empID ,perID,reproID, tipo);
         }
         public DataSet DetalleDecimoTercero(string empID, string perID)
         {

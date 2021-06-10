@@ -117,15 +117,15 @@ namespace NominaTCG
                 EmpleadoBO.Prestamo.presObservacion = txtObservacion.Text;
                 if (EmpleadoBO.ExisteRol(EmpleadoBO.Prestamo).Equals(1))
                 {
-                    if (EmpleadoBO.ExistePrestamo(EmpleadoBO.Prestamo).Equals(0))
-                    {
+                    //if (EmpleadoBO.ExistePrestamo(EmpleadoBO.Prestamo).Equals(0))
+                    //{
                         StateButton = Acction.Save;
                         EmpleadoBO.RegistraTablaPrestamo(EmpleadoBO.Prestamo);
                         AssignData("P");
                         Design.ControlsNew(this.btnEditCancel, this.btnNewSave);
-                    }
-                    else
-                        Utility.MensajeError("Acción Fallida..!! Ya cuenta con un crédito para este período");
+                    //}
+                    //else
+                    //    Utility.MensajeError("Acción Fallida..!! Ya cuenta con un crédito para este período");
                 }
                 else
                     Utility.MensajeError("Acción Fallida..!! El empleado no cuenta con un rol activo");
@@ -229,7 +229,7 @@ namespace NominaTCG
 
         private void btnCuenta_Click(object sender, EventArgs e)
         {
-            var frm = new frmCuentaLista(new string[] { "Prestamo" });
+            var frm = new frmCuentaLista(new string[] { "PrestamoCuenta" });
             Design.frmDialog(frm, "Lista de Cuentas");
             txtCuenta.Text = CuentaBO.Cuenta.Cuenta;
             EmpleadoBO.Prestamo.rolId = CuentaBO.Cuenta.CuentaID;

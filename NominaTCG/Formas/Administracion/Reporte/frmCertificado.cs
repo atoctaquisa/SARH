@@ -66,37 +66,28 @@ namespace NominaTCG
 
         private void btnNewSave_Click(object sender, EventArgs e)
         {
-            DataTable data = ReportBO.Certificado(EmpleadoBO.Empleado.empId.ToString(), cboCertificado.SelectedValue.ToString()); 
-
-            if (data.Rows.Count > 0)
-            {
-                string nomRep = string.Empty;
-                if (Convert.ToUInt16(cboCertificado.SelectedValue) == 1)
-                    nomRep = "CertificadoAct.rdlc";
-                if (Convert.ToUInt16(cboCertificado.SelectedValue) == 0)
-                    nomRep = "CertificadoPas.rdlc";
-                if (Convert.ToUInt16(cboCertificado.SelectedValue) == 2)
-                    nomRep = "CertificadoCre.rdlc";
-
-                string path;
-                //path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Reportes\PagoQuincena.rdlc";
-                //path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)+ @"\PagoQuincena.rdlc";
-                //path = Catalogo.PathReport + nomRep;
-                //LocalReport report = new LocalReport();
-                ////report.ReportPath = path + @"\RolIndividual.rdlc";
-                //ReportBO = ReportDataController.Instancia;                       
-                //frmViewReport frm = new frmViewReport(new ReportDataSource("Certificado", data), path, null, string.Empty);
-                //frm.Show();
-                frmCertificadoRep frm = new frmCertificadoRep(EmpleadoBO.Empleado.empId.ToString());
-                Design.frmDialog(frm, "Reporte de Liquidación");
-            }
-            else
-                Utility.MensajeInfo("No se encontró información para presentar..!!");
+            if (cboCertificado.SelectedValue == null)
+                return;
+            frmCertificadoRep frm = new frmCertificadoRep(EmpleadoBO.Empleado.empId.ToString(), cboCertificado.SelectedValue.ToString());
+            Design.frmDialog(frm, "Reporte de Liquidación");            
         }
 
         private void frmCertificado_FormClosing(object sender, FormClosingEventArgs e)
         {
             _instancia = null;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            txtEmpleado.Text = string.Empty;
+            cboCertificado.SelectedIndex = -1;
+            EmpleadoBO.Empleado = null;                
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            _instancia = null;
+            this.Close();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace DataAccess
     public class ReportDataRepository
     {
         #region Properties
-        private ConnectionDDBB db { get; set; }
+        private ConnectionDDBB Db { get; set; }
         #endregion
 
         #region Instancia / Constructor
@@ -34,10 +34,27 @@ namespace DataAccess
 
         public ReportDataRepository()
         {
-            db = ConnectionDDBB.Instancia;
+            Db = ConnectionDDBB.Instancia;
         }
         #endregion
-        private string sqlCertificado = "SELECT PATRONO, EMP_CI, NOMBRE,ESC_CARGOMB,LAB_FEC_INGRESO, LAB_RBU,0 RBU_VAR,'' MARCA, SYSDATE FECHA  FROM V_DETALLE_EMP WHERE EMP_ID=:EMP_ID";
+        private static string sqlCertificado = @"
+SELECT PATRONO,
+       EMP_CI,
+       NOMBRE,
+       ESC_CARGOMB,
+       TRUNC (LAB_FEC_INGRESO)                               LAB_FEC_INGRESO,
+       EMP_FEC_SALIDA FECHA_SALIDA,
+       LAB_RBU,
+       0                                                     RBU_VAR,
+       (SELECT CAD_NOMBRE
+          FROM DAT_CLIENTE C JOIN DAT_CADENA ON (CAD_ID = CLI_CADENA)
+         WHERE C.LOC_ID = E.LOC_ID)                          MARCA,
+       TRUNC (SYSDATE)                                       FECHA,
+       PKG_NUMEROS_EN_LETRAS.F_OBT_NUMEROLETRAS (LAB_RBU)    RBULETRA,
+       PKG_NUMEROS_EN_LETRAS.F_OBT_NUMEROLETRAS (LAB_RBU)    RBU_VARLETRA,
+       to_char(sysdate,'fmday dd month yyyy','nls_date_language=spanish') FECHAESP
+  FROM V_DETALLE_EMP E
+ WHERE EMP_ID = :EMP_ID ";
         private string sqlLiquidacion = @"SELECT e.emp_id, ESC_CARGOMB,
                                                    NOMBRE,
                                                    EMP_CI,
@@ -62,8 +79,8 @@ namespace DataAccess
                                                    JOIN DESARROLLO.DAT_LIQ l ON (e.emp_id = l.emp_id)
                                              WHERE e.emp_id = :EMP_ID";
         private string sqlLiquidacionDT = @"SELECT IMP_LIQ_GRU_ID, IMP_LIQ_GRU_NOM, IMP_LIQ_SUB_ID, 
-                                                   IMP_LIQ_SUB_NOM, IMP_LIQ_DES, trunc(IMP_LIQ_VALOR,2)IMP_LIQ_VALOR, 
-                                                   trunc(IMP_LIQ_VALOR_AUX,2) FROM DESARROLLO.DAT_IMP_LIQ";
+                                                   IMP_LIQ_SUB_NOM, IMP_LIQ_DES, ROUND(IMP_LIQ_VALOR,2)IMP_LIQ_VALOR, 
+                                                   ROUND(IMP_LIQ_VALOR_AUX,2) FROM DESARROLLO.DAT_IMP_LIQ";
         private string sqlLiquidacionReport = "DESARROLLO.P_IMP_LIQ";
 
         private string sqlSolicitudVacacion = @"SELECT PATRONO, NOMBRE, CEDULA, ESC_CARGOMB, SOLVAC_ID, SOLVAC_DESDE, SOLVAC_HASTA,
@@ -85,7 +102,7 @@ namespace DataAccess
                                           FROM DESARROLLO.ACTUARIAL_TMP  A
                                                JOIN DESARROLLO.ACTUARIAL_INGRESO_TMP I ON (A.CEDULA = I.CEDULA)";
         private string sqlGeneraRol = @"DESARROLLO.P_IMP_DAT_ROL_IND3";
-        private string sqlListaRol = "SELECT  DISTINCT IND_ID, DETALLE, IND_COL FROM DAT_ROL_IND ORDER BY IND_ID ";
+        private string sqlListaRol = "SELECT  DISTINCT IND_ID, DETALLE, IND_COL, EMP_ID FROM DAT_ROL_IND ORDER BY IND_ID ";
         private string sqlListaRolSub = "SELECT DISTINCT IND_ID, DETALLE, IND_COL FROM DAT_ROL_IND where IND_ID=:IND_ID";
         //private string sqlPrestamoDT = @"SELECT PRESTAMO,
         //                                       DESCRIPCION,
@@ -387,7 +404,12 @@ SELECT PRESTAMO,
                                                    EMP_CUENTA CUENTA,
                                                    DECODE(EMP_DISCAPACIDAD,0,'No',1,'Si') DISCAPACIDAD,
                                                    EMP_MAIL_PER CORREO_PERSONAL,
-                                                   EMP_MAIL CORREO_EMPRESARIAL
+                                                   EMP_MAIL CORREO_EMPRESARIAL,
+                                                   DESARROLLO.CALC_EDAD (EMP_FEC_NAC) EDAD,
+                                                   DECODE (F_VALIDA_DOCUMENTO (EMP_CI), 1, 'ECUATORIONA', 'EXTRANJERO')    NACIONALIDAD,
+                                                   ROUND(NVL(EMP_FEC_SALIDAREAL,SYSDATE)-LAB_FEC_INGRESO) DIAS,
+                                                   (SELECT CON_CAU_CAUSA FROM DAT_CON_CAUSA WHERE CON_CAU_ID=V.CON_CAU_ID) SALIDA_MOTIVO, 
+                                                   V.EMP_CON_OBS SALIDA_OBSERVACION
                                               FROM DESARROLLO.V_DETALLE_EMP V WHERE EMP_ID >0 ";
         private string sqlActuarialEmpresa = @"SELECT 
                                                EMPID, TIPOID TIPO, CEDULA, 
@@ -403,17 +425,66 @@ SELECT PRESTAMO,
                                                 FROM DESARROLLO.ACTUARIAL_INGRESO_TMP
                                                 WHERE
                                                 CEDULA = :CI ORDER BY INGRESO";
+        private string sqlCargaFamiliar = @" SELECT ROWNUM                                    NUM,
+         LOC_NOMBRE                                LOCAL,
+         NOMBRE                                    EMPLEADO,
+         ESC_ABRE                                  CARGO,
+         LAB_FEC_INGRESO                           INGRESO,
+         EMP_FEC_NAC                               FECHA_NACIMIENTO,
+         EMP_DIREC                                 DIRECCION,
+         EMP_EST_CIVIL,
+         EMP_CON_FEC_CONTRATO                      CONTRATO,
+         EMP_CI                                    CEDULA,
+         ESC_CARGOIESS,
+         lab_estado,
+         ESC_GRU_NOMBRE                            grupo,
+         LAB_FEC_CAMB_ESC                          cambio,
+         EMP_LUG_NAC,
+         EMP_TELEFONO                              TELEFONO,
+         (SELECT COUNT (1)
+            FROM dat_emp_fam
+           WHERE     emp_id = V.EMP_ID
+                 AND (       EMP_FAM_PARENT = 'H'
+                         AND calc_edad_ANIOs (EMP_FAM_FEC_NAC) < 18
+                      OR EMP_FAM_PARENT = 'E'))    DEPENDIENTE,
+        (SELECT COUNT (1)
+          FROM dat_emp_fam
+         WHERE emp_id = V.EMP_ID AND EMP_FAM_PARENT = 'H')    NUMHIJOS,
+         EMP_FEC_SALIDA,
+         PATRONO,
+         EMP_BARRIO                                BARRIO,
+         EMP_SEXO,
+         LOC_CIUDAD,
+         LOC_PROVINCIA,
+         EMP_EDU                                   nivel,
+         EMP_CUENTA                                CUENTA,
+         TIPO_CONTRATO,
+         EMP_DIRE_NUMERO                           num_casa,
+         EMP_FEC_REG,
+         EMP_FEC_MOD,
+         EMP_FECHA_REINGRESO,
+         EMP_TIP_SANGRE,
+         EMP_DISCAPACIDAD,
+         EMP_NUM_CONADIS,
+         EMP_PASAPORTE,
+         LAB_RBU,
+         EMP_PAG_FON_RES,
+         LAB_QUINCENA,
+         EMP_MAIL_PER
+         
+    FROM DESARROLLO.V_DETALLE_EMP V
+   WHERE EMP_ID > 0 ";
         private string sqlVacacion = @"SELECT V.PATRONO,
                                            V.EMP_CI,
                                            V.NOMBRE,
                                            V.LOC_NOMBRE,
                                            V.ESC_CARGOMB CARGO,
                                            VAC_PER_DADO,
-                                           (CAB_VAC_DIAS + CAB_VAC_DIAS_ADI)     DIAT,
-                                           CAB_VAC_DIAS                          DIA,
+                                           TRUNC((CAB_VAC_DIAS + CAB_VAC_DIAS_ADI),4)     DIAT,
+                                           TRUNC(CAB_VAC_DIAS,4)                          DIA,
                                            CAB_VAC_DIAS_ADI                      ANTIG,
                                            CAB_VAC_DIAS_PAG                      PAGADO,
-                                           CAB_VAC_DIAS_PEN                      PENDIENTE,
+                                           TRUNC(CAB_VAC_DIAS_PEN,4)                      PENDIENTE,
                                            TRUNC (CAB_VAC_VAL, 4)                VALOR,
                                            TRUNC (CAB_VAC_VAL_PAG, 4)            VALORPAG,
                                            TRUNC (CAB_VAC_VAL_PEN, 4)            VALORPEN,
@@ -421,32 +492,32 @@ SELECT PRESTAMO,
                                            LAB_FEC_INGRESO INGRESO,C.EMP_ID,C.CAB_VAC_ID 
                                       FROM DAT_CAB_VAC C JOIN V_DETALLE_EMP V ON (C.EMP_ID = V.EMP_ID)
                                       WHERE C.EMP_ID>0 ";
-        private string sqlVacacionDT = @"SELECT V.PATRONO,
-                                           V.EMP_CI,
-                                           V.NOMBRE,
-                                           V.LOC_NOMBRE,
-                                           V.ESC_CARGOMB CARGO,
-                                           VAC_PER_DADO,
-                                           (CAB_VAC_DIAS + CAB_VAC_DIAS_ADI)     DIAT,
-                                           CAB_VAC_DIAS                          DIA,
-                                           CAB_VAC_DIAS_ADI                      ANTIG,
-                                           CAB_VAC_DIAS_PAG                      PAGADO,
-                                           CAB_VAC_DIAS_PEN                      PENDIENTE,
-                                           TRUNC (CAB_VAC_VAL, 4)                VALOR,
-                                           TRUNC (CAB_VAC_VAL_PAG, 4)            VALORPAG,
-                                           TRUNC (CAB_VAC_VAL_PEN, 4)            VALORPEN,
-                                           CAB_VAC_OBS,TRUNC (CAB_VAC_VAL/CAB_VAC_DIAS*CAB_VAC_DIAS_ADI,4)VALORANTIG,
-                                           LAB_FEC_INGRESO INGRESO,
-                                           DET_DIAS,
-                                           DET_FECHA_INI,
-                                           DET_FECHA_FIN,
-                                           D.FECHACREACION,
-                                           DET_OBSERV,C.EMP_ID ,c.CAB_VAC_ID  
-                                      FROM DAT_CAB_VAC  C
-                                           JOIN V_DETALLE_EMP V ON (C.EMP_ID = V.EMP_ID)
-                                           JOIN DESARROLLO.DAT_DET_VAC D
-                                               ON (D.EMP_ID = C.EMP_ID AND D.CAB_VAC_ID = C.CAB_VAC_ID)
-                                                                          WHERE C.EMP_ID>0 ";
+        //private string sqlVacacionDT = @"SELECT V.PATRONO,
+        //                                   V.EMP_CI,
+        //                                   V.NOMBRE,
+        //                                   V.LOC_NOMBRE,
+        //                                   V.ESC_CARGOMB CARGO,
+        //                                   VAC_PER_DADO,
+        //                                   (CAB_VAC_DIAS + CAB_VAC_DIAS_ADI)     DIAT,
+        //                                   ROUND(CAB_VAC_DIAS,2)                          DIA,
+        //                                   CAB_VAC_DIAS_ADI                      ANTIG,
+        //                                   CAB_VAC_DIAS_PAG                      PAGADO,
+        //                                   CAB_VAC_DIAS_PEN                      PENDIENTE,
+        //                                   TRUNC (CAB_VAC_VAL, 4)                VALOR,
+        //                                   TRUNC (CAB_VAC_VAL_PAG, 4)            VALORPAG,
+        //                                   TRUNC (CAB_VAC_VAL_PEN, 4)            VALORPEN,
+        //                                   CAB_VAC_OBS,TRUNC (CAB_VAC_VAL/CAB_VAC_DIAS*CAB_VAC_DIAS_ADI,4)VALORANTIG,
+        //                                   LAB_FEC_INGRESO INGRESO,
+        //                                   DET_DIAS,
+        //                                   DET_FECHA_INI,
+        //                                   DET_FECHA_FIN,
+        //                                   D.FECHACREACION,
+        //                                   DET_OBSERV,C.EMP_ID ,c.CAB_VAC_ID  
+        //                              FROM DAT_CAB_VAC  C
+        //                                   JOIN V_DETALLE_EMP V ON (C.EMP_ID = V.EMP_ID)
+        //                                   JOIN DESARROLLO.DAT_DET_VAC D
+        //                                       ON (D.EMP_ID = C.EMP_ID AND D.CAB_VAC_ID = C.CAB_VAC_ID)
+        //                                                                  WHERE C.EMP_ID>0 ";
 
         private string sqlVacacionSub = @"SELECT 
                                            DET_DIAS,
@@ -464,7 +535,7 @@ SELECT PRESTAMO,
                                                      ESC_CARGOMB,
                                                      PATRONO,
                                                      LOC_NOMBRE,
-                                                     ROL_TOTAL,
+                                                     ROUND(ROL_TOTAL,2) ROL_TOTAL,
                                                      EMP_FEC_SALIDAREAL
                                                 FROM DESARROLLO.V_DETALLE_EMP, DESARROLLO.DAT_ROL
                                                WHERE     V_DETALLE_EMP.EMP_ID = DAT_ROL.EMP_ID
@@ -491,17 +562,23 @@ SELECT PRESTAMO,
                 new OracleParameter(":EMP_ID",empID  ),
                 new OracleParameter(":CAB_VAC_ID",vacID)
             };
-            return db.GetData(sqlVacacionSub, prm);
+            return Db.GetData(sqlVacacionSub, prm);
+        }
+
+        public DataTable CargaFamiliar(string query)
+        {
+            string sql = sqlCargaFamiliar + query + " ORDER BY 6 desc ";
+            return Db.GetData(sql);
         }
 
         public DataTable Vacacion(string query)
         {
             string sql = sqlVacacion + query + " ORDER BY 6 desc ";
-            return db.GetData(sql);
+            return Db.GetData(sql);
         }
         public DataTable ActuarialEmpresa(string query)
         {
-            return db.GetData(sqlActuarialEmpresa);
+            return Db.GetData(sqlActuarialEmpresa);
         }
         public DataTable ActuarialEmpresaSalida(string query)
         {
@@ -510,7 +587,7 @@ SELECT PRESTAMO,
                 new OracleParameter(":CI",query )
 
             };
-            return db.GetData(sqlActuarialEmpresaSalida, prm);
+            return Db.GetData(sqlActuarialEmpresaSalida, prm);
         }
 
         public DataTable DetalleEmpleado(string query)
@@ -521,7 +598,7 @@ SELECT PRESTAMO,
 
             };
             //return db.GetData(sqlSolicitudVacacion, prm);
-            return db.GetData(sqlDetalleEmpleado + query, prm);
+            return Db.GetDataLong(sqlDetalleEmpleado + query, prm);
         }
 
         public DataTable Actuarial(string nAnio)
@@ -532,7 +609,7 @@ SELECT PRESTAMO,
             //    new OracleParameter(":SOLVAC_ID",vacID)
             //};
             //return db.GetData(sqlSolicitudVacacion, prm);
-            return db.GetData(sqlActuarial);
+            return Db.GetData(sqlActuarial);
         }
         public DataTable SolicitudVacacion(string empID, string vacID)
         {
@@ -541,7 +618,7 @@ SELECT PRESTAMO,
                 new OracleParameter(":EMP_ID",empID ),
                 new OracleParameter(":SOLVAC_ID",vacID)
             };
-            return db.GetData(sqlSolicitudVacacion, prm);
+            return Db.GetData(sqlSolicitudVacacion, prm);
         }
         public DataTable Liquidacion(string empID)
         {
@@ -551,7 +628,7 @@ SELECT PRESTAMO,
 
             };
             //return db.GetData(sqlSolicitudVacacion, prm);
-            return db.GetData(sqlLiquidacion, prm);
+            return Db.GetData(sqlLiquidacion, prm);
         }
         public DataSet LiquidacionParamReport(string empID, string perID, string reproID)
         {
@@ -574,7 +651,7 @@ SELECT PRESTAMO,
 
                 };
 
-            data = db.GetData(sqlVestimenta, prm).Copy();
+            data = Db.GetData(sqlVestimenta, prm).Copy();
             data.TableName = "Vestimenta";
             content.Tables.Add(data);
 
@@ -597,7 +674,7 @@ SELECT PRESTAMO,
                 new OracleParameter(":EMP_ID",empID )
                 //new OracleParameter(":DIAR_ID",tipo)
             };            
-            return db.GetData(sqlCertificado,prm);
+            return Db.GetData(sqlCertificado,prm);
         }
         public DataTable LiquidacionDT(string empID, string vacID)
         {
@@ -606,8 +683,8 @@ SELECT PRESTAMO,
                 new OracleParameter(":EMP_ID",empID ),
                 new OracleParameter(":DIAR_ID",vacID)
             };
-            db.ExecProcedure(sqlLiquidacionReport, prm);
-            return db.GetData(sqlLiquidacionDT);
+            Db.ExecProcedure(sqlLiquidacionReport, prm);
+            return Db.GetData(sqlLiquidacionDT);
         }
         public DataTable DetalleContabilidad(string fechaIni, string fechaFin, string emprID, string locID)
         {
@@ -619,14 +696,14 @@ SELECT PRESTAMO,
                 new OracleParameter(":PFECHA2",Convert.ToDateTime(fechaFin).ToString("dd-MMM-yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))),
                 new OracleParameter(":DIAR_ID","")
             };
-            db.ExecProcedure(sqlReporteDetalleSueldoFecha, prm);
+            Db.ExecProcedure(sqlReporteDetalleSueldoFecha, prm);
 
             if (!string.IsNullOrEmpty(emprID))
                 sqlWhere += " AND PAT_ID="+emprID;
             //if (string.IsNullOrEmpty(locID))
             //    sqlWhere += "";
 
-            data = db.GetData(sqlDetalleContabilidadFecha + sqlWhere + " ORDER BY ANIO, PAT_NOMBRE, CONS_LOCAL, CONS_NOMBRE, CONS_ORD_IMP ASC");
+            data = Db.GetData(sqlDetalleContabilidadFecha + sqlWhere + " ORDER BY ANIO, PAT_NOMBRE, CONS_LOCAL, CONS_NOMBRE, CONS_ORD_IMP ASC");
             return data;
         }
         public DataTable DetalleContabilidad(string rolID, string reproID, string tipoRep)
@@ -640,8 +717,8 @@ SELECT PRESTAMO,
                 new OracleParameter(":OP",1 )
             };
 
-            db.ExecProcedure(sqlReporteDetalleSueldo, prm);
-            db.ExecProcedure(sqlReporteDetalleSueldoExel, prm);
+            Db.ExecProcedure(sqlReporteDetalleSueldo, prm);
+            Db.ExecProcedure(sqlReporteDetalleSueldoExel, prm);
 
             prm = new OracleParameter[]
             {
@@ -655,7 +732,7 @@ SELECT PRESTAMO,
             else
                 sql = sqlDetalleContabilidadD;
 
-            data = db.GetData(sqlDetalleContabilidad, prm);
+            data = Db.GetData(sqlDetalleContabilidad, prm);
             return data;
         }
         public DataTable RolNegativo(string rolID, string reproID)
@@ -666,7 +743,7 @@ SELECT PRESTAMO,
                 new OracleParameter(":ROL_REPRO",reproID )
             };
 
-            return db.GetData(sqlRolNegativo, prm);
+            return Db.GetData(sqlRolNegativo, prm);
         }
 
         public DataTable Prestamo(string rolID, string estado, string patrono, string tipo, string empID)
@@ -720,7 +797,7 @@ SELECT PRESTAMO,
                 new OracleParameter(":PER_ID",rolID ),
                 new OracleParameter(":PER_ID",rolID )
             };
-            return db.GetData(sql, prm);
+            return Db.GetData(sql, prm);
         }
 
         public int GeneraPagoQuincena(string rolID, string reproID)
@@ -732,19 +809,19 @@ SELECT PRESTAMO,
                 new OracleParameter(":REPRO_ID",reproID),
                 new OracleParameter(":ESTADO_ID","2" )
            };
-            db.ExecProcedure(sqlSueldoQuincena, prm);
+            Db.ExecProcedure(sqlSueldoQuincena, prm);
             prm = new OracleParameter[]
             {
                 new OracleParameter(":ESTADO_ID","2" )
             };
-            db.ExecProcedure(sqlSueldoQuincenaTotal, prm);
+            Db.ExecProcedure(sqlSueldoQuincenaTotal, prm);
 
             prm = new OracleParameter[]
             {
                 new OracleParameter(":ESTADO_ID","2" ),
                 new OracleParameter(":ROL_ID", rolID )
             };
-            return db.ExecProcedure(sqlSueldoQuincenaGlobal, prm);
+            return Db.ExecProcedure(sqlSueldoQuincenaGlobal, prm);
 
         }
         public DataTable Provision(string fechaIni, string fechaFin, string patrono, string local, string empID)
@@ -760,7 +837,7 @@ SELECT PRESTAMO,
                 new OracleParameter(":PFECHA1",Convert.ToDateTime(fechaIni).ToString("dd-MMM-yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))),
                 new OracleParameter(":PFECHA2",Convert.ToDateTime(fechaFin).ToString("dd-MMM-yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US")))
             };
-            return db.GetData(sqlProvision + sqlWhere, prm);
+            return Db.GetData(sqlProvision + sqlWhere, prm);
         }
         public DataTable PagoQuincena(string rolID, string reproID, string patrono, string local, string empID)
         {
@@ -773,7 +850,7 @@ SELECT PRESTAMO,
                 new OracleParameter(":LOC_ID",local.Equals("0")?"": local),
                 new OracleParameter(":EMP_CI",empID.Equals("0")?"": empID )
             };
-            return db.GetData(sqlPagoQuincena, prm);
+            return Db.GetData(sqlPagoQuincena, prm);
         }
         public DataTable RolIndividual(string rolID, string reproID, string empID, string localID, string cadenaID)
         {
@@ -786,8 +863,8 @@ SELECT PRESTAMO,
                 new OracleParameter(":ciudadlID",string.Empty ),
                 new OracleParameter(":cadenaID",cadenaID)
             };
-            db.ExecProcedure(sqlGeneraRol, prm);
-            return db.GetData(sqlListaRol);
+            Db.ExecProcedure(sqlGeneraRol, prm);
+            return Db.GetData(sqlListaRol);
         }
 
         public DataTable RolIndividualSub(string rolID)
@@ -796,7 +873,7 @@ SELECT PRESTAMO,
             {
                 new OracleParameter(":IND_ID",rolID )
             };
-            return db.GetData(sqlListaRolSub, prm);
+            return Db.GetData(sqlListaRolSub, prm);
         }
     }
 }

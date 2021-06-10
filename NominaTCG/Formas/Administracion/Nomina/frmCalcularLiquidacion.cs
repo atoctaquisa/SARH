@@ -179,7 +179,7 @@ namespace NominaTCG
 
                 if (tipo.Equals(1))
                 {
-                    var frm = new frmDetalleIngreso(txtCodigo.Text, dgvDataDT.Rows[e.RowIndex].Cells["DET_LIQ_REF"].Value.ToString(), dgvDataDT.Rows[e.RowIndex].Cells["LIQ_ID_DT"].Value.ToString(), StateButton);
+                    var frm = new frmDetalleIngreso(txtCodigo.Text, dgvDataDT.Rows[e.RowIndex].Cells["DET_LIQ_REF"].Value.ToString(), dgvDataDT.Rows[e.RowIndex].Cells["LIQ_ID_DT"].Value.ToString(), StateButton,1);
                     Design.frmDialog(frm, txtNombre.Text);
                     AssignDataDT();
 
@@ -201,7 +201,7 @@ namespace NominaTCG
                 }
                 if (tipo.Equals(5))
                 {
-                    var frm = new frmDetalleIngreso(txtCodigo.Text, dgvDataDT.Rows[e.RowIndex].Cells["DET_LIQ_REF"].Value.ToString(), dgvDataDT.Rows[e.RowIndex].Cells["LIQ_ID_DT"].Value.ToString(), StateButton);
+                    var frm = new frmDetalleIngreso(txtCodigo.Text, dgvDataDT.Rows[e.RowIndex].Cells["DET_LIQ_REF"].Value.ToString(), dgvDataDT.Rows[e.RowIndex].Cells["LIQ_ID_DT"].Value.ToString(), StateButton,0);
                     Design.frmDialog(frm, txtNombre.Text);
                     AssignDataDT();
                 }
@@ -253,7 +253,7 @@ namespace NominaTCG
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            if (!Utility.isDate(txtFechaSalida.Text))
+            if (!Utility.IsDate(txtFechaSalida.Text))
             {
                 ErrProv.SetError(txtFechaSalida, "El empleado debe tener una fecha de salida");
             }
@@ -365,9 +365,17 @@ namespace NominaTCG
                 AssignData(EmpleadoBO.Empleado.empId.ToString());
         }
 
-        private void txtAsiento_TextChanged(object sender, EventArgs e)
+        private void btnReversar_Click(object sender, EventArgs e)
         {
-
+            if(txtAsiento.Text.Equals(string.Empty) && Utility.MensajeQuestion("Esta seguro de reversar??")== DialogResult.OK)
+            { 
+                ContratoBO.RevLiquidacion(txtCodigo.Text);
+                AssignData(EmpleadoBO.Empleado.empId.ToString());
+            }
+            else
+            {
+                Utility.MensajeError("La liquidación no se puede reversar!!");
+            }
         }
     }
 }

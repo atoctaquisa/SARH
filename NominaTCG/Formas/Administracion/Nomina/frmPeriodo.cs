@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogic;
-using Entity;
+
 
 namespace NominaTCG
 {
@@ -34,7 +34,7 @@ namespace NominaTCG
             txtEntr.Text = dgvData.Rows[index].Cells["TOTAL_TOTAL"].Value.ToString();
             txtEmp.Text = dgvData.Rows[index].Cells["TOTAL_EMP"].Value.ToString();
         }
-        
+
         private void ClearControls()
         {
             txtCodigo.Text = string.Empty;
@@ -45,7 +45,7 @@ namespace NominaTCG
             txtEgr.Text = string.Empty;
             txtEntr.Text = string.Empty;
             txtEmp.Text = string.Empty;
-        } 
+        }
         private void MensajePeriodo()
         {
             if (ContratoBO.VerificaPeriodo().Equals(1))
@@ -75,7 +75,9 @@ namespace NominaTCG
         public frmPeriodo()
         {
             InitializeComponent();
-            ContratoBO = ContratoController.Instancia;                     
+            EmpleadoBO = EmpleadoController.Instancia;
+            ContratoBO = ContratoController.Instancia;
+            
             ttMessage.SetToolTip(btnNewSave, "Abrir/Cerrar Período");
             ttMessage.SetToolTip(btnEditCancel, "Generar/Reprocesar Roles");
             LoadData();
@@ -89,8 +91,12 @@ namespace NominaTCG
             dgvData.DataSource = PeriodoView;
             Design.vPeriodo(dgvData);
         }
-        #endregion       
-
+        #endregion
+    
+    
+        
+        private EmpleadoController EmpleadoBO { get; set; }
+        
         private void frmPeriodo_FormClosing(object sender, FormClosingEventArgs e)
         {
             _instancia = null;
@@ -119,9 +125,6 @@ namespace NominaTCG
 
         private void btnNewSave_Click(object sender, EventArgs e)
         {
-            if (Validar())
-                return;
-
             ErrProv.Clear();
             if (ContratoBO.VerificaPeriodo() != 1)
             {
@@ -131,7 +134,7 @@ namespace NominaTCG
                         Utility.MensajeOK("Período Aperturado..!!");
                         LoadData();
                         MensajePeriodo();
-                    }   
+                    }
                     else
                         Utility.MensajeError("Acción Fallida..!!");
             }
@@ -143,7 +146,7 @@ namespace NominaTCG
         {
             int ban = 1;
             if (txtCodigo.Text.Equals(string.Empty))
-                ErrProv.SetError(txtCodigo, (ban++)+" Seleccione el período");
+                ErrProv.SetError(txtCodigo, (ban++) + " Seleccione el período");
 
             if (ban > 1)
                 return true;
@@ -153,7 +156,7 @@ namespace NominaTCG
 
         private void btnEditCancel_Click(object sender, EventArgs e)
         {
-            
+
             if (!string.IsNullOrEmpty(txtCodigo.Text))
             {
 
@@ -168,7 +171,7 @@ namespace NominaTCG
                                 LoadData();
                                 Utility.MensajeOK("Valores Generados..!!");
                             }
-                                
+
                             else
                                 Utility.MensajeError("Acción Fallida..!!");
                     }
@@ -178,9 +181,9 @@ namespace NominaTCG
                             if (ContratoBO.GeneraRol(Convert.ToInt32(txtCodigo.Text), NumProceso).Equals(1))
                             {
                                 LoadData();
-                                Utility.MensajeOK("Valores Generados..!!");                                
+                                Utility.MensajeOK("Valores Generados..!!");
                             }
-                                
+
                             else
                                 Utility.MensajeError("Acción Fallida..!!");
                     }
@@ -231,4 +234,5 @@ namespace NominaTCG
             this.Close();
         }
     }
+    
 }

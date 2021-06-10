@@ -268,7 +268,8 @@ namespace DataAccess
                                                                    EMP_FAM_PARENT,
                                                                    EMP_FAM_OCUP,
                                                                    EMP_FAM_TELF_REF,
-                                                                   EMP_FAM_DISC
+                                                                   EMP_FAM_DISC,
+                                                                   EMP_FAM_CREA
                                                                     )
                                                        VALUES      (:EMP_ID,
                                                                     :EMP_FAM_ID,
@@ -277,7 +278,8 @@ namespace DataAccess
                                                                     :EMP_FAM_PARENT,
                                                                     :EMP_FAM_OCUP,
                                                                     :EMP_FAM_TELF_REF,
-                                                                    :EMP_FAM_DISC
+                                                                    :EMP_FAM_DISC,
+                                                                    SYSDATE
                                                                     )";
         private static string sqlActualizarFamiliar = @"UPDATE  DESARROLLO.DAT_EMP_FAM 
                                                         SET 
@@ -286,7 +288,8 @@ namespace DataAccess
                                                                 EMP_FAM_PARENT=:EMP_FAM_PARENT,
                                                                 EMP_FAM_OCUP=:EMP_FAM_OCUP,
                                                                 EMP_FAM_TELF_REF=:EMP_FAM_TELF_REF,
-                                                                EMP_FAM_DISC=:EMP_FAM_DISC
+                                                                EMP_FAM_DISC=:EMP_FAM_DISC,
+                                                                EMP_FAM_ACT:=SYSDATE 
                                                         WHERE   EMP_ID=:EMP_ID AND EMP_FAM_ID=:EMP_FAM_ID";
 
         private static string sqlEliminaFamiliar = @"DELETE DESARROLLO.DAT_EMP_FAM WHERE EMP_ID=:EMP_ID AND EMP_FAM_ID=:EMP_FAM_ID";
@@ -294,6 +297,87 @@ namespace DataAccess
         private static string sqlRegistraReingreso = @"INSERT INTO DESARROLLO.DAT_DET_ING_EMP (EMP_ID,ING_ID,ING_FEC_ING) 
                                                        VALUES(:EMP_ID,1,:LAB_FEC_INGRESO) ";
         private static string sqlCargarConsumoLocal = "DESARROLLO.PK_NOMINATCG.F_CARGACONSUMO";
+        private static string sqlProcesaFaltanteCaja = "DESARROLLO.P_CARGA_NOMINA_FALTANTE_CJ";
+        private static string sqlProcesaAsientoRol = "DESARROLLO.P_CARGA_ASIENTO_NOMINA";
+        private static string sqlProcesaCargaAsientoRol = "DESARROLLO.JDE_ASIENTO_CONTABLE";
+        private static string sqlVerificaAsientoRol = @"
+SELECT COUNT(1)
+          FROM DAT_ROL_CONT
+         WHERE     SEG_ROL_ID = :ROL_ID
+               AND SEG_ROL_REPRO = :ROL_REPRO
+               AND TIPO IN (1, 2)";
+        private static string sqlVerificaCargaAsientoRol = @"
+SELECT COUNT (1)
+  FROM DAT_CNT_LOAD
+ WHERE CNT_STDO = 0 AND ID_PRC = 0 AND PER_ID = :PER_ID
+";
+        private static string sqlVerProcesoAsientoRol = @"
+--SELECT * FROM (
+  SELECT DT.CLI_ID,
+         (SELECT C.CLI_NOMBRE FROM DAT_CLIENTE C WHERE C.CLI_ID =DT.CLI_ID) LOCAL,       
+         ROUND(SUM (DET_DIA_DB ),2)DEBE,
+         ROUND(SUM (DET_DIA_HB),2) HABER,
+         SUM (ROUND (DET_DIA_DB, 2)) - SUM (ROUND (DET_DIA_HB, 2))    DIFERENCIA
+    FROM DESARROLLO.DAT_DET_DIARIO DT
+         JOIN DAT_DIARIO D
+             ON (    DT.PERC_ID = D.PERC_ID
+                 AND DT.DIA_ID = D.DIA_ID
+                 AND DT.PAT_ID = D.PAT_ID)
+   WHERE  D.TIP_MAT_ID = 9
+AND DIA_FEC_DIARIO = (SELECT TRUNC(LAST_DAY(R.ROL_FECHA_INI)) FROM DAT_ROL_SEG R WHERE R.SEG_ROL_ID =:P_ROL_ID AND R.SEG_ROL_ESTADO =1)
+GROUP BY DT.CLI_ID, DT.PERC_ID--) WHERE DIFERENCIA!=0 
+";
+        private static string sqlCargaFaltanteCaja = @"
+ SELECT LOC_NOMBRE LOCAL, ROUND (SUM (VALOR), 2) VALOR
+    FROM V_REPORTE_SANCIONES S
+         JOIN DAT_CLIENTE C ON (S.LOC_ID = C.LOC_ID)         
+   WHERE     TIPO = 20050         
+         AND FECHA_SANCION BETWEEN (SELECT TO_DATE (
+                                                  '21'
+                                               || TO_CHAR (
+                                                      ADD_MONTHS (ROL_FECHA_INI,
+                                                                  -1),
+                                                      'MM/RRRR'),
+                                               'DD/MM/RRRR')    FECHAINI
+                                      FROM DAT_ROL_SEG
+                                     WHERE SEG_ROL_ID = :ROL_ID AND ROWNUM = 1)
+                               AND (SELECT TO_DATE (
+                                                  '20'
+                                               || TO_CHAR (ROL_FECHA_INI,
+                                                           'MM/RRRR'),
+                                               'DD/MM/RRRR')    FECHAFIN
+                                      FROM DAT_ROL_SEG
+                                     WHERE SEG_ROL_ID = :ROL_ID AND ROWNUM = 1)
+         AND C.PAT_ID =:PAT_ID
+         AND ADM = 0
+AND C.LOC_ID NOT IN(1)
+         GROUP BY LOC_NOMBRE
+ORDER BY 1 ASC ";
+        private static string sqlCargaFaltanteCajaDT = @"
+ SELECT LOC_NOMBRE LOCAL,FECHA_SANCION FECHA,EMP_ID EMPID, NOMBRE, ROUND (VALOR, 2) VALOR, OBSERVACION 
+    FROM V_REPORTE_SANCIONES S
+         JOIN DAT_CLIENTE C ON (S.LOC_ID = C.LOC_ID)         
+   WHERE     TIPO = 20050         
+         AND FECHA_SANCION BETWEEN (SELECT TO_DATE (
+                                                  '21'
+                                               || TO_CHAR (
+                                                      ADD_MONTHS (ROL_FECHA_INI,
+                                                                  -1),
+                                                      'MM/RRRR'),
+                                               'DD/MM/RRRR')    FECHAINI
+                                      FROM DAT_ROL_SEG
+                                     WHERE SEG_ROL_ID = :ROL_ID AND ROWNUM = 1)
+                               AND (SELECT TO_DATE (
+                                                  '20'
+                                               || TO_CHAR (ROL_FECHA_INI,
+                                                           'MM/RRRR'),
+                                               'DD/MM/RRRR')    FECHAFIN
+                                      FROM DAT_ROL_SEG
+                                     WHERE SEG_ROL_ID = :ROL_ID AND ROWNUM = 1)
+         AND C.PAT_ID =:PAT_ID
+         AND ADM = 0
+AND C.LOC_ID NOT IN(1)        
+ORDER BY LOC_NOMBRE,FECHA_SANCION,NOMBRE ASC ";
         private static string sqlRegistrarDiscapacidad = @"INSERT INTO DESARROLLO.DAT_DSCP (DSCP_ID,
                                                                                              EMP_ID,
                                                                                              DSCP_TIP_ID,
@@ -321,7 +405,7 @@ namespace DataAccess
                                                     WHERE LOC_ID IN (SELECT LOC_ID
                                                                        FROM DESARROLLO.V_DETALLE_EMP
                                                                       WHERE EMP_ID = :empID)";
-        private static string sqlEmpleadoEmail = "SELECT EMP_MAIL FROM DESARROLLO.V_DETALLE_EMP WHERE EMP_ID=:EMP_ID";
+        private static string sqlEmpleadoEmail = "SELECT EMP_MAIL_PER FROM DESARROLLO.V_DETALLE_EMP WHERE EMP_ID=:EMP_ID";
         private static string sqlRegistraReingresoID = "SELECT COUNT(1)+1 FROM DESARROLLO.DAT_EMP_ING";
         private static string sqlRegistraReingreso2 = @"INSERT INTO DESARROLLO.DAT_EMP_ING (EMP_ING, EMP_CI,EMP_ID,EMP_ID_ANT,FECHA_REG,USER_CREA)
                                                        VALUES (:EMP_ING,:EMP_CI,:EMP_ID,:EMP_ID_ANT,SYSDATE,:USER_CREA) ";
@@ -356,7 +440,7 @@ namespace DataAccess
                                                                ESTADO
                                                       FROM DESARROLLO.DAT_PRESTAMO P";
         private static string sqlTablaAmortizacion = @"Select EMP_ID, ROL_ID_GEN, ROL_REPRO, 
-                                                              ROL_ID, DET_PRES_ID, TRUNC(DET_PRES_VALOR,2) DET_PRES_VALOR, 
+                                                              ROL_ID, DET_PRES_ID, ROUND(DET_PRES_VALOR,2) DET_PRES_VALOR, 
                                                               DET_PRES_ROL, DET_PRES_REPRO, FECHACREACION, 
                                                               FECHAMODIF, F_MES_CALCULADO(DET_PRES_ROL) PERIODO,DET_PRES_VALOR_PAG
                                                         From DESARROLLO.DAT_TAB_AMORTI T
@@ -439,7 +523,7 @@ namespace DataAccess
 
             data = db.GetData(sqlActuarialData).Copy();
             data.TableName = "Empleados";
-            content.Tables.Add(data);            
+            content.Tables.Add(data);
             return content;
 
         }
@@ -743,6 +827,78 @@ namespace DataAccess
             };
             return db.ExecProcedure(sqlCargarConsumoLocal, prm);
         }
+        public int ProcesaFaltanteCaja(string perID, string patID)
+        {
+            OracleParameter[] prm = new OracleParameter[]{
+                 new OracleParameter(":ROL_ID",perID ),
+                new OracleParameter(":PAT_ID",patID )
+            };
+            return db.ExecProcedure(sqlProcesaFaltanteCaja, prm);
+        }
+
+        public int VerificaAsientoRol(string perID, string patID, int tipo)
+        {
+            string sql;
+            OracleParameter[] prm;
+            if (tipo.Equals(0))
+            {
+                prm = new OracleParameter[]{
+                new OracleParameter(":ROL_ID",perID ),
+                new OracleParameter(":ROL_REPRO",patID )
+                };
+                sql = sqlVerificaAsientoRol;
+            }
+            else
+            {
+                prm = new OracleParameter[]{
+                new OracleParameter(":ROL_ID",perID )
+                };
+                sql = sqlVerificaCargaAsientoRol;
+            }
+            return db.GetEntero(sql, prm);
+        }
+
+        public int GeneraAsientoRol(string perID, string patID, int tipo)
+        {
+            string sql;
+            OracleParameter[] prm;
+            prm = new OracleParameter[]{
+                new OracleParameter(":ROL_ID",perID )
+                };
+
+            if (tipo.Equals(0))
+            {
+                sql = sqlProcesaAsientoRol;
+            }
+            else
+            {
+                sql = sqlProcesaCargaAsientoRol;
+            }
+            return db.ExecProcedure(sql, prm);
+        }
+
+        public DataTable ConsultaAsientoRol(string perID, string patID, int tipo)
+        {
+            OracleParameter[] prm = new OracleParameter[]{
+                new OracleParameter(":ROL_ID",perID )
+            };
+            return db.GetData(sqlVerProcesoAsientoRol, prm);
+        }
+        public DataTable CargaFaltanteCaja(string perID, string patID, int tipo)
+        {
+            OracleParameter[] prm = new OracleParameter[]{
+                new OracleParameter(":ROL_ID",perID ),
+                new OracleParameter(":ROL_ID",perID ),
+                new OracleParameter(":PAT_ID",patID )
+            };
+            string sql;
+            if (tipo.Equals(1))
+                sql = sqlCargaFaltanteCaja;
+            else
+                sql = sqlCargaFaltanteCajaDT;
+
+            return db.GetData(sql, prm);
+        }
         public string CargoEmpleadoRol(string empID, string perID, string reproID)
         {
             OracleParameter[] prm = new OracleParameter[]
@@ -796,19 +952,29 @@ namespace DataAccess
 
         public int RegistrarFamiliar(DatEmpFam emp)
         {
-
+            string sql = @"SELECT COUNT (1)
+                          FROM DAT_EMP_FAM
+                         WHERE     UPPER (TRIM (EMP_FAM_NOMBRE)) = UPPER (TRIM ( :EMP_FAM_NOMBRE))
+                               AND EMP_ID = :EMP_ID ";
             OracleParameter[] prm = new OracleParameter[]{
-            new OracleParameter(":EMP_ID",emp.empId),
-            new OracleParameter(":EMP_FAM_ID",emp.empFamId),
             new OracleParameter(":EMP_FAM_NOMBRE",emp.empFamNombre),
-            new OracleParameter(":EMP_FAM_FEC_NAC",emp.empFamFecNac),
-            new OracleParameter(":EMP_FAM_PARENT",emp.empFamParent),
-            new OracleParameter(":EMP_FAM_OCUP",emp.empFamOcup),
-            new OracleParameter(":EMP_FAM_TELF_REF",emp.empFamTelfRef),
-            new OracleParameter(":EMP_FAM_DISC",emp.empFamDisc)
-            };
-            return db.ExecQuery(sqlRegistrarFamiliar, prm);
-            //return datos;
+            new OracleParameter(":EMP_ID",emp.empId) };
+            int cnt = db.GetEntero(sql, prm);
+            if (cnt.Equals(0))
+            {
+                prm = new OracleParameter[]{
+                    new OracleParameter(":EMP_ID",emp.empId),
+                    new OracleParameter(":EMP_FAM_ID",emp.empFamId),
+                    new OracleParameter(":EMP_FAM_NOMBRE",emp.empFamNombre),
+                    new OracleParameter(":EMP_FAM_FEC_NAC",emp.empFamFecNac),
+                    new OracleParameter(":EMP_FAM_PARENT",emp.empFamParent),
+                    new OracleParameter(":EMP_FAM_OCUP",emp.empFamOcup),
+                    new OracleParameter(":EMP_FAM_TELF_REF",emp.empFamTelfRef),
+                    new OracleParameter(":EMP_FAM_DISC",emp.empFamDisc)
+                    };
+                return db.ExecQuery(sqlRegistrarFamiliar, prm);
+            }
+            return cnt;
         }
 
         public Int64 RegistarEmpleado(DatEmp emp, string prmScript)
@@ -1113,7 +1279,7 @@ namespace DataAccess
             return db.GetData(sqlDiscapacidad);
             //return datos;
         }
-        public DataTable ListaEmpleadoDiscapacidad(string empID,string tipo)
+        public DataTable ListaEmpleadoDiscapacidad(string empID, string tipo)
         {
             string sql;
             OracleParameter[] prm = new OracleParameter[]{

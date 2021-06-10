@@ -21,11 +21,11 @@ namespace NominaTCG
         private DataView auxView { get; set; }
         private CuentaController CuentaBO { get; set; }
 
-        public frmListaCuenta()
+        public frmListaCuenta(int tipo)
         {
             InitializeComponent();
             CuentaBO = CuentaController.Instancia;
-            auxView = new DataView(CuentaBO.ListaCuenta());
+            auxView = new DataView(CuentaBO.ListaCuenta(tipo));
             dgvData.DataSource = auxView;
             Design.EmgPeriodoUnico(dgvData);
         }

@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRepEmpleado));
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.btnConsultar = new System.Windows.Forms.Button();
+            this.imgList = new System.Windows.Forms.ImageList(this.components);
             this.cboPatrono = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.txtFechaConIni = new System.Windows.Forms.TextBox();
@@ -47,7 +48,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
-            this.imgList = new System.Windows.Forms.ImageList(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -69,6 +69,7 @@
             this.btnEmpleado = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.chkCargaFa = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -98,12 +99,35 @@
             this.btnConsultar.UseVisualStyleBackColor = true;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
+            // imgList
+            // 
+            this.imgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList.ImageStream")));
+            this.imgList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgList.Images.SetKeyName(0, "btnNew.png");
+            this.imgList.Images.SetKeyName(1, "btnEdit.png");
+            this.imgList.Images.SetKeyName(2, "btnSave.png");
+            this.imgList.Images.SetKeyName(3, "btnCancel.png");
+            this.imgList.Images.SetKeyName(4, "btnDelete.png");
+            this.imgList.Images.SetKeyName(5, "btnFind.png");
+            this.imgList.Images.SetKeyName(6, "btnPrinter.png");
+            this.imgList.Images.SetKeyName(7, "btnUpdate.png");
+            this.imgList.Images.SetKeyName(8, "btnReport.png");
+            this.imgList.Images.SetKeyName(9, "btnProcesar.png");
+            this.imgList.Images.SetKeyName(10, "btnOut.png");
+            this.imgList.Images.SetKeyName(11, "btnIn.png");
+            this.imgList.Images.SetKeyName(12, "btnDoor.png");
+            this.imgList.Images.SetKeyName(13, "btnOpen.png");
+            this.imgList.Images.SetKeyName(14, "btnFirst.png");
+            this.imgList.Images.SetKeyName(15, "btnLast.png");
+            this.imgList.Images.SetKeyName(16, "btnNext.png");
+            this.imgList.Images.SetKeyName(17, "btnPrevious.png");
+            // 
             // cboPatrono
             // 
             this.cboPatrono.FormattingEnabled = true;
-            this.cboPatrono.Location = new System.Drawing.Point(414, 124);
+            this.cboPatrono.Location = new System.Drawing.Point(80, 106);
             this.cboPatrono.Name = "cboPatrono";
-            this.cboPatrono.Size = new System.Drawing.Size(135, 21);
+            this.cboPatrono.Size = new System.Drawing.Size(178, 21);
             this.cboPatrono.TabIndex = 11;
             // 
             // button1
@@ -210,29 +234,6 @@
             // 
             this.ErrProv.ContainerControl = this;
             // 
-            // imgList
-            // 
-            this.imgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList.ImageStream")));
-            this.imgList.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgList.Images.SetKeyName(0, "btnNew.png");
-            this.imgList.Images.SetKeyName(1, "btnEdit.png");
-            this.imgList.Images.SetKeyName(2, "btnSave.png");
-            this.imgList.Images.SetKeyName(3, "btnCancel.png");
-            this.imgList.Images.SetKeyName(4, "btnDelete.png");
-            this.imgList.Images.SetKeyName(5, "btnFind.png");
-            this.imgList.Images.SetKeyName(6, "btnPrinter.png");
-            this.imgList.Images.SetKeyName(7, "btnUpdate.png");
-            this.imgList.Images.SetKeyName(8, "btnReport.png");
-            this.imgList.Images.SetKeyName(9, "btnProcesar.png");
-            this.imgList.Images.SetKeyName(10, "btnOut.png");
-            this.imgList.Images.SetKeyName(11, "btnIn.png");
-            this.imgList.Images.SetKeyName(12, "btnDoor.png");
-            this.imgList.Images.SetKeyName(13, "btnOpen.png");
-            this.imgList.Images.SetKeyName(14, "btnFirst.png");
-            this.imgList.Images.SetKeyName(15, "btnLast.png");
-            this.imgList.Images.SetKeyName(16, "btnNext.png");
-            this.imgList.Images.SetKeyName(17, "btnPrevious.png");
-            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -276,7 +277,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(325, 127);
+            this.label6.Location = new System.Drawing.Point(20, 110);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 13);
             this.label6.TabIndex = 5;
@@ -429,11 +430,22 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // chkCargaFa
+            // 
+            this.chkCargaFa.AutoSize = true;
+            this.chkCargaFa.Location = new System.Drawing.Point(80, 133);
+            this.chkCargaFa.Name = "chkCargaFa";
+            this.chkCargaFa.Size = new System.Drawing.Size(127, 17);
+            this.chkCargaFa.TabIndex = 62;
+            this.chkCargaFa.Text = "Ver Cargas Familiares";
+            this.chkCargaFa.UseVisualStyleBackColor = true;
+            // 
             // frmRepEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(957, 459);
+            this.Controls.Add(this.chkCargaFa);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtLocal);
             this.Controls.Add(this.btnLocal);
@@ -519,5 +531,6 @@
         private System.Windows.Forms.Button btnEmpleado;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.CheckBox chkCargaFa;
     }
 }

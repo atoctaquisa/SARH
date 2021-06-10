@@ -15,6 +15,7 @@ namespace DataAccess
         private static string sqlListaRol = "SELECT ROL_ID, ROL_CUENTA, ROL_SUBCUENTA, ROL_VARIABLE, ROL_ORD_IMP, ROL_ESTADO, ROL_FEC_MOD, ROL_FEC_CRE, ROL_TIP, ROL_APA_LOCAL, CUE_ID, CUE_COS_ID, GRU_VAR_ROL_ID, ROL_TIPO_CUENTA FROM DESARROLLO.VAR_ROL ORDER BY 2";
         private static string sqlGrupoCuenta = "SELECT GRU_VAR_ROL_ID, GRU_VAR_ROL_NOMBRE, FECHACREACION, FECHAMODIF FROM DESARROLLO.DAT_GRU_VAR_ROL ORDER BY 2";
         private static string sqlListaCuentas = "SELECT ROL_CUENTA || ' - ' || ROL_SUBCUENTA AS CUENTA, ROL_ID FROM desarrollo.var_rol WHERE ROL_TIPO_CUENTA = 1 AND ROL_ESTADO = 1 ORDER BY ROL_CUENTA, ROL_SUBCUENTA "; //ROL_SUBCUENTA || ' - ' || ROL_CUENTA
+        private static string sqlListaCuentaGen = "SELECT DISTINCT V.ROL_CUENTA || ' - ' || V.ROL_SUBCUENTA AS CUENTA, V.ROL_ID FROM DAT_EMP_VAL_FIJO E JOIN  var_rol V ON (E.ROL_ID=V.ROL_ID) ORDER BY 1 ASC ";
         private static string sqlListaCuenta = @"
                                                 SELECT  ROL_CUENTA || ' - ' || ROL_SUBCUENTA AS CUENTA, ROL_ID
                                                     FROM DESARROLLO.VAR_ROL
@@ -22,8 +23,27 @@ namespace DataAccess
                                                          AND ROL_ID BETWEEN 10001 AND 29999
                                                          AND ROL_ESTADO = 1
                                                 ORDER BY CUENTA";
+        private static string sqlListaCuentaIng = @"
+                                                SELECT  ROL_CUENTA || ' - ' || ROL_SUBCUENTA AS CUENTA, ROL_ID
+                                                    FROM DESARROLLO.VAR_ROL
+                                                   WHERE     ROL_SUBCUENTA IS NOT NULL
+                                                         AND ROL_ID BETWEEN 10001 AND 29999
+                                                         AND ROL_ESTADO = 1 AND ROL_CUENTA IN('Ingreso','Otros')
+
+                                                ORDER BY CUENTA";
+        private static string sqlListaCuentaEgr = @"
+                                                SELECT  ROL_CUENTA || ' - ' || ROL_SUBCUENTA AS CUENTA, ROL_ID
+                                                    FROM DESARROLLO.VAR_ROL
+                                                   WHERE     ROL_SUBCUENTA IS NOT NULL
+                                                         AND ROL_ID BETWEEN 10001 AND 29999
+                                                         AND ROL_ESTADO = 1 AND ROL_CUENTA='Egreso' 
+                                                ORDER BY CUENTA";
         private static string sqlListaCuentaDiario = @"SELECT CUE_ID,CUE_NOMBRE FROM DESARROLLO.DAT_CUENTA WHERE CUE_ESTADO=1 AND CUE_SUB=0 ORDER BY CUE_ID";
         private static string sqlListaCuentasPrestamo = "SELECT ROL_SUBCUENTA || ' - ' || ROL_CUENTA AS CUENTA, ROL_ID FROM desarrollo.var_rol WHERE ROL_TIPO_CUENTA = 1 AND ROL_ESTADO = 1 AND ROL_SUBCUENTA LIKE '%PREST%' ORDER BY ROL_CUENTA, ROL_SUBCUENTA ";
+        private static string sqlListaPrestamoCuenta = @"SELECT ROL_SUBCUENTA || ' - ' || ROL_CUENTA AS CUENTA, ROL_ID
+    FROM DESARROLLO.VAR_ROL
+   WHERE ROL_TIPO_CUENTA = 1 AND ROL_ESTADO = 1 AND ROL_ID BETWEEN 19999 AND 30000--ROL_SUBCUENTA LIKE '%PREST%'
+ORDER BY ROL_CUENTA, ROL_SUBCUENTA ";
         private static string sqlProvisionRol = "SELECT ROL_ID, CUE_PROV_ID, PROV_ROL_ESTADO, PROV_ROL_TIPO, PROV_FECHACREACION, PROV_FECHAMODIF FROM DESARROLLO.DAT_PROVISION_ROL WHERE ROL_ID = :ROL_ID ";
         private static string sqlListaCuentaProvision = "SELECT CUE_PROV_NOMBRE,CUE_PROV_ID FROM DESARROLLO.DAT_CUENTA_PROVISION ";
         private static string sqlCuentaI = @"
@@ -238,9 +258,18 @@ namespace DataAccess
         {
             return db.GetData(sqlListaCuentaDiario);
         }
-        public DataTable ListaCuenta()
+        public DataTable ListaCuenta(int tipo)
         {
-            return db.GetData(sqlListaCuenta);
+            string sql = string.Empty; //sqlListaCuenta
+            if (tipo.Equals(1))
+                sql = sqlListaCuentaIng;
+            else
+                sql = sqlListaCuentaEgr;
+            return db.GetData(sql);
+        }
+        public DataTable ListaCuentasGen()
+        {
+            return db.GetData(sqlListaCuentaGen);
         }
         public DataTable ListaCuentas()
         {
@@ -255,7 +284,10 @@ namespace DataAccess
 
             if (param[0].Equals("ValorGrupo"))
                 sql = sqlListaCuentas;
-            
+
+            if (param[0].Equals("PrestamoCuenta"))
+                sql = sqlListaPrestamoCuenta;
+
             return db.GetData(sql);
         }
         public DataTable ListaProvisionRol(int rolID)

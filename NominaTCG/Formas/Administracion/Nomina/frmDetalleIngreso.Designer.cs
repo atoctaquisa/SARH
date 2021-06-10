@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetalleIngreso));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
             this.tabAdmin = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -266,6 +266,7 @@
             this.dgvDatos.TabIndex = 1;
             this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
             this.dgvDatos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellEndEdit);
+            this.dgvDatos.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDatos_UserDeletedRow);            
             // 
             // ROL_ID
             // 
@@ -276,9 +277,9 @@
             // 
             // btnCuenta
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.NullValue = "...";
-            this.btnCuenta.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = "...";
+            this.btnCuenta.DefaultCellStyle = dataGridViewCellStyle3;
             this.btnCuenta.FillWeight = 101.5228F;
             this.btnCuenta.HeaderText = "";
             this.btnCuenta.Name = "btnCuenta";
@@ -303,8 +304,8 @@
             // ROL_LIQ_VALOR
             // 
             this.ROL_LIQ_VALOR.DataPropertyName = "ROL_LIQ_VALOR";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ROL_LIQ_VALOR.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ROL_LIQ_VALOR.DefaultCellStyle = dataGridViewCellStyle4;
             this.ROL_LIQ_VALOR.FillWeight = 99.61929F;
             this.ROL_LIQ_VALOR.HeaderText = "Valor";
             this.ROL_LIQ_VALOR.Name = "ROL_LIQ_VALOR";
@@ -348,7 +349,7 @@
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(650, 28);
             this.lblTitulo.TabIndex = 37;
-            this.lblTitulo.Text = "Detalle de Ingresos";
+            this.lblTitulo.Text = "Detalle de Ingresos/Egreso";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ErrProv

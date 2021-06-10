@@ -1613,3 +1613,2007 @@ Stack Trace	: at System.Collections.ArrayList.get_Item(Int32 index)
    at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
    at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
 ^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 16:58:58
+Time		: 19/4/2021
+Computer	: ALTR
+Error		: ORA-12899: value too large for column "DESARROLLO"."DAT_CAB_VAC"."CAB_VAC_OBS" (actual: 528, maximum: 500)
+ORA-06512: at "DESARROLLO.PK_LIQUIDACION", line 634
+ORA-06512: at "DESARROLLO.PK_LIQUIDACION", line 1115
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.CalculaLiquidacion(String empID, Int32 pagoID, Int32 provID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2247
+   at BusinessLogic.ContratoController.CalculaLiquidacion(String empID, Int32 pagoID, Int32 provID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 275
+   at NominaTCG.frmCalcularLiquidacion.btnCalcular_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 289
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: System.Windows.Forms
+Method		: CreateHandle
+Date		: 10:35:14
+Time		: 21/4/2021
+Computer	: ALTR
+Error		: Cannot access a disposed object.
+Object name: 'frmValorFijo'.
+Stack Trace	: at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Form.SetVisibleCore(Boolean value)
+   at System.Windows.Forms.Control.Show()
+   at NominaTCG.Design.frmShow(Form frm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Clases\Design.cs:line 951
+   at NominaTCG.frmMain.mnuValorFijo_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmMain.cs:line 419
+   at System.Windows.Forms.ToolStripItem.RaiseEvent(Object key, EventArgs e)
+   at System.Windows.Forms.ToolStripMenuItem.OnClick(EventArgs e)
+   at System.Windows.Forms.ToolStripItem.HandleClick(EventArgs e)
+   at System.Windows.Forms.ToolStripItem.HandleMouseUp(MouseEventArgs e)
+   at System.Windows.Forms.ToolStripItem.FireEventInteractive(EventArgs e, ToolStripItemEventType met)
+   at System.Windows.Forms.ToolStripItem.FireEvent(EventArgs e, ToolStripItemEventType met)
+   at System.Windows.Forms.ToolStrip.OnMouseUp(MouseEventArgs mea)
+   at System.Windows.Forms.ToolStripDropDown.OnMouseUp(MouseEventArgs mea)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.ToolStrip.WndProc(Message& m)
+   at System.Windows.Forms.ToolStripDropDown.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: System.Windows.Forms
+Method		: CreateHandle
+Date		: 10:35:18
+Time		: 21/4/2021
+Computer	: ALTR
+Error		: Cannot access a disposed object.
+Object name: 'frmValorFijo'.
+Stack Trace	: at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Form.SelectInternal(Boolean directed, Boolean forward)
+   at System.Windows.Forms.Form.Select(Boolean directed, Boolean forward)
+   at System.Windows.Forms.Form.set_Active(Boolean value)
+   at System.Windows.Forms.Form.WmActivate(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: System.Windows.Forms
+Method		: CreateHandle
+Date		: 10:35:19
+Time		: 21/4/2021
+Computer	: ALTR
+Error		: Cannot access a disposed object.
+Object name: 'frmValorFijo'.
+Stack Trace	: at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Form.SelectInternal(Boolean directed, Boolean forward)
+   at System.Windows.Forms.Form.Select(Boolean directed, Boolean forward)
+   at System.Windows.Forms.Form.set_Active(Boolean value)
+   at System.Windows.Forms.Form.WmActivate(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: System.Windows.Forms
+Method		: CreateHandle
+Date		: 10:35:20
+Time		: 21/4/2021
+Computer	: ALTR
+Error		: Cannot access a disposed object.
+Object name: 'frmValorFijo'.
+Stack Trace	: at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Form.SelectInternal(Boolean directed, Boolean forward)
+   at System.Windows.Forms.Form.Select(Boolean directed, Boolean forward)
+   at System.Windows.Forms.Form.set_Active(Boolean value)
+   at System.Windows.Forms.Form.WmActivate(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: System.Windows.Forms
+Method		: CreateHandle
+Date		: 10:35:21
+Time		: 21/4/2021
+Computer	: ALTR
+Error		: Cannot access a disposed object.
+Object name: 'frmValorFijo'.
+Stack Trace	: at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Form.SelectInternal(Boolean directed, Boolean forward)
+   at System.Windows.Forms.Form.Select(Boolean directed, Boolean forward)
+   at System.Windows.Forms.Form.set_Active(Boolean value)
+   at System.Windows.Forms.Form.WmActivate(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 12:24:20
+Time		: 21/4/2021
+Computer	: ALTR
+Error		: ORA-12899: value too large for column "DESARROLLO"."DAT_CAB_VAC"."CAB_VAC_OBS" (actual: 529, maximum: 500)
+ORA-06512: at "DESARROLLO.PK_LIQUIDACION", line 634
+ORA-06512: at "DESARROLLO.PK_LIQUIDACION", line 1116
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.CalculaLiquidacion(String empID, Int32 pagoID, Int32 provID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2255
+   at BusinessLogic.ContratoController.CalculaLiquidacion(String empID, Int32 pagoID, Int32 provID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 275
+   at NominaTCG.frmCalcularLiquidacion.btnCalcular_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 289
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 12:26:19
+Time		: 21/4/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.DetalleIngreso(String empID, String perID, String reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2096
+   at BusinessLogic.ContratoController.DetalleIngreso(String empID, String perID, String reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 395
+   at NominaTCG.frmDetalleIngreso..ctor(String empID, String perID, String liqID, Acction stado) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleIngreso.cs:line 78
+   at NominaTCG.frmCalcularLiquidacion.dgvDataDT_CellContentClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 182
+   at System.Windows.Forms.DataGridView.OnCellContentClick(DataGridViewCellEventArgs e)
+   at System.Windows.Forms.DataGridView.OnCommonCellContentClick(Int32 columnIndex, Int32 rowIndex, Boolean doubleClick)
+   at System.Windows.Forms.DataGridViewCell.OnMouseUpInternal(DataGridViewCellMouseEventArgs e)
+   at System.Windows.Forms.DataGridView.OnCellMouseUp(DataGridViewCellMouseEventArgs e)
+   at System.Windows.Forms.DataGridView.OnMouseUp(MouseEventArgs e)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.DataGridView.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 12:26:25
+Time		: 21/4/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.DetalleIngreso(String empID, String perID, String reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2096
+   at BusinessLogic.ContratoController.DetalleIngreso(String empID, String perID, String reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 395
+   at NominaTCG.frmDetalleIngreso..ctor(String empID, String perID, String liqID, Acction stado) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleIngreso.cs:line 78
+   at NominaTCG.frmCalcularLiquidacion.dgvDataDT_CellContentClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 182
+   at System.Windows.Forms.DataGridView.OnCellContentClick(DataGridViewCellEventArgs e)
+   at System.Windows.Forms.DataGridView.OnCommonCellContentClick(Int32 columnIndex, Int32 rowIndex, Boolean doubleClick)
+   at System.Windows.Forms.DataGridViewCell.OnMouseUpInternal(DataGridViewCellMouseEventArgs e)
+   at System.Windows.Forms.DataGridView.OnCellMouseUp(DataGridViewCellMouseEventArgs e)
+   at System.Windows.Forms.DataGridView.OnMouseUp(MouseEventArgs e)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.DataGridView.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 12:54:10
+Time		: 22/4/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 120
+   at DataAccess.ReportDataRepository.Vacacion(String query) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ReportDataRepository.cs:line 517
+   at BusinessLogic.ReportDataController.Vacacion(String subQuery) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ReportDataController.cs:line 45
+   at NominaTCG.frmVacacionRep.btnImprimir_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Reporte\frmVacacionRep.cs:line 101
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 12:54:14
+Time		: 22/4/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 120
+   at DataAccess.ReportDataRepository.Vacacion(String query) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ReportDataRepository.cs:line 517
+   at BusinessLogic.ReportDataController.Vacacion(String subQuery) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ReportDataController.cs:line 45
+   at NominaTCG.frmVacacionRep.btnImprimir_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Reporte\frmVacacionRep.cs:line 101
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 12:56:15
+Time		: 22/4/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 120
+   at DataAccess.ReportDataRepository.Vacacion(String query) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ReportDataRepository.cs:line 517
+   at BusinessLogic.ReportDataController.Vacacion(String subQuery) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ReportDataController.cs:line 45
+   at NominaTCG.frmVacacionRep.btnImprimir_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Reporte\frmVacacionRep.cs:line 101
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 12:56:50
+Time		: 22/4/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 120
+   at DataAccess.ReportDataRepository.Vacacion(String query) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ReportDataRepository.cs:line 517
+   at BusinessLogic.ReportDataController.Vacacion(String subQuery) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ReportDataController.cs:line 45
+   at NominaTCG.frmVacacionRep.btnImprimir_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Reporte\frmVacacionRep.cs:line 101
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: mscorlib
+Method		: StringToNumber
+Date		: 20:58:44
+Time		: 23/4/2021
+Computer	: ALTR
+Error		: Input string was not in a correct format.
+Stack Trace	: at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt32(String value)
+   at DataAccess.ConnectionDDBB.GetEntero(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 622
+   at DataAccess.SolicitudRepository.VerificaDiasVacacion(String empID, Int32 perID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\SolicitudRepository.cs:line 219
+   at BusinessLogic.SolicitudController.VerificaDiasVacacion(String empID, Int32 perID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\SolicitudController.cs:line 82
+   at NominaTCG.frmVacaciones.ValidateControls() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Empleado\frmVacaciones.cs:line 162
+   at NominaTCG.frmVacaciones.btnEditCancel_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Empleado\frmVacaciones.cs:line 260
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: NominaTCG
+Method		: cboCuenta_SelectedIndexChanged
+Date		: 18:10:16
+Time		: 25/4/2021
+Computer	: ALTR
+Error		: Object reference not set to an instance of an object.
+Stack Trace	: at NominaTCG.frmValorFijo.cboCuenta_SelectedIndexChanged(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmValorFijo.cs:line 189
+   at System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)
+   at NominaTCG.frmValorFijo..ctor() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmValorFijo.cs:line 64
+   at NominaTCG.frmValorFijo.get_Instancia() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmValorFijo.cs:line 33
+   at NominaTCG.frmMain.mnuValorFijo_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmMain.cs:line 417
+   at System.Windows.Forms.ToolStripItem.RaiseEvent(Object key, EventArgs e)
+   at System.Windows.Forms.ToolStripMenuItem.OnClick(EventArgs e)
+   at System.Windows.Forms.ToolStripItem.HandleClick(EventArgs e)
+   at System.Windows.Forms.ToolStripItem.HandleMouseUp(MouseEventArgs e)
+   at System.Windows.Forms.ToolStripItem.FireEventInteractive(EventArgs e, ToolStripItemEventType met)
+   at System.Windows.Forms.ToolStripItem.FireEvent(EventArgs e, ToolStripItemEventType met)
+   at System.Windows.Forms.ToolStrip.OnMouseUp(MouseEventArgs mea)
+   at System.Windows.Forms.ToolStripDropDown.OnMouseUp(MouseEventArgs mea)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.ToolStrip.WndProc(Message& m)
+   at System.Windows.Forms.ToolStripDropDown.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: NominaTCG
+Method		: createRetencionPdf
+Date		: 12:48:15
+Time		: 29/4/2021
+Computer	: ALTR
+Error		: Object reference not set to an instance of an object.
+Stack Trace	: at NominaTCG.frmPeriodo.createRetencionPdf(String fileName)
+   at NominaTCG.frmPeriodo.btnNewSave_Click(Object sender, EventArgs e)
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: NominaTCG
+Method		: createRetencionPdf
+Date		: 12:48:22
+Time		: 29/4/2021
+Computer	: ALTR
+Error		: Object reference not set to an instance of an object.
+Stack Trace	: at NominaTCG.frmPeriodo.createRetencionPdf(String fileName)
+   at NominaTCG.frmPeriodo.btnNewSave_Click(Object sender, EventArgs e)
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: System.Data
+Method		: GetDataColumn
+Date		: 12:49:24
+Time		: 29/4/2021
+Computer	: ALTR
+Error		: Column 'EMP_ID' does not belong to table Table.
+Stack Trace	: at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at NominaTCG.frmPeriodo.createRetencionPdf(String fileName)
+   at NominaTCG.frmPeriodo.btnNewSave_Click(Object sender, EventArgs e)
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 14:31:53
+Time		: 29/4/2021
+Computer	: ALTR
+Error		: ORA-03135: connection lost contact
+Process ID: 1848
+Session ID: 424 Serial number: 42626
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ReportDataRepository.RolIndividual(String rolID, String reproID, String empID, String localID, String cadenaID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ReportDataRepository.cs:line 806
+   at BusinessLogic.ReportDataController.RolIndividual(String rolID, String reproID, String empID, String localID, String cadenaID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ReportDataController.cs:line 91
+   at NominaTCG.frmPeriodo.createRetencionPdf(String fileName)
+   at NominaTCG.frmPeriodo.btnNewSave_Click(Object sender, EventArgs e)
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 14:32:21
+Time		: 29/4/2021
+Computer	: ALTR
+Error		: ORA-12518: TNS:listener could not hand off client connection
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, Object src, OracleLogicalTransaction m_oracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleConnection.Open()
+   at DataAccess.ConnectionDDBB.OpenConnection() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 39
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 407
+   at DataAccess.ReportDataRepository.RolIndividual(String rolID, String reproID, String empID, String localID, String cadenaID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ReportDataRepository.cs:line 806
+   at BusinessLogic.ReportDataController.RolIndividual(String rolID, String reproID, String empID, String localID, String cadenaID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ReportDataController.cs:line 91
+   at NominaTCG.frmPeriodo.createRetencionPdf(String fileName)
+   at NominaTCG.frmPeriodo.btnNewSave_Click(Object sender, EventArgs e)
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetValues
+Date		: 15:04:18
+Time		: 6/5/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 120
+   at DataAccess.SolicitudRepository.ListaSolicitudVacacion(String codigo, Int32 estado, String empID, String fechaD, String fechaH, String locID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\SolicitudRepository.cs:line 388
+   at BusinessLogic.SolicitudController.ListaSolicitudVacacion(String codigo, Int32 estado, String empID, String fechaD, String fechaH, String locID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\SolicitudController.cs:line 86
+   at NominaTCG.frmVacacionesAprobacion.btnFind_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Empleado\frmVacacionesAprobacion.cs:line 198
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 9:25:16
+Time		: 7/5/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 967
+   at BusinessLogic.ContratoController.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 63
+   at NominaTCG.frmAsiento.LoadData() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 84
+   at NominaTCG.frmAsiento..ctor(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 79
+   at NominaTCG.frmCalcularLiquidacion.txtAsiento_DoubleClick(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 347
+   at System.Windows.Forms.Control.OnDoubleClick(EventArgs e)
+   at System.Windows.Forms.TextBoxBase.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.TextBoxBase.WndProc(Message& m)
+   at System.Windows.Forms.TextBox.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 9:25:20
+Time		: 7/5/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 967
+   at BusinessLogic.ContratoController.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 63
+   at NominaTCG.frmAsiento.LoadData() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 84
+   at NominaTCG.frmAsiento..ctor(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 79
+   at NominaTCG.frmCalcularLiquidacion.txtAsiento_DoubleClick(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 347
+   at System.Windows.Forms.Control.OnDoubleClick(EventArgs e)
+   at System.Windows.Forms.TextBoxBase.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.TextBoxBase.WndProc(Message& m)
+   at System.Windows.Forms.TextBox.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 9:25:29
+Time		: 7/5/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 967
+   at BusinessLogic.ContratoController.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 63
+   at NominaTCG.frmAsiento.LoadData() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 84
+   at NominaTCG.frmAsiento..ctor(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 79
+   at NominaTCG.frmCalcularLiquidacion.txtAsiento_DoubleClick(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 347
+   at System.Windows.Forms.Control.OnDoubleClick(EventArgs e)
+   at System.Windows.Forms.TextBoxBase.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.TextBoxBase.WndProc(Message& m)
+   at System.Windows.Forms.TextBox.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 9:25:45
+Time		: 7/5/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 967
+   at BusinessLogic.ContratoController.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 63
+   at NominaTCG.frmAsiento.LoadData() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 84
+   at NominaTCG.frmAsiento..ctor(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 79
+   at NominaTCG.frmCalcularLiquidacion.txtAsiento_DoubleClick(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 347
+   at System.Windows.Forms.Control.OnDoubleClick(EventArgs e)
+   at System.Windows.Forms.TextBoxBase.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.TextBoxBase.WndProc(Message& m)
+   at System.Windows.Forms.TextBox.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 9:26:01
+Time		: 7/5/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 967
+   at BusinessLogic.ContratoController.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 63
+   at NominaTCG.frmAsiento.LoadData() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 84
+   at NominaTCG.frmAsiento..ctor(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 79
+   at NominaTCG.frmCalcularLiquidacion.txtAsiento_DoubleClick(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 347
+   at System.Windows.Forms.Control.OnDoubleClick(EventArgs e)
+   at System.Windows.Forms.TextBoxBase.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.TextBoxBase.WndProc(Message& m)
+   at System.Windows.Forms.TextBox.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 9:28:16
+Time		: 7/5/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 967
+   at BusinessLogic.ContratoController.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 63
+   at NominaTCG.frmAsiento.LoadData() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 84
+   at NominaTCG.frmAsiento..ctor(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 79
+   at NominaTCG.frmCalcularLiquidacion.txtAsiento_DoubleClick(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 347
+   at System.Windows.Forms.Control.OnDoubleClick(EventArgs e)
+   at System.Windows.Forms.TextBoxBase.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.TextBoxBase.WndProc(Message& m)
+   at System.Windows.Forms.TextBox.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 9:35:14
+Time		: 7/5/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 967
+   at BusinessLogic.ContratoController.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 63
+   at NominaTCG.frmAsiento.LoadData() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 84
+   at NominaTCG.frmAsiento..ctor(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 79
+   at NominaTCG.frmCalcularLiquidacion.txtAsiento_DoubleClick(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 347
+   at System.Windows.Forms.Control.OnDoubleClick(EventArgs e)
+   at System.Windows.Forms.TextBoxBase.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.TextBoxBase.WndProc(Message& m)
+   at System.Windows.Forms.TextBox.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 9:38:37
+Time		: 7/5/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 967
+   at BusinessLogic.ContratoController.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 63
+   at NominaTCG.frmAsiento.LoadData() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 84
+   at NominaTCG.frmAsiento..ctor(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 79
+   at NominaTCG.frmCalcularLiquidacion.txtAsiento_DoubleClick(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 347
+   at System.Windows.Forms.Control.OnDoubleClick(EventArgs e)
+   at System.Windows.Forms.TextBoxBase.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.TextBoxBase.WndProc(Message& m)
+   at System.Windows.Forms.TextBox.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 9:43:28
+Time		: 7/5/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 967
+   at BusinessLogic.ContratoController.AsientoLiquidacion(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 63
+   at NominaTCG.frmAsiento.LoadData() in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 84
+   at NominaTCG.frmAsiento..ctor(String diaID, String cliID, String percID, String patID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmAsiento.cs:line 79
+   at NominaTCG.frmCalcularLiquidacion.txtAsiento_DoubleClick(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 347
+   at System.Windows.Forms.Control.OnDoubleClick(EventArgs e)
+   at System.Windows.Forms.TextBoxBase.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.TextBoxBase.WndProc(Message& m)
+   at System.Windows.Forms.TextBox.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: NominaTCG
+Method		: button1_Click
+Date		: 15:23:29
+Time		: 12/5/2021
+Computer	: ALTR
+Error		: Object reference not set to an instance of an object.
+Stack Trace	: at NominaTCG.frmRepEmpleado.button1_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Reporte\frmRepEmpleado.cs:line 197
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: NominaTCG
+Method		: btnNewSave_Click
+Date		: 17:06:03
+Time		: 18/5/2021
+Computer	: ALTR
+Error		: Object reference not set to an instance of an object.
+Stack Trace	: at NominaTCG.frmDetalleIngreso.btnNewSave_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleIngreso.cs:line 222
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 9:41:26
+Time		: 20/5/2021
+Computer	: ALTR
+Error		: ORA-00001: unique constraint (DESARROLLO.PK_DAT_DET_ROL) violated
+ORA-06512: at "DESARROLLO.P_RECAL_ROL_LIQ", line 161
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1261
+   at BusinessLogic.ContratoController.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 118
+   at NominaTCG.frmDetalleIngreso.btnNewSave_Click(Object sender, EventArgs e)
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 9:47:31
+Time		: 20/5/2021
+Computer	: ALTR
+Error		: ORA-00001: unique constraint (DESARROLLO.PK_DAT_DET_ROL) violated
+ORA-06512: at "DESARROLLO.P_RECAL_ROL_LIQ", line 161
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1261
+   at BusinessLogic.ContratoController.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 118
+   at NominaTCG.frmDetalleIngreso.btnNewSave_Click(Object sender, EventArgs e)
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 15:41:31
+Time		: 20/5/2021
+Computer	: ALTR
+Error		: ORA-00001: unique constraint (DESARROLLO.PK_DAT_DET_ROL_LIQ) violated
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecQuery(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 450
+   at DataAccess.ContratoRepository.RegistraDetalleIngreso(List`1 datosIngreso) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1275
+   at BusinessLogic.ContratoController.RegistraDetalleIngreso(List`1 datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 122
+   at NominaTCG.frmDetalleIngreso.btnNewSave_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleIngreso.cs:line 191
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 15:43:56
+Time		: 20/5/2021
+Computer	: ALTR
+Error		: ORA-00001: unique constraint (DESARROLLO.PK_DAT_DET_ROL_LIQ) violated
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecQuery(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 450
+   at DataAccess.ContratoRepository.RegistraDetalleIngreso(List`1 datosIngreso) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1275
+   at BusinessLogic.ContratoController.RegistraDetalleIngreso(List`1 datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 122
+   at NominaTCG.frmDetalleIngreso.btnNewSave_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleIngreso.cs:line 191
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 12:16:30
+Time		: 21/5/2021
+Computer	: ALTR
+Error		: ORA-01403: no data found
+ORA-06512: at "DESARROLLO.P_REV_ROL_LIQ", line 24
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2181
+   at BusinessLogic.ContratoController.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 403
+   at NominaTCG.frmCalcularLiquidacion.btnReversar_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 370
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 12:21:13
+Time		: 21/5/2021
+Computer	: ALTR
+Error		: ORA-01403: no data found
+ORA-06512: at "DESARROLLO.P_REV_ROL_LIQ", line 24
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2181
+   at BusinessLogic.ContratoController.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 403
+   at NominaTCG.frmCalcularLiquidacion.btnReversar_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 370
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 12:43:42
+Time		: 21/5/2021
+Computer	: ALTR
+Error		: ORA-02292: integrity constraint (DESARROLLO.FK_DAT_DET__RLSH_21_DAT_DET_) violated - child record found
+ORA-06512: at "DESARROLLO.P_REV_ROL_LIQ", line 92
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2181
+   at BusinessLogic.ContratoController.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 403
+   at NominaTCG.frmCalcularLiquidacion.btnReversar_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 370
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 15:49:48
+Time		: 21/5/2021
+Computer	: ALTR
+Error		: ORA-02292: integrity constraint (DESARROLLO.FK_DAT_DET__RLSH_21_DAT_DET_) violated - child record found
+ORA-06512: at "DESARROLLO.P_REV_ROL_LIQ", line 92
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2181
+   at BusinessLogic.ContratoController.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 403
+   at NominaTCG.frmCalcularLiquidacion.btnReversar_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 370
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 15:50:42
+Time		: 21/5/2021
+Computer	: ALTR
+Error		: ORA-02292: integrity constraint (DESARROLLO.FK_DAT_DET__RLSH_21_DAT_DET_) violated - child record found
+ORA-06512: at "DESARROLLO.P_REV_ROL_LIQ", line 92
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2181
+   at BusinessLogic.ContratoController.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 403
+   at NominaTCG.frmCalcularLiquidacion.btnReversar_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 370
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 15:58:06
+Time		: 21/5/2021
+Computer	: ALTR
+Error		: ORA-02292: integrity constraint (DESARROLLO.FK_DAT_DET__RLSH_21_DAT_DET_) violated - child record found
+ORA-06512: at "DESARROLLO.P_REV_ROL_LIQ", line 92
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2181
+   at BusinessLogic.ContratoController.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 403
+   at NominaTCG.frmCalcularLiquidacion.btnReversar_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 370
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 16:00:18
+Time		: 21/5/2021
+Computer	: ALTR
+Error		: ORA-02292: integrity constraint (DESARROLLO.FK_DAT_DET__RLSH_21_DAT_DET_) violated - child record found
+ORA-06512: at "DESARROLLO.P_REV_ROL_LIQ", line 92
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2181
+   at BusinessLogic.ContratoController.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 403
+   at NominaTCG.frmCalcularLiquidacion.btnReversar_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 370
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 16:39:42
+Time		: 21/5/2021
+Computer	: ALTR
+Error		: ORA-01830: date format picture ends before converting entire input string
+ORA-06512: at "DESARROLLO.PK_LIQUIDACION", line 2315
+ORA-06512: at "DESARROLLO.PK_LIQUIDACION", line 1431
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.CalculaLiquidacion(String empID, Int32 pagoID, Int32 provID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2360
+   at BusinessLogic.ContratoController.CalculaLiquidacion(String empID, Int32 pagoID, Int32 provID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 283
+   at NominaTCG.frmCalcularLiquidacion.btnCalcular_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 289
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 16:41:24
+Time		: 21/5/2021
+Computer	: ALTR
+Error		: ORA-01830: date format picture ends before converting entire input string
+ORA-06512: at "DESARROLLO.PK_LIQUIDACION", line 2315
+ORA-06512: at "DESARROLLO.PK_LIQUIDACION", line 1431
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.CalculaLiquidacion(String empID, Int32 pagoID, Int32 provID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2360
+   at BusinessLogic.ContratoController.CalculaLiquidacion(String empID, Int32 pagoID, Int32 provID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 283
+   at NominaTCG.frmCalcularLiquidacion.btnCalcular_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 289
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 16:43:48
+Time		: 21/5/2021
+Computer	: ALTR
+Error		: ORA-01830: date format picture ends before converting entire input string
+ORA-06512: at "DESARROLLO.PK_LIQUIDACION", line 2315
+ORA-06512: at "DESARROLLO.PK_LIQUIDACION", line 1431
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.CalculaLiquidacion(String empID, Int32 pagoID, Int32 provID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2360
+   at BusinessLogic.ContratoController.CalculaLiquidacion(String empID, Int32 pagoID, Int32 provID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 283
+   at NominaTCG.frmCalcularLiquidacion.btnCalcular_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 289
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 16:58:03
+Time		: 21/5/2021
+Computer	: ALTR
+Error		: ORA-02292: integrity constraint (DESARROLLO.FK_DAT_DET__RLSH_21_DAT_DET_) violated - child record found
+ORA-06512: at "DESARROLLO.P_REV_ROL_LIQ", line 100
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2181
+   at BusinessLogic.ContratoController.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 403
+   at NominaTCG.frmCalcularLiquidacion.btnReversar_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 370
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 16:59:49
+Time		: 21/5/2021
+Computer	: ALTR
+Error		: ORA-02292: integrity constraint (DESARROLLO.FK_DAT_DET__RLSH_21_DAT_DET_) violated - child record found
+ORA-06512: at "DESARROLLO.P_REV_ROL_LIQ", line 100
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2181
+   at BusinessLogic.ContratoController.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 403
+   at NominaTCG.frmCalcularLiquidacion.btnReversar_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 370
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 15:37:39
+Time		: 25/5/2021
+Computer	: ALTR
+Error		: ORA-02292: integrity constraint (DESARROLLO.FK_DAT_DET__RLSH_21_DAT_DET_) violated - child record found
+ORA-06512: at "DESARROLLO.P_REV_ROL_LIQ", line 100
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2190
+   at BusinessLogic.ContratoController.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 403
+   at NominaTCG.frmCalcularLiquidacion.btnReversar_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 370
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 15:41:52
+Time		: 25/5/2021
+Computer	: ALTR
+Error		: ORA-02292: integrity constraint (DESARROLLO.FK_DAT_DET__RLSH_21_DAT_DET_) violated - child record found
+ORA-06512: at "DESARROLLO.P_REV_ROL_LIQ", line 100
+ORA-06512: at "DESARROLLO.P_RECAL_ROL_LIQ", line 60
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1261
+   at BusinessLogic.ContratoController.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 118
+   at NominaTCG.frmDetalleIngreso.btnNewSave_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleIngreso.cs:line 219
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: NominaTCG
+Method		: cboPatrono_SelectedIndexChanged
+Date		: 11:36:27
+Time		: 26/5/2021
+Computer	: ALTR
+Error		: Object reference not set to an instance of an object.
+Stack Trace	: at NominaTCG.frmCargaFaltante.cboPatrono_SelectedIndexChanged(Object sender, EventArgs e)
+   at System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)
+   at NominaTCG.frmCargaFaltante..ctor()
+   at NominaTCG.frmCargaFaltante.get_Instancia()
+   at NominaTCG.frmMain.subirFaltantesToolStripMenuItem_Click(Object sender, EventArgs e)
+   at System.Windows.Forms.ToolStripItem.RaiseEvent(Object key, EventArgs e)
+   at System.Windows.Forms.ToolStripMenuItem.OnClick(EventArgs e)
+   at System.Windows.Forms.ToolStripItem.HandleClick(EventArgs e)
+   at System.Windows.Forms.ToolStripItem.HandleMouseUp(MouseEventArgs e)
+   at System.Windows.Forms.ToolStripItem.FireEventInteractive(EventArgs e, ToolStripItemEventType met)
+   at System.Windows.Forms.ToolStripItem.FireEvent(EventArgs e, ToolStripItemEventType met)
+   at System.Windows.Forms.ToolStrip.OnMouseUp(MouseEventArgs mea)
+   at System.Windows.Forms.ToolStripDropDown.OnMouseUp(MouseEventArgs mea)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.ToolStrip.WndProc(Message& m)
+   at System.Windows.Forms.ToolStripDropDown.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 12:06:48
+Time		: 26/5/2021
+Computer	: ALTR
+Error		: ORA-00911: invalid character
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.EmpleadoRepository.CargaFaltanteCaja(String cadenaID, String perID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\EmpleadoRepository.cs:line 781
+   at BusinessLogic.EmpleadoController.CargaFaltanteCaja(String cadenaID, String perID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\EmpleadoController.cs:line 120
+   at NominaTCG.frmCargaFaltante.cboPatrono_SelectedIndexChanged(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmCargaFaltante.cs:line 69
+   at System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.ComboBox.WmReflectCommand(Message& m)
+   at System.Windows.Forms.ComboBox.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 12:09:19
+Time		: 26/5/2021
+Computer	: ALTR
+Error		: ORA-00911: invalid character
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.EmpleadoRepository.CargaFaltanteCaja(String cadenaID, String perID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\EmpleadoRepository.cs:line 781
+   at BusinessLogic.EmpleadoController.CargaFaltanteCaja(String cadenaID, String perID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\EmpleadoController.cs:line 120
+   at NominaTCG.frmCargaFaltante.cboPatrono_SelectedIndexChanged(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmCargaFaltante.cs:line 69
+   at System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.ComboBox.WmReflectCommand(Message& m)
+   at System.Windows.Forms.ComboBox.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: mscorlib
+Method		: System.IConvertible.ToDouble
+Date		: 11:58:51
+Time		: 27/5/2021
+Computer	: ALTR
+Error		: Object cannot be cast from DBNull to other types.
+Stack Trace	: at System.DBNull.System.IConvertible.ToDouble(IFormatProvider provider)
+   at System.Convert.ToDouble(Object value)
+   at NominaTCG.frmFaltanteCajaDT.<>c.<dgvData_Click>b__6_1(DataGridViewRow r) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmFaltanteCajaDT.cs:line 38
+   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   at System.Linq.Enumerable.Sum(IEnumerable`1 source)
+   at System.Linq.Enumerable.Sum[TSource](IEnumerable`1 source, Func`2 selector)
+   at NominaTCG.frmFaltanteCajaDT.dgvData_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmFaltanteCajaDT.cs:line 36
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.DataGridView.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 13:14:36
+Time		: 28/5/2021
+Computer	: ALTR
+Error		: ORA-00001: unique constraint (DESARROLLO.PK_DAT_PRESTAMO) violated
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecQuery(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 450
+   at DataAccess.EmpleadoRepository.RegistraTablaPrestamo(DatPrestamo pres) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\EmpleadoRepository.cs:line 665
+   at BusinessLogic.EmpleadoController.RegistraTablaPrestamo(DatPrestamo pres) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\EmpleadoController.cs:line 66
+   at NominaTCG.frmPrestamoDescuento.btnNewSave_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmPrestamoDescuento.cs:line 123
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetValues
+Date		: 15:26:28
+Time		: 1/6/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.ListarRol(String empID, Int32 rolID, Int32 reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1714
+   at BusinessLogic.ContratoController.ListarRol(String empID, Int32 rolID, Int32 reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 210
+   at NominaTCG.frmResumenRol.SelectRol(String tipoConsulta) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmResumenRol.cs:line 90
+   at NominaTCG.frmResumenRol.btnConfiguracion_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmResumenRol.cs:line 356
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetValues
+Date		: 15:26:34
+Time		: 1/6/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.ListarRol(String empID, Int32 rolID, Int32 reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1714
+   at BusinessLogic.ContratoController.ListarRol(String empID, Int32 rolID, Int32 reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 210
+   at NominaTCG.frmResumenRol.SelectRol(String tipoConsulta) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmResumenRol.cs:line 90
+   at NominaTCG.frmResumenRol.btnModificar_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmResumenRol.cs:line 644
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetValues
+Date		: 15:31:29
+Time		: 1/6/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.ListarRol(String empID, Int32 rolID, Int32 reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1714
+   at BusinessLogic.ContratoController.ListarRol(String empID, Int32 rolID, Int32 reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 210
+   at NominaTCG.frmResumenRol.SelectRol(String tipoConsulta) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmResumenRol.cs:line 90
+   at NominaTCG.frmResumenRol.btnConfiguracion_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmResumenRol.cs:line 356
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetValues
+Date		: 15:32:05
+Time		: 1/6/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.ListarRol(String empID, Int32 rolID, Int32 reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1714
+   at BusinessLogic.ContratoController.ListarRol(String empID, Int32 rolID, Int32 reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 210
+   at NominaTCG.frmResumenRol.SelectRol(String tipoConsulta) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmResumenRol.cs:line 90
+   at NominaTCG.frmResumenRol.btnConfiguracion_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmResumenRol.cs:line 356
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetValues
+Date		: 15:32:58
+Time		: 1/6/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.ListarRol(String empID, Int32 rolID, Int32 reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1714
+   at BusinessLogic.ContratoController.ListarRol(String empID, Int32 rolID, Int32 reproID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 210
+   at NominaTCG.frmResumenRol.SelectRol(String tipoConsulta) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmResumenRol.cs:line 90
+   at NominaTCG.frmResumenRol.btnConfiguracion_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmResumenRol.cs:line 356
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: NominaTCG
+Method		: recordLevel
+Date		: 13:20:34
+Time		: 2/6/2021
+Computer	: ALTR
+Error		: Object reference not set to an instance of an object.
+Stack Trace	: at NominaTCG.frmMain.recordLevel(ToolStripItemCollection subMenu) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmMain.cs:line 44
+   at NominaTCG.frmMain.recordLevel(ToolStripItemCollection subMenu) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmMain.cs:line 41
+   at NominaTCG.frmMain.frmMain_Load(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\frmMain.cs:line 72
+   at System.Windows.Forms.Form.OnLoad(EventArgs e)
+   at System.Windows.Forms.Form.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.WmShowWindow(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.Form.WmShowWindow(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 15:55:16
+Time		: 2/6/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.EmpleadoRepository.CargaAsientoRol(String perID, String patID, Int32 tipo) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\EmpleadoRepository.cs:line 833
+   at BusinessLogic.EmpleadoController.CargaAsientoRol(String perID, String patID, Int32 tipo) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\EmpleadoController.cs:line 125
+   at NominaTCG.frmCargaAsiento.btnProcesar_Click(Object sender, EventArgs e)
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 11:16:11
+Time		: 3/6/2021
+Computer	: ALTR
+Error		: ORA-00001: unique constraint (DESARROLLO.PK_DAT_DET_DIARIO) violated
+ORA-06512: at "DESARROLLO.PK_RRHH_CONTB", line 702
+ORA-06512: at "DESARROLLO.PK_RRHH_CONTB", line 310
+ORA-06512: at "DESARROLLO.P_CARGA_ASIENTO_NOMINA", line 13
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm)
+   at DataAccess.EmpleadoRepository.GeneraAsientoRol(String perID, String patID, Int32 tipo)
+   at BusinessLogic.EmpleadoController.GeneraAsientoRol(String perID, String patID, Int32 tipo) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\EmpleadoController.cs:line 128
+   at NominaTCG.frmCargaAsiento.btnProcesar_Click(Object sender, EventArgs e)
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 16:50:19
+Time		: 4/6/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.DetalleIngreso(String empID, String perID, String reproID, Int32 tipo) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2210
+   at BusinessLogic.ContratoController.DetalleIngreso(String empID, String perID, String reproID, Int32 tipo) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 407
+   at NominaTCG.frmDetalleIngreso..ctor(String empID, String perID, String liqID, Acction stado, Int32 tipo) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleIngreso.cs:line 80
+   at NominaTCG.frmCalcularLiquidacion.dgvDataDT_CellContentClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 204
+   at System.Windows.Forms.DataGridView.OnCellContentClick(DataGridViewCellEventArgs e)
+   at System.Windows.Forms.DataGridView.OnCommonCellContentClick(Int32 columnIndex, Int32 rowIndex, Boolean doubleClick)
+   at System.Windows.Forms.DataGridViewCell.OnMouseUpInternal(DataGridViewCellMouseEventArgs e)
+   at System.Windows.Forms.DataGridView.OnCellMouseUp(DataGridViewCellMouseEventArgs e)
+   at System.Windows.Forms.DataGridView.OnMouseUp(MouseEventArgs e)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.DataGridView.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle.DataAccess
+Method		: GetDecimal
+Date		: 16:51:51
+Time		: 4/6/2021
+Computer	: ALTR
+Error		: Specified cast is not valid.
+Stack Trace	: at Oracle.DataAccess.Client.OracleDataReader.GetDecimal(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.DataAccess.Client.OracleDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.DataReaderContainer.CommonLanguageSubsetDataReader.GetValues(Object[] values)
+   at System.Data.ProviderBase.SchemaMapping.LoadDataRow()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at Oracle.DataAccess.Client.OracleDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at DataAccess.ConnectionDDBB.GetData(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 167
+   at DataAccess.ContratoRepository.DetalleIngreso(String empID, String perID, String reproID, Int32 tipo) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2210
+   at BusinessLogic.ContratoController.DetalleIngreso(String empID, String perID, String reproID, Int32 tipo) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 407
+   at NominaTCG.frmDetalleIngreso..ctor(String empID, String perID, String liqID, Acction stado, Int32 tipo) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleIngreso.cs:line 80
+   at NominaTCG.frmCalcularLiquidacion.dgvDataDT_CellContentClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 204
+   at System.Windows.Forms.DataGridView.OnCellContentClick(DataGridViewCellEventArgs e)
+   at System.Windows.Forms.DataGridView.OnCommonCellContentClick(Int32 columnIndex, Int32 rowIndex, Boolean doubleClick)
+   at System.Windows.Forms.DataGridViewCell.OnMouseUpInternal(DataGridViewCellMouseEventArgs e)
+   at System.Windows.Forms.DataGridView.OnCellMouseUp(DataGridViewCellMouseEventArgs e)
+   at System.Windows.Forms.DataGridView.OnMouseUp(MouseEventArgs e)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.DataGridView.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: mscorlib
+Method		: StringToNumber
+Date		: 1:28:39
+Time		: 5/6/2021
+Computer	: ALTR
+Error		: Input string was not in a correct format.
+Stack Trace	: at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt32(String value)
+   at NominaTCG.frmEmpleado.AssignData(String idRecord) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Empleado\frmEmpleado.cs:line 1322
+   at NominaTCG.frmEmpleado.btnSearch_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Empleado\frmEmpleado.cs:line 1432
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 20:27:53
+Time		: 6/6/2021
+Computer	: ALTR
+Error		: ORA-02292: integrity constraint (DESARROLLO.FK_DAT_DET__RLSH_21_DAT_DET_) violated - child record found
+ORA-06512: at "DESARROLLO.P_REV_ROL_LIQ", line 100
+ORA-06512: at "DESARROLLO.P_RECAL_ROL_LIQ", line 60
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1261
+   at BusinessLogic.ContratoController.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 118
+   at NominaTCG.frmDetalleIngreso.btnNewSave_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleIngreso.cs:line 219
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 20:28:11
+Time		: 6/6/2021
+Computer	: ALTR
+Error		: ORA-02292: integrity constraint (DESARROLLO.FK_DAT_DET__RLSH_21_DAT_DET_) violated - child record found
+ORA-06512: at "DESARROLLO.P_REV_ROL_LIQ", line 100
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 2190
+   at BusinessLogic.ContratoController.RevLiquidacion(String empID) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 403
+   at NominaTCG.frmCalcularLiquidacion.btnReversar_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmCalcularLiquidacion.cs:line 370
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 12:46:16
+Time		: 8/6/2021
+Computer	: ALTR
+Error		: ORA-00001: unique constraint (DESARROLLO.PK_DAT_DET_ROL) violated
+ORA-06512: at "DESARROLLO.P_RECAL_ROL_LIQ", line 64
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1261
+   at BusinessLogic.ContratoController.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 118
+   at NominaTCG.frmDetalleIngreso.btnNewSave_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleIngreso.cs:line 232
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 12:56:25
+Time		: 8/6/2021
+Computer	: ALTR
+Error		: ORA-00001: unique constraint (DESARROLLO.PK_DAT_DET_ROL) violated
+ORA-06512: at "DESARROLLO.P_RECAL_ROL_LIQ", line 64
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1261
+   at BusinessLogic.ContratoController.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 118
+   at NominaTCG.frmDetalleIngreso.btnNewSave_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleIngreso.cs:line 232
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 12:56:39
+Time		: 8/6/2021
+Computer	: ALTR
+Error		: ORA-00001: unique constraint (DESARROLLO.PK_DAT_DET_ROL_LIQ) violated
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecQuery(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 450
+   at DataAccess.ContratoRepository.RegistraDetalleIngreso(List`1 datosIngreso) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1275
+   at BusinessLogic.ContratoController.RegistraDetalleIngreso(List`1 datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 122
+   at NominaTCG.frmDetalleIngreso.btnNewSave_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleIngreso.cs:line 192
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 12:56:57
+Time		: 8/6/2021
+Computer	: ALTR
+Error		: ORA-00001: unique constraint (DESARROLLO.PK_DAT_DET_ROL_LIQ) violated
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecQuery(String query, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 450
+   at DataAccess.ContratoRepository.RegistraDetalleIngreso(List`1 datosIngreso) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1275
+   at BusinessLogic.ContratoController.RegistraDetalleIngreso(List`1 datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 122
+   at NominaTCG.frmDetalleIngreso.btnNewSave_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleIngreso.cs:line 192
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 12:58:47
+Time		: 8/6/2021
+Computer	: ALTR
+Error		: ORA-00001: unique constraint (DESARROLLO.PK_DAT_DET_ROL) violated
+ORA-06512: at "DESARROLLO.P_RECAL_ROL_LIQ", line 64
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1261
+   at BusinessLogic.ContratoController.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 118
+   at NominaTCG.frmDetalleIngreso.btnNewSave_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleIngreso.cs:line 232
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^
+Source		: Oracle Data Provider for .NET
+Method		: HandleErrorHelper
+Date		: 13:00:31
+Time		: 8/6/2021
+Computer	: ALTR
+Error		: ORA-00001: unique constraint (DESARROLLO.PK_DAT_DET_ROL) violated
+ORA-06512: at "DESARROLLO.P_RECAL_ROL_LIQ", line 64
+ORA-06512: at line 1
+Stack Trace	: at Oracle.DataAccess.Client.OracleException.HandleErrorHelper(Int32 errCode, OracleConnection conn, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, String procedure, Boolean bCheck, Int32 isRecoverable, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleException.HandleError(Int32 errCode, OracleConnection conn, String procedure, IntPtr opsErrCtx, OpoSqlValCtx* pOpoSqlValCtx, Object src, Boolean bCheck, OracleLogicalTransaction m_OracleLogicalTransaction)
+   at Oracle.DataAccess.Client.OracleCommand.ExecuteNonQuery()
+   at DataAccess.ConnectionDDBB.ExecProcedure(String procedure, OracleParameter[] prm) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ConnectionDDBB.cs:line 411
+   at DataAccess.ContratoRepository.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\AccesoDato\ContratoRepository.cs:line 1261
+   at BusinessLogic.ContratoController.RevDetalleIngreso(DatDetRolLiq datos) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\BusinessLogic\ContratoController.cs:line 118
+   at NominaTCG.frmDetalleIngreso.btnNewSave_Click(Object sender, EventArgs e) in C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Administracion\Nomina\frmDetalleIngreso.cs:line 232
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+^^-------------------------------------------------------------------^^

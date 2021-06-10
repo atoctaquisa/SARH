@@ -26,7 +26,7 @@
     <InstallUrl>\\192.168.1.91\publico\SARH\</InstallUrl>
     <UpdateUrl>\\192.168.1.91\publico\SARH\</UpdateUrl>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>48</ApplicationRevision>
+    <ApplicationRevision>74</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -131,10 +131,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formas\Reportes\CertificadoAct.cs">
+    <Compile Include="Formas\Administracion\Nomina\frmDescuentoAutomatico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\Administracion\Nomina\frmDescuentoAutomatico.Designer.cs">
+      <DependentUpon>frmDescuentoAutomatico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Reportes\CertificadoActivo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CertificadoAct.rpt</DependentUpon>
+      <DependentUpon>CertificadoActivo.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Formas\Administracion\Reporte\frmProvisiones.cs">
@@ -148,6 +154,18 @@
     </Compile>
     <Compile Include="Formas\Administracion\Reporte\frmViewReportSub.Designer.cs">
       <DependentUpon>frmViewReportSub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Reportes\CertificadoCredito.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CertificadoCredito.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formas\Reportes\CertificadoPasivo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CertificadoPasivo.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Formas\Reportes\ContabilidadD.cs">
       <AutoGen>True</AutoGen>
@@ -493,17 +511,47 @@
     <Compile Include="Formas\frmListaCuentaAsiento.Designer.cs">
       <DependentUpon>frmListaCuentaAsiento.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCertificado.cs">
+    <Compile Include="Formas\Administracion\Reporte\frmCertificado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCertificado.Designer.cs">
+    <Compile Include="Formas\Administracion\Reporte\frmCertificado.Designer.cs">
       <DependentUpon>frmCertificado.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCertificadoRep.cs">
+    <Compile Include="Formas\Administracion\Reporte\frmCertificadoRep.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCertificadoRep.Designer.cs">
+    <Compile Include="Formas\Administracion\Reporte\frmCertificadoRep.Designer.cs">
       <DependentUpon>frmCertificadoRep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Administracion\Empleado\frmGeneraRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\Administracion\Empleado\frmGeneraRol.Designer.cs">
+      <DependentUpon>frmGeneraRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCalcularUT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCalcularUT.Designer.cs">
+      <DependentUpon>frmCalcularUT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCargaAsiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargaAsiento.Designer.cs">
+      <DependentUpon>frmCargaAsiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCargaFaltante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargaFaltante.Designer.cs">
+      <DependentUpon>frmCargaFaltante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFaltanteCajaDT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFaltanteCajaDT.Designer.cs">
+      <DependentUpon>frmFaltanteCajaDT.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -585,6 +633,18 @@
       <DependentUpon>frmVacacionRep.cs</DependentUpon>
     </Compile>
     <Compile Include="Clases\Program.cs" />
+    <Compile Include="frmProvisionRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProvisionRol.Designer.cs">
+      <DependentUpon>frmProvisionRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Administracion\Nomina\frmValorFijo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\Administracion\Nomina\frmValorFijo.Designer.cs">
+      <DependentUpon>frmValorFijo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Prueba.cs">
       <DependentUpon>Prueba.xsd</DependentUpon>
@@ -620,10 +680,14 @@
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <EmbeddedResource Include="CertificadoAct.rdlc" />
-    <EmbeddedResource Include="Formas\Reportes\CertificadoAct.rpt">
+    <EmbeddedResource Include="Formas\Reportes\CertificadoAct.rdlc" />
+    <EmbeddedResource Include="Formas\Administracion\Nomina\frmDescuentoAutomatico.resx">
+      <DependentUpon>frmDescuentoAutomatico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\Reportes\CargaFami.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\CertificadoActivo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CertificadoAct.cs</LastGenOutput>
+      <LastGenOutput>CertificadoActivo.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Formas\Reportes\AsistenciaEmpleado.rdlc" />
     <EmbeddedResource Include="Formas\Administracion\Reporte\frmProvisiones.resx">
@@ -631,6 +695,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formas\Reportes\Actuarial.rdlc" />
     <EmbeddedResource Include="Formas\Reportes\ActuarialSalida.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\CertificadoCredito.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CertificadoCredito.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\Reportes\CertificadoPasivo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CertificadoPasivo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\Reportes\Contabilidad - Copy %282%29.rdlc" />
     <EmbeddedResource Include="Formas\Reportes\Contabilidad - Copy.rdlc" />
     <EmbeddedResource Include="Formas\Reportes\ContabilidadC - Copy.rdlc" />
     <EmbeddedResource Include="Formas\Reportes\ContabilidadC.rdlc" />
@@ -807,6 +880,8 @@
     <EmbeddedResource Include="Formas\Reportes\PagoQuincena.rdlc" />
     <EmbeddedResource Include="Formas\Reportes\Provision - Copy.rdlc" />
     <EmbeddedResource Include="Formas\Reportes\Provision.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\RolV - Copy.rdlc" />
+    <EmbeddedResource Include="Formas\Reportes\RolV.rdlc" />
     <EmbeddedResource Include="Formas\Reportes\Rol.rdlc" />
     <EmbeddedResource Include="Formas\Reportes\RolNegativo.rdlc" />
     <EmbeddedResource Include="Formas\Reportes\Vacacion - Copy.rdlc" />
@@ -819,11 +894,26 @@
     <EmbeddedResource Include="Formas\frmListaCuentaAsiento.resx">
       <DependentUpon>frmListaCuentaAsiento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCertificado.resx">
+    <EmbeddedResource Include="Formas\Administracion\Reporte\frmCertificado.resx">
       <DependentUpon>frmCertificado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCertificadoRep.resx">
+    <EmbeddedResource Include="Formas\Administracion\Reporte\frmCertificadoRep.resx">
       <DependentUpon>frmCertificadoRep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\Administracion\Empleado\frmGeneraRol.resx">
+      <DependentUpon>frmGeneraRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCalcularUT.resx">
+      <DependentUpon>frmCalcularUT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCargaAsiento.resx">
+      <DependentUpon>frmCargaAsiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCargaFaltante.resx">
+      <DependentUpon>frmCargaFaltante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFaltanteCajaDT.resx">
+      <DependentUpon>frmFaltanteCajaDT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -866,6 +956,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formas\Reportes\PrestamoDT.rdlc" />
     <EmbeddedResource Include="Formas\Reportes\PrestamoEM.rdlc" />
+    <EmbeddedResource Include="frmProvisionRol.resx">
+      <DependentUpon>frmProvisionRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\Administracion\Nomina\frmValorFijo.resx">
+      <DependentUpon>frmValorFijo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

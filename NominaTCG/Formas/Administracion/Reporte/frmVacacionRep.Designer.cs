@@ -67,6 +67,7 @@
             this.cboPatrono.Name = "cboPatrono";
             this.cboPatrono.Size = new System.Drawing.Size(222, 21);
             this.cboPatrono.TabIndex = 81;
+            this.cboPatrono.SelectedIndexChanged += new System.EventHandler(this.cboPatrono_SelectedIndexChanged);
             // 
             // txtPerido
             // 
@@ -75,6 +76,7 @@
             this.txtPerido.ReadOnly = true;
             this.txtPerido.Size = new System.Drawing.Size(95, 20);
             this.txtPerido.TabIndex = 74;
+            this.txtPerido.TextChanged += new System.EventHandler(this.txtPerido_TextChanged);
             // 
             // btnPerido
             // 
@@ -120,6 +122,7 @@
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 76;
             this.label1.Text = "Período";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -129,6 +132,7 @@
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 77;
             this.label2.Text = "Local";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // groupBox1
             // 
@@ -142,6 +146,7 @@
             this.groupBox1.Size = new System.Drawing.Size(568, 57);
             this.groupBox1.TabIndex = 70;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnBack
             // 
@@ -154,6 +159,7 @@
             this.btnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnExit
             // 
@@ -167,6 +173,7 @@
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnImprimir
             // 
@@ -204,6 +211,11 @@
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 78;
             this.label3.Text = "Patrono";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // ttMessage
+            // 
+            this.ttMessage.Popup += new System.Windows.Forms.PopupEventHandler(this.ttMessage_Popup);
             // 
             // ErrProv
             // 
@@ -216,6 +228,7 @@
             this.txtEmpleado.ReadOnly = true;
             this.txtEmpleado.Size = new System.Drawing.Size(222, 20);
             this.txtEmpleado.TabIndex = 71;
+            this.txtEmpleado.TextChanged += new System.EventHandler(this.txtEmpleado_TextChanged);
             // 
             // btnEmpleado
             // 
@@ -236,6 +249,7 @@
             this.label12.Size = new System.Drawing.Size(54, 13);
             this.label12.TabIndex = 72;
             this.label12.Text = "Empleado";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // txtLocal
             // 
@@ -244,6 +258,7 @@
             this.txtLocal.ReadOnly = true;
             this.txtLocal.Size = new System.Drawing.Size(222, 20);
             this.txtLocal.TabIndex = 75;
+            this.txtLocal.TextChanged += new System.EventHandler(this.txtLocal_TextChanged);
             // 
             // btnLocal
             // 
@@ -267,6 +282,7 @@
             this.lblTitulo.Size = new System.Drawing.Size(568, 28);
             this.lblTitulo.TabIndex = 69;
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
             // 
             // cboTipo
             // 
@@ -278,6 +294,7 @@
             this.cboTipo.Name = "cboTipo";
             this.cboTipo.Size = new System.Drawing.Size(133, 21);
             this.cboTipo.TabIndex = 81;
+            this.cboTipo.SelectedIndexChanged += new System.EventHandler(this.cboTipo_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -287,6 +304,7 @@
             this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 72;
             this.label4.Text = "Reporte";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // chkEstado
             // 
@@ -300,6 +318,7 @@
             this.chkEstado.TabIndex = 82;
             this.chkEstado.Text = "Solo Empleados Activo  ";
             this.chkEstado.UseVisualStyleBackColor = true;
+            this.chkEstado.CheckedChanged += new System.EventHandler(this.chkEstado_CheckedChanged);
             // 
             // chkValor
             // 
@@ -311,6 +330,7 @@
             this.chkValor.TabIndex = 83;
             this.chkValor.Text = "Solo Valores Pendientes";
             this.chkValor.UseVisualStyleBackColor = true;
+            this.chkValor.CheckedChanged += new System.EventHandler(this.chkValor_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -333,6 +353,7 @@
             this.groupBox2.TabIndex = 84;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parámetros";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // frmVacacionRep
             // 

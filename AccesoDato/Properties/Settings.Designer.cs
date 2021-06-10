@@ -26,7 +26,7 @@ namespace DataAccess.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.104:1521/ORCL;Persist Security Info=True;User ID=DESARROLLO" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.171:1521/ORCL;Persist Security Info=True;User ID=DESARROLLO" +
             ";Password=oracle")]
         public string cadenaConexion {
             get {

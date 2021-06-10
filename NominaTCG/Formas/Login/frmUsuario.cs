@@ -84,7 +84,7 @@ namespace NominaTCG
 
         private void btnNewSave_Click(object sender, EventArgs e)
         {
-            SistemaBO.RegistraUsuario(SistemaBO.usuarioDB);
+            SistemaBO.RegistraUsuario(SistemaBO.UsuarioDB);
         }
     }
 }

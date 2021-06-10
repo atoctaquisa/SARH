@@ -39,7 +39,10 @@ namespace BusinessLogic
         {
             return ReportDataDA.VacacionSub(empID, vacID);
         }
-
+        public DataTable CargaFamiliar(string subQuery)
+        {
+            return ReportDataDA.CargaFamiliar(subQuery);
+        }
         public DataTable Vacacion(string subQuery)
         {
             return ReportDataDA.Vacacion(subQuery);

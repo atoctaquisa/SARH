@@ -26,9 +26,9 @@ namespace NominaTCG
         private ReportDataController ReportBO { get; set; }
         private ContratoController ContratoBO { get; set; }
 
-        private Microsoft.Reporting.WinForms.ReportViewer RptViewer;
-        private static PermissionSet permissions;
-        private static string pdfPath = @"c:\" ;//Properties.Settings.Default.pathPDF;
+        //private Microsoft.Reporting.WinForms.ReportViewer RptViewer;
+        //private static PermissionSet permissions;
+        //private static string pdfPath ;//Properties.Settings.Default.pathPDF;
 
         #region Instancia / Constructor
         private static frmRolIndividual _instancia;
@@ -68,17 +68,17 @@ namespace NominaTCG
         
         #endregion
 
-        private void frmRolIndividual_FormClosing(object sender, FormClosingEventArgs e)
+        private void FrmRolIndividual_FormClosing(object sender, FormClosingEventArgs e)
         {
             _instancia = null;            
         }
 
-        private void btnCadena_Click(object sender, EventArgs e)
+        private void BtnCadena_Click(object sender, EventArgs e)
         {
             
         }       
 
-        private void btnDetalleRol_Click(object sender, EventArgs e)
+        private void BtnDetalleRol_Click(object sender, EventArgs e)
         {
             string path;
             //path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Reportes\Rol.rdlc";
@@ -98,49 +98,7 @@ namespace NominaTCG
             ClearControl();
 
 
-            //--------------------------------------
-            permissions = new PermissionSet(PermissionState.Unrestricted);
-            RptViewer = new ReportViewer();
-            RptViewer.LocalReport.SetBasePermissionsForSandboxAppDomain(permissions);
-            RptViewer.LocalReport.DataSources.Clear();
-            string pdfName = "C:\\Test.pdf";//codigoDocumento + ".pdf";
-            string rptName = "1791997891001Retencion.rdlc";
-
-
-            try
-            {
-                //Save on local path
-                RptViewer.LocalReport.ReportPath = path;
-                string dominio = AppDomain.CurrentDomain.DynamicDirectory;
-
-                RptViewer.LocalReport.Refresh();
-                Byte[] reportE = RptViewer.LocalReport.Render("PDF");
-                System.IO.FileStream fs = System.IO.File.Create(pdfPath + "\\" + pdfName);
-                fs.Write(reportE, 0, reportE.Length);
-                fs.Close();
-                //response.pathArchivoPDF = pdfName;
-                //create = false;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(" XXXXXXXXXXXXXXXXXXXXXXXXXXXXX ");
-                Console.WriteLine(ex.HResult);
-                Console.WriteLine(" XXXXXXXXXXXXXXXXXXXXXXXXXXXXX ");
-                string error = ex.Message;
-                string trace = ex.StackTrace;
-                while (ex.InnerException != null)
-                {
-                    ex = ex.InnerException;
-                    error = error + " --- " + ex.Message;
-                    trace = trace + " --- " + ex.StackTrace;
-                }
-
-                //response.result = "ERROR";
-                //response.resultData = "CREACION DEL PDF --- " + error + " --- " + trace;
-                //Console.WriteLine(response.resultData);
-                //count += 1;
-            }
-
+           
             //_reportViewer.LocalReport.DataSources.Clear();
             //var departmentsModels = new ReportDataSource() { Name = "Department_DS", Value = departments };
             //_reportViewer.LocalReport.DataSources.Add(departmentsModels);
@@ -168,7 +126,7 @@ namespace NominaTCG
 
         }
 
-        private void btnLocal_Click(object sender, EventArgs e)
+        private void BtnLocal_Click(object sender, EventArgs e)
         {
             var frm = new frmLocalLista();
             Design.frmDialog(frm, "Lista de Locales");
@@ -177,14 +135,14 @@ namespace NominaTCG
             
         }
 
-        private void btnEmpleado_Click(object sender, EventArgs e)
+        private void BtnEmpleado_Click(object sender, EventArgs e)
         {
             var frm = new frmEmpleadoLista();
             frm.ShowDialog();
             txtEmpleado.Text = EmpleadoBO.Empleado.empNombre;            
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             ClearControl();
         }
@@ -198,30 +156,10 @@ namespace NominaTCG
             cboCadena.SelectedIndex = -1;
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void BtnExit_Click(object sender, EventArgs e)
         {
             _instancia = null;
             this.Close();
-        }
-
-        private void txtLocal_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtEmpleado_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -30,12 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVacacionesAprobacion));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.imgList = new System.Windows.Forms.ImageList(this.components);
             this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
             this.lblTitulo = new System.Windows.Forms.Label();
             this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.ckAnular = new System.Windows.Forms.CheckBox();
             this.chkApbr = new System.Windows.Forms.CheckBox();
             this.pHasta = new System.Windows.Forms.DateTimePicker();
@@ -44,10 +45,9 @@
             this.btnLocal = new System.Windows.Forms.Button();
             this.btnEmpleado = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnFind = new System.Windows.Forms.Button();
             this.btnProcess = new System.Windows.Forms.Button();
+            this.btnFind = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.txtLocal = new System.Windows.Forms.TextBox();
             this.txtEmpleado = new System.Windows.Forms.TextBox();
@@ -156,6 +156,22 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Administración";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnCancel.ImageKey = "btnClear.png";
+            this.btnCancel.ImageList = this.imgList;
+            this.btnCancel.Location = new System.Drawing.Point(606, 56);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(89, 29);
+            this.btnCancel.TabIndex = 3;
+            this.btnCancel.Text = "&Limpiar";
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // ckAnular
             // 
             this.ckAnular.AutoSize = true;
@@ -238,22 +254,6 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCancel.ImageKey = "btnClear.png";
-            this.btnCancel.ImageList = this.imgList;
-            this.btnCancel.Location = new System.Drawing.Point(606, 56);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(89, 29);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "&Limpiar";
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Visible = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -269,21 +269,6 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnFind
-            // 
-            this.btnFind.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnFind.ImageKey = "btnFind.png";
-            this.btnFind.ImageList = this.imgList;
-            this.btnFind.Location = new System.Drawing.Point(401, 14);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(89, 29);
-            this.btnFind.TabIndex = 2;
-            this.btnFind.Text = "&Buscar";
-            this.btnFind.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFind.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnFind.UseVisualStyleBackColor = true;
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
-            // 
             // btnProcess
             // 
             this.btnProcess.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -298,6 +283,21 @@
             this.btnProcess.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProcess.UseVisualStyleBackColor = true;
             this.btnProcess.Click += new System.EventHandler(this.btnProcess_Click);
+            // 
+            // btnFind
+            // 
+            this.btnFind.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnFind.ImageKey = "btnFind.png";
+            this.btnFind.ImageList = this.imgList;
+            this.btnFind.Location = new System.Drawing.Point(401, 14);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(89, 29);
+            this.btnFind.TabIndex = 2;
+            this.btnFind.Text = "&Buscar";
+            this.btnFind.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFind.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // btnBack
             // 
@@ -509,8 +509,8 @@
             // Periodo
             // 
             this.Periodo.DataPropertyName = "PERIODO";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.Periodo.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.Periodo.DefaultCellStyle = dataGridViewCellStyle1;
             this.Periodo.HeaderText = "Período";
             this.Periodo.Name = "Periodo";
             this.Periodo.Width = 80;
@@ -579,6 +579,7 @@
             this.Name = "frmVacacionesAprobacion";
             this.Text = "Solicitud - Aprobación";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAprobacion_FormClosing);
+            this.Load += new System.EventHandler(this.frmVacacionesAprobacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();

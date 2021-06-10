@@ -26,7 +26,7 @@ namespace NominaTCG.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("DATA SOURCE=192.168.1.104:1521/ORCL;PASSWORD=oracle;USER ID=DESARROLLO")]
+        [global::System.Configuration.DefaultSettingValueAttribute("DATA SOURCE=192.168.1.171:1521/ORCL;PASSWORD=oracle;USER ID=DESARROLLO")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));

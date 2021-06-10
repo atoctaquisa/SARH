@@ -26,7 +26,7 @@ namespace DataAccess
                                                                SOLVAC_DESDE,
                                                                SOLVAC_HASTA,
                                                                SOLVAC_INCORPORACION,
-                                                               DIAS_PEND,
+                                                               TRUNC(DIAS_PEND,2) DIAS_PEND,
                                                                SOLVAC_OBSERVACION,
                                                                SOLVAC_ESTADO,
                                                                DECODE (SOLVAC_ESTADO,
@@ -45,7 +45,7 @@ namespace DataAccess
         private static string sqlRegistraSolicitud = "DESARROLLO.PK_OPERACIONESTCG.P_CARGA_SOLICITUD_VACACION";
         private static string sqlApruebaSolicitud = "DESARROLLO.PK_NOMINATCG.P_SOLICITUD_VACACION_AUT";
         private static string sqlAnulaSolicitud = "UPDATE DESARROLLO.DAT_SOLIC_VACACION SET SOLVAC_ESTADO=4 WHERE SOLVAC_ID=:SOLVAC_ID";
-        private static string sqlVerificaDia = "SELECT CAB_VAC_DIAS_PEN FROM DESARROLLO.DAT_CAB_VAC WHERE EMP_ID =:EMP_ID AND CAB_VAC_ID =:CAB_VAC_ID";
+        private static string sqlVerificaDia = "SELECT ROUND(CAB_VAC_DIAS_PEN,2) CAB_VAC_DIAS_PEN FROM DESARROLLO.DAT_CAB_VAC WHERE EMP_ID =:EMP_ID AND CAB_VAC_ID =:CAB_VAC_ID";
         private static string sqlVerificaSolicitud = "SELECT COUNT(1) FROM V_SOLICITUD_VACACION WHERE EMP_ID=:EMP_ID AND CAB_VAC_ID=:CAB_VAC_ID AND SOLVAC_ESTADO IN(0,1)";
         private static string sqlSolicitudEmp = " WHERE EMP_ID=:EMP_ID AND CAB_VAC_ID=:CAB_VAC_ID ORDER BY SOLVAC_ID DESC";
         private static string sqlNumeroSolicitud = "SELECT SEQ_SOLICITUD_VACACION.CURRVAL FROM DUAL";
@@ -209,14 +209,14 @@ private static string sqlActualizaDiaAccMatEnf = @"
             return db.GetEntero(sqlVerificaSolicitud, prm);
         }
 
-        public int VerificaDiasVacacion(string empID, int perID)
+        public double VerificaDiasVacacion(string empID, int perID)
         {
             OracleParameter[] prm = new OracleParameter[] 
             { 
                 new OracleParameter(":EMP_ID",empID ),
                 new OracleParameter(":CAB_VAC_ID",perID)
             };
-            return db.GetEntero(sqlVerificaDia, prm);
+            return db.GetDecimal(sqlVerificaDia, prm);
         }
         public int ApruebaSolicitud(string empID, string cabVacID, string obsr)
         {

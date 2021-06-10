@@ -25,7 +25,7 @@ namespace NominaTCG
         #region Methods
         private bool stateMenu(string mnuCode)
         {
-            return SistemaBO.stateMenu(Catalogo.CodeSystem, mnuCode,Catalogo.UserRole);
+            return SistemaBO.StateMenu(Catalogo.CodeSystem, mnuCode,Catalogo.UserRole);
         }
 
         private void recordLevel(ToolStripItemCollection subMenu)
@@ -316,9 +316,9 @@ namespace NominaTCG
 
         private void mnuCalculoUtilidad_Click(object sender, EventArgs e)
         {
-            //var frm = frmCalcularUtilidades.Instancia;
-            //frm.MdiParent = this;
-            //Design.frmShow(frm);
+            var frm = frmCalcularUT.Instancia;
+            frm.MdiParent = this;
+            Design.frmShow(frm);
         }
     
 
@@ -411,5 +411,35 @@ namespace NominaTCG
             frm.MdiParent = this;
             Design.frmShow(frm);
         }
+
+        private void mnuValorFijo_Click(object sender, EventArgs e)
+        {
+            var frm = frmValorFijo.Instancia;
+            frm.MdiParent = this;
+            Design.frmShow(frm);
+        }
+
+        private void mnuRolPago_Click(object sender, EventArgs e)
+        {
+            var frm = frmGeneraRol.Instancia;
+            frm.MdiParent = this;
+            Design.frmShow(frm);
+        }
+
+        private void subirFaltantesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = frmCargaFaltante.Instancia;
+            frm.MdiParent = this;
+            Design.frmShow(frm);
+        }
+
+        private void mnuSubirAsiento_Click(object sender, EventArgs e)
+        {
+            var frm = frmCargaAsiento.Instancia;
+            frm.MdiParent = this;
+            Design.frmShow(frm);
+
+        }
+      
     }
 }

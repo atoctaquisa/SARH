@@ -204,7 +204,7 @@ namespace NominaTCG
             cboLabTipoPago.SelectedValue = ContratoBO.Laboral.labTipoEmp;
             txtLabRBU.Text = ContratoBO.Laboral.labRbu.ToString();
             //ContratoBO.Laboral.labVest
-            //ContratoBO.Laboral.labBono
+            txtBono.Text = ContratoBO.Laboral.labBono.ToString();
             txtLabQuincena.Text = ContratoBO.Laboral.labQuincena.ToString();
 
             //Datos Familiares
@@ -268,6 +268,7 @@ namespace NominaTCG
             cboLabLocal.Enabled = stateControl;
             cboLabCargo.Enabled = stateControl;
             txtLabRBU.ReadOnly = !stateControl;
+            txtBono.ReadOnly = !stateControl;
             txtLabQuincena.ReadOnly = !stateControl;
             cboLabEstado.Enabled = stateControl;
             cboLabTipoPago.Enabled = stateControl;
@@ -408,6 +409,7 @@ namespace NominaTCG
             cboLabEstado.SelectedIndex = -1;
             cboLabTipoPago.SelectedIndex = -1;
             txtLabRBU.Text = string.Empty;
+            txtBono.Text = string.Empty;
             txtLabQuincena.Text = string.Empty;
             txtLabObservacion.Text = string.Empty;
             txtLabObservacionSis.Text = string.Empty;
@@ -568,7 +570,7 @@ namespace NominaTCG
 
             if (mtxtFechaSalida.Text != "01/01/9999" & mtxtFechaSalida.Text != "  /  /")
             {
-                if (Utility.isDate(mtxtFechaSalida.Text))
+                if (Utility.IsDate(mtxtFechaSalida.Text))
                 {
                     if (Convert.ToDateTime(mtxtFechaSalida.Text).Date > DateTime.Now.Date || Convert.ToDateTime(mtxtFechaSalida.Text).Date < pPerFechaIngreso.Value.Date)
                     {
@@ -609,7 +611,7 @@ namespace NominaTCG
             }
             if (mtxtConFechaContrato.Text != "01/01/9999" & mtxtConFechaContrato.Text != "  /  /")
             {
-                if (!Utility.isDate(mtxtConFechaContrato.Text))
+                if (!Utility.IsDate(mtxtConFechaContrato.Text))
                 {
                     ErrProv.SetError(mtxtConFechaContrato, "Ingrese una fecha válidad (dd/mm/yyyy)");
                     cnt++;
@@ -617,7 +619,7 @@ namespace NominaTCG
             }
             if (mtxtConFechaLiquidacion.Text != "01/01/9999" & mtxtConFechaLiquidacion.Text != "  /  /")
             {
-                if (!Utility.isDate(mtxtConFechaLiquidacion.Text))
+                if (!Utility.IsDate(mtxtConFechaLiquidacion.Text))
                 {
                     ErrProv.SetError(mtxtConFechaLiquidacion, "Ingrese una fecha válidad (dd/mm/yyyy)");
                     cnt++;
@@ -665,7 +667,7 @@ namespace NominaTCG
 
             if (mtxtLabFecha.Text != "01/01/9999" & mtxtLabFecha.Text != "  /  /")
             {
-                if (!Utility.isDate(mtxtLabFecha.Text))
+                if (!Utility.IsDate(mtxtLabFecha.Text))
                 {
                     ErrProv.SetError(mtxtLabFecha, "Ingrese una fecha válidad (dd/mm/yyyy)");
                     cnt++;
@@ -1018,7 +1020,7 @@ namespace NominaTCG
             ContratoBO.Laboral.labTipoEmp = Convert.ToInt32(cboLabTipoPago.SelectedValue);
             ContratoBO.Laboral.labRbu = Convert.ToDecimal(txtLabRBU.Text);
             ContratoBO.Laboral.labVest = 0;
-            ContratoBO.Laboral.labBono = 0;
+            ContratoBO.Laboral.labBono = txtBono.Text == "" ? 0 : Convert.ToDecimal(txtBono.Text);
             ContratoBO.Laboral.labQuincena = txtLabQuincena.Text == "" ? 0 : Convert.ToInt32(txtLabQuincena.Text);
             resp = ContratoBO.RegistrarInfoLaboral(ContratoBO.Laboral);
 
@@ -1586,7 +1588,7 @@ namespace NominaTCG
             {
                 DataTable data = new DataTable();
                 data = EmpleadoBO.ListaEmpleado(txtCodigo.Text);
-                if (Utility.isDate(data.Rows[0]["EMP_FEC_SALIDAREAL"].ToString()) & Utility.isDate(data.Rows[0]["EMP_FEC_SALIDA"].ToString()))
+                if (Utility.IsDate(data.Rows[0]["EMP_FEC_SALIDAREAL"].ToString()) & Utility.IsDate(data.Rows[0]["EMP_FEC_SALIDA"].ToString()))
                 {
                     if (txtPerCorreoPer.Text != string.Empty)
                     {
@@ -1595,9 +1597,9 @@ namespace NominaTCG
 
                             object[,] emailVars = new object[,] { { "[@apellido]" , txtApellido.Text.ToUpper() },
                                                               { "[@nombre]" , txtNombre.Text.ToUpper() }                                                };
-                            string message = SistemaBO.emailMessage("LIQUIDACION", emailVars);
+                            string message = SistemaBO.EmailMessage("LIQUIDACION", emailVars);
 
-                            if (SistemaBO.sendEmail(txtPerCorreoPer.Text, "Notificación de proceso de Liquidación", message))
+                            if (SistemaBO.SendEmail(txtPerCorreoPer.Text, "Notificación de proceso de Liquidación", message))
                                 Utility.MensajeOK("Notificación Enviada..!!");
                             else
                                 Utility.MensajeError("Notificación Fallida..!!");
@@ -1623,7 +1625,7 @@ namespace NominaTCG
                 data = EmpleadoBO.ListaEmpleado(empID);
                 if (data.Rows.Count > 0)
                 {
-                    if (Utility.isDate(data.Rows[0]["EMP_FEC_SALIDAREAL"].ToString()) | Utility.isDate(data.Rows[0]["EMP_FEC_SALIDA"].ToString()))
+                    if (Utility.IsDate(data.Rows[0]["EMP_FEC_SALIDAREAL"].ToString()) | Utility.IsDate(data.Rows[0]["EMP_FEC_SALIDA"].ToString()))
                     {
 
                         if (btnReingreso.Text == "&Reingreso")
@@ -1750,7 +1752,7 @@ namespace NominaTCG
             }
             if (dgvFamiliar.Columns[e.ColumnIndex].Name == "EMP_FAM_FEC_NAC")
             {
-                if (Utility.isDate(dgvFamiliar.Rows[e.RowIndex].Cells["EMP_FAM_FEC_NAC"].Value.ToString()))
+                if (Utility.IsDate(dgvFamiliar.Rows[e.RowIndex].Cells["EMP_FAM_FEC_NAC"].Value.ToString()))
                     dgvFamiliar.Rows[e.RowIndex].Cells["Edad"].Value = CalcularEdad(Convert.ToDateTime(dgvFamiliar.Rows[e.RowIndex].Cells["EMP_FAM_FEC_NAC"].Value), DateTime.Now);
             }
         }
@@ -1773,7 +1775,7 @@ namespace NominaTCG
             {
                 if (dgvFamiliar.Columns[e.ColumnIndex].Name == "EMP_FAM_FEC_NAC")
                 {
-                    if (!Utility.isDate(e.FormattedValue.ToString()))
+                    if (!Utility.IsDate(e.FormattedValue.ToString()))
                     {
                         dgvFamiliar.Rows[e.RowIndex].ErrorText = "El formato de la fecha debe ser (dd/mm/yyyy)";
                         e.Cancel = true;

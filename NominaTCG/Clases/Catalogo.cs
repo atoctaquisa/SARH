@@ -16,6 +16,7 @@ namespace NominaTCG
         public static string UserProfile { get; set; }
         public static string ServerData { get; set; }
         public static string PathReport { get; set; }
+        public static string PathDirReportPDF { get; set; }
 
 
         public static DataTable TipoCertificado()
@@ -25,7 +26,7 @@ namespace NominaTCG
             datos.Columns.Add("Nombre");
             datos.Rows.Add(1, "Personal");
             datos.Rows.Add(0, "Cesado");
-            datos.Rows.Add(2, "Crédito");            
+            //datos.Rows.Add(2, "Crédito");            
             return datos;
 
         }

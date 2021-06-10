@@ -445,7 +445,7 @@ namespace NominaTCG
                 string nameColumn = dgvData.Columns[e.ColumnIndex].Name;
                 if (nameColumn == "IESS_FECHAINICIO" | nameColumn == "IESS_FECHAFIN")
                 {
-                    if (!Utility.isDate(e.FormattedValue.ToString()))
+                    if (!Utility.IsDate(e.FormattedValue.ToString()))
                     {
                         dgvData.Rows[e.RowIndex].ErrorText = "El dato introducido no es de tipo fecha";
                         e.Cancel = true;

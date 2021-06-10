@@ -16,14 +16,14 @@ namespace NominaTCG.Formas.Reportes {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CertificadoAct : ReportClass {
+    public class CertificadoActivo : ReportClass {
         
-        public CertificadoAct() {
+        public CertificadoActivo() {
         }
         
         public override string ResourceName {
             get {
-                return "CertificadoAct.rpt";
+                return "CertificadoActivo.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace NominaTCG.Formas.Reportes {
         
         public override string FullResourceName {
             get {
-                return "NominaTCG.Formas.Reportes.CertificadoAct.rpt";
+                return "NominaTCG.Formas.Reportes.CertificadoActivo.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace NominaTCG.Formas.Reportes {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCertificadoAct : Component, ICachedReport {
+    public class CachedCertificadoActivo : Component, ICachedReport {
         
-        public CachedCertificadoAct() {
+        public CachedCertificadoActivo() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace NominaTCG.Formas.Reportes {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CertificadoAct rpt = new CertificadoAct();
+            CertificadoActivo rpt = new CertificadoActivo();
             rpt.Site = this.Site;
             return rpt;
         }

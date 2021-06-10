@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpleado));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
             this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
@@ -54,6 +54,7 @@
             this.label39 = new System.Windows.Forms.Label();
             this.tabInformacion = new System.Windows.Forms.TabControl();
             this.tabPersonal = new System.Windows.Forms.TabPage();
+            this.lblDiscapacidad = new System.Windows.Forms.Label();
             this.chkPasaporte = new System.Windows.Forms.CheckBox();
             this.btnHuella = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -187,7 +188,8 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.label38 = new System.Windows.Forms.Label();
             this.tabAdmin = new System.Windows.Forms.TabControl();
-            this.lblDiscapacidad = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtBono = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabInformacion.SuspendLayout();
@@ -485,6 +487,15 @@
             this.tabPersonal.TabIndex = 0;
             this.tabPersonal.Text = "Datos Personales";
             this.tabPersonal.Click += new System.EventHandler(this.tabPersonal_Click);
+            // 
+            // lblDiscapacidad
+            // 
+            this.lblDiscapacidad.AutoSize = true;
+            this.lblDiscapacidad.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.lblDiscapacidad.Location = new System.Drawing.Point(142, 85);
+            this.lblDiscapacidad.Name = "lblDiscapacidad";
+            this.lblDiscapacidad.Size = new System.Drawing.Size(0, 13);
+            this.lblDiscapacidad.TabIndex = 59;
             // 
             // chkPasaporte
             // 
@@ -1278,11 +1289,13 @@
             this.tabLaboral.Controls.Add(this.txtLabFechaMod);
             this.tabLaboral.Controls.Add(this.label56);
             this.tabLaboral.Controls.Add(this.txtLabFechaReg);
+            this.tabLaboral.Controls.Add(this.txtBono);
             this.tabLaboral.Controls.Add(this.txtLabQuincena);
             this.tabLaboral.Controls.Add(this.txtLabObservacionSis);
             this.tabLaboral.Controls.Add(this.txtLabObservacion);
             this.tabLaboral.Controls.Add(this.txtLabRBU);
             this.tabLaboral.Controls.Add(this.label65);
+            this.tabLaboral.Controls.Add(this.label11);
             this.tabLaboral.Controls.Add(this.label64);
             this.tabLaboral.Controls.Add(this.label63);
             this.tabLaboral.Controls.Add(this.label62);
@@ -1375,7 +1388,7 @@
             // 
             // txtLabObservacionSis
             // 
-            this.txtLabObservacionSis.Location = new System.Drawing.Point(550, 164);
+            this.txtLabObservacionSis.Location = new System.Drawing.Point(550, 192);
             this.txtLabObservacionSis.MaxLength = 200;
             this.txtLabObservacionSis.Multiline = true;
             this.txtLabObservacionSis.Name = "txtLabObservacionSis";
@@ -1384,7 +1397,7 @@
             // 
             // txtLabObservacion
             // 
-            this.txtLabObservacion.Location = new System.Drawing.Point(550, 119);
+            this.txtLabObservacion.Location = new System.Drawing.Point(550, 147);
             this.txtLabObservacion.MaxLength = 200;
             this.txtLabObservacion.Multiline = true;
             this.txtLabObservacion.Name = "txtLabObservacion";
@@ -1429,7 +1442,7 @@
             // label62
             // 
             this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(431, 169);
+            this.label62.Location = new System.Drawing.Point(431, 197);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(98, 13);
             this.label62.TabIndex = 20;
@@ -1438,7 +1451,7 @@
             // label61
             // 
             this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(431, 127);
+            this.label61.Location = new System.Drawing.Point(431, 155);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(78, 13);
             this.label61.TabIndex = 18;
@@ -1502,14 +1515,14 @@
             // 
             // dgvFamiliar
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFamiliar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFamiliar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFamiliar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFamiliar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.EMP_ID,
@@ -1521,14 +1534,14 @@
             this.EMP_FAM_DISC,
             this.EMP_FAM_OCUP,
             this.EMP_FAM_TELF_REF});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFamiliar.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFamiliar.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFamiliar.Location = new System.Drawing.Point(26, 26);
             this.dgvFamiliar.Name = "dgvFamiliar";
             this.dgvFamiliar.Size = new System.Drawing.Size(783, 271);
@@ -1618,27 +1631,27 @@
             // 
             // dgvValor
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvValor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvValor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvValor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvValor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ROL_ID,
             this.FIJ_VALOR,
             this.FIJ_ESTADO});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvValor.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvValor.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvValor.Location = new System.Drawing.Point(26, 23);
             this.dgvValor.Name = "dgvValor";
             this.dgvValor.Size = new System.Drawing.Size(791, 271);
@@ -1783,14 +1796,22 @@
             this.tabAdmin.Size = new System.Drawing.Size(864, 583);
             this.tabAdmin.TabIndex = 0;
             // 
-            // lblDiscapacidad
+            // label11
             // 
-            this.lblDiscapacidad.AutoSize = true;
-            this.lblDiscapacidad.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.lblDiscapacidad.Location = new System.Drawing.Point(142, 85);
-            this.lblDiscapacidad.Name = "lblDiscapacidad";
-            this.lblDiscapacidad.Size = new System.Drawing.Size(0, 13);
-            this.lblDiscapacidad.TabIndex = 59;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(431, 122);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(32, 13);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Bono";
+            // 
+            // txtBono
+            // 
+            this.txtBono.Location = new System.Drawing.Point(550, 119);
+            this.txtBono.Name = "txtBono";
+            this.txtBono.Size = new System.Drawing.Size(104, 20);
+            this.txtBono.TabIndex = 17;
+            this.txtBono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLabQuincena_KeyPress);
             // 
             // frmEmpleado
             // 
@@ -1981,5 +2002,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EMP_FAM_TELF_REF;
         private System.Windows.Forms.CheckBox chkPasaporte;
         private System.Windows.Forms.Label lblDiscapacidad;
+        private System.Windows.Forms.TextBox txtBono;
+        private System.Windows.Forms.Label label11;
     }
 }

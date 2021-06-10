@@ -44,7 +44,7 @@ namespace NominaTCG
                                                   { "[@razonSocial]" , txtEmpleado.Text },                                                 
                                                 };
 
-            SistemaBO.sendEmail(txtEmail.Text, "Solicitud de Vacaciones", SistemaBO.emailMessage("SOLICITUD DE VACACION", emailVars));
+            SistemaBO.SendEmail(txtEmail.Text, "Solicitud de Vacaciones", SistemaBO.EmailMessage("SOLICITUD DE VACACION", emailVars));
         }
 
         private void AssignControls()

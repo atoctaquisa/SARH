@@ -41,14 +41,14 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.imgList = new System.Windows.Forms.ImageList(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabAdmin = new System.Windows.Forms.TabControl();
-            this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
-            this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
             this.cboCertificado = new System.Windows.Forms.ComboBox();
             this.txtEmpleado = new System.Windows.Forms.TextBox();
             this.btnEmpleado = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.tabAdmin = new System.Windows.Forms.TabControl();
+            this.ttMessage = new System.Windows.Forms.ToolTip(this.components);
+            this.ErrProv = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -66,7 +66,7 @@
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(471, 28);
             this.lblTitulo.TabIndex = 2;
-            this.lblTitulo.Text = "Certificados";
+            this.lblTitulo.Text = "Certificados Empleados";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // errorProvider1
@@ -85,6 +85,7 @@
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // imageList1
             // 
@@ -121,6 +122,7 @@
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnNewSave
             // 
@@ -198,20 +200,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Administración";
             // 
-            // tabAdmin
-            // 
-            this.tabAdmin.Controls.Add(this.tabPage2);
-            this.tabAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabAdmin.Location = new System.Drawing.Point(0, 0);
-            this.tabAdmin.Name = "tabAdmin";
-            this.tabAdmin.SelectedIndex = 0;
-            this.tabAdmin.Size = new System.Drawing.Size(471, 223);
-            this.tabAdmin.TabIndex = 3;
-            // 
-            // ErrProv
-            // 
-            this.ErrProv.ContainerControl = this;
-            // 
             // cboCertificado
             // 
             this.cboCertificado.FormattingEnabled = true;
@@ -257,6 +245,20 @@
             this.label12.TabIndex = 70;
             this.label12.Text = "Empleado";
             // 
+            // tabAdmin
+            // 
+            this.tabAdmin.Controls.Add(this.tabPage2);
+            this.tabAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabAdmin.Location = new System.Drawing.Point(0, 0);
+            this.tabAdmin.Name = "tabAdmin";
+            this.tabAdmin.SelectedIndex = 0;
+            this.tabAdmin.Size = new System.Drawing.Size(471, 223);
+            this.tabAdmin.TabIndex = 3;
+            // 
+            // ErrProv
+            // 
+            this.ErrProv.ContainerControl = this;
+            // 
             // frmCertificado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -265,7 +267,7 @@
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.tabAdmin);
             this.Name = "frmCertificado";
-            this.Text = "frmCertificado";
+            this.Text = "Certificados";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCertificado_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox1.ResumeLayout(false);

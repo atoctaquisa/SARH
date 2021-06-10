@@ -86,6 +86,7 @@ namespace NominaTCG
             txtFechaIngIni.Text = string.Empty;
             txtFechaSalFin.Text = string.Empty;
             txtFechaSalIni.Text = string.Empty;
+            chkCargaFa.Checked = false;
         }
         private Boolean ValidaControl()
         {
@@ -94,7 +95,7 @@ namespace NominaTCG
 
             if (!txtFechaConIni.Text.Equals(string.Empty) | !txtFechaConFin.Text.Equals(string.Empty))
             {
-                if (Utility.isDate(txtFechaConIni.Text) & Utility.isDate(txtFechaConFin.Text))
+                if (Utility.IsDate(txtFechaConIni.Text) & Utility.IsDate(txtFechaConFin.Text))
                 {
                     _query += " AND EMP_CON_FEC_CONTRATO BETWEEN '" + Convert.ToDateTime(txtFechaConFin.Text).ToString("dd-MMM-yyyy", CultureInfo.CreateSpecificCulture("en-US"))
                                     + "' AND '" + Convert.ToDateTime(txtFechaConIni.Text).ToString("dd-MMM-yyyy", CultureInfo.CreateSpecificCulture("en-US")) + "' ";
@@ -107,7 +108,7 @@ namespace NominaTCG
             }
             if (!txtFechaIngIni.Text.Equals(string.Empty) | !txtFechaIngFin.Text.Equals(string.Empty))
             {
-                if (Utility.isDate(txtFechaIngIni.Text) & Utility.isDate(txtFechaIngFin.Text))
+                if (Utility.IsDate(txtFechaIngIni.Text) & Utility.IsDate(txtFechaIngFin.Text))
                 {
                     _query += "AND LAB_FEC_INGRESO BETWEEN '" + Convert.ToDateTime(txtFechaIngIni.Text).ToString("dd-MMM-yyyy", CultureInfo.CreateSpecificCulture("en-US"))
                                     + "' AND '" + Convert.ToDateTime(txtFechaIngFin.Text).ToString("dd-MMM-yyyy", CultureInfo.CreateSpecificCulture("en-US")) + "' ";
@@ -120,7 +121,7 @@ namespace NominaTCG
             }
             if (!txtFechaSalIni.Text.Equals(string.Empty) | !txtFechaSalFin.Text.Equals(string.Empty))
             {
-                if (Utility.isDate(txtFechaSalIni.Text) & Utility.isDate(txtFechaSalFin.Text))
+                if (Utility.IsDate(txtFechaSalIni.Text) & Utility.IsDate(txtFechaSalFin.Text))
                 {
                     _query += " AND EMP_FEC_SALIDAREAL BETWEEN '" + Convert.ToDateTime(txtFechaSalIni.Text).ToString("dd-MMM-yyyy", CultureInfo.CreateSpecificCulture("en-US"))
                                     + "' AND '" + Convert.ToDateTime(txtFechaSalFin.Text).ToString("dd-MMM-yyyy", CultureInfo.CreateSpecificCulture("en-US")) + "' ";
@@ -160,7 +161,14 @@ namespace NominaTCG
             if (ValidaControl())
             {
                 _dataRep = new DataTable();
-                _dataRep = ReportBO.DetalleEmpleado(_query);
+                if (chkCargaFa.Checked)
+                {
+                    _dataRep = ReportBO.CargaFamiliar(_query);
+                }
+                else
+                {
+                    _dataRep = ReportBO.DetalleEmpleado(_query);
+                }
                 dgvData.DataSource = _dataRep;
                 lblTotalRecord.Text = "Total Registros: " + _dataRep.Rows.Count.ToString();
             }
@@ -194,14 +202,27 @@ namespace NominaTCG
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (_dataRep == null || _dataRep.Rows.Count > 0)
+                btnConsultar_Click(sender, e);
+
             if (_dataRep.Rows.Count > 0)
             {
                 string path;
                 path = Catalogo.PathReport;
+                frmViewReport frm;
                 //path = @"C:\Users\Alvaro\Documents\Visual Studio 2013\Projects\NominaTCG\NominaTCG\Formas\Reportes\Empleado.rdlc";
                 //path = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + @"\Contabilidad.rdlc";            
-                path += "Empleado.rdlc";
-                frmViewReport frm = new frmViewReport(new ReportDataSource("DataSet1", _dataRep), path, null, string.Empty);
+                if (chkCargaFa.Checked)
+                {
+                    path = Catalogo.PathReport + "CargaFami.rdl";
+                    frm = new frmViewReport(new ReportDataSource("CargaFami", _dataRep), path, null, "");
+                }
+                else
+                {
+                    path += "Empleado.rdlc";
+                    frm = new frmViewReport(new ReportDataSource("DataSet1", _dataRep), path, null, string.Empty);
+                    
+                }
                 frm.Show();
                 ClearControl();
             }

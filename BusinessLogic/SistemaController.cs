@@ -22,7 +22,7 @@ namespace BusinessLogic
         #endregion
 
         #region Propiedades
-        public db.DatUsro usuarioDB { get; set; }
+        public db.DatUsro UsuarioDB { get; set; }
         private SistemaRepository SistemaAD { get; set; }
         #endregion
 
@@ -52,7 +52,7 @@ namespace BusinessLogic
             return SistemaAD.Path(paramID);
         }
        
-        public Boolean stateMenu(string codeSystem, string mnuCode, string userRole)
+        public Boolean StateMenu(string codeSystem, string mnuCode, string userRole)
         {
             return SistemaAD.stateMenu(codeSystem, mnuCode, userRole);
         }
@@ -72,12 +72,12 @@ namespace BusinessLogic
         {
             return SistemaAD.Usuario();
         }
-        public bool sendEmail(string userTo, string userSubject, string userSms)
+        public bool SendEmail(string userTo, string userSubject, string userSms)
         {
             return SistemaAD.SendEmail(userTo, userSubject, userSms);
         }
 
-        public string emailMessage(string tipo, object[,] emailVars)
+        public string EmailMessage(string tipo, object[,] emailVars)
         {
             return SistemaAD.emailMessage(tipo, emailVars);
         }
@@ -115,7 +115,7 @@ namespace BusinessLogic
     public class Utility
     {
         public static string iMessage = @"";
-        public static bool isDate(string argu)
+        public static bool IsDate(string argu)
         {
             try
             {
@@ -127,6 +127,14 @@ namespace BusinessLogic
                 return false;
             }
         }
+        public static bool IsNumeric(string Expression)
+        {
+
+            bool isNum = Double.TryParse(Expression, System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out double retNum);
+            return isNum;
+        }
+
+
 
         #region Mostrar mensaje de informacion
 

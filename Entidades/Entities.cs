@@ -86,6 +86,7 @@ namespace Entity
         public decimal segRolRepro;
         public decimal empId;
         public decimal rolId;
+        public decimal rolIdOrg;
         public decimal rolLiqId;
         public decimal rolLiqValor;
         public DateTime rolLiqFecReg;

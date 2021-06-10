@@ -76,7 +76,7 @@
             this.btnBack.TabIndex = 56;
             this.btnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.UseVisualStyleBackColor = true;            
             // 
             // imgList
             // 
@@ -115,7 +115,7 @@
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // btnDetalleRol
             // 
@@ -129,7 +129,7 @@
             this.btnDetalleRol.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDetalleRol.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDetalleRol.UseVisualStyleBackColor = true;
-            this.btnDetalleRol.Click += new System.EventHandler(this.btnDetalleRol_Click);
+            this.btnDetalleRol.Click += new System.EventHandler(this.BtnDetalleRol_Click);
             // 
             // btnCancel
             // 
@@ -143,7 +143,7 @@
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // lblTitulo
             // 
@@ -169,7 +169,6 @@
             this.txtEmpleado.ReadOnly = true;
             this.txtEmpleado.Size = new System.Drawing.Size(178, 20);
             this.txtEmpleado.TabIndex = 47;
-            this.txtEmpleado.TextChanged += new System.EventHandler(this.txtEmpleado_TextChanged);
             // 
             // btnEmpleado
             // 
@@ -180,7 +179,7 @@
             this.btnEmpleado.Size = new System.Drawing.Size(37, 23);
             this.btnEmpleado.TabIndex = 49;
             this.btnEmpleado.UseVisualStyleBackColor = true;
-            this.btnEmpleado.Click += new System.EventHandler(this.btnEmpleado_Click);
+            this.btnEmpleado.Click += new System.EventHandler(this.BtnEmpleado_Click);
             // 
             // label12
             // 
@@ -190,7 +189,6 @@
             this.label12.Size = new System.Drawing.Size(54, 13);
             this.label12.TabIndex = 48;
             this.label12.Text = "Empleado";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label1
             // 
@@ -218,7 +216,6 @@
             this.txtLocal.ReadOnly = true;
             this.txtLocal.Size = new System.Drawing.Size(178, 20);
             this.txtLocal.TabIndex = 54;
-            this.txtLocal.TextChanged += new System.EventHandler(this.txtLocal_TextChanged);
             // 
             // btnLocal
             // 
@@ -229,7 +226,7 @@
             this.btnLocal.Size = new System.Drawing.Size(37, 23);
             this.btnLocal.TabIndex = 56;
             this.btnLocal.UseVisualStyleBackColor = true;
-            this.btnLocal.Click += new System.EventHandler(this.btnLocal_Click);
+            this.btnLocal.Click += new System.EventHandler(this.BtnLocal_Click);
             // 
             // label2
             // 
@@ -239,7 +236,6 @@
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 55;
             this.label2.Text = "Local";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // cboCadena
             // 
@@ -268,7 +264,7 @@
             this.Controls.Add(this.label12);
             this.Name = "frmRolIndividual";
             this.Text = "Reporte de Rol Individual";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmRolIndividual_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmRolIndividual_FormClosing);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();

@@ -75,7 +75,6 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtCargo = new System.Windows.Forms.TextBox();
             this.txtLocal = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrProv)).BeginInit();
@@ -94,11 +93,12 @@
             // lblTotalRecord
             // 
             this.lblTotalRecord.AutoSize = true;
-            this.lblTotalRecord.Location = new System.Drawing.Point(25, 570);
+            this.lblTotalRecord.Location = new System.Drawing.Point(554, 518);
             this.lblTotalRecord.Name = "lblTotalRecord";
             this.lblTotalRecord.Size = new System.Drawing.Size(81, 13);
             this.lblTotalRecord.TabIndex = 4;
             this.lblTotalRecord.Text = "Total Registros:";
+            this.lblTotalRecord.Visible = false;
             // 
             // dgvData
             // 
@@ -137,7 +137,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvData.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvData.Size = new System.Drawing.Size(640, 289);
+            this.dgvData.Size = new System.Drawing.Size(640, 313);
             this.dgvData.TabIndex = 1;
             this.dgvData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellContentClick);
             this.dgvData.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellEndEdit);
@@ -217,7 +217,7 @@
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnBack);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(3, 497);
+            this.groupBox1.Location = new System.Drawing.Point(3, 534);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(670, 57);
             this.groupBox1.TabIndex = 2;
@@ -327,14 +327,13 @@
             this.tabAdmin.Location = new System.Drawing.Point(0, 28);
             this.tabAdmin.Name = "tabAdmin";
             this.tabAdmin.SelectedIndex = 0;
-            this.tabAdmin.Size = new System.Drawing.Size(684, 583);
+            this.tabAdmin.Size = new System.Drawing.Size(684, 620);
             this.tabAdmin.TabIndex = 1;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.lblTotalRecord);
             this.tabPage2.Controls.Add(this.dgvData);
             this.tabPage2.Controls.Add(this.groupBox1);
@@ -342,7 +341,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(676, 557);
+            this.tabPage2.Size = new System.Drawing.Size(676, 594);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Administración";
             // 
@@ -552,23 +551,15 @@
             this.txtLocal.Size = new System.Drawing.Size(145, 20);
             this.txtLocal.TabIndex = 1;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(465, 570);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Valor Total $:";
-            // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(541, 567);
+            this.txtTotal.Location = new System.Drawing.Point(435, 516);
             this.txtTotal.MaxLength = 10;
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(81, 20);
             this.txtTotal.TabIndex = 6;
+            this.txtTotal.Visible = false;
             // 
             // lblTitulo
             // 
@@ -587,7 +578,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 611);
+            this.ClientSize = new System.Drawing.Size(684, 648);
             this.Controls.Add(this.tabAdmin);
             this.Controls.Add(this.lblTitulo);
             this.Name = "frmIngresoValorGrupo";
@@ -637,7 +628,6 @@
         private System.Windows.Forms.Button btnCuenta;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Button btnEmpleados;
         private System.Windows.Forms.Label label6;

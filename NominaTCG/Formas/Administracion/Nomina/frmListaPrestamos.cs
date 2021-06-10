@@ -33,7 +33,7 @@ namespace NominaTCG
             EmpleadoBO.Prestamo.rolIdGen = Convert.ToInt64(dgvData.Rows[index].Cells["ROL_ID_GEN"].Value.ToString());
             EmpleadoBO.Prestamo.rolRepro = Convert.ToInt64(dgvData.Rows[index].Cells["ROL_REPRO"].Value.ToString());
             EmpleadoBO.Prestamo.presPlazo = Convert.ToInt64(dgvData.Rows[index].Cells["PRES_PLAZO"].Value.ToString());
-            EmpleadoBO.Prestamo.presValor = Convert.ToInt64(dgvData.Rows[index].Cells["PRES_VALOR"].Value.ToString());
+            EmpleadoBO.Prestamo.presValor = Convert.ToDecimal(dgvData.Rows[index].Cells["PRES_VALOR"].Value.ToString());
             EmpleadoBO.Prestamo.presObservacion = dgvData.Rows[index].Cells["PRES_OBSERVACION"].Value.ToString();
             EmpleadoBO.Prestamo.empleado = dgvData.Rows[index].Cells["EMPLEADO"].Value.ToString();
             

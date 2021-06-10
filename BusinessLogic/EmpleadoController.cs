@@ -115,6 +115,27 @@ namespace BusinessLogic
         {
             return EmpleadoAD.CargaConsumoLocal(perID);
         }
+        public int ProcesaFaltanteCaja(string perID, string patID)
+        {
+            return EmpleadoAD.ProcesaFaltanteCaja(perID, patID);
+        }
+        public int VerificaAsientoRol(string perID, string patID, int tipo)
+        {
+            return EmpleadoAD.VerificaAsientoRol(perID, patID, tipo);
+        }
+        public int GeneraAsientoRol(string perID, string patID, int tipo)
+        {
+            return EmpleadoAD.GeneraAsientoRol(perID, patID, tipo);
+        }
+        public DataTable ConsultaAsientoRol(string perID, string patID, int tipo)
+        {
+            return EmpleadoAD.ConsultaAsientoRol(perID, patID, tipo);
+        }
+
+        public DataTable  CargaFaltanteCaja( string perID, string patID, int tipo)
+        {
+            return EmpleadoAD.CargaFaltanteCaja(perID, patID, tipo);
+        }
         public string CargoEmpleadoRol(string empID, string perID, string reproID)
         {
             return EmpleadoAD.CargoEmpleadoRol(empID,perID, reproID);

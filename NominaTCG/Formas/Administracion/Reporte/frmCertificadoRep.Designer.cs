@@ -39,7 +39,7 @@
             this.crvCertificado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crvCertificado.Location = new System.Drawing.Point(0, 0);
             this.crvCertificado.Name = "crvCertificado";
-            this.crvCertificado.Size = new System.Drawing.Size(800, 450);
+            this.crvCertificado.Size = new System.Drawing.Size(844, 587);
             this.crvCertificado.TabIndex = 1;
             this.crvCertificado.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
@@ -47,7 +47,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(844, 587);
             this.Controls.Add(this.crvCertificado);
             this.Name = "frmCertificadoRep";
             this.Text = "frmCertificadoRep";
